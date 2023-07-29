@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
-export default function UserPreferences ({navigation, route}) {
+export default function newUserPreferences ({navigation, route}) {
   const [age, onChangeAge] = React.useState('');
   const [playstyle, onChangePlaystyle] = React.useState('');
   const [favoriteMythicalCreature, onChangeFavoriteMythicalCreature] = React.useState('');

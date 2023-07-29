@@ -9,7 +9,7 @@ export default function Home ({navigation}) {
             <Button
                 title="Get Started"
                 onPress={() =>
-                    navigation.navigate('SignUp')
+                    navigation.navigate('Sign Up')
                 }
                 />
             <Text> Have an Account? </Text>

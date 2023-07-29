@@ -30,12 +30,21 @@ export default function SignUp ({navigation, route}) {
               value={newPassword}
               placeholder="Password"
             />
+            <Text> Photo Upload Section Here </Text>
             <Button
                 title="Next"
                 onPress={() =>
-                    navigation.navigate('UserPreferences')
+                    navigation.navigate('New User Preferences')
                 }
                 />
+
+            <Text> Have an Account? </Text>
+            <Button
+                title="Log in"
+                onPress={() =>
+                    navigation.navigate('Login', {name: 'RandomUserAccount'})
+                }
+            />
         </View>
     )
 }
