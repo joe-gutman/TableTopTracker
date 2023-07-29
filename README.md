@@ -10,27 +10,25 @@
 1. React Router
 2. React Native
 3. Javascript
-4. Express
-5. PostgreSQL
-6. Node
+4. PostgreSQL
+5. Node / Express
 
 **APIs**
-1. OpenAI API
-2. BoardGameGeek.com API
-3. FireBase/FireStore Authentication
+1. OpenAI — API
+2. BoardGameGeek — API
+3. FireBase/FireStore — Authentication
 
 **Styling Framework**
-1. Google Material Design 
-2. React Material UI / React Native Material 
-3. Bootstrap
-4. Tailwind
-5. Styled components
+1. React Native Paper
+2. Bootstrap
+3. Tailwind
+4. Styled components
 
 **How to Run React Native**
 1. CD into TableTopTracker Directory
-2. yarn install
-3. npx expo start (should see a QR code)
-4. To open on web, enter 'w' after the expo start runs. 
-5. Download the expo go app on your phone and create an account
-6. Scan QR code that appears after running npx expo start
-   
+2. npm install yarn
+3. yarn install
+4. npx expo start (should see a QR code)
+5. To open on web, enter 'w' after the expo start runs. 
+6. Download the expo go app on your phone and create an account
+7. Scan QR code that appears after running npx expo start
