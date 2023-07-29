@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function SignUp ({navigation, route}) {
   const [email, onChangeEmail] = React.useState('');
@@ -11,25 +11,31 @@ export default function SignUp ({navigation, route}) {
     return (
         <View>
             <TextInput
-              onChangeText={onChangeEmail}
+              onChangeEmail={onChangeEmail}
               value={email}
               placeholder="Email"
             />
             <TextInput
-              onChangeText={onChangeName}
+              onChangeName={onChangeName}
               value={fullName}
               placeholder="Full Name"
             />
             <TextInput
-              onChangeText={onChangeNewUsername}
+              onChangeNewUsername={onChangeNewUsername}
               value={newUsername}
               placeholder="Username"
             />
             <TextInput
-              onChangeText={onChangeNewPassword}
+              onChangeNewPassword={onChangeNewPassword}
               value={newPassword}
               placeholder="Password"
             />
+            <Button
+                title="Next"
+                onPress={() =>
+                    navigation.navigate('UserPreferences')
+                }
+                />
         </View>
     )
 }

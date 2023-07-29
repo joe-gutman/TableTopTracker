@@ -14,12 +14,12 @@ export default function Login ({navigation, route}) {
             </Text>
 
             <TextInput
-                onChangeText={onChangeUsername}
+                onChangeUsername={onChangeUsername}
                 value={username}
                 placeholder="Username"
             />
             <TextInput
-                onChangeText={onChangePassword}
+                onChangePassword={onChangePassword}
                 value={password}
                 placeholder="Password"
             />
