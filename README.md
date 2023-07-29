@@ -27,8 +27,8 @@
 5. Styled components
 
 **How to Run React Native**
-1. cd into TableTopTracker Directory
-2. npm install
+1. CD into TableTopTracker Directory
+2. yarn install
 3. npx expo start (should see a QR code)
 4. To open on web, enter 'w' after the expo start runs. 
 5. Download the expo go app on your phone and create an account
