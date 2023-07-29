@@ -1,12 +1,10 @@
 {
-  "name": "frontendcapstone",
+  "name": "TableTop-collection-server",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "scripts": {
-    "react-dev": "webpack --mode development --watch",
-    "start:client": "npx live-server client/dist",
-    "server-dev": "npx nodemon server/index.js"
+    "server-dev": "npx nodemon index.js"
   },
   "keywords": [],
   "author": "",
