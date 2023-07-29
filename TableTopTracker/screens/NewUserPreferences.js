@@ -10,6 +10,7 @@ export default function newUserPreferences ({navigation, route}) {
 
     return (
         <View>
+            <Text> Tell me about yourself! </Text>
             <TextInput
               onChangeAge={onChangeAge}
               value={age}
