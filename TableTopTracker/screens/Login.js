@@ -8,5 +8,5 @@ export default function Login ({navigation, route}) {
             This is {route.params.name}'s profile
             </Text>
         </View>
-    )
-}
+    );
+};
