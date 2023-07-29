@@ -5,12 +5,19 @@ export default function Home ({navigation}) {
     return (
         <View>
             <Text>
-                hello laddies
+                Powered by Board Game Geek
             </Text>
             <Button
-                title="Go to Game Page"
+                title="Get Started"
                 onPress={() =>
-                    navigation.navigate('Login', {name: 'TableTop'})
+                    navigation.navigate('SignUp')
+                }
+                />
+            <Text> Have an Account? </Text>
+            <Button
+                title="Log in"
+                onPress={() =>
+                    navigation.navigate('Login', {name: 'RandomUserAccount'})
                 }
                 />
         </View>

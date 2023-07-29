@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Login ({navigation, route}) {
+export default function SignUp ({navigation, route}) {
     return (
         <View>
             <Text>
-            This is {route.params.name}'s profile
+            Sign Up Here
             </Text>
         </View>
     )
