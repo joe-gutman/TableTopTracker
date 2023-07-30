@@ -12,14 +12,14 @@ import { PaperProvider } from 'react-native-paper';
 import { name as appName } from './app.json';
 import theme from './theme';
 
-import GamesList from './components/GameList/GamesList.js';
-import allDummyGames from './dummy/allDummyGames.js';
+import GamesList from './components/GameList/GamesList';
+import allDummyGames from './dummy/allDummyGames';
 
-import Recommendations from './components/GameList/Recommendations.js';
-import recommendedDummyGames from './dummy/recommendedDummyGames.js';
+import Recommendations from './components/GameList/Recommendations';
+import recommendedDummyGames from './dummy/recommendedDummyGames';
 
-import Personal from './components/GameList/Personal.js';
-import personalDummyGames from './dummy/personalDummyGames.js';
+import MyGames from './components/GameList/MyGames';
+import personalDummyGames from './dummy/personalDummyGames';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,7 +40,7 @@ export default function App() {
       {/* ALEX'S PROTOTYPE COMPONENTS */}
       <GamesList games={ allDummyGames } />
       <Recommendations games={ recommendedDummyGames } />
-      <Personal games={ personalDummyGames } />
+      <MyGames games={ personalDummyGames } />
     </PaperProvider>
   );
 }
