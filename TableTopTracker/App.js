@@ -12,6 +12,15 @@ import { PaperProvider } from 'react-native-paper';
 import { name as appName } from './app.json';
 import theme from './theme';
 
+import GamesList from './components/GameList/GamesList.js';
+import allDummyGames from './dummy/allDummyGames.js';
+
+import Recommendations from './components/GameList/Recommendations.js';
+import recommendedDummyGames from './dummy/recommendedDummyGames.js';
+
+import Personal from './components/GameList/Personal.js';
+import personalDummyGames from './dummy/personalDummyGames.js';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -27,6 +36,11 @@ export default function App() {
           <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>
       </NavigationContainer>
+
+      {/* ALEX'S PLACEHOLDER COMPONENTS */}
+      <GamesList games={ allDummyGames } />
+      <Recommendations games={ recommendedDummyGames } />
+      <Personal games={ personalDummyGames } />
     </PaperProvider>
   );
 };
