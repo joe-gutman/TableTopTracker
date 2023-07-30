@@ -37,7 +37,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
 
-      {/* ALEX'S PLACEHOLDER COMPONENTS */}
+      {/* ALEX'S PROTOTYPE COMPONENTS */}
       <GamesList games={ allDummyGames } />
       <Recommendations games={ recommendedDummyGames } />
       <Personal games={ personalDummyGames } />
