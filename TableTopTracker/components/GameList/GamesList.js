@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 import PlaceholderCard from './PlaceholderCard';
+import styles from './styles.js';
 
 export default function GamesList({ games }) {
   return (
-    <View style={{ flex: 1, padding: 15 }}>
+    <View style={ styles.list }>
       <FlatList
         data={ games }
         renderItem={ PlaceholderCard }

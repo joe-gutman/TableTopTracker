@@ -43,7 +43,7 @@ export default function App() {
       <Personal games={ personalDummyGames } />
     </PaperProvider>
   );
-};
+}
 
 // AppRegistry.registerComponent(appName, () => App);
 
