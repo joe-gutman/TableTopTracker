@@ -8,7 +8,7 @@ const GamesList = ({ games }) => (
     <FlatList
       data={ games }
       renderItem={ PlaceholderCard }
-      keyExtractor={ (item) => item.id.toString() }
+      keyExtractor={ ({ boardgameId }) => boardgameId.toString() }
     />
   </View>
 );
