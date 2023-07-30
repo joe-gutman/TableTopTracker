@@ -5,7 +5,6 @@ import styles from './styles.js';
 
 // placeholder card (to be replaced w/ GameDetails, probably)
 export default function PlaceholderCard({ title, minplaytime, maxplaytime, complexity, year_published, description }) {
-
   return (
     <View style={ styles.card }>
       <Card>
