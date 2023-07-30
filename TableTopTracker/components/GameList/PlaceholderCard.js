@@ -10,9 +10,9 @@ const PlaceholderCard = ({ title, minplaytime, maxplaytime, complexity, year_pub
       <Card.Title>{ title }</Card.Title>
 
       <Card.Content>
-        <Text>Play Time: { Number(maxplaytime) - Number(minplaytime) } hrs</Text>
+        <Text>Play Time: { minplaytime } — { maxplaytime } Min</Text>
         <Text>Complexity: { complexity }</Text>
-        <Text>{ year }</Text>
+        <Text>{ year_published }</Text>
         <Text>{ description }</Text>
       </Card.Content>
     </Card>
