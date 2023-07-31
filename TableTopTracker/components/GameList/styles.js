@@ -22,12 +22,15 @@ const styles = StyleSheet.create({
   },
   focusButton: {
     color: 'blue',
-    padding: 10,
+    padding: 8,
     margin: 5,
     borderRadius: 5
   },
   selectedButton: {
     backgroundColor: 'blue'
+  },
+  buttonMargin: {
+    marginRight: 8
   }
 });
 

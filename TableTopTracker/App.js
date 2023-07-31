@@ -12,11 +12,11 @@ import { PaperProvider } from 'react-native-paper';
 import { name as appName } from './app.json';
 import theme from './theme';
 
-// ALEX'S COMPONENTS / DUMMY DATA
+// alex: gameslist components / dummy data
 import GamesList from './components/GameList/GamesList';
 import Recommendations from './components/Recommendation/Recommendations';
 import MyGames from './components/GameList/MyGames';
-import Button from './components/GameList/Button';
+import ButtonList from './components/GameList/ButtonList';
 import allDummyGames from './components/GameList/dummy/allDummyGames';
 import recommendedDummyGames from './components/Recommendation/recommendedDummyGames';
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
@@ -25,8 +25,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
 
-
-  // ALEX'S STATES
+  // alex: some states & stuff
   const listTypes = [ 'All', 'My Games', 'Recommendations', 'Liked', 'Wishlist' ];
   // TODO: implement ability to add custom lists
 
@@ -45,9 +44,9 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
 
-      {/* ALEX'S PROTOTYPE COMPONENTS */}
+      {/* GamesList stuff */}
       <View style={ styles.gameListContent }>
-        <Button
+        <ButtonList
           listTypes={ listTypes }
           selectedList={ selectedList }
           setSelectedList={ setSelectedList }
@@ -56,8 +55,8 @@ export default function App() {
           games={ allDummyGames }
           selectedList={ selectedList }
         />
-        <Recommendations games={ recommendedDummyGames } />
-        <MyGames games={ personalDummyGames } />
+        {/* <Recommendations games={ recommendedDummyGames } /> */}
+        {/* <MyGames games={ personalDummyGames } /> */}
       </View>
     </PaperProvider>
   );
