@@ -48,9 +48,10 @@ create table games (
   minplaytime int,
   maxplaytime int,
   age int,
-  complexity int,
-  thumbnail varchar(64),
-  more_info varchar(64)
+  complexity decimal,
+  year_published int,
+  thumbnail varchar(256),
+  more_info varchar(256)
 );
 
 create table categories (

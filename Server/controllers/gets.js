@@ -21,12 +21,29 @@ exports.getGame = (req, res) => {
                   results[index] = parser.findDataPoint(xml, point)
                 })
                 var images = parser.findAllInstancesOfDataPoint(xml, '<image');
-                console.log(images);
                 results['more_info'] = 'https://boardgamegeek.com/boardgame/' + results.boardgameId + '/' + title.toLowerCase();
                 // todo: push results to the database.
-                console.log(results);
-
-                res.sendStatus(200);
+                const order = ['boardgameId', 'title', 'description', 'minplayers', 'maxplayers', 'minplaytime', 'maxplaytime', 'age', 'complexity', 'year_published', 'thumbnail', 'more_info']
+                var ints = ['boardgameId', 'minplayers', 'maxplayers', 'minplaytime', 'maxplaytime', 'age', 'year_published']
+                var toBeEntered = [];
+                for (let o of order) {
+                  if (ints.includes(o)) {
+                    toBeEntered.push(parseInt(results[o]));
+                  } else if (o === 'complexity') {
+                    toBeEntered.push(parseFloat(results[o]));
+                  } else {
+                    toBeEntered.push(results[o]);
+                  }
+                }
+                Get.insertOneGame(toBeEntered)
+                  .then(() => {
+                    console.log('success');
+                    res.sendStatus(200);
+                  })
+                  .catch((error) => {
+                    console.log(error.message);
+                    res.sendStatus(500);
+                  })
               })
               .catch((error) => {
                 console.log(error.message);
