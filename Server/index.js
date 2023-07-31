@@ -11,7 +11,7 @@ const getController = require('./controllers/gets');
 const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client/public')));
+//app.use(express.static(path.join(__dirname, '../client/public')));
 
 app.get('/game', function(req, res) {
   getController.getGame(req, res);
