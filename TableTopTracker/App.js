@@ -11,12 +11,34 @@ import NewUserPreferences from './screens/NewUserPreferences.js'
 import AccountDetails from './screens/AccountDetails.js'
 
 
+import { AppRegistry } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+import { name as appName } from './app.json';
+import theme from './theme';
+
+// alex: gameslist components / dummy data
+import GamesList from './components/GameList/GamesList';
+import Recommendations from './components/Recommendation/Recommendations';
+import MyGames from './components/GameList/MyGames';
+import ButtonList from './components/GameList/ButtonList';
+import allDummyGames from './components/GameList/dummy/allDummyGames';
+import recommendedDummyGames from './components/Recommendation/recommendedDummyGames';
+import personalDummyGames from './components/GameList/dummy/personalDummyGames';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  // alex: some states & stuff
+  const listTypes = [ 'All', 'My Games', 'Recommendations', 'Liked', 'Wishlist' ];
+  // TODO: implement ability to add custom lists
+
+  const [ selectedList, setSelectedList ] = React.useState(listTypes[0]);
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
+    <PaperProvider theme={ theme }>
+      <NavigationContainer>
+        <Stack.Navigator>
         <Stack.Screen
           name="Home"
           component={Home}
@@ -27,10 +49,28 @@ export default function App() {
         <Stack.Screen name="Account Details" component={AccountDetails} />
         <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
 
-      </Stack.Navigator>
-    </NavigationContainer>
+        </Stack.Navigator>
+      </NavigationContainer>
+
+      {/* GamesList stuff */}
+      <View style={ styles.gameListContent }>
+        <ButtonList
+          listTypes={ listTypes }
+          selectedList={ selectedList }
+          setSelectedList={ setSelectedList }
+        />
+        <GamesList
+          games={ allDummyGames }
+          selectedList={ selectedList }
+        />
+        {/* <Recommendations games={ recommendedDummyGames } /> */}
+        {/* <MyGames games={ personalDummyGames } /> */}
+      </View>
+    </PaperProvider>
   );
 }
+
+// AppRegistry.registerComponent(appName, () => App);
 
 const styles = StyleSheet.create({
   container: {
@@ -38,5 +78,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  gameListContent: {
+    flex: 1, // takes 70% of available space
+    marginTop: 10
   },
 });

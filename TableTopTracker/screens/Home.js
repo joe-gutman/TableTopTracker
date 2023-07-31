@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, Button} from 'react-native';
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 export default function Home ({navigation}) {
     return (
         <View>
+            <ActivityIndicator animating={true} color={MD2Colors.red800} />
             <Text>
                 Powered by Board Game Geek
             </Text>
