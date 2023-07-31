@@ -4,6 +4,8 @@ import PlaceholderCard from './PlaceholderCard';
 import styles from './styles';
 
 export default function GamesList({ games, selectedList }) {
+  // axios GET request up here / parent component (i.e. screen)
+
   const rotateAnimValue = new Animated.Value(0);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function GamesList({ games, selectedList }) {
 
   const filteredGames = games
     .filter((game) => {
-      // TODO: implement filtering logic
+      // TODO: implement filtering logic **
       return true; // placeholder
     });
 
@@ -42,7 +44,7 @@ export default function GamesList({ games, selectedList }) {
         }}
       >
         <FlatList
-          data={ filteredGames }
+          data={ filteredGames } // <— specific collection to be displayed (post filter) **
           renderItem={ (game) => (
             <PlaceholderCard { ...game } />
           ) }
