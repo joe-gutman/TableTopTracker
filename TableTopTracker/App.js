@@ -4,8 +4,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from './screens/Home.js'
+import Landing from './screens/Landing.js'
+import SignUp from './screens/SignUp.js'
 import Login from './screens/Login.js'
+import NewUserPreferences from './screens/NewUserPreferences.js'
+import AccountDetails from './screens/AccountDetails.js'
+
 
 import { AppRegistry } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
@@ -35,12 +39,16 @@ export default function App() {
     <PaperProvider theme={ theme }>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{title: 'Welcome'}}
-          />
-          <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen
+          name="Landing"
+          component={Landing}
+          options={{title: 'TableTop Tracker'}}
+        />
+        <Stack.Screen name="Sign Up" component={SignUp} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Account Details" component={AccountDetails} />
+        <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
+
         </Stack.Navigator>
       </NavigationContainer>
 

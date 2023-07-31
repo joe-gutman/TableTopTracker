@@ -104,36 +104,39 @@ create table collections_games_join (
   foreign key (game_id) references games(id)
 );
 
-create table wishlists (
-  id serial primary key,
-  user_id int unique,
-  public boolean,
-
-  foreign key (user_id) references users(id)
-);
-
-create table wishlists_games_join (
-  id serial primary key,
-  wishlist_id int,
-  game_id int,
-
-  foreign key (wishlist_id) references wishlists(id),
-  foreign key (game_id) references games(id)
-);
-
-create table owned (
-  id serial primary key,
-  user_id int unique,
-  public boolean,
-
-  foreign key (user_id) references users(id)
-);
-
 create table owned_games_join (
   id serial primary key,
-  owned_id int,
+  user_id int,
   game_id int,
 
-  foreign key (owned_id) references owned(id),
+  foreign key (user_id) references users(id),
   foreign key (game_id) references games(id)
 );
+
+
+--create table wishlists (
+--  id serial primary key,
+--  user_id int unique,
+--  public boolean,
+--
+--  foreign key (user_id) references users(id)
+--);
+--
+--create table wishlists_games_join (
+--  id serial primary key,
+--  wishlist_id int,
+--  game_id int,
+--
+--  foreign key (wishlist_id) references wishlists(id),
+--  foreign key (game_id) references games(id)
+--);
+
+--create table owned (
+--  id serial primary key,
+--  user_id int unique,
+--  public boolean,
+--
+--  foreign key (user_id) references users(id)
+--);
+
+
