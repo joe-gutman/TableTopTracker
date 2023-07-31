@@ -9,9 +9,6 @@ DROP TABLE IF EXISTS game_videos CASCADE;
 DROP TABLE IF EXISTS game_images CASCADE;
 DROP TABLE IF EXISTS collections CASCADE;
 DROP TABLE IF EXISTS collections_games_join CASCADE;
-DROP TABLE IF EXISTS wishlists CASCADE;
-DROP TABLE IF EXISTS wishlists_games_join CASCADE;
-DROP TABLE IF EXISTS owned CASCADE;
 DROP TABLE IF EXISTS owned_games_join CASCADE;
 
 CREATE TABLE users (
@@ -41,16 +38,17 @@ unique (user_id, friend_id);
 create table games (
   id serial primary key,
   bgg_id int,
-  title varchar(64) unique,
+  title varchar(265) unique,
   description text,
   minplayers int,
   maxplayers int,
   minplaytime int,
   maxplaytime int,
   age int,
-  complexity int,
-  thumbnail varchar(64),
-  more_info varchar(64)
+  complexity REAL,
+  thumbnail varchar(256),
+  more_info varchar(256),
+  year_published INT
 );
 
 create table categories (
@@ -96,22 +94,23 @@ create table collections (
 
 create table collections_games_join (
   id serial primary key,
-  collection_id int,
   game_id int,
+  collection_id int,
 
-  foreign key (collection_id) references collections(id),
-  foreign key (game_id) references games(id)
+  foreign key (game_id) references games(id),
+  foreign key (collection_id) references collections(id)
 );
 
 create table owned_games_join (
   id serial primary key,
-  user_id int,
   game_id int,
+  user_id int,
 
-  foreign key (user_id) references users(id),
-  foreign key (game_id) references games(id)
+  CONSTRAINT fk_game_id
+        FOREIGN KEY(game_id)
+        REFERENCES games(id),
+  foreign key (user_id) references users(id)
 );
-
 
 --create table wishlists (
 --  id serial primary key,

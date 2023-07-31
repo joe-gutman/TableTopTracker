@@ -15,7 +15,15 @@ app.use(express.json());
 
 app.get('/game', function(req, res) {
   getController.getGame(req, res);
-})
+});
+
+app.get('/collections', (req, res, next) => {
+
+});
+
+app.get('/collections/:collectionId', (req, res, next) => {
+
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
