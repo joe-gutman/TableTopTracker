@@ -25,7 +25,7 @@ import allDummyGames from './components/GameList/dummy/allDummyGames';
 import recommendedDummyGames from './components/Recommendation/recommendedDummyGames';
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
 
-//loren and vicky: game details page with dummy data:
+// loren and vicky: game details page with dummy data:
 import GameDetails from './components/GameDetails/GameDetails.js';
 
 

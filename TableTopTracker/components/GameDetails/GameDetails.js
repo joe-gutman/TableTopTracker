@@ -10,15 +10,31 @@ import dummyGame from'./gameDetailsDummyData.js';
 // Add pressHandlers to game tiles
 
 export default function GameDetails () {
+  const styles = StyleSheet.create({
+    imageContainer: {
+      flex: 1,
+      backgroundColor: 'blue',
+    },
+    image: {
+      width: 100,
+      height: 100,
+    },
+    detailsContainer: {
+      flex: 1,
+    },
+  });
 
   return (
-    <View>
-      {/* Image of Game */}
+    <>
+    <View style={styles.imageContainer}>
       <Image
-          source={{
+        style= {styles.gameImage}
+        source={{
             uri: 'https://cf.geekdo-images.com/Li9nJ4DOsFs1CuwZjkyg3g__original/img/29VmqkcRWoq_WS9uGtftdf6teyU=/0x0/filters:format(jpeg)/pic582574.jpg',
           }}
         />
+    </View>
+    <View style={styles.detailsContainer}>
       <Text>{dummyGame.name}</Text>
       <Text>{dummyGame.minPlayers}
       </Text>
@@ -29,6 +45,7 @@ export default function GameDetails () {
       <Text>{dummyGame.year}</Text>
       <Text>{dummyGame.description}</Text>
     </View>
+    </>
   )
 }
 
