@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Button} from 'react-native';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
-export default function Home ({navigation}) {
+export default function Landing ({navigation}) {
     return (
         <View>
             <ActivityIndicator animating={true} color={MD2Colors.red800} />
