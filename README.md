@@ -26,9 +26,9 @@
 
 **How to Run React Native**
 1. CD into TableTopTracker Directory
-2. npm install yarn
+2. brew install yarn
 3. yarn install
 4. npx expo start (should see a QR code)
-5. To open on web, enter 'w' after the expo start runs. 
+5. To open on web, enter 'w' after the expo start runs.
 6. Download the expo go app on your phone and create an account
 7. Scan QR code that appears after running npx expo start
