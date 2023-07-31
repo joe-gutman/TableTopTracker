@@ -10,8 +10,6 @@ export default function PlaceholderCard({
   return (
     <View style={ styles.card }>
       <Card>
-        <Card.Title>{ title }</Card.Title>
-
         <Card.Content>
           {/* layout based on wireframe + site */}
           <Text>{ minplayers } — { maxplayers } Players</Text>
@@ -20,6 +18,8 @@ export default function PlaceholderCard({
           <Text>{ year_published }</Text>
           <Text>{ description }</Text>
         </Card.Content>
+
+        <Card.Title>{ title }</Card.Title>
       </Card>
     </View>
   );
