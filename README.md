@@ -32,3 +32,30 @@
 5. To open on web, enter 'w' after the expo start runs. 
 6. Download the expo go app on your phone and create an account
 7. Scan QR code that appears after running npx expo start
+
+
+**How to run the Server and database**
+
+```
+// cd into /Server
+
+// run the following to create a postgresql database:
+
+    > createdb tableTopGamers
+    
+// create .env in /server with the following
+
+    .env---------------------
+    DB_NAME=tableTopGamers
+    -------------------------
+    
+// create tables in db
+
+// from /server run:
+
+    > psql -U [YOUR DB USERNAME] -d tableTopGamers -a -f database/schemaReset.sql
+
+// from /server run:
+
+    > node database/seedMockData.js
+```
