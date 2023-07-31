@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
-export default function newUserPreferences ({navigation, route}) {
+export default function NewUserPreferences ({navigation, route}) {
   const [age, onChangeAge] = React.useState('');
   const [playstyle, onChangePlaystyle] = React.useState('');
   const [favoriteMythicalCreature, onChangeFavoriteMythicalCreature] = React.useState('');
@@ -24,7 +24,7 @@ export default function newUserPreferences ({navigation, route}) {
             <TextInput
               onChangeFavoriteMythicalCreature={onChangeFavoriteMythicalCreature}
               value={favoriteMythicalCreature}
-              placeholder="Favorite Mythical Create"
+              placeholder="Favorite Mythical Creature?"
             />
             <TextInput
               onChangeFavoriteBoardGame={onChangeFavoriteBoardGame}

@@ -8,6 +8,7 @@ import Home from './screens/Home.js'
 import SignUp from './screens/SignUp.js'
 import Login from './screens/Login.js'
 import NewUserPreferences from './screens/NewUserPreferences.js'
+import AccountDetails from './screens/AccountDetails.js'
 
 
 const Stack = createNativeStackNavigator();
@@ -23,6 +24,7 @@ export default function App() {
         />
         <Stack.Screen name="Sign Up" component={SignUp} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Account Details" component={AccountDetails} />
         <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
 
       </Stack.Navigator>

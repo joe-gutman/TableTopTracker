@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function Login ({navigation, route}) {
 
@@ -24,6 +24,12 @@ export default function Login ({navigation, route}) {
                 placeholder="Password"
             />
 
+            <Button
+                title="Log in"
+                onPress={() =>
+                    navigation.navigate('Account Details')
+                }
+            />
         </View>
     )
 }
