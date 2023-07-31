@@ -89,6 +89,7 @@ create table collections (
   id serial primary key,
   user_id int,
   collection_name varchar(32),
+  public boolean,
 
   foreign key (user_id) references users(id)
 );
@@ -105,6 +106,7 @@ create table collections_games_join (
 create table wishlists (
   id serial primary key,
   user_id int unique,
+  public boolean,
 
   foreign key (user_id) references users(id)
 );
@@ -121,6 +123,7 @@ create table wishlists_games_join (
 create table owned (
   id serial primary key,
   user_id int unique,
+  public boolean,
 
   foreign key (user_id) references users(id)
 );
