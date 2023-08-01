@@ -16,4 +16,4 @@ export const fetchCollectionGames = (collectionId) =>
   makeRequest(`/collections/${collectionId}`, 'GET');
 
 export const fetchUser = (data) =>
-  makeRequest(`/users`, 'GET', data);
+  makeRequest(`/users?uid=${data.uid}`, 'GET');
