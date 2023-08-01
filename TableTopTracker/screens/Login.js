@@ -4,9 +4,10 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import firebase from 'firebase/compat/app'; // Update the import path
 import 'firebase/compat/auth'; // Import the authentication module with 'compat'
 
+import NavBar from '../components/NavBar/NavBar.js';
+
 
 export default function Login ({navigation, route}) {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -17,11 +18,11 @@ export default function Login ({navigation, route}) {
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
         // Handle successful login
-        const user = userCredential.user;
+        let user = userCredential.user;
         console.log('USER', user)
         console.log('Logged in user:', user.email);
         // Navigate to the desired screen after successful login
-        navigation.navigate('Home', {user, handleLogout});
+        navigation.navigate('Home', { user, handleLogout });
     })
     .catch((error) => {
         // Handle login errors
@@ -55,22 +56,22 @@ export default function Login ({navigation, route}) {
     });
     };
 
-    return (
-        <View>
-        <Text>This is {route.params.name}'s profile</Text>
-        <TextInput
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-        placeholder="Email"
-        />
-        <TextInput
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        placeholder="Password"
-        secureTextEntry
-        />
-        <Button title="Log in" onPress={handleLogin} />
-        {errorMessage ? <Text>{errorMessage}</Text> : null}
-        </View>
-    )
+  return (
+    <View>
+      <TextInput
+      value={email}
+      onChangeText={(text) => setEmail(text)}
+      placeholder="Email"
+      />
+      <TextInput
+      value={password}
+      onChangeText={(text) => setPassword(text)}
+      placeholder="Password"
+      secureTextEntry
+      />
+      <Button title="Log in" onPress={handleLogin} />
+      {errorMessage ? <Text>{errorMessage}</Text> : null}
+
+    </View>
+  )
 }

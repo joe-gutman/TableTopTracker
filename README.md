@@ -59,3 +59,18 @@
 
     > node database/seedMockData.js
 ```
+
+**API END-POINTS**
+
+PORT=3000
+
+### fetch user collections
+
+GET /collections?userId=[USER_ID]
+
+- Query Paramaters = userId
+
+### fetch collection games
+GET /collections/:collectionId
+
+- Req Paramaters = collectionId

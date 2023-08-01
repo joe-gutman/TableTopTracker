@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
 
-import { useFonts } from 'expo-font'
+import { useFonts } from 'expo-font';
 
 const theme = {
   ...DefaultTheme,

@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View, Button} from 'react-native';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
+import NavBar from '../components/NavBar/NavBar.js';
+
 export default function Landing ({navigation}) {
     return (
         <View>
@@ -18,9 +20,10 @@ export default function Landing ({navigation}) {
             <Button
                 title="Log in"
                 onPress={() =>
-                    navigation.navigate('Login', {name: 'RandomUserAccount'})
+                    navigation.navigate('Login')
                 }
                 />
+
         </View>
     )
 }
