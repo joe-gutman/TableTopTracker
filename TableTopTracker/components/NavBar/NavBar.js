@@ -13,7 +13,7 @@ export default function NavBar({navigation, user}) {
             <View style = {styles.container}>
                 <Button title="Home"
                     onPress={() =>
-                        navigation.navigate('Home')
+                        navigation.navigate('Home', user={user})
                     }>
 
                 </Button>
