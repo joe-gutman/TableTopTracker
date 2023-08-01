@@ -10,9 +10,9 @@ export default function Home ({navigation, route}) {
         <View>
             <Text> Home Page Placeholder </Text>
             <Button
-                title="Account Details"
+                title="User Account"
                 onPress={() =>
-                    navigation.navigate('Account Details', { user, handleLogout })
+                    navigation.navigate('User Account', { user, handleLogout })
                 }
                 />
         </View>

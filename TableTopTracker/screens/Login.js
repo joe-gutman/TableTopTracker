@@ -70,6 +70,7 @@ export default function Login ({navigation, route}) {
         secureTextEntry
         />
         <Button title="Log in" onPress={handleLogin} />
+        {errorMessage ? <Text>{errorMessage}</Text> : null}
         </View>
     )
 }
