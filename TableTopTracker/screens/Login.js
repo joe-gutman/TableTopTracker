@@ -18,7 +18,7 @@ export default function Login ({navigation, route}) {
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
         // Handle successful login
-        const user = userCredential.user;
+        let user = userCredential.user;
         console.log('USER', user)
         console.log('Logged in user:', user.email);
         // Navigate to the desired screen after successful login
