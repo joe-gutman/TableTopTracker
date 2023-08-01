@@ -13,20 +13,15 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Landing from './screens/Landing.js'
 import SignUp from './screens/SignUp.js'
 import Login from './screens/Login.js'
+import Home from './screens/Home.js'
 import NewUserPreferences from './screens/NewUserPreferences.js'
-import AccountDetails from './screens/AccountDetails.js'
 
-import Landing from './screens/Landing.js';
-import SignUp from './screens/SignUp.js';
-import Login from './screens/Login.js';
-import NewUserPreferences from './screens/NewUserPreferences.js';
-import AccountDetails from './screens/AccountDetails.js';
 
-import UserAccounts from './screens/UserAccounts';
-import Home from './screens/Home';
+import UserAccount from './screens/UserAccount';
 import GameDetails from './screens/GameDetails';
 import GameWarden from './screens/GameWarden';
 import Search from './screens/Search';
+import SearchResults from './screens/SearchResults.js';
 
 // alex: gameslist components / dummy data
 import GamesList from './components/GameList/GamesList.js';
@@ -43,6 +38,18 @@ import GameDetails from './components/GameDetails/GameDetails.js';
 
 const Stack = createNativeStackNavigator();
 
+//yarn add firebase, yarn add @react-native-firebase/auth
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import firebaseConfig from './firebaseConfig.js'
+
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+
+
 export default function App() {
 
   // alex: some states & stuff
@@ -54,7 +61,7 @@ export default function App() {
   return (
     <PaperProvider theme={ theme }>
       <NavigationContainer>
-          <Stack.Navigator>
+        <Stack.Navigator>
             <Stack.Screen
               name="Landing"
               component={Landing}
@@ -63,21 +70,17 @@ export default function App() {
             <Stack.Screen name="Sign Up" component={SignUp} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
-            <Stack.Screen name="User Accounts" component={ UserAccounts } />
-             <Stack.Screen name="Account Details" component={AccountDetails} />
+            <Stack.Screen name="User Account" component={ UserAccount } />
             <Stack.Screen name="Home" component={ Home } />
             <Stack.Screen name="Game Details" component={ GameDetails } />
             <Stack.Screen name="Game Warden" component={ GameWarden } />
-            <Stack.Screen name="Search Results" component={ Search } />
+            <Stack.Screen name="Search Results" component={ SearchResults } />
+            <Stack.Screen name="Search" component={ Search } />
           </Stack.Navigator>
       </NavigationContainer>
 
-      <View>
-        <GameDetails />
-      </View>
 
-      {/* GamesList stuff */}
-      /*<View style={ styles.gameListContent }>
+      {/* <View style={ styles.gameListContent }>
         <ButtonList
           listTypes={ listTypes }
           selectedList={ selectedList }
@@ -86,11 +89,10 @@ export default function App() {
         <GamesList
           games={ allDummyGames }
           selectedList={ selectedList }
-        />*/
-        {/* <Recommendations games={ recommendedDummyGames } /> */}
-        {/* <MyGames games={ personalDummyGames } /> */}
-      </View>
-
+        />
+        {<Recommendations games={ recommendedDummyGames } />}
+        {<MyGames games={ personalDummyGames } />}
+      </View> */}
     </PaperProvider>
   );
 }
