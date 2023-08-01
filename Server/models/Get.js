@@ -26,7 +26,6 @@ exports.getAllGameDetails = (title) => {
       return exports.queryBggForGameDetails(results.boardgameId)
         .then((data) => {
           var xml = data.data;
-          console.log(xml);
           var dataPoints = ['<minplayers', '<maxplayers','<minplaytime', '<maxplaytime', '<age', '<description', '<thumbnail', '<averageweight']
           var found = dataPoints.forEach(point => {
             var index = point.slice(1, point.length);
@@ -57,17 +56,15 @@ exports.getAllGameDetails = (title) => {
           return {
             categories: categories,
             images: images,
-            results: results
+            results: toBeEntered
           }
         })
         .catch((error) => {
           console.log(error.message);
-          throw error;
         })
     })
     .catch((error) => {
       console.log(error.message);
-      throw error;
     })
 }
 
@@ -75,3 +72,34 @@ exports.insertOneGame = (columns) => {
   var queryStr = "insert into games (bgg_id, title, description, minplayers, maxplayers, minplaytime, maxplaytime, age, complexity, year_published, thumbnail, more_info) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)"
   return db.query(queryStr, columns)
 }
+
+exports.insertOneImage = (gameId, imageUrl) => {
+  var values = [gameId, imageUrl];
+  var queryStr = "insert into game_images (game_id, image) values ($1, $2)"
+  return db.query(queryStr, values);
+}
+
+exports.insertOneCategory = (gameId, categoryName) => {
+  var values = [gameId, categoryName]
+  var queryStr = "insert into categories (game_id, category_name) values ($1, $2)"
+  return db.query(queryStr, values);
+}
+
+exports.insertGameImageAndCategories = async (resultOfGetAllGameDetails) => {
+  try {
+    var { categories, images, results } = resultOfGetAllGameDetails;
+    const data = await db.query("select count(*) from games");
+    var nextId = parseInt(data.rows[0].count) + 1;
+    await exports.insertOneGame(results);
+    var promises = [];
+    for (let i of images) {
+      promises.push(exports.insertOneImage(nextId, i));
+    }
+    for (let c of categories) {
+      promises.push(exports.insertOneCategory(nextId, c));
+    }
+    return Promise.all(promises);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
