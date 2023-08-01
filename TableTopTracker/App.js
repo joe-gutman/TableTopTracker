@@ -24,13 +24,15 @@ import Search from './screens/Search';
 import SearchResults from './screens/SearchResults.js';
 
 // alex: gameslist components / dummy data
-import GamesList from './components/GameList/GamesList';
+import GamesList from './components/GameList/GamesList.js';
 import Recommendations from './components/Recommendation/Recommendations';
 import MyGames from './components/GameList/MyGames';
 import ButtonList from './components/GameList/ButtonList';
 import allDummyGames from './components/GameList/dummy/allDummyGames';
 import recommendedDummyGames from './components/Recommendation/recommendedDummyGames';
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
+
+// loren and vicky: game details page with dummy data:
 
 const Stack = createNativeStackNavigator();
 
