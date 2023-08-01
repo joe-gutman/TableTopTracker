@@ -55,7 +55,7 @@ create table games (
 create table categories (
   id serial primary key,
   game_id int,
-  category_name varchar(16),
+  category_name varchar(128),
 
   foreign key (game_id) references games(id)
 );
@@ -71,7 +71,7 @@ create table purchase_locations (
 create table game_videos (
   id serial primary key,
   game_id int,
-  video varchar(64),
+  video varchar(256),
 
   foreign key (game_id) references games(id)
 );
@@ -79,7 +79,7 @@ create table game_videos (
 create table game_images (
   id serial primary key,
   game_id int,
-  image varchar(64),
+  image varchar(256),
 
   foreign key (game_id) references games(id)
 );
