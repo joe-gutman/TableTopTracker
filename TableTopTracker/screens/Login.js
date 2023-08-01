@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function Login ({navigation, route}) {
 
-    const [username, onChangeUsername] = React.useState('');
-    const [password, onChangePassword] = React.useState('');
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
 
     return (
@@ -14,12 +14,12 @@ export default function Login ({navigation, route}) {
             </Text>
 
             <TextInput
-                onChangeUsername={onChangeUsername}
+                onChangeText={text => setUsername(text)}
                 value={username}
                 placeholder="Username"
             />
             <TextInput
-                onChangePassword={onChangePassword}
+                onChangeText={text => setPassword(text)}
                 value={password}
                 placeholder="Password"
             />

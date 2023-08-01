@@ -6,22 +6,20 @@ import { name as appName } from './app.json';
 
 import theme from './theme';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-import Landing from './screens/Landing.js';
-import SignUp from './screens/SignUp.js';
-import Login from './screens/Login.js';
-import NewUserPreferences from './screens/NewUserPreferences.js';
-import AccountDetails from './screens/AccountDetails.js';
-
-import UserAccounts from './screens/UserAccounts';
-import Home from './screens/Home';
-import GameDetails from './screens/GameDetails';
-import GameWarden from './screens/GameWarden';
-import Search from './screens/Search';
+import Landing from './screens/Landing.js'
+import SignUp from './screens/SignUp.js'
+import Login from './screens/Login.js'
+import NewUserPreferences from './screens/NewUserPreferences.js'
+import UserAccount from './screens/UserAccount.js';
+import Home from './screens/Home.js';
+import GameDetails from './screens/GameDetails.js';
+import GameWarden from './screens/GameWarden.js';
+import Search from './screens/Search.js';
+import SearchResults from './screens/SearchResults.js';
 
 // alex: gameslist components / dummy data
 import GamesList from './components/GameList/GamesList';
@@ -46,26 +44,25 @@ export default function App() {
     <PaperProvider theme={ theme }>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name="Landing"
-            component={Landing}
-            options={{title: 'TableTop Tracker'}}
-          />
-          <Stack.Screen name="Sign Up" component={SignUp} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Account Details" component={AccountDetails} />
-          <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
-
-          <Stack.Screen name="User Accounts" component={ UserAccounts } />
-          <Stack.Screen name="Home" component={ Home } />
-          <Stack.Screen name="Game Details" component={ GameDetails } />
-          <Stack.Screen name="Game Warden" component={ GameWarden } />
-          <Stack.Screen name="Search Results" component={ Search } />
-        </Stack.Navigator>
+            <Stack.Screen
+              name="Landing"
+              component={Landing}
+              options={{title: 'TableTop Tracker'}}
+            />
+            <Stack.Screen name="Sign Up" component={SignUp} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
+            <Stack.Screen name="User Account" component={ UserAccount } />
+            <Stack.Screen name="Home" component={ Home } />
+            <Stack.Screen name="Game Details" component={ GameDetails } />
+            <Stack.Screen name="Game Warden" component={ GameWarden } />
+            <Stack.Screen name="Search Results" component={ SearchResults } />
+            <Stack.Screen name="Search" component={ Search } />
+          </Stack.Navigator>
       </NavigationContainer>
 
-      {/* GamesList stuff */}
-      <View style={ styles.gameListContent }>
+
+      {/* <View style={ styles.gameListContent }>
         <ButtonList
           listTypes={ listTypes }
           selectedList={ selectedList }
@@ -75,9 +72,9 @@ export default function App() {
           games={ allDummyGames }
           selectedList={ selectedList }
         />
-        {/* <Recommendations games={ recommendedDummyGames } /> */}
-        {/* <MyGames games={ personalDummyGames } /> */}
-      </View>
+        {<Recommendations games={ recommendedDummyGames } />}
+        {<MyGames games={ personalDummyGames } />}
+      </View> */}
     </PaperProvider>
   );
 }
