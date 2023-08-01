@@ -1,41 +1,60 @@
-const Get = require('../models/Get.js');
+const Get = require('../models/addGame.js');
 const db = require('./db.js');
 
 exports.populateListOfGames = async (listOfGames) => {
-  var promisifiedTitles = [];
-  for (var i = 0; i < listOfGames.length; i++) {
-    promisifiedTitles.push(Get.getAllGameDetails(listOfGames[i]));
-  }
-
-  try {
-    const data = await Promise.all(promisifiedTitles);
-    for (let point of data) {
-      try {
-        await Get.insertGameImageAndCategories(point);
-      } catch (error) {
-        console.log(error.message);
+  var errors = [];
+  for (let game of listOfGames) {
+    try {
+      var data = await Get.getAllGameDetails(game);
+      if (data.error) {
+        errors.push(data);
+      } else {
+        await Get.insertGameImageAndCategories(data)
       }
+    } catch (error) {
+      console.log('error in populate list of games');
+      errors.push(error);
     }
-    console.log("All board games inserted!");
-  } catch (error) {
-    console.log(error.message);
   }
+  return errors;
 };
 
 exports.populateBoardGames = async () => {
+  var uniqueBoardGames = [];
+  for (let name of boardGames) {
+    if (!uniqueBoardGames.includes(name)) {
+      uniqueBoardGames.push(name);
+    }
+  }
   var currentFirstIndex = 0;
   var currentLastIndex = 10;
-  while (currentFirstIndex < boardGamesTest.length) {
-    var currentListOfGames = boardGamesTest.slice(currentFirstIndex, currentLastIndex);
-    await exports.populateListOfGames(currentListOfGames)
+  var errors = [];
+  while (currentFirstIndex < uniqueBoardGames.length) {
+    var currentListOfGames = uniqueBoardGames.slice(currentFirstIndex, currentLastIndex);
+    var e = await exports.populateListOfGames(currentListOfGames)
+    errors = [...errors, ...e];
     currentFirstIndex += 10;
     currentLastIndex += 10;
   }
   console.log('finished');
+  console.log(errors);
 }
 
+const nanErrors = [
+  'Tâb', 'Tri-nim', 'Sho', 'Okey', 'Chapayev', 'Carrom', 'Thayaam'
+]
 
-const boardGamesTest = [
+
+const testOne = [
+  "A Game of War",
+  "Abalone",
+  "18XX",
+  "Asalto",
+  "Backgammon",
+  "BattleLore"
+]
+
+const testTwo = [
   "A Game of War",
   "Abalone",
   "Agon",
@@ -43,7 +62,8 @@ const boardGamesTest = [
   "Arimaa",
   "Asalto",
   "Backgammon",
-  "BattleLore"
+  "BattleLore",
+  "Battleship"
 ]
 
 const boardGames = [
@@ -57,7 +77,6 @@ const boardGames = [
   "Backgammon",
   "BattleLore",
   "Battleship",
-  "Blockade",
   "Blood Bowl",
   "Bul",
   "Camelot",
