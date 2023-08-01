@@ -35,6 +35,7 @@ alter table friends
 add constraint user_friend_combo
 unique (user_id, friend_id);
 
+
 create table games (
   id serial primary key,
   bgg_id int,
@@ -92,6 +93,10 @@ create table collections (
   foreign key (user_id) references users(id)
 );
 
+alter table collections
+add constraint collection_name_user_id
+unique (user_id, collection_name);
+
 create table collections_games_join (
   id serial primary key,
   game_id int,
@@ -101,16 +106,16 @@ create table collections_games_join (
   foreign key (collection_id) references collections(id)
 );
 
-create table owned_games_join (
-  id serial primary key,
-  game_id int,
-  user_id int,
-
-  CONSTRAINT fk_game_id
-        FOREIGN KEY(game_id)
-        REFERENCES games(id),
-  foreign key (user_id) references users(id)
-);
+--create table owned_games_join (
+--  id serial primary key,
+--  game_id int,
+--  user_id int,
+--
+--  CONSTRAINT fk_game_id
+--        FOREIGN KEY(game_id)
+--        REFERENCES games(id),
+--  foreign key (user_id) references users(id)
+--);
 
 --create table wishlists (
 --  id serial primary key,

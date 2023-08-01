@@ -9,6 +9,7 @@ const db = require('./database/db');
 const getGameController = require('./controllers/games');
 
 const initializer = require('./database/populate.js');
+const {getUserCollections, getCollectionGames} = require("./controllers/collections");
 
 const app = express();
 app.use(morgan('dev'));
@@ -28,12 +29,23 @@ app.get('/users', function(req, res) {
   usersController.getUser(req, res);
 })
 
-app.get('/collections', (req, res, next) => {
+app.get('/collections', async (req, res, next) => {
+  try{
+    const collections = await getUserCollections(req.query.userId);
+    res.send(collections)
 
+  } catch(err) {
+    req.sendStatus(500);
+  }
 });
 
-app.get('/collections/:collectionId', (req, res, next) => {
-
+app.get('/collections/:collectionId/games', async (req, res, next) => {
+  try {
+    const collectionGames = await getCollectionGames(req.params.collectionId);
+    res.send(collectionGames);
+  } catch(err) {
+    req.sendStatus(500);
+  }
 });
 
 
