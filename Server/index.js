@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 //app.use(express.static(path.join(__dirname, '../client/public')));
 
-initializer.populateBoardGames();
+//initializer.populateBoardGames();
 
 app.get('/game', function(req, res) {
   getController.getGame(req, res);
