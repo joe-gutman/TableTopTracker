@@ -2,7 +2,9 @@ import React from 'react';
 
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
-export default function NewUserPreferences ({navigation, route}) {
+import NavBar from '../components/NavBar/NavBar.js';
+
+export default function NewUserPreferences ({navigation, username}) {
   const [age, onChangeAge] = React.useState('');
   const [playstyle, onChangePlaystyle] = React.useState('');
   const [favoriteMythicalCreature, onChangeFavoriteMythicalCreature] = React.useState('');
@@ -10,7 +12,7 @@ export default function NewUserPreferences ({navigation, route}) {
 
     return (
         <View>
-            <Text> Tell me about yourself! </Text>
+            <Text> Hi {username}, tell me about yourself! </Text>
             <TextInput
               onChangeAge={onChangeAge}
               value={age}

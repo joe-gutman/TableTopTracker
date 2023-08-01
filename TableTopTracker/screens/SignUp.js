@@ -2,7 +2,9 @@ import React from 'react';
 
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
-export default function SignUp ({navigation, route}) {
+import NavBar from '../components/NavBar/NavBar.js';
+
+export default function SignUp ({navigation, username}) {
   const [email, onChangeEmail] = React.useState('');
   const [fullName, onChangeName] = React.useState('');
   const [newUsername, onChangeNewUsername] = React.useState('');
@@ -32,19 +34,20 @@ export default function SignUp ({navigation, route}) {
             />
             <Text> Photo Upload Section Here </Text>
             <Button
-                title="Next"
-                onPress={() =>
-                    navigation.navigate('New User Preferences')
-                }
-                />
+              title="Next"
+              onPress={() =>
+                  navigation.navigate('New User Preferences')
+              }
+            />
 
             <Text> Have an Account? </Text>
             <Button
-                title="Log in"
-                onPress={() =>
-                    navigation.navigate('Login', {name: 'RandomUserAccount'})
-                }
+              title="Log in"
+              onPress={() =>
+                  navigation.navigate('Login', {name: username})
+              }
             />
+
         </View>
     )
 }
