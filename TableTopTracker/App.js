@@ -47,7 +47,6 @@ export default function App() {
     <PaperProvider theme={ theme }>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Game Details" component={ GameDetails } />
             <Stack.Screen
               name="Landing"
               component={Landing}

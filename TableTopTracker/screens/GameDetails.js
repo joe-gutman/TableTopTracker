@@ -1,7 +1,7 @@
 //change name of file to whatever you want :D
 import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
+import NavBar from '../components/NavBar/NavBar.js';
 // import react native paper
-import dummyGame from'../components/GameDetailsData/gameDetailsDummyData.js';
 // Component is currently rendered to bottom of App main page
 
 // figure out how props are gonna be passed to this component
@@ -64,7 +64,9 @@ export default function GameDetails ({navigation, route}) {
       <Text>Complexity</Text>
       <Text>{dummyGame.year}</Text>
       <Text>{dummyGame.description}</Text>
+      <NavBar navigation={navigation} username={username}/>
     </View>
 
+    </>
   )
 }
