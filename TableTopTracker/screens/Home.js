@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default Function Home({navigation}) {
+export default function Home({navigation}) {
   return (
       <View>
           <Text>"Home"</Text>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default Function Search({navigation}) {
+export default function Search({navigation}) {
   return (
       <View>
           <Text>"Search"</Text>

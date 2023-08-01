@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default Function GameDetails({navigation}) {
+export default function GameDetails({navigation}) {
   return (
       <View>
-          <Text>Game Details</Text>
+          <Text>"Game Details"</Text>
       </View>
   )
 }

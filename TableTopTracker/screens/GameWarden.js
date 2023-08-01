@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default Function GameWarden({navigation}) {
+export default function GameWarden({navigation}) {
   return (
       <View>
           <Text>"Game Warden"</Text>
