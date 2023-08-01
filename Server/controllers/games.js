@@ -46,39 +46,3 @@ exports.getGame = (req, res) => {
       }
     })
 }
-
-exports.getGameFromTitle = (title) => {
-  console.log(title);
-  return db.query(`select * from games where title = ${title}`)
-    .then((data) => {
-      console.log(data);
-      if (data.rows.length === 0) {
-        return null;
-      } else {
-        var gameData = data.rows[0];
-        var results = {
-          results: gameData,
-        }
-        var gameId = gameData.id;
-        return db.query(`select * from categories where game_id = ${gameId}`)
-          .then((categoryData) => {
-            results['categories'] = categoryData.rows;
-            return db.query(`select * from game_images where game_id = ${gameId}`)
-              .then((imageData) => {
-                results['images'] = imageData.rows;
-                console.log(results);
-                return results;
-              })
-              .catch((error) => {
-                throw error;
-              })
-          })
-          .catch((error) => {
-            throw error;
-          })
-      }
-    })
-    .catch((error) => {
-      throw error;
-    })
-}
