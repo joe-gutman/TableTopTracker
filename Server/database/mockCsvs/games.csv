@@ -1,4 +1,4 @@
-id,bgg_id,title,description,minplayers,maxplayers,minplaytime,maxplaytime,age_recommendation,complexity,year_published,more_info
+id,bgg_id,title,description,minplayers,maxplayers,minplaytime,maxplaytime,age,complexity,year_published,more_info
 1,1,"Monopoly","a great way to lose friends",2,4,10,120,10,4,1950,null
 2,2,"Settlers of Catan","another great way to lose friends",2,4,10,1000,10,4,1975,null
 3,3,"Settlers of Catan: Knights Edition","another great way to lose friends, but with knights this time",2,4,10,60,10,4,1980,null
