@@ -1,7 +1,7 @@
 //change name of file to whatever you want :D
 import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 // import react native paper
-import dummyGame from'../../components/GameDetailsData/gameDetailsDummyData.js';
+// import dummyGame from'../../components/GameDetailsData/gameDetailsDummyData.js';
 
 // Component is currently rendered to bottom of App main page
 

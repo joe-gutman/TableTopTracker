@@ -33,8 +33,6 @@ import recommendedDummyGames from './components/Recommendation/recommendedDummyG
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
 
 // loren and vicky: game details page with dummy data:
-import GameDetails from './components/GameDetails/GameDetails.js';
-
 
 const Stack = createNativeStackNavigator();
 
