@@ -13,12 +13,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Landing from './screens/Landing.js'
 import SignUp from './screens/SignUp.js'
 import Login from './screens/Login.js'
+import Home from './screens/Home.js'
 import NewUserPreferences from './screens/NewUserPreferences.js'
-import UserAccount from './screens/UserAccount.js';
-import Home from './screens/Home.js';
-import GameDetails from './screens/GameDetails.js';
-import GameWarden from './screens/GameWarden.js';
-import Search from './screens/Search.js';
+
+
+import UserAccount from './screens/UserAccount';
+import GameDetails from './screens/GameDetails';
+import GameWarden from './screens/GameWarden';
+import Search from './screens/Search';
 import SearchResults from './screens/SearchResults.js';
 
 // alex: gameslist components / dummy data
@@ -31,6 +33,18 @@ import recommendedDummyGames from './components/Recommendation/recommendedDummyG
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
 
 const Stack = createNativeStackNavigator();
+
+//yarn add firebase, yarn add @react-native-firebase/auth
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import firebaseConfig from './firebaseConfig.js'
+
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+
 
 export default function App() {
 
