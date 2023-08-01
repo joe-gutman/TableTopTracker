@@ -1,24 +1,30 @@
+import * as React from 'react';
+
+import { AppRegistry } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+import { name as appName } from './app.json';
+
+import theme from './theme';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Landing from './screens/Landing.js'
 import SignUp from './screens/SignUp.js'
 import Login from './screens/Login.js'
+import Home from './screens/Home.js'
 import NewUserPreferences from './screens/NewUserPreferences.js'
-import AccountDetails from './screens/AccountDetails.js'
-import CommonLayout from './screens/NavBar.js'
 
 
-import { AppRegistry } from 'react-native';
-import { PaperProvider } from 'react-native-paper';
-import { name as appName } from './app.json';
-import theme from './theme';
+import UserAccount from './screens/UserAccount';
+import GameDetails from './screens/GameDetails';
+import GameWarden from './screens/GameWarden';
+import Search from './screens/Search';
+import SearchResults from './screens/SearchResults.js';
 
 // alex: gameslist components / dummy data
-import GamesList from './components/GameList/GamesList';
+import GamesList from './components/GameList/GamesList.js';
 import Recommendations from './components/Recommendation/Recommendations';
 import MyGames from './components/GameList/MyGames';
 import ButtonList from './components/GameList/ButtonList';
@@ -26,7 +32,21 @@ import allDummyGames from './components/GameList/dummy/allDummyGames';
 import recommendedDummyGames from './components/Recommendation/recommendedDummyGames';
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
 
+// loren and vicky: game details page with dummy data:
+
 const Stack = createNativeStackNavigator();
+
+//yarn add firebase, yarn add @react-native-firebase/auth
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import firebaseConfig from './firebaseConfig.js'
+
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+
 
 export default function App() {
 
@@ -39,25 +59,26 @@ export default function App() {
   return (
     <PaperProvider theme={ theme }>
       <NavigationContainer>
-        <CommonLayout>
-          <Stack.Navigator>
-
-          <Stack.Screen
-            name="Landing"
-            component={Landing}
-            options={{title: 'TableTop Tracker'}}
-          />
-          <Stack.Screen name="Sign Up" component={SignUp} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Account Details" component={AccountDetails} />
-          <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
+        <Stack.Navigator>
+            <Stack.Screen
+              name="Landing"
+              component={Landing}
+              options={{title: 'TableTop Tracker'}}
+            />
+            <Stack.Screen name="Sign Up" component={SignUp} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
+            <Stack.Screen name="User Account" component={ UserAccount } />
+            <Stack.Screen name="Home" component={ Home } />
+            <Stack.Screen name="Game Details" component={ GameDetails } />
+            <Stack.Screen name="Game Warden" component={ GameWarden } />
+            <Stack.Screen name="Search Results" component={ SearchResults } />
+            <Stack.Screen name="Search" component={ Search } />
           </Stack.Navigator>
-        </CommonLayout>
-        
       </NavigationContainer>
 
-      {/* GamesList stuff */}
-      <View style={ styles.gameListContent }>
+
+      {/* <View style={ styles.gameListContent }>
         <ButtonList
           listTypes={ listTypes }
           selectedList={ selectedList }
@@ -67,9 +88,9 @@ export default function App() {
           games={ allDummyGames }
           selectedList={ selectedList }
         />
-        {/* <Recommendations games={ recommendedDummyGames } /> */}
-        {/* <MyGames games={ personalDummyGames } /> */}
-      </View>
+        {<Recommendations games={ recommendedDummyGames } />}
+        {<MyGames games={ personalDummyGames } />}
+      </View> */}
     </PaperProvider>
   );
 }

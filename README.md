@@ -4,7 +4,7 @@
 1. Make your own branch
 2. Before committing, make sure to pull from main to get the most up-to-date repository
 3. Commit and push to the branch every time there is progress without any errors (after every feature is done)
-4. After submitting pull request, ask for approval from two other teammembers before merging into main branch
+4. After submitting pull request, ask for approval from one other teammembers before merging into main branch
 
 **Tech Stack**
 1. React Router
@@ -26,9 +26,36 @@
 
 **How to Run React Native**
 1. CD into TableTopTracker Directory
-2. npm install yarn
+2. npx install yarn or brew install yarn
 3. yarn install
 4. npx expo start (should see a QR code)
-5. To open on web, enter 'w' after the expo start runs. 
+5. To open on web, enter 'w' after the expo start runs.
 6. Download the expo go app on your phone and create an account
 7. Scan QR code that appears after running npx expo start
+
+
+**How to run the Server and database**
+
+```
+// cd into /Server
+
+// run the following to create a postgresql database:
+
+    > createdb tableTopGamers
+
+// create .env in /server with the following
+
+    .env---------------------
+    DB_NAME=tableTopGamers
+    -------------------------
+
+// create tables in db
+
+// from /server run:
+
+    > psql -U [YOUR DB USERNAME] -d tableTopGamers -a -f database/schemaReset.sql
+
+// from /server run:
+
+    > node database/seedMockData.js
+```

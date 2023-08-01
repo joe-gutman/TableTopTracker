@@ -20,7 +20,7 @@ export default function Landing ({navigation}) {
                 onPress={() =>
                     navigation.navigate('Login', {name: 'RandomUserAccount'})
                 }
-                />
+             />
         </View>
     )
 }
