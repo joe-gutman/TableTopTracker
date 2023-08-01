@@ -1,5 +1,6 @@
 id,game_id,collection_id
 <<<<<<< HEAD
+<<<<<<< HEAD
 1,1,2
 2,2,3
 3,3,1
@@ -59,6 +60,8 @@ id,game_id,collection_id
 57,57,2
 58,58,4
 =======
+=======
+>>>>>>> 5b5f23668a936842c64fff6df2a2b7a9a6f1c66f
 1,1,16
 2,2,11
 3,3,7
@@ -116,5 +119,9 @@ id,game_id,collection_id
 55,55,12
 56,56,2
 57,57,5
+<<<<<<< HEAD
+58,58,8
+>>>>>>> 5b5f23668a936842c64fff6df2a2b7a9a6f1c66f
+=======
 58,58,8
 >>>>>>> 5b5f23668a936842c64fff6df2a2b7a9a6f1c66f

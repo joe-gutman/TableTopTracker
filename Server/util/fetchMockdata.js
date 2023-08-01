@@ -56,8 +56,13 @@ function randomizeGames(min, max) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 console.log('USER GAMES: ', randomizeGames(1, 8));
 console.log('COLLECTION_GAMES: ', randomizeGames(1, 4));
+=======
+// console.log('USER GAMES: ', randomizeGames(1, 8));
+console.log('COLLECTION_GAMES: ', randomizeGames(1, 16));
+>>>>>>> 5b5f23668a936842c64fff6df2a2b7a9a6f1c66f
 =======
 // console.log('USER GAMES: ', randomizeGames(1, 8));
 console.log('COLLECTION_GAMES: ', randomizeGames(1, 16));

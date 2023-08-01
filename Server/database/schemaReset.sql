@@ -98,8 +98,13 @@ create table collections_games_join (
   collection_id int,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   foreign key (collection_id) references collections(id),
   foreign key (game_id) references games(id)
+=======
+  foreign key (game_id) references games(id),
+  foreign key (collection_id) references collections(id)
+>>>>>>> 5b5f23668a936842c64fff6df2a2b7a9a6f1c66f
 =======
   foreign key (game_id) references games(id),
   foreign key (collection_id) references collections(id)
@@ -108,6 +113,7 @@ create table collections_games_join (
 
 create table owned_games_join (
   id serial primary key,
+<<<<<<< HEAD
 <<<<<<< HEAD
   user_id int,
 =======
@@ -147,6 +153,11 @@ create table owned_games_join (
 --);
 
 =======
+=======
+  game_id int,
+  user_id int,
+
+>>>>>>> 5b5f23668a936842c64fff6df2a2b7a9a6f1c66f
   CONSTRAINT fk_game_id
         FOREIGN KEY(game_id)
         REFERENCES games(id),
@@ -178,5 +189,8 @@ create table owned_games_join (
 --  foreign key (user_id) references users(id)
 --);
 
+<<<<<<< HEAD
+>>>>>>> 5b5f23668a936842c64fff6df2a2b7a9a6f1c66f
+=======
 >>>>>>> 5b5f23668a936842c64fff6df2a2b7a9a6f1c66f
 
