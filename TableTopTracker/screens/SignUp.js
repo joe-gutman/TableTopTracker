@@ -34,18 +34,18 @@ export default function SignUp ({navigation, username}) {
             />
             <Text> Photo Upload Section Here </Text>
             <Button
-                title="Next"
-                onPress={() =>
-                    navigation.navigate('New User Preferences')
-                }
-                />
+              title="Next"
+              onPress={() =>
+                  navigation.navigate('New User Preferences')
+              }
+            />
 
             <Text> Have an Account? </Text>
             <Button
-                title="Log in"
-                onPress={() =>
-                    navigation.navigate('Login', {name: username})
-                }
+              title="Log in"
+              onPress={() =>
+                  navigation.navigate('Login', {name: username})
+              }
             />
 
         </View>

@@ -41,13 +41,7 @@ if (!firebase.apps.length) {
 
 
 export default function App() {
-
-  // alex: some states & stuff
-  const listTypes = [ 'All', 'My Games', 'Recommendations', 'Liked', 'Wishlist' ];
-  // TODO: implement ability to add custom lists
   const [ username, setUsername ] = useState('Arnold');
-
-  const [ selectedList, setSelectedList ] = React.useState(listTypes[0]);
 
   return (
     <PaperProvider theme={ theme }>
@@ -76,15 +70,3 @@ export default function App() {
 
 // AppRegistry.registerComponent(appName, () => App);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  gameListContent: {
-    flex: 1, // takes 70% of available space
-    marginTop: 10
-  },
-});

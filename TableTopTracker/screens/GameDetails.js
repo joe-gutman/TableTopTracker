@@ -28,7 +28,8 @@ const dummyGame = {
   category: ["Abstract Category", "Science Fiction"]
 }
 
-export default function GameDetails () {
+export default function GameDetails ({navigation, route}) {
+  const { user } = route.params;
   const styles = StyleSheet.create({
     imageContainer: {
       flex: 1,
@@ -44,8 +45,9 @@ export default function GameDetails () {
   });
 
   return (
-    <>
-      <View style={styles.imageContainer}>
+    <View>
+      <Text>Game Details</Text>
+      {/* <View style={styles.imageContainer}>
 
         <Image
           style= {styles.gameImage}
@@ -65,9 +67,9 @@ export default function GameDetails () {
         <Text>{dummyGame.year}</Text>
         <Text>{dummyGame.description}</Text>
         <NavBar navigation={navigation} username={username}/>
-      </View>
+      </View> */}
 
-    </>
+    </View>
 
   )
 }
