@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 const { Pool } = require('pg');
 
 // Create a new Pool instance with your database connection details
@@ -11,5 +11,5 @@ const pool = new Pool({
 });
 
 module.exports = {
-  query: (text, params) => pool.query(text, params),
+  query: (text, params) => pool.query(text, params)
 };
