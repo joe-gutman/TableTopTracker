@@ -37,17 +37,8 @@ const Stack = createNativeStackNavigator();
 //yarn add firebase, yarn add @react-native-firebase/auth
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import firebaseConfig from './firebaseConfig.js'
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCm5h0zCb155nFsvZifi1tXdh8ekZYhpKI",
-  authDomain: "tabletoptracker-d603c.firebaseapp.com",
-  projectId: "tabletoptracker-d603c",
-  storageBucket: "tabletoptracker-d603c.appspot.com",
-  messagingSenderId: "477015804806",
-  appId: "1:477015804806:web:f13f69fbadd2210b777a07",
-  measurementId: "G-M20LEKC85Y"
-};
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
