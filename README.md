@@ -4,7 +4,7 @@
 1. Make your own branch
 2. Before committing, make sure to pull from main to get the most up-to-date repository
 3. Commit and push to the branch every time there is progress without any errors (after every feature is done)
-4. After submigit stattting pull request, ask for approval from two other teammembers before merging into main branch
+4. After submitting pull request, ask for approval from one other teammembers before merging into main branch
 
 **Tech Stack**
 1. React Router
@@ -42,13 +42,13 @@
 // run the following to create a postgresql database:
 
     > createdb tableTopGamers
-    
+
 // create .env in /server with the following
 
     .env---------------------
     DB_NAME=tableTopGamers
     -------------------------
-    
+
 // create tables in db
 
 // from /server run:
