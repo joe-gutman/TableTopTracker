@@ -9,6 +9,7 @@ export default function Login ({navigation, route}) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleLogin = () => {
     firebase
@@ -24,7 +25,16 @@ export default function Login ({navigation, route}) {
     })
     .catch((error) => {
         // Handle login errors
-        console.log('Error logging in:', error);
+        if (error.code === 'auth/user-not-found') {
+            setErrorMessage('User does not exist');
+            console.log(error.code);
+        } else if (error.code === 'auth/wrong-password') {
+            setErrorMessage('Incorrect password');
+            console.log(error.code);
+        } else {
+            setErrorMessage('An error occurred. Please try again later.');
+            console.log(error.code);
+        }
     });
     };
 
