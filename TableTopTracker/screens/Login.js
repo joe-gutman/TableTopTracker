@@ -27,6 +27,7 @@ export default function Login ({navigation, route}) {
     })
     .then(function (response) {
         console.log(response)
+        const user = response;
          // Navigate to the desired screen after successful login
         navigation.navigate('Home', { user, handleLogout });
     })
