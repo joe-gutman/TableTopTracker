@@ -1,8 +1,7 @@
 //change name of file to whatever you want :D
 import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 // import react native paper
-// import dummyGame from'../../components/GameDetailsData/gameDetailsDummyData.js';
-
+import dummyGame from'../components/GameDetailsData/gameDetailsDummyData.js';
 // Component is currently rendered to bottom of App main page
 
 // figure out how props are gonna be passed to this component
@@ -13,11 +12,11 @@ export default function GameDetails () {
   const styles = StyleSheet.create({
     imageContainer: {
       flex: 1,
-      backgroundColor: 'blue',
     },
     image: {
-      width: 100,
-      height: 100,
+      height: '100%',
+      width: '100%',
+      resizeMode: 'contain',
     },
     detailsContainer: {
       flex: 1,
@@ -28,7 +27,7 @@ export default function GameDetails () {
     <>
     <View style={styles.imageContainer}>
       <Image
-        style= {styles.gameImage}
+        style= {styles.image}
         source={{
             uri: 'https://cf.geekdo-images.com/Li9nJ4DOsFs1CuwZjkyg3g__original/img/29VmqkcRWoq_WS9uGtftdf6teyU=/0x0/filters:format(jpeg)/pic582574.jpg',
           }}
