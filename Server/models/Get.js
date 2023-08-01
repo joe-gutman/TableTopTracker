@@ -41,7 +41,8 @@ exports.getAllGameDetails = (title) => {
           bgg_url = bgg_url.join('-');
           results['more_info'] = bgg_url;
           // todo: push results to the database.
-          const order = ['boardgameId', 'title', 'description', 'minplayers', 'maxplayers', 'minplaytime', 'maxplaytime', 'age', 'complexity', 'year_published', 'thumbnail', 'more_info']
+
+          const order = ['boardgameId', 'title', 'description', 'minplayers', 'maxplayers', 'minplaytime', 'maxplaytime', 'age', 'complexity', 'thumbnail', 'more_info', 'year_published']
           var ints = ['boardgameId', 'minplayers', 'maxplayers', 'minplaytime', 'maxplaytime', 'age', 'year_published']
           var toBeEntered = [];
           for (let o of order) {
@@ -69,7 +70,7 @@ exports.getAllGameDetails = (title) => {
 }
 
 exports.insertOneGame = (columns) => {
-  var queryStr = "insert into games (bgg_id, title, description, minplayers, maxplayers, minplaytime, maxplaytime, age, complexity, year_published, thumbnail, more_info) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)"
+  var queryStr = "insert into games (bgg_id, title, description, minplayers, maxplayers, minplaytime, maxplaytime, age, complexity, thumbnail, more_info, year_published) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)"
   return db.query(queryStr, columns)
 }
 

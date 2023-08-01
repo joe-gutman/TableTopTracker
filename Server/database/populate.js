@@ -25,8 +25,8 @@ exports.populateListOfGames = async (listOfGames) => {
 exports.populateBoardGames = async () => {
   var currentFirstIndex = 0;
   var currentLastIndex = 10;
-  while (currentFirstIndex < boardGames.length) {
-    var currentListOfGames = boardGames.slice(currentFirstIndex, currentLastIndex);
+  while (currentFirstIndex < boardGamesTest.length) {
+    var currentListOfGames = boardGamesTest.slice(currentFirstIndex, currentLastIndex);
     await exports.populateListOfGames(currentListOfGames)
     currentFirstIndex += 10;
     currentLastIndex += 10;
@@ -42,7 +42,6 @@ const boardGamesTest = [
   "Android: Netrunner",
   "Arimaa",
   "Asalto",
-  "18XX",
   "Backgammon",
   "BattleLore"
 ]
