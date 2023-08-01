@@ -2,7 +2,6 @@ const Get = require('../models/Get.js');
 const parser = require('../parser.js');
 
 exports.getGame = (req, res) => {
-  console.log(req.body);
   Get.getOne(req.body)
     .then((data) => {
       if (data.rows.length === 0) {
@@ -23,7 +22,10 @@ exports.getGame = (req, res) => {
                 })
                 var images = parser.findAllInstancesOfDataPoint(xml, '<image');
                 console.log(images);
+                results['more_info'] = 'https://boardgamegeek.com/boardgame/' + results.boardgameId + '/' + title.toLowerCase();
+                // todo: push results to the database.
                 console.log(results);
+
                 res.sendStatus(200);
               })
               .catch((error) => {
