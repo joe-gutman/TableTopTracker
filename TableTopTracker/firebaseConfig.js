@@ -1,5 +1,5 @@
 export default {
-  apiKey: "",
+  apiKey: "AIzaSyCm5h0zCb155nFsvZifi1tXdh8ekZYhpKI",
   authDomain: "tabletoptracker-d603c.firebaseapp.com",
   projectId: "tabletoptracker-d603c",
   storageBucket: "tabletoptracker-d603c.appspot.com",
