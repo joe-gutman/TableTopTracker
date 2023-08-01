@@ -11,11 +11,19 @@ const getController = require('./controllers/gets');
 const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client/public')));
+//app.use(express.static(path.join(__dirname, '../client/public')));
 
 app.get('/game', function(req, res) {
   getController.getGame(req, res);
-})
+});
+
+app.get('/collections', (req, res, next) => {
+
+});
+
+app.get('/collections/:collectionId', (req, res, next) => {
+
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
