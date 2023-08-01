@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styles from './styles'
 import { StyleSheet, Text, View, TextInput, SafeAreaView } from 'react-native';
 
-export default function AccountDetails ({navigation, route}) {
+export default function UserSettings ({navigation, route}) {
     const [image, setImage] = useState();
     const [name, setName] = useState();
     const [username, setUsername] = useState();

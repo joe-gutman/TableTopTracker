@@ -1,13 +1,18 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, TextInput } from 'react-native';
-import Settings from '../components/Account/viewSettings.js'
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import UserSettings from '../components/UserAccount/UserSettings.js';
 
-export default function UserAccounts ({navigation, route}) {
+import NavBar from '../components/NavBar/NavBar.js';
 
+export default function UserAccount ({navigation, route}) {
+    const { user, handleLogout } = route.params;
     return (
         <View>
-            <Settings />
+            <Text>This is {user.email}'s HomePage</Text>
+            <UserSettings />
+            <Button title="Log Out" onPress={handleLogout} />
+            <NavBar navigation={navigation} user={user}/>
         </View>
     )
 }
