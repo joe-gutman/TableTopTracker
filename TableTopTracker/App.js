@@ -3,6 +3,7 @@ import * as React from 'react';
 import { AppRegistry } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { name as appName } from './app.json';
+import { useState } from 'react';
 
 import theme from './theme';
 import { StatusBar } from 'expo-status-bar';
@@ -23,16 +24,7 @@ import GameWarden from './screens/GameWarden';
 import Search from './screens/Search';
 import SearchResults from './screens/SearchResults.js';
 
-// alex: gameslist components / dummy data
-import GamesList from './components/GameList/GamesList.js';
-import Recommendations from './components/Recommendation/Recommendations';
-import MyGames from './components/GameList/MyGames';
-import ButtonList from './components/GameList/ButtonList';
-import allDummyGames from './components/GameList/dummy/allDummyGames';
-import recommendedDummyGames from './components/Recommendation/recommendedDummyGames';
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
-
-// loren and vicky: game details page with dummy data:
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +45,7 @@ export default function App() {
   // alex: some states & stuff
   const listTypes = [ 'All', 'My Games', 'Recommendations', 'Liked', 'Wishlist' ];
   // TODO: implement ability to add custom lists
+  const [ username, setUsername ] = useState('Arnold');
 
   const [ selectedList, setSelectedList ] = React.useState(listTypes[0]);
 
@@ -64,33 +57,19 @@ export default function App() {
               name="Landing"
               component={Landing}
               options={{title: 'TableTop Tracker'}}
-            />
-            <Stack.Screen name="Sign Up" component={SignUp} />
-            <Stack.Screen name="Login" component={Login} />
+              username={username}
+              />
+            <Stack.Screen name="Sign Up" component={SignUp}/>
+            <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
-            <Stack.Screen name="User Account" component={ UserAccount } />
-            <Stack.Screen name="Home" component={ Home } />
-            <Stack.Screen name="Game Details" component={ GameDetails } />
-            <Stack.Screen name="Game Warden" component={ GameWarden } />
-            <Stack.Screen name="Search Results" component={ SearchResults } />
-            <Stack.Screen name="Search" component={ Search } />
+            <Stack.Screen name="User Account" component={UserAccount} />
+            <Stack.Screen name="Home" component={Home}/>
+            <Stack.Screen name="Game Details" component={GameDetails}/>
+            <Stack.Screen name="Game Warden" component={GameWarden}/>
+            <Stack.Screen name="Search Results" component={SearchResults}/>
+            <Stack.Screen name="Search" component={Search}/>
           </Stack.Navigator>
       </NavigationContainer>
-
-
-      {/* <View style={ styles.gameListContent }>
-        <ButtonList
-          listTypes={ listTypes }
-          selectedList={ selectedList }
-          setSelectedList={ setSelectedList }
-        />
-        <GamesList
-          games={ allDummyGames }
-          selectedList={ selectedList }
-        />
-        {<Recommendations games={ recommendedDummyGames } />}
-        {<MyGames games={ personalDummyGames } />}
-      </View> */}
     </PaperProvider>
   );
 }
