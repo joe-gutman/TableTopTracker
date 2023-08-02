@@ -31,7 +31,7 @@ const Stack = createNativeStackNavigator();
 //yarn add firebase, yarn add @react-native-firebase/auth
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import firebaseConfig from './firebaseConfig.js'
+import firebaseConfig from './firebaseConfig.js';
 
 //fonts
 import * as Font from 'expo-font';
@@ -41,34 +41,55 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
+const fetchFonts = () => {
+  return Font.loadAsync({
+    'Inter-Regular': require('./assets/fonts/Inter/static/Inter-Regular.ttf'),
+    'Inter-Medium': require('./assets/fonts/Inter/static/Inter-Medium.ttf'),
+    'Inter-Bold': require('./assets/fonts/Inter/static/Inter-Black.ttf'),
+    "Metamorphous-Regular": require('./assets/fonts/Metamorphous/Metamorphous-Regular.ttf')
+  });
+};
 
 
 export default function App() {
   const [ username, setUsername ] = useState('Arnold');
 
-  return (
-    <PaperProvider theme={ theme }>
-      <NavigationContainer>
-        <Stack.Navigator>
-            <Stack.Screen
-              name="Landing"
-              component={Landing}
-              options={{title: 'TableTop Tracker'}}
-              username={username}
-              />
-            <Stack.Screen name="Sign Up" component={SignUp}/>
-            <Stack.Screen name="Login" component={Login}/>
-            <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
-            <Stack.Screen name="User Account" component={UserAccount} />
-            <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Game Details" component={GameDetails}/>
-            <Stack.Screen name="Game Warden" component={GameWarden}/>
-            <Stack.Screen name="Search Results" component={SearchResults}/>
-            <Stack.Screen name="Search" component={Search}/>
-          </Stack.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
-  );
+  useEffect(() => {
+    async function loadFonts() {
+      await fetchFonts();
+      setDataLoaded(true);
+    }
+
+    loadFonts();
+  }, []);
+
+  if (!dataLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <PaperProvider theme={ theme }>
+        <NavigationContainer>
+          <Stack.Navigator>
+              <Stack.Screen
+                name="Landing"
+                component={Landing}
+                options={{title: 'TableTop Tracker'}}
+                username={username}
+                />
+              <Stack.Screen name="Sign Up" component={SignUp}/>
+              <Stack.Screen name="Login" component={Login}/>
+              <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
+              <Stack.Screen name="User Account" component={UserAccount} />
+              <Stack.Screen name="Home" component={Home}/>
+              <Stack.Screen name="Game Details" component={GameDetails}/>
+              <Stack.Screen name="Game Warden" component={GameWarden}/>
+              <Stack.Screen name="Search Results" component={SearchResults}/>
+              <Stack.Screen name="Search" component={Search}/>
+            </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+    );
+  }
 }
 
 // AppRegistry.registerComponent(appName, () => App);

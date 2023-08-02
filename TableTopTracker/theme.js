@@ -17,10 +17,10 @@ import * as Font from 'expo-font';
 
 const theme = {
   ...DefaultTheme,
-  dark: false,
-  version: 3,
-  mode: adaptive,
-  roundness: 2,
+  // dark: false,
+  // version: 3,
+  // mode: adaptive,
+  // roundness: 2,
   colors: {
     //PRIMARY(Green)---------
     primary: '#7FB069', //green - logo, some buttons
