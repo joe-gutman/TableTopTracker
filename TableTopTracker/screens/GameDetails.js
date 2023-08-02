@@ -40,16 +40,13 @@ const styles = StyleSheet.create({
     width: '100%',
     resizeMode: 'contain',
   },
-  detailsContainer: {
-    flex: 1,
-    borderTopLeftRadius:10,
-    borderTopRightRadius: 10,
-    backgroundColor: '#FBF5E7',
-    padding: 50,
-  },
   descriptionCard: {
     position: 'absolute',
-    bottom: '0'
+    bottom: '0',
+    borderWidth: 20,
+    borderRadius: 20,
+    backgroundColor: '#FBF5E7',
+    borderColor: '#FBF5E7',
   },
   imageCard: {
     height: 400,
@@ -100,7 +97,6 @@ export default function GameDetails ({navigation, route}) {
       </View>
 
       {/* game description card */}
-{/*
       <Card style={styles.descriptionCard}>
         <Card.Title title={dummyGame.name} subtitle={dummyGame.secondaryName} />
           <Card.Content>
@@ -129,7 +125,7 @@ export default function GameDetails ({navigation, route}) {
             </View>
           <Text>{dummyGame.description}</Text>
         </Card.Content>
-      </Card> */}
+      </Card>
 
       <NavBar navigation={navigation} user={user}/>
 
