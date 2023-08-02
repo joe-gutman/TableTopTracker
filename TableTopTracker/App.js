@@ -33,6 +33,9 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import firebaseConfig from './firebaseConfig.js'
 
+//fonts
+import * as Font from 'expo-font';
+
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
