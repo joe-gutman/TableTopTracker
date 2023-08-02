@@ -57,8 +57,11 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 50,
-    border: 'solid',
-    borderRadius: 5,
+    borderColor: 'white',
+    borderWidth: 10,
+    borderRadius: 8,
+    transform: 'rotate(2deg)',
+
   },
   table: {
     display: 'flex',
