@@ -25,12 +25,18 @@ const styles = StyleSheet.create({
     padding: 8,
     margin: 5,
     borderRadius: 5
-  },
+  }, /*
   selectedButton: {
     backgroundColor: 'blue'
-  },
+  }, */
   buttonMargin: {
     marginRight: 8
+  },
+  thumbnail: {
+    width: 50,
+    height: 50,
+    resizeMode: 'cover', // others available
+    marginRight: 10 // adjust margin as needed
   }
 });
 

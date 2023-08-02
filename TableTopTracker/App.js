@@ -25,7 +25,6 @@ import Search from './screens/Search';
 import SearchResults from './screens/SearchResults.js';
 
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
-
 const Stack = createNativeStackNavigator();
 
 //yarn add firebase, yarn add @react-native-firebase/auth

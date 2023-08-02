@@ -83,6 +83,16 @@ export default function UserSettings ({navigation, route}) {
                 <View style = {styles.circleContainer}>
 
                 </View>
+                <View style = {styles.NameContainer}>
+                    <Text style = {styles.text}>
+                        {name}
+                    </Text>
+                </View>
+                <View style = {styles.NameContainer}>
+                    <Text style = {styles.text}>
+                        {username}
+                    </Text>
+                </View>
                 <View style = {styles.InputContainer}>
                     <Text style = {styles.text}>
                         Age:
@@ -119,7 +129,7 @@ export default function UserSettings ({navigation, route}) {
                     <View style={styles.CategoryColumn}>
                         {leftCol.map((category) => (
                         <View key={category} style={styles.eachCategory}>
-                            <CheckBox checked={true} />
+                            <CheckBox value={true} />
                             <Text>{category}</Text>
                         </View>
                         ))}
@@ -127,7 +137,7 @@ export default function UserSettings ({navigation, route}) {
                     <View style={styles.CategoryColumn}>
                         {rightCol.map((category) => (
                             <View key={category} style={styles.eachCategory}>
-                                <CheckBox checked={true} />
+                                <CheckBox value={true} />
                                 <Text>{category}</Text>
                             </View>
                         ))}

@@ -14,30 +14,52 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignContent: 'center',
+    alignItems: 'center',
+  },
+  circleContainer: { 
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    backgroundColor: '#FFF5DD',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  NameContainer: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#ECE4B7',
+    // borderWidth: 1, 
+    borderColor: 'black', 
+    borderStyle: 'solid',
   },
   InputContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignContent: 'center',
+    alignItems: 'center',
     padding: 4,
+    width: '90%',
     height: 50,
     marginTop: 15,
     backgroundColor: '#FFF5DD',
-    borderWidth: 1, // Add border width
-    borderColor: 'black', // Set border color
+    borderBottomWidth: 2, // Add border width
+    borderColor: 'bla ck', // Set border color
     borderStyle: 'solid',
+    borderRadius: 8
   },
   MainCategoryContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 10,
+    justifyContent: 'space-between',
+    padding: 3,
     height: 200,
     marginTop: 15,
     backgroundColor: '#FFF5DD',
-    borderWidth: 1, // Add border width
+    borderBottomWidth: 1, // Add border width
     borderColor: 'black', // Set border color
     borderStyle: 'solid',
+    borderRadius: 8
   },
   CategoryColumn: {
     flexDirection: 'column',
@@ -45,22 +67,13 @@ const styles = StyleSheet.create({
     width: 150,
     height: 190,
     backgroundColor: '#FFF5DD',
-    borderWidth: 1, // Add border width
+    // borderWidth: 1, // Add border width
     borderColor: 'black', // Set border color
     borderStyle: 'solid',
   },
-  circleContainer: { 
-    flex: 1,
-    width: 100, 
-    height: 100,
-    borderRadius: 50,
-    borderWidth: 1,
-    borderStyle: 'solid',
-    backgroundColor: '#007bff'
-  },
   text: {
     alignItems: 'center',
-    borderWidth: 1, // Add border width
+    // borderWidth: 1, // Add border width
     borderColor: 'black', // Set border color
     borderStyle: 'solid',
     fontSize: 18, // Set the font size in pixels
@@ -68,10 +81,11 @@ const styles = StyleSheet.create({
   },
   eachCategory: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    borderWidth: 1, // Add border width
+    // borderWidth: 1, // Add border width
     borderColor: 'black', // Set border color
     borderStyle: 'solid',
+    marginBottom: 10,
+    padding: 2,
   }
 });
 
