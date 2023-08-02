@@ -10,11 +10,23 @@ export default function Search({navigation, route}) {
   let { user } = route.params;
   const [ gameWarden, setGameWarden ] = useState(true);
 
+  const searchWrapper = {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 5,
+    padding: 5
+  }
+
   return (
-      <View>
+      <View style={searchWrapper}>
           <Text>"Search"</Text>
           <input id="searchInput" />
-          <Slider />
+          <Slider type={'double'} max={5}/>
+          <Slider type={'single'} max={5}/>
           <Button
           title="Search"
           onPress={() =>
