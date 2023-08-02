@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
-// import * as Font from 'expo-font';
+// git
 
 const theme = {
   ...DefaultTheme,
@@ -8,7 +8,7 @@ const theme = {
   version: 3,
   roundness: 5,
   colors: {
-    ...DefaultTheme.colors,
+    // ...DefaultTheme.colors,
     //PRIMARY(Green)---------
     primary: '#7FB069', //green - logo, some buttons
     onPrimary: '#FFFFFF', //white
@@ -45,20 +45,20 @@ const theme = {
     // onErrorContainer: ,
 
   },
-  fonts: {
-    Regular: {
-      fontFamily: 'Inter-Regular',
-      fontWeight: 'normal'
-    },
-    Bold: {
-      fontFamily: 'Inter-Bold',
-      fontWeight: 'normal'
-    },
-    Warden: {
-      fontFamily: 'Metamorphous',
-      fontWeight: 'normal'
-    }
-  }
+  // fonts: {
+  //   Regular: {
+  //     fontFamily: 'Inter-Regular',
+  //     fontWeight: 'normal'
+  //   },
+  //   Bold: {
+  //     fontFamily: 'Inter-Bold',
+  //     fontWeight: 'normal'
+  //   },
+  //   Warden: {
+  //     fontFamily: 'Metamorphous',
+  //     fontWeight: 'normal'
+  //   }
+  // }
 }
 
 

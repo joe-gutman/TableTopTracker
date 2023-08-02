@@ -33,49 +33,16 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import firebaseConfig from './firebaseConfig.js';
 
-
 //fonts
 import * as Font from 'expo-font';
-// import { AppLoading } from 'expo';
-
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-// const fetchFonts = () => {
-//   return Font.loadAsync({
-//     'Inter-Regular': {
-//       uri: 'https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap'
-//     },
-//     'Inter-Bold': {
-//       uri: 'https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap'
-//     },
-//     'Metamorphous': {
-//       uri: 'https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap'
-//     }
-
-//   });
-// };
-
-
 export default function App() {
   const [ username, setUsername ] = useState('Arnold');
-  // const [dataLoaded, setDataLoaded] = React.useState(false);
 
-  // useEffect(() => {
-  //   async function loadFonts() {
-  //     await fetchFonts();
-  //     setDataLoaded(true);
-  //   }
-
-  //   loadFonts();
-  // }, []);
-
-  // if (!dataLoaded) {
-  //   console.log('fonts not loaded in app.jsx')
-  //   return;
-  // } else {
     return (
       <PaperProvider theme={ theme }>
         <NavigationContainer>
@@ -99,7 +66,7 @@ export default function App() {
         </NavigationContainer>
       </PaperProvider>
     );
-  // }
+
 }
 
 // AppRegistry.registerComponent(appName, () => App);

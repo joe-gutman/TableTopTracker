@@ -45,6 +45,7 @@ export default function GamesList({ games, listType }) {
             <GameCard { ...item } />
           ) }
           keyExtractor={ ({ boardgameId }) => boardgameId.toString() }
+          style={ styles.list }
         />
       </Animated.View>
     </View>

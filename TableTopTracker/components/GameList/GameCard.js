@@ -11,21 +11,24 @@ export default function GameCard({
   return (
     <View style={ styles.card }>
       <Card>
-        <Card.Content>
+        <Card.Content style={styles.cardGrid}>
           {/* layout based on wireframe + site */}
+          <View>
           <Image
             style={ styles.thumbnail } // needs to appear left of details
             source={{ uri: thumbnail }}
           />
-          <Text>{ minplayers } — { maxplayers } Players</Text>
-          <Text>Play-Time: { minplaytime } — { maxplaytime } Min</Text>
-          <Text>Complexity: { complexity }</Text>
-          <Text>{ year_published }</Text>
-          {/* <Text>{ description }</Text> */}
+          </View>
+          <View>
+            <Text>{ minplayers } — { maxplayers } Players</Text>
+            <Text>Play-Time: { minplaytime } — { maxplaytime } Min</Text>
+            <Text>Complexity: { complexity }</Text>
+            <Text>{ year_published }</Text>
+          </View>
         </Card.Content>
 
         {/* not rendering title for some reason (suspect naming convention) */}
-        <Card.Title>{ title }</Card.Title>
+        <Card.Title title={title} />
       </Card>
     </View>
   );
