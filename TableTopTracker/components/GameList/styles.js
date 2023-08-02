@@ -16,13 +16,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  listContainer: {
+    flexGrow: 1,
+    padding: 10,
+    backgroundColor: theme.colors.onBackground,
+    display: 'flex',
+    flexDirection: 'column',
+  },
   list: {
     flexGrow: 1,
     padding: 10,
     backgroundColor: theme.colors.onBackground,
     display: 'flex',
     flexDirection: 'column',
-    margin: 'auto'
+    margin: 'auto',
+    width: '100%'
   },
   card: {
     flex: 1,
