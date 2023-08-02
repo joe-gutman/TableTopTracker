@@ -25,7 +25,6 @@ import Search from './screens/Search';
 import SearchResults from './screens/SearchResults.js';
 
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
-
 const Stack = createNativeStackNavigator();
 
 //yarn add firebase, yarn add @react-native-firebase/auth
@@ -43,30 +42,30 @@ if (!firebase.apps.length) {
 export default function App() {
   const [ username, setUsername ] = useState('Arnold');
 
-    return (
-      <PaperProvider theme={ theme }>
-        <NavigationContainer>
-          <Stack.Navigator>
-              <Stack.Screen
-                name="Landing"
-                component={Landing}
-                options={{title: 'TableTop Tracker'}}
-                username={username}
-                />
-              <Stack.Screen name="Sign Up" component={SignUp}/>
-              <Stack.Screen name="Login" component={Login}/>
-              <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
-              <Stack.Screen name="User Account" component={UserAccount} />
-              <Stack.Screen name="Home" component={Home}/>
-              <Stack.Screen name="Game Details" component={GameDetails}/>
-              <Stack.Screen name="Game Warden" component={GameWarden}/>
-              <Stack.Screen name="Search Results" component={SearchResults}/>
-              <Stack.Screen name="Search" component={Search}/>
-            </Stack.Navigator>
-        </NavigationContainer>
-      </PaperProvider>
-    );
+  return (
+    <PaperProvider theme={ theme }>
+      <NavigationContainer>
+        <Stack.Navigator>
 
+            <Stack.Screen
+              name="Landing"
+              component={Landing}
+              options={{title: 'TableTop Tracker'}}
+              username={username}
+              />
+            <Stack.Screen name="Sign Up" component={SignUp}/>
+            <Stack.Screen name="Login" component={Login}/>
+            <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
+            <Stack.Screen name="User Account" component={UserAccount} />
+            <Stack.Screen name="Home" component={Home}/>
+            <Stack.Screen name="Game Details" component={GameDetails}/>
+            <Stack.Screen name="Game Warden" component={GameWarden}/>
+            <Stack.Screen name="Search Results" component={SearchResults}/>
+            <Stack.Screen name="Search" component={Search}/>
+          </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
+  );
 }
 
 // AppRegistry.registerComponent(appName, () => App);

@@ -1,45 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, CheckBox } from 'react-native';
 import House from "./House.js";
 import Handle from "./Handle.js";
 
-export default function Slider ({type, max}) {
-  var handleElements = [];
-  if (type === 'single') {
-    var l = 150;
-    var r = null;
+export default function Slider ({name, max, values}) {
+  console.log(values);
+  var l = 150;
+  if (values === 'float') {
     var initialLeftDisplay = max/2
-    var initialRightDisplay = null;
-  } else if (type === 'double') {
-    var l = 75;
-    var r = 225;
-    var initialLeftDisplay = max * (75/300)
-    var initialRightDisplay = max * (225/300)
+  } else {
+    var initialLeftDisplay = Math.ceil(max/2);
   }
 
-  const [handles, setHandles] = useState(handleElements);
-  const [leftPosition, setLeftPosition] = useState(l)
-  const [rightPosition, setRightPosition] = useState(r);
+  const [leftPosition, setLeftPosition] = useState(l);
   const [active, setActive] = useState(false);
   const [range, setRange] = useState(range);
   const [leftDisplay, setLeftDisplay] = useState(initialLeftDisplay)
-  const [rightDisplay, setRightDisplay] = useState(initialRightDisplay);
-  const [leftPositionTracker, setLeftPositionTracker] = useState(initialLeftDisplay);
-  const [rightPositionTracker, setRightPositionTracker] = useState(initialRightDisplay);
 
+
+  // what is the idea behind the right display? we calculate the left display based on the max place the left handle can go to, which is 270, then we calculate the right display based on the distance from the left display;
   useEffect(() => {
-    console.log(type, 'in useEffect');
-    if (type === 'single') {
-      var leftFloat = max * (leftPositionTracker/300)
-      console.log(leftFloat);
+    if (values === 'float') {
+      var leftFloat = max * (leftPosition/300)
       setLeftDisplay(Number(leftFloat.toFixed(2)))
-    } else if (type === 'double') {
-      var leftFloat = max * (leftPositionTracker/300)
-      var rightFloat = max * (rightPositionTracker/300)
-      setLeftDisplay(Number(leftFloat.toFixed(2)))
-      setRightDisplay(Number(rightFloat.toFixed(2)))
+    } else {
+      var leftFloat = max * (leftPosition/300)
+      if (leftFloat === 0) {
+        setLeftDisplay(1);
+      } else {
+        setLeftDisplay(Math.ceil(leftFloat))
+      }
     }
-  }, [leftPositionTracker, rightPositionTracker])
+  }, [leftPosition])
 
   const outerContainer = {
     width: 320,
@@ -50,7 +42,7 @@ export default function Slider ({type, max}) {
     borderRadius: 5,
   }
   const biggestContainer = {
-    width: 320,
+    width: 410,
     height: 20,
     display: 'flex',
     flexDirection: 'row',
@@ -60,23 +52,35 @@ export default function Slider ({type, max}) {
     padding: 5
   }
   const numberDisplays = {
-    width: 10,
-    height: 10,
+    width: 30,
+    height: 20,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 5
   }
   // we probably need some other data on these handle elements; starting position, bounds for the draggable portion;
   return (
     <View style={biggestContainer}>
+      <View style={numberDisplays} >
+        <CheckBox
+          value={active}
+          onValueChange={setActive}
+        />
+      </View>
+
       <View style={numberDisplays}>
         {leftDisplay}
       </View>
       <View style={outerContainer}>
-        <House leftPosition={leftPosition} setLeftPosition={setLeftPosition} rightPosition={rightPosition} setRightPosition={setRightPosition} active={active} leftPositionTracker={leftPositionTracker} rightPositionTracker={rightPositionTracker} setLeftPositionTracker={setLeftPositionTracker} setRightPosition={setRightPositionTracker} />
+<<<<<<< HEAD
+        <House leftPosition={leftPosition} setLeftPosition={setLeftPosition} rightPosition={rightPosition} setRightPosition={setRightPosition} active={active} leftPositionTracker={leftPositionTracker} rightPositionTracker={rightPositionTracker} setLeftPositionTracker={setLeftPositionTracker} setRightPositionTracker={setRightPositionTracker} />
       </View>
       <View style={numberDisplays}>
         {rightDisplay}
+=======
+        <House leftPosition={leftPosition} setLeftPosition={setLeftPosition} active={active} />
+>>>>>>> 7e0e1d31b7521dae1a14b46acb75dc14c09f1283
       </View>
     </View>
   )
