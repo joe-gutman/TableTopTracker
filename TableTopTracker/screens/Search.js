@@ -33,7 +33,6 @@ export default function Search({navigation, route}) {
               navigation.navigate('Search Results', {user: user})
           } />
           <NavBar navigation={navigation} user={user} gameWarden={gameWarden} />
-
       </View>
   )
 }

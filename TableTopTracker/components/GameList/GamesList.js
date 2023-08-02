@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { View, Text, FlatList, Animated, Easing } from 'react-native';
-import PlaceholderCard from './PlaceholderCard';
+import GameCard from './GameCard';
 import styles from './styles';
 
-export default function GamesList({ games, selectedList }) {
-  // axios GET request up here / parent component (i.e. screen)
-
+/* (DIRECTIONS):
+  1. handle appropriate filtering logic
+  2. pass in list (state in parent component, i.e. screen)
+*/
+export default function GamesList({ games, listType }) {
   const rotateAnimValue = new Animated.Value(0);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export default function GamesList({ games, selectedList }) {
     }).start(() => {
       rotateAnimValue.setValue(0);
     });
-  }, [ selectedList ]);
+  }, [ listType ]);
 
   const rotateInterpolation = rotateAnimValue
     .interpolate({
@@ -27,26 +29,20 @@ export default function GamesList({ games, selectedList }) {
       outputRange: [ '0deg', '180deg' ]
     });
 
-  const filteredGames = games
-    .filter((game) => {
-      // TODO: implement filtering logic **
-      return true; // placeholder
-    });
-
   return (
     <View style={ styles.list }>
-      <Text style={ styles.header }>{ selectedList }</Text>
+      <Text style={ styles.header }>{ listType }</Text>
 
       <Animated.View
         style={{
           transform: [{ rotateX: rotateInterpolation }],
-          backfaceVisibility: 'hidden' // prevent flickering during rotation
+          backfaceVisibility: 'hidden'
         }}
       >
         <FlatList
-          data={ filteredGames } // <— specific collection to be displayed (post filter) **
-          renderItem={ (game) => (
-            <PlaceholderCard { ...game } />
+          data={ games }
+          renderItem={ ({ item }) => (
+            <GameCard { ...item } />
           ) }
           keyExtractor={ ({ boardgameId }) => boardgameId.toString() }
         />
