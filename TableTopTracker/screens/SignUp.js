@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
 
 import NavBar from '../components/NavBar/NavBar.js';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function SignUp ({navigation}) {
   const [email, setEmail] = React.useState('');
@@ -14,6 +15,8 @@ export default function SignUp ({navigation}) {
   const [password, setPassword] = React.useState('');
   const [errorMessage, setErrorMessage] = React.useState('');
   const [uid, setUid] = React.useState('');
+  const [imageURL, setImageURL] = React.useState('');
+
 
   const handleSignUp = () => {
     firebase
@@ -40,6 +43,24 @@ export default function SignUp ({navigation}) {
         }
       });
   };
+
+
+  const handleImageUpload = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      setImageURL(result.uri);
+      console.log(imageURL);
+    } else {
+      console.log('Image picker canceled.');
+    }
+  };
+
     return (
         <View>
             <TextInput
@@ -63,12 +84,15 @@ export default function SignUp ({navigation}) {
               placeholder="Password"
               secureTextEntry
             />
-            <Text> Photo Upload Section Here </Text>
+
+
+            <Button title="Upload Profile Photo" onPress={handleImageUpload} />
+              {imageURL && <Image source={{ uri: imageURL }} />}
             <Button
               title="Next"
               onPress={() => {
                 handleSignUp();
-                navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username })
+                navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
               }
               }
             />
