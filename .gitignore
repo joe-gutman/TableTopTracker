@@ -1,13 +1,6 @@
-# added by me
-
-
-firebaseConfig.js
-
 .env
-
 *.DS_Store
 *.map
-
 *main.js
 *bundle.js
 config.js
