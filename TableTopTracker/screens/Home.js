@@ -27,17 +27,15 @@ export default function Home ({ navigation, route }) {
             listType={ listType }
             setListType={ setListType }
           />
+            <Button
+              title="Game Details"
+              onPress={() => {
+                navigation.navigate('Game Details', {user: user})
+              }}>Game Detail</Button>
           <GamesList
             games={ allDummyGames }
             listType={ listType }
           />
-        </View>
-        <View>
-          <Button
-            title="Game Details"
-            onPress={() => {
-              navigation.navigate('Game Details', {user: user})
-            }}>Game Detail</Button>
         </View>
         <NavBar navigation={navigation} user={user}/>
     </View>
