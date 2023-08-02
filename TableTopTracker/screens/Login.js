@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import firebase from 'firebase/compat/app'; // Update the import path
 import 'firebase/compat/auth'; // Import the authentication module with 'compat'
 import NavBar from '../components/NavBar/NavBar.js';
-import axios from 'axios';
 
 import { fetchUser } from '../util/api.js';
 
@@ -64,18 +63,19 @@ export default function Login ({navigation, route}) {
     return (
         <View>
         <TextInput
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-            placeholder="Email"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+        placeholder="Email"
         />
         <TextInput
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            placeholder="Password"
-            secureTextEntry
+        value={password}
+        onChangeText={(text) => setPassword(text)}
+        placeholder="Password"
+        secureTextEntry
         />
         <Button title="Log in" onPress={handleLogin} />
-            {errorMessage ? <Text>{errorMessage}</Text> : null}
+        {errorMessage ? <Text>{errorMessage}</Text> : null}
+
         </View>
 )
 }
