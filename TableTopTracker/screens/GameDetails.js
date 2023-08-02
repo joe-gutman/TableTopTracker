@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { StyleSheet, Image, ImageBackground, View, TouchableOpacity, PanResponder, Animated, ScrollView } from 'react-native';
 import NavBar from '../components/NavBar/NavBar.js';
 import { Card, Text, BottomNavigation } from 'react-native-paper';
+import SwipeableDetails from '../components/GameDetailsData/SwipeableDetails.js';
 
 // import react native paper
 // Component is currently rendered to bottom of App main page
@@ -70,16 +71,16 @@ const styles = StyleSheet.create({
   }
 });
 
-const pan = useRef(new Animated.ValueXY()).current;
-const panResponder = useRef(
-  PanResponder.create({
-    onMoveShouldSetPanResponder: () => true,
-    onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}]),
-    onPanResponderRelease: () => {
-      pan.extractOffset();
-    },
-  })
-).current;
+// const pan = useRef(new Animated.ValueXY()).current;
+// const panResponder = useRef(
+//   PanResponder.create({
+//     onMoveShouldSetPanResponder: () => true,
+//     onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}]),
+//     onPanResponderRelease: () => {
+//       pan.extractOffset();
+//     },
+//   })
+// ).current;
 
 export default function GameDetails ({navigation, route}) {
   const { user } = route.params;
@@ -106,8 +107,9 @@ export default function GameDetails ({navigation, route}) {
         </ImageBackground>
       </View>
 
+      <SwipeableDetails/>
       {/* game description card */}
-      <Animated.View
+      {/* <Animated.View
         style={{
           transform: [{translateX: pan.x}, {translateY: pan.y}],
         }}
@@ -143,7 +145,7 @@ export default function GameDetails ({navigation, route}) {
           <Text>{dummyGame.description}</Text>
         </Card.Content>
       </Card>
-      </Animated.View>
+      </Animated.View> */}
 
       <NavBar navigation={navigation} user={user}/>
 
