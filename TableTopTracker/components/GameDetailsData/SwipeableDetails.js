@@ -20,8 +20,10 @@ const SwipeableDetails = () => {
         dy: pan.y,
       },
     ]),
-    onPanResponderRelease: (e, gestureState) => {
-      if (pan.y._value < -200 || gestureState.vy < 0) {
+    onPanResponderRelease: (evt, gestureState) => {
+      console.log(gestureState.moveY);
+      if ((gestureState.vy < 0) || (gestureState.moveY <300)) {
+        console.log(pan);
         Animated.spring(
           pan,
           {toValue:{x: pan.x._value, y: -400}}
