@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   parentContainer: {
     display: 'flex',
     height: '100%',
-    width: '100%'
+    width: '100%',
   },
   imageContainer: {
     flex: 1,
@@ -53,6 +53,14 @@ const styles = StyleSheet.create({
   card: {
     position: 'absolute',
     bottom: '0'
+  },
+  table: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginBottom: '10px'
+  },
+  column: {
+    flex: 1,
   }
 });
 
@@ -67,43 +75,44 @@ const cardStyles = StyleSheet.create({
 export default function GameDetails ({navigation, route}) {
   const { user } = route.params;
 
-    return (
-      <View style={styles.parentContainer}>
-        <ImageBackground
-            style={styles.image}
-            resizeMode="cover"
-            source={{
-                uri: `${dummyGame.image}`,
-              }}
-        >
-
-
-        <Card style={styles.card}>
-          <Card.Title title={dummyGame.name} subtitle={dummyGame.secondaryName} />
-          {/* <Card.Cover
-            style={cardStyles.image}
-            source={{uri: 'https://cf.geekdo-images.com/Li9nJ4DOsFs1CuwZjkyg3g__original/img/29VmqkcRWoq_WS9uGtftdf6teyU=/0x0/filters:format(jpeg)/pic582574.jpg'}}/> */}
+  return (
+    <View style={styles.parentContainer}>
+      <ImageBackground
+          style={styles.image}
+          resizeMode="cover"
+          source={{
+              uri: `${dummyGame.image}`,
+            }}
+      >
+      <Card style={styles.card}>
+        <Card.Title title={dummyGame.name} subtitle={dummyGame.secondaryName} />
           <Card.Content>
-            <Text>{
-              // render player number or number range
-              (dummyGame.minPlayers===dummyGame.maxPlayers)
-                ? dummyGame.minPlayers
-                : `${dummyGame.minPlayers} - ${dummyGame.maxPlayers}`}
-              {((dummyGame.minPlayers===dummyGame.maxPlayers) && (dummyGame.minPlayers===1))
-                ? ` player`
-                : ` players`
-              } </Text>
-            <Text>Recommended Age: {dummyGame.age}</Text>
-            <Text>{dummyGame.category.join(', ')}</Text>
-            <Text>{(dummyGame.minPlayTime===dummyGame.maxPlayTime) ?
-              (dummyGame.minPlayTime) :
-              `${dummyGame.minPlayTime} - ${dummyGame.maxPlayTime}`} minutes
-              </Text>
-            <Text>Complexity: </Text>
-            <Text>Released: {dummyGame.year}</Text>
-            <Text>{dummyGame.description}</Text>
-          </Card.Content>
-        </Card>
+            <View style={styles.table}>
+              <View style={styles.column}>
+                <Text>{dummyGame.category.join(', ')}</Text>
+                <Text>{(dummyGame.minPlayTime===dummyGame.maxPlayTime) ?
+                (dummyGame.minPlayTime) :
+                `${dummyGame.minPlayTime} - ${dummyGame.maxPlayTime}`} minutes
+                </Text>
+                <Text>Released: {dummyGame.year}</Text>
+              </View>
+              <View style={styles.column}>
+                <Text>{
+                  // render player number or number range
+                  (dummyGame.minPlayers===dummyGame.maxPlayers)
+                    ? dummyGame.minPlayers
+                    : `${dummyGame.minPlayers} - ${dummyGame.maxPlayers}`}
+                  {((dummyGame.minPlayers===dummyGame.maxPlayers) && (dummyGame.minPlayers===1))
+                    ? ` player`
+                    : ` players`
+                  } </Text>
+                <Text>Recommended Age: {dummyGame.age}</Text>
+                <Text>Complexity: </Text>
+              </View>
+            </View>
+          <Text>{dummyGame.description}</Text>
+        </Card.Content>
+      </Card>
 
       <NavBar navigation={navigation} user={user}/>
 
