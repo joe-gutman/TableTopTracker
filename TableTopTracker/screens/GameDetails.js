@@ -1,6 +1,6 @@
 //change name of file to whatever you want :D
 import { useRef, useState } from 'react';
-import { StyleSheet, Image, ImageBackground, View, TouchableOpacity, PanResponder, Animated } from 'react-native';
+import { StyleSheet, Image, ImageBackground, View, TouchableOpacity, PanResponder, Animated, ScrollView } from 'react-native';
 import NavBar from '../components/NavBar/NavBar.js';
 import { Card, Text, BottomNavigation } from 'react-native-paper';
 
@@ -70,6 +70,16 @@ const styles = StyleSheet.create({
   }
 });
 
+const pan = useRef(new Animated.ValueXY()).current;
+const panResponder = useRef(
+  PanResponder.create({
+    onMoveShouldSetPanResponder: () => true,
+    onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}]),
+    onPanResponderRelease: () => {
+      pan.extractOffset();
+    },
+  })
+).current;
 
 export default function GameDetails ({navigation, route}) {
   const { user } = route.params;
@@ -97,6 +107,13 @@ export default function GameDetails ({navigation, route}) {
       </View>
 
       {/* game description card */}
+      <Animated.View
+        style={{
+          transform: [{translateX: pan.x}, {translateY: pan.y}],
+        }}
+        {...panResponder.panHandlers}
+      >
+
       <Card style={styles.descriptionCard}>
         <Card.Title title={dummyGame.name} subtitle={dummyGame.secondaryName} />
           <Card.Content>
@@ -113,8 +130,8 @@ export default function GameDetails ({navigation, route}) {
                 <Text>{
                   // render player number or number range
                   (dummyGame.minPlayers===dummyGame.maxPlayers)
-                    ? dummyGame.minPlayers
-                    : `${dummyGame.minPlayers} - ${dummyGame.maxPlayers}`}
+                  ? dummyGame.minPlayers
+                  : `${dummyGame.minPlayers} - ${dummyGame.maxPlayers}`}
                   {((dummyGame.minPlayers===dummyGame.maxPlayers) && (dummyGame.minPlayers===1))
                     ? ` player`
                     : ` players`
@@ -126,6 +143,7 @@ export default function GameDetails ({navigation, route}) {
           <Text>{dummyGame.description}</Text>
         </Card.Content>
       </Card>
+      </Animated.View>
 
       <NavBar navigation={navigation} user={user}/>
 
