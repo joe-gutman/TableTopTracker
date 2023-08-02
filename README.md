@@ -58,6 +58,14 @@
 // from /server run:
 
     > node database/seedMockData.js
+<<<<<<< Updated upstream
+=======
+    > update: if you'd like some live data, run database/schemaReset.sql as above, 
+        uncomment the initializer.populateBoardGames() in index.js on line 18 and start 
+        up the server again.  as of right now it only runs through the first 9 entries 
+        of the board games list.  You can modify populate.js to run through 500 games, 
+        but do so at your own risk, I'm quite sure there are still a few bugs that need fixing.
+>>>>>>> Stashed changes
 ```
 
 **API END-POINTS**

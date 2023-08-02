@@ -23,12 +23,6 @@ db.query(
     FROM '${path.join(__dirname, 'mockCsvs/collection_games.csv')}'
     WITH ( FORMAT csv, HEADER true )`
   )
-).then(() =>
-  db.query(
-    `COPY owned_games_join(id,game_id,user_id)
-    FROM '${path.join(__dirname, 'mockCsvs/owned_games.csv')}' 
-    WITH ( FORMAT csv, HEADER true )`
-  )
 )
 .then((x) => {
   console.log('done: ', x);
