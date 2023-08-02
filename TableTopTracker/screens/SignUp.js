@@ -6,7 +6,6 @@ import NavBar from '../components/NavBar/NavBar.js';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import * as ImagePicker from 'expo-image-picker';
 
 export default function SignUp ({navigation}) {
   const [email, setEmail] = React.useState('');
@@ -15,10 +14,8 @@ export default function SignUp ({navigation}) {
   const [password, setPassword] = React.useState('');
   const [errorMessage, setErrorMessage] = React.useState('');
   const [uid, setUid] = React.useState('');
-  const [imageURL, setImageURL] = React.useState('');
 
-
-  const handleSignUp = async () => {
+  const handleSignUp = () => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -26,7 +23,6 @@ export default function SignUp ({navigation}) {
         // Handle successful registration
         let user = userCredential.user;
         console.log(user);
-        console.log(user.uid)
         setUid(user.uid);
         console.log('Newly registered user:', user.email);
         return firebase.auth().signInWithEmailAndPassword(email, password);
@@ -44,27 +40,10 @@ export default function SignUp ({navigation}) {
         }
       });
   };
-
-
-  const handleImageUpload = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-    });
-
-    if (!result.cancelled) {
-      setImageURL(result.uri);
-      console.log(imageURL);
-    } else {
-      console.log('Image picker canceled.');
-    }
-  };
-
     return (
         <View>
             <TextInput
+              onChangeText={setEmail}
               onChangeText={setEmail}
               value={email}
               placeholder="Email"
@@ -72,9 +51,13 @@ export default function SignUp ({navigation}) {
             <TextInput
               onChangeText={setFullname}
               value={fullname}
+              onChangeText={setFullname}
+              value={fullname}
               placeholder="Full Name"
             />
             <TextInput
+              onChangeText={setUsername}
+              value={username}
               onChangeText={setUsername}
               value={username}
               placeholder="Username"
@@ -82,7 +65,10 @@ export default function SignUp ({navigation}) {
             <TextInput
               onChangeText={setPassword}
               value={password}
+              onChangeText={setPassword}
+              value={password}
               placeholder="Password"
+              secureTextEntry
               secureTextEntry
             />
 
@@ -91,9 +77,9 @@ export default function SignUp ({navigation}) {
               {imageURL && <Image source={{ uri: imageURL }} />}
             <Button
               title="Next"
-              onPress={ async () => {
-                await handleSignUp();
-                await navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
+              onPress={() => {
+                handleSignUp();
+                navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username })
               }
               }
             />
@@ -101,6 +87,9 @@ export default function SignUp ({navigation}) {
             <Text> Have an Account? </Text>
             <Button
               title="Log in"
+              onPress={() => {
+                  navigation.navigate('Login', {name: username});
+              }}
               onPress={() => {
                   navigation.navigate('Login', {name: username});
               }}
