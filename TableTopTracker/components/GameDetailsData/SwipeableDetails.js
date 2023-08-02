@@ -16,10 +16,20 @@ const SwipeableDetails = () => {
       },
     ]),
     onPanResponderRelease: () => {
-      Animated.spring(
-        pan, // Auto-multiplexed
-        {toValue: {x: 0, y: 0}, useNativeDriver: true}, // Back to zero
-      ).start();
+
+      if (pan.y._value < -200) {
+        console.log(pan);
+        Animated.spring(
+          pan, // Auto-multiplexed
+          {toValue: {x: 0, y: -400}, useNativeDriver: true}, // Back to zero
+        ).start();
+      } else {
+        console.log(pan);
+        Animated.spring(
+          pan, // Auto-multiplexed
+          {toValue: {x: 0, y: 0}, useNativeDriver: true},
+        ).start();
+      }
     },
   });
 
@@ -70,7 +80,8 @@ const styles = StyleSheet.create({
     width: '100%',
     bottom: '0',
     borderWidth: 20,
-    borderRadius: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     backgroundColor: '#FBF5E7',
     borderColor: '#FBF5E7',
     padding: 20,
