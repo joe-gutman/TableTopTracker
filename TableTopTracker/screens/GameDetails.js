@@ -1,5 +1,6 @@
 //change name of file to whatever you want :D
-import { StyleSheet, Image, ImageBackground, View, TouchableOpacity } from 'react-native';
+import { useRef, useState } from 'react';
+import { StyleSheet, Image, ImageBackground, View, TouchableOpacity, PanResponder, Animated } from 'react-native';
 import NavBar from '../components/NavBar/NavBar.js';
 import { Card, Text, BottomNavigation } from 'react-native-paper';
 
@@ -28,78 +29,56 @@ const dummyGame = {
   category: ["Abstract Category", "Science Fiction"]
 }
 
+const styles = StyleSheet.create({
+  parentContainer: {
+    display: 'flex',
+    height: '100%',
+    width: '100%'
+  },
+  imageContainer: {
+    flex: 1,
+  },
+  image: {
+    height: '100%',
+    width: '100%',
+    resizeMode: 'contain',
+  },
+  detailsContainer: {
+    flex: 1,
+    borderTopLeftRadius:10,
+    borderTopRightRadius: 10,
+    backgroundColor: '#FBF5E7',
+    padding: 50,
+  },
+  card: {
+    position: 'absolute',
+    bottom: '0'
+  }
+});
+
+// CHANGE HEIGHT OF IMAGE CARD
+const cardStyles = StyleSheet.create({
+  image: {
+    height:'50%',
+    width: '100%',
+  },
+})
+
 export default function GameDetails ({navigation, route}) {
   const { user } = route.params;
-  const styles = StyleSheet.create({
-    parentContainer: {
-      display: 'flex',
-      flex: 1,
-      position: 'absolute',
-      bottom: '0',
-      alignItems: 'flex-end'
-    },
-    imageContainer: {
-      flex: 1,
-    },
-    image: {
-      height: '100%',
-      width: '100%',
-      resizeMode: 'contain',
-    },
-    detailsContainer: {
-      flex: 1,
-      borderTopLeftRadius:10,
-      borderTopRightRadius: 10,
-      backgroundColor: '#FBF5E7',
-      padding: 50,
-    },
-  });
 
-  // CHANGE HEIGHT OF IMAGE CARD
-  const cardStyles = StyleSheet.create({
-    image: {
-      height:'50%',
-      width: '100%',
-    },
-  })
+    return (
+      <View style={styles.parentContainer}>
+        <ImageBackground
+            style={styles.image}
+            resizeMode="cover"
+            source={{
+                uri: `${dummyGame.image}`,
+              }}
+        >
 
-  return (
 
-      <ImageBackground
-          style={styles.image}
-          resizeMode="cover"
-          source={{
-              uri: 'https://cf.geekdo-images.com/Li9nJ4DOsFs1CuwZjkyg3g__original/img/29VmqkcRWoq_WS9uGtftdf6teyU=/0x0/filters:format(jpeg)/pic582574.jpg',
-            }}
-      >
-        <View style={styles.parentContainer}>
-      {/* <View style={styles.imageContainer}>
-
-      </View>
-      <View style={styles.detailsContainer}>
-        <Text>{dummyGame.name}</Text>
-        <Text>{
-          // render player number or number range
-          (dummyGame.minPlayers===dummyGame.maxPlayers)
-            ? dummyGame.minPlayers
-            : `${dummyGame.minPlayers} - ${dummyGame.maxPlayers}`}
-          {((dummyGame.minPlayers===dummyGame.maxPlayers) && (dummyGame.minPlayers===1))
-            ? ` player`
-            : ` players`
-          } </Text>
-        <Text>Recommended Age: {dummyGame.age}</Text>
-        <Text>{dummyGame.category.join(', ')}</Text>
-        <Text>{(dummyGame.minPlayTime===dummyGame.maxPlayTime) ?
-          (dummyGame.minPlayTime) :
-          `${dummyGame.minPlayTime} - ${dummyGame.maxPlayTime}`} minutes
-          </Text>
-        <Text>Complexity: </Text>
-        <Text>Released: {dummyGame.year}</Text>
-        <Text>{dummyGame.description}</Text>
-        <NavBar navigation={navigation} user={user}/>
-      </View> */}
-
-        <Card>
+        <Card style={styles.card}>
           <Card.Title title={dummyGame.name} subtitle={dummyGame.secondaryName} />
           {/* <Card.Cover
             style={cardStyles.image}
@@ -127,8 +106,34 @@ export default function GameDetails ({navigation, route}) {
         </Card>
 
       <NavBar navigation={navigation} user={user}/>
-      </View>
-      </ImageBackground>
 
+      </ImageBackground>
+    </View>
   )
 }
+
+/* <View style={styles.imageContainer}>
+
+      </View>
+      <View style={styles.detailsContainer}>
+        <Text>{dummyGame.name}</Text>
+        <Text>{
+          // render player number or number range
+          (dummyGame.minPlayers===dummyGame.maxPlayers)
+            ? dummyGame.minPlayers
+            : `${dummyGame.minPlayers} - ${dummyGame.maxPlayers}`}
+          {((dummyGame.minPlayers===dummyGame.maxPlayers) && (dummyGame.minPlayers===1))
+            ? ` player`
+            : ` players`
+          } </Text>
+        <Text>Recommended Age: {dummyGame.age}</Text>
+        <Text>{dummyGame.category.join(', ')}</Text>
+        <Text>{(dummyGame.minPlayTime===dummyGame.maxPlayTime) ?
+          (dummyGame.minPlayTime) :
+          `${dummyGame.minPlayTime} - ${dummyGame.maxPlayTime}`} minutes
+          </Text>
+        <Text>Complexity: </Text>
+        <Text>Released: {dummyGame.year}</Text>
+        <Text>{dummyGame.description}</Text>
+        <NavBar navigation={navigation} user={user}/>
+      </View> */
