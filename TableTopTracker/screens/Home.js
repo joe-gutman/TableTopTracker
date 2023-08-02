@@ -9,13 +9,11 @@ import NavBar from '../components/NavBar/NavBar.js';
 export default function Home ({ navigation, route }) {
   const [ listTypes, setListTypes ] = useState([ 'All', 'My Games', 'Recommendations', 'Liked', 'Wishlist' ]);
   const [ selectedList, setSelectedList ] = useState(listTypes[0]);
-  let { user, handleLogout } = route.params;
-  console.log('route.params', route.params);
-  console.log('user in home page: ', user);
+  const {user, handleLogout } = route.params;
 
   return (
     <View>
-        <Text>This is {user.email}'s HomePage</Text>
+        {/* <Text>`This is ${user.data.username}'s HomePage`</Text> */}
         <View style={ styles.gameListContent }>
             <ButtonList
             listTypes={ listTypes }
@@ -33,10 +31,10 @@ export default function Home ({ navigation, route }) {
           <Button
             title="Game Details"
             onPress={() => {
-              navigation.navigate('Game Details', {user: user})
+              navigation.navigate('Game Details', {user: user.username})
             }}>Game Detail</Button>
         </View>
-        <NavBar navigation={navigation} user={user}/>
+        <NavBar navigation={navigation} user={user.username}/>
     </View>
   )
 }
