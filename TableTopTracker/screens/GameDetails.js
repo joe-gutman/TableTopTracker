@@ -35,9 +35,6 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
-  imageContainer: {
-    flex: 1,
-  },
   image: {
     height: '100%',
     width: '100%',
@@ -50,9 +47,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#FBF5E7',
     padding: 50,
   },
-  card: {
+  descriptionCard: {
     position: 'absolute',
     bottom: '0'
+  },
+  imageCard: {
+    height: 400,
+    width: 400,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 50,
+    border: 'solid',
+    borderRadius: 5,
   },
   table: {
     display: 'flex',
@@ -64,27 +70,35 @@ const styles = StyleSheet.create({
   }
 });
 
-// CHANGE HEIGHT OF IMAGE CARD
-const cardStyles = StyleSheet.create({
-  image: {
-    height:'50%',
-    width: '100%',
-  },
-})
 
 export default function GameDetails ({navigation, route}) {
   const { user } = route.params;
 
   return (
     <View style={styles.parentContainer}>
+
+      {/* wood background */}
       <ImageBackground
           style={styles.image}
-          resizeMode="cover"
           source={{
-              uri: `${dummyGame.image}`,
+              uri: `https://freerangestock.com/sample/140799/wood-background--dark-wooden-background.jpg`,
             }}
       >
-      <Card style={styles.card}>
+
+      {/* game image tile */}
+      <View style={styles.imageCard}>
+        <ImageBackground
+          style={styles.image}
+          source={{
+            uri: dummyGame.image,
+          }}
+          >
+        </ImageBackground>
+      </View>
+
+      {/* game description card */}
+{/*
+      <Card style={styles.descriptionCard}>
         <Card.Title title={dummyGame.name} subtitle={dummyGame.secondaryName} />
           <Card.Content>
             <View style={styles.table}>
@@ -112,7 +126,7 @@ export default function GameDetails ({navigation, route}) {
             </View>
           <Text>{dummyGame.description}</Text>
         </Card.Content>
-      </Card>
+      </Card> */}
 
       <NavBar navigation={navigation} user={user}/>
 
@@ -120,29 +134,3 @@ export default function GameDetails ({navigation, route}) {
     </View>
   )
 }
-
-/* <View style={styles.imageContainer}>
-
-      </View>
-      <View style={styles.detailsContainer}>
-        <Text>{dummyGame.name}</Text>
-        <Text>{
-          // render player number or number range
-          (dummyGame.minPlayers===dummyGame.maxPlayers)
-            ? dummyGame.minPlayers
-            : `${dummyGame.minPlayers} - ${dummyGame.maxPlayers}`}
-          {((dummyGame.minPlayers===dummyGame.maxPlayers) && (dummyGame.minPlayers===1))
-            ? ` player`
-            : ` players`
-          } </Text>
-        <Text>Recommended Age: {dummyGame.age}</Text>
-        <Text>{dummyGame.category.join(', ')}</Text>
-        <Text>{(dummyGame.minPlayTime===dummyGame.maxPlayTime) ?
-          (dummyGame.minPlayTime) :
-          `${dummyGame.minPlayTime} - ${dummyGame.maxPlayTime}`} minutes
-          </Text>
-        <Text>Complexity: </Text>
-        <Text>Released: {dummyGame.year}</Text>
-        <Text>{dummyGame.description}</Text>
-        <NavBar navigation={navigation} user={user}/>
-      </View> */
