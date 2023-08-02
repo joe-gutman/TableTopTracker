@@ -8,7 +8,7 @@ export default function ButtonList({ listTypes, selectedList, setSelectedList })
     <View style={ styles.container }>
       <ScrollView horizontal>
         { listTypes.map((list, i) => (
-          <View style={ styles.buttonMargin }>
+          <View style={ styles.buttonMargin } key = {i}>
               <Button
                 key={ list }
                 title={ list }
