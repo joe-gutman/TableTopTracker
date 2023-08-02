@@ -3,10 +3,8 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 import firebase from 'firebase/compat/app'; // Update the import path
 import 'firebase/compat/auth'; // Import the authentication module with 'compat'
-
 import NavBar from '../components/NavBar/NavBar.js';
 
-import axios from 'axios';
 import { fetchUser } from '../util/api.js';
 
 export default function Login ({navigation, route}) {
