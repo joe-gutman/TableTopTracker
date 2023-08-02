@@ -15,8 +15,8 @@ export default function Home ({ navigation, route }) {
   console.log('route.params', route.params);
   console.log('user in home page: ', user);
 
-  console.dir(allDummyGames);
-  console.dir(personalDummyGames);
+  // console.dir(allDummyGames);
+  // console.dir(personalDummyGames);
 
   return (
     <View>
