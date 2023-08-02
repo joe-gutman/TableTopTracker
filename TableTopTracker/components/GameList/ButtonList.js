@@ -8,7 +8,7 @@ export default function ButtonList({ collections, listType, setListType }) {
     <View style={ styles.container }>
       <ScrollView horizontal>
         { collections.map((collection, i) => (
-          <View style={ styles.buttonMargin } key = {i}>
+          <View style={ styles.buttonMargin } key = { i }>
               <Button
                 key={ collection }
                 title={ collection }
