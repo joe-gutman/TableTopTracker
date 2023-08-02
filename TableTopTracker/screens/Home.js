@@ -17,27 +17,34 @@ export default function Home ({ navigation, route }) {
 
   // console.dir(allDummyGames);
   // console.dir(personalDummyGames);
+  const [ listTypes, setListTypes ] = useState([ 'All', 'My Games', 'Recommendations', 'Liked', 'Wishlist' ]);
+  const [ selectedList, setSelectedList ] = useState(listTypes[0]);
+  const {user, handleLogout } = route.params;
 
   return (
     <View>
-        <Text>This is {user.email}'s HomePage</Text>
+        {/* <Text>`This is ${user.data.username}'s HomePage`</Text> */}
         <View style={ styles.gameListContent }>
-          <ButtonList
-            collections={ collections }
-            listType={ listType }
-            setListType={ setListType }
-          />
-            <Button
-              title="Game Details"
-              onPress={() => {
-                navigation.navigate('Game Details', {user: user})
-              }}>Game Detail</Button>
-          <GamesList
+            <ButtonList
+            listTypes={ listTypes }
+            selectedList={ selectedList }
+            setSelectedList={ setSelectedList }
+            />
+            {/* <GamesList
             games={ allDummyGames }
-            listType={ listType }
-          />
+            selectedList={ selectedList }
+            />
+            {<Recommendations games={ recommendedDummyGames } />}
+            {<MyGames games={ personalDummyGames } />} */}
         </View>
-        <NavBar navigation={navigation} user={user}/>
+        <View>
+          <Button
+            title="Game Details"
+            onPress={() => {
+              navigation.navigate('Game Details', {user: user.username})
+            }}>Game Detail</Button>
+        </View>
+        <NavBar navigation={navigation} user={user.username}/>
     </View>
   )
 }

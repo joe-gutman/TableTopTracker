@@ -17,3 +17,6 @@ export const fetchCollectionGames = (collectionId) =>
 
 export const fetchUser = (data) =>
   makeRequest(`/users?uid=${data.uid}`, 'GET');
+
+export const postNewUser = (data) =>
+  makeRequest(`/users`, 'POST', data);
