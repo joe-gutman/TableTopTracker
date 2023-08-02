@@ -1,3 +1,7 @@
+# added by me
+.gitignore
+firebaseConfig.js
+
 .env
 *.DS_Store
 *.map
@@ -7,6 +11,7 @@ config.js
 node_modules/
 coverage/
 dist/
+.expo/
 *.vscode
 
 **/.idea
