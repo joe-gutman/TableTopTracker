@@ -19,4 +19,8 @@ export const fetchUser = (data) =>
   makeRequest(`/users?uid=${data.uid}`, 'GET');
 
 export const postNewUser = (data) =>
-  makeRequest(`/users`, 'POST', data);
+  makeRequest(`/users`, 'POST', data)
+  .catch((error) => {
+    console.error('Error while posting new user:', error);
+    throw error;
+  })
