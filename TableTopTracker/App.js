@@ -47,6 +47,7 @@ export default function App() {
     <PaperProvider theme={ theme }>
       <NavigationContainer>
         <Stack.Navigator>
+            
             <Stack.Screen
               name="Landing"
               component={Landing}
@@ -66,7 +67,7 @@ export default function App() {
       </NavigationContainer>
     </PaperProvider>
   );
-}
+}        
 
 // AppRegistry.registerComponent(appName, () => App);
 

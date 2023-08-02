@@ -15,7 +15,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
 
-//initializer.populateBoardGames();
+// initializer.populateBoardGames();
 
 app.get('/game', function(req, res) {
   getGameController.getGame(req, res);

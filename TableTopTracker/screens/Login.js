@@ -3,9 +3,10 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 import firebase from 'firebase/compat/app'; // Update the import path
 import 'firebase/compat/auth'; // Import the authentication module with 'compat'
-
 import NavBar from '../components/NavBar/NavBar.js';
+import axios from 'axios';
 
+import { fetchUser } from '../util/api.js';
 
 export default function Login ({navigation, route}) {
     const [email, setEmail] = useState('');
@@ -21,7 +22,11 @@ export default function Login ({navigation, route}) {
         let user = userCredential.user;
         console.log('USER', user)
         console.log('Logged in user:', user.email);
-        // Navigate to the desired screen after successful login
+        return fetchUser(user);
+    })
+    .then(function (response) {
+        const user = response.data;
+         // Navigate to the desired screen after successful login
         navigation.navigate('Home', { user, handleLogout });
     })
     .catch((error) => {
@@ -56,22 +61,21 @@ export default function Login ({navigation, route}) {
     });
     };
 
-  return (
-    <View>
-      <TextInput
-      value={email}
-      onChangeText={(text) => setEmail(text)}
-      placeholder="Email"
-      />
-      <TextInput
-      value={password}
-      onChangeText={(text) => setPassword(text)}
-      placeholder="Password"
-      secureTextEntry
-      />
-      <Button title="Log in" onPress={handleLogin} />
-      {errorMessage ? <Text>{errorMessage}</Text> : null}
-
-    </View>
-  )
+    return (
+        <View>
+        <TextInput
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            placeholder="Email"
+        />
+        <TextInput
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            placeholder="Password"
+            secureTextEntry
+        />
+        <Button title="Log in" onPress={handleLogin} />
+            {errorMessage ? <Text>{errorMessage}</Text> : null}
+        </View>
+)
 }
