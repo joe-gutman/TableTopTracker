@@ -18,10 +18,7 @@
     "expo": "~49.0.5",
     "expo-font": "~11.4.0",
     "expo-image-picker": "~14.3.2",
-<<<<<<< HEAD
-=======
     "expo-permissions": "~14.2.1",
->>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
     "expo-status-bar": "~1.6.0",
     "firebase": "^10.1.0",
     "react": "18.2.0",

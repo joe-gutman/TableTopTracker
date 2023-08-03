@@ -1,9 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import NavBar from '../components/NavBar/NavBar.js';
-import { postNewUser } from '../util/api.js';
-=======
 
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
@@ -14,20 +9,12 @@ import { postNewUser } from '../util/api.js';
 import {SelectList, MultipleSelectList} from 'react-native-dropdown-select-list'
 
 
->>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
 export default function NewUserPreferences ({navigation, route}) {
   const {uid, email, fullname, username, profilePhoto } = route.params;
   const [age, onChangeAge] = React.useState('');
   const [preferred_playstyle, onChangeFavoritePlaystyle] = React.useState('');
   const [favoriteMythicalCreature, onChangeFavoriteMythicalCreature] = React.useState('');
   const [favoriteBoardGame, onChangeFavoriteBoardGame] = React.useState('');
-<<<<<<< HEAD
-  const newUser = { username: username, email: email, fullname:fullname, profilePhoto: profilePhoto, age:age, preferred_playstyle: preferred_playstyle, favoriteMythicalCreature:favoriteMythicalCreature, favoriteBoardGame:favoriteBoardGame}
-    return (
-        <View>
-            <Text> Hi {username}, tell me about yourself! </Text>
-            <TextInput
-=======
   const [selectedCategories, setSelectedCategories] = React.useState([]);
   const [selected, setSelected] = React.useState("");
 
@@ -50,25 +37,11 @@ export default function NewUserPreferences ({navigation, route}) {
         <View>
             <Text> Hi {username}, tell me about yourself! </Text>
             <TextInput style={{backgroundColor: '#FFF5DD', marginBottom: 10, width:800, }}
->>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
               onChangeText={onChangeAge}
               value={age}
               placeholder="How old are you?"
               required
             />
-<<<<<<< HEAD
-            <TextInput
-              onChangeText={onChangeFavoritePlaystyle}
-              value={preferred_playstyle}
-              placeholder="What's your preferred playstyle?"
-            />
-            <TextInput
-              onChangeText={onChangeFavoriteMythicalCreature}
-              value={favoriteMythicalCreature}
-              placeholder="Favorite Mythical Creature?"
-            />
-            <TextInput
-=======
             'Select your preferred playstyle'
             <SelectList
               data={playstyles}
@@ -89,16 +62,12 @@ export default function NewUserPreferences ({navigation, route}) {
           />
 
             <TextInput style={{backgroundColor: '#FFF5DD', marginBottom: 10, width:800 }}
->>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
               onChangeText={onChangeFavoriteBoardGame}
               value={favoriteBoardGame}
               placeholder="Favorite board game?"
               required
             />
             <Text>
-<<<<<<< HEAD
-            LIST GAME CATEGORIES HERE
-=======
 
             'Select your favorite categories'<br></br>
             <MultipleSelectList
@@ -113,7 +82,6 @@ export default function NewUserPreferences ({navigation, route}) {
             />
 
 <br></br>
->>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
             <Button
               title="Next"
               onPress={async () => {
@@ -123,10 +91,6 @@ export default function NewUserPreferences ({navigation, route}) {
               }
               }
             />
-<<<<<<< HEAD
-=======
-
->>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
             </Text>
         </View>
     )
