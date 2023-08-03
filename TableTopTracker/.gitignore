@@ -7,9 +7,9 @@ firebaseConfig.js
 node_modules/
 
 # Expo
-.expo/
-dist/
-web-build/
+.expo/*
+dist/*
+web-build/*
 
 # Native
 *.orig.*

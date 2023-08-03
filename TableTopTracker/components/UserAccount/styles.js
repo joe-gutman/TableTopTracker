@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  circleContainer: { 
+  circleContainer: {
     width: 150,
     height: 150,
     borderRadius: 75,
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#ECE4B7',
-    // borderWidth: 1, 
-    borderColor: 'black', 
+    // borderWidth: 1,
+    borderColor: 'black',
     borderStyle: 'solid',
   },
   InputContainer: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     backgroundColor: '#FFF5DD',
     borderBottomWidth: 2, // Add border width
-    borderColor: 'bla ck', // Set border color
+    borderColor: 'black', // Set border color
     borderStyle: 'solid',
     borderRadius: 8
   },
