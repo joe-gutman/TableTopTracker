@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, { useRef, useState } from 'react';
 import {Animated, PanResponder, StyleSheet, View} from 'react-native';
 import { Card, Text, BottomNavigation } from 'react-native-paper';
 
@@ -24,10 +24,10 @@ const SwipeableDetails = () => {
       if (pan.y._value < -200 || gestureState.vy < 0) {
         Animated.spring(
           pan,
-          {toValue:{x: pan.x._value, y: -400}}
+          {toValue:{x: pan.x._value, y: -350}}
         ).start(() => {
             pan.setValue({x: 0, y: 0})
-            pan.setOffset({x: 0, y: -400})
+            pan.setOffset({x: 0, y: -350})
         });
       }
       else {
@@ -40,25 +40,6 @@ const SwipeableDetails = () => {
         });
       }
     }
-    // {
-    //   if (pan.y._value < -200 || gestureState.vy < 0) {
-    //     console.log(pan);
-    //     Animated.spring(
-    //       pan, // Auto-multiplexed
-    //       {toValue: {x: 0, y: -400}, useNativeDriver: true}, // Back to zero
-    //     ).start(() => {
-    //       pan.setOffset({x: 0, y: -400});
-    //     });
-    //   } else {
-    //     console.log(pan);
-    //     Animated.spring(
-    //       pan, // Auto-multiplexed
-    //       {toValue: {x: 0, y: 0}, useNativeDriver: true},
-    //     ).start(() => {
-    //       pan.setOffset({x: 0, y: 0});
-    //     });
-    //   }
-    // },
   });
 
   return (
@@ -67,7 +48,7 @@ const SwipeableDetails = () => {
         {...panResponder.panHandlers}
         style={[pan.getLayout(), styles.tile]}
       >
-          <Text>{dummyGame.name}</Text>
+          <Text style={styles.titleText}>{dummyGame.name}</Text>
           <View style={styles.table}>
             <View style={styles.column}>
               <Text>{dummyGame.category.join(', ')}</Text>
@@ -102,6 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    fontSize:  '1.5em',
   },
   tile: {
     position: 'absolute',
@@ -118,10 +100,15 @@ const styles = StyleSheet.create({
   table: {
     display: 'flex',
     flexDirection: 'row',
-    marginBottom: '10px'
+    marginBottom: '10px',
+    paddingBottom: 20,
   },
   column: {
     flex: 1,
+  },
+  titleText: {
+    fontSize: '1.5em',
+    paddingBottom: 20,
   }
 });
 

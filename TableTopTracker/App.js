@@ -46,7 +46,7 @@ export default function App() {
     <PaperProvider theme={ theme }>
       <NavigationContainer>
         <Stack.Navigator>
-            
+
             <Stack.Screen
               name="Landing"
               component={Landing}
@@ -58,14 +58,14 @@ export default function App() {
             <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
             <Stack.Screen name="User Account" component={UserAccount} />
             <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Game Details" component={GameDetails}/>
             <Stack.Screen name="Game Warden" component={GameWarden}/>
+            <Stack.Screen name="Game Details" component={GameDetails}/>
             <Stack.Screen name="Search Results" component={SearchResults}/>
             <Stack.Screen name="Search" component={Search}/>
           </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
   );
-}        
+}
 
 // AppRegistry.registerComponent(appName, () => App);
