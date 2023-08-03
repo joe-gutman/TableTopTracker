@@ -19,6 +19,8 @@ export default function SickSlider() {
         onValueChange={ setCount }
         // step={ 10 }
         // Idk, probably don't need to step for mobile interface
+
+        // arbitrary values
         minimumValue={ 10 }
         maximumValue={ 50 }
       />
