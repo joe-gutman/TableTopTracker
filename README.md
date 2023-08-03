@@ -79,3 +79,9 @@ GET /collections?userId=[USER_ID]
 GET /collections/:collectionId
 
 - Req Paramaters = collectionId
+
+**As of 8/2/2023** 
+
+1. To run application properly, yarn and npm install in the server and yarn install in TableTopTracker
+2. Then run both the server and the expo start.
+3. SHOULD WORK!!! 

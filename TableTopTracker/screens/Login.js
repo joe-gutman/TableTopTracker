@@ -7,6 +7,18 @@ import NavBar from '../components/NavBar/NavBar.js';
 
 import { fetchUser } from '../util/api.js';
 
+const dummydata = {
+    "uid":"yElHRF2wa2NDBQ9myvTXVEd60Tt2",
+    "email":"admin@tabletop.com",
+    "fullname": "Samantha Johnson",
+    "username": "SamPlayzGames",
+    "age": 28,
+    "preferred_playstyle": "Strategic and Competitive",
+    "favorite_mythical_creature": "Dragon",
+    "favorite_board_game": "Catan (Settlers of Catan)",
+    "favorite_category": "Eurogames"
+};
+
 export default function Login ({navigation, route}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,7 +29,7 @@ export default function Login ({navigation, route}) {
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-        // Handle successful login
+        // Handle successful
         let user = userCredential.user;
         console.log('USER', user)
         console.log('Logged in user:', user.email);
@@ -26,7 +38,8 @@ export default function Login ({navigation, route}) {
     .then(function (response) {
         const user = response.data;
          // Navigate to the desired screen after successful login
-        navigation.navigate('Home', { user, handleLogout });
+         // LOGIN IS USING DUMMY DATA
+        navigation.navigate('Home', { user: dummydata, handleLogout: handleLogout });
     })
     .catch((error) => {
         // Handle login errors
