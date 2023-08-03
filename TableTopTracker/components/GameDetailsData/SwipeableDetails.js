@@ -9,6 +9,23 @@ const SwipeableDetails = () => {
   const dispatch = useDispatch();
   const pan = useRef(new Animated.ValueXY()).current;
   const [modal, setModal] = useState(false);
+  const [tilePosition, setTilePosition] = useState(0);
+  const [firstRendered, setFirstRendered] = useState(true);
+
+  if (firstRendered) {
+    setFirstRendered(false);
+    setTilePosition(1);
+    setTimeout(
+      () => {
+        Animated.spring(
+          pan,
+          {toValue:{x: pan.x._value, y: -350}}
+        ).start(() => {
+            pan.setValue({x: 0, y: 0})
+            pan.setOffset({x: 0, y: -350})
+        });
+      }, 500)
+  }
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
