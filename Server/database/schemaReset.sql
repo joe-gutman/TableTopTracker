@@ -20,7 +20,8 @@ CREATE TABLE users (
   age int,
   preferred_playstyle varchar(64),
   favorite_mythical_creature varchar(64),
-  favorite_board_game varchar(64)
+  favorite_board_game varchar(64),
+  selectedCategories varchar (200)
 );
 
 create table friends (

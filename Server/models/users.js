@@ -6,7 +6,7 @@ exports.createUser = (userData) => {
   for (let k of keys) {
     columns.push(userData[k]);
   }
-  var queryStr = 'insert into users (username, email, fullname, photo, age, preferred_playstyle, favorite_mythical_creature, favorite_board_game)values ($1, $2, $3, $4, $5, $6, $7, $8) returning id'
+  var queryStr = 'insert into users (username, email, fullname, photo, age, preferred_playstyle, favorite_mythical_creature, favorite_board_game, selectedCategories)values ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning id'
   return db.query(queryStr, columns)
 }
 
@@ -31,6 +31,30 @@ exports.createDefaultCollections = (userId) => {
 // );
 
 
-exports.getUser = (userData) => {
-
+exports.getUserByEmail = (email) => {
+  var queryStr = "select * from users where email = ($1)"
+  return db.query(queryStr, [email]);
 }
+
+exports.getCollectionsById = (userId) => {
+  var queryStr = "select * from collections where user_id = ($1)"
+  return db.query(queryStr, [userId]);
+}
+
+exports.getGamesByListOfCollections = (list) => {
+  var queries = [];
+  for (let l of list) {
+    var queryStr = "select * from collections_games_join inner join games on game_id = games.id where collection_id = ($1)"
+    queries.push(db.query(queryStr, [l.id]))
+  }
+  return Promise.all(queries);
+}
+
+// create table collections_games_join (
+//   id serial primary key,
+//   game_id int,
+//   collection_id int,
+
+//   foreign key (game_id) references games(id),
+//   foreign key (collection_id) references collections(id)
+// );

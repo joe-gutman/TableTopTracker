@@ -7,7 +7,7 @@ import styles from './styles';
   1. handle appropriate filtering logic
   2. pass in list (state in parent component, i.e. screen)
 */
-export default function GamesList({ games, listType }) {
+export default function GamesList({ handlePress, games, listType }) {
   const rotateAnimValue = new Animated.Value(0);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function GamesList({ games, listType }) {
         <FlatList
           data={ games }
           renderItem={ ({ item }) => (
-            <GameCard { ...item } />
+            <GameCard handlePress={handlePress} { ...item } />
           ) }
           keyExtractor={ ({ boardgameId }) => boardgameId.toString() }
           style={ styles.listContainer }

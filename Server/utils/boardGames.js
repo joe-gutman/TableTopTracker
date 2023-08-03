@@ -1,75 +1,3 @@
-const Get = require('../models/addGame.js');
-const db = require('./db.js');
-
-exports.populateListOfGames = async (listOfGames) => {
-  var errors = [];
-  for (let game of listOfGames) {
-    try {
-      var data = await Get.getAllGameDetails(game);
-      if (data.error) {
-        errors.push(data);
-      } else {
-        await Get.insertGameImageAndCategories(data)
-      }
-    } catch (error) {
-      console.log('error in populate list of games');
-      errors.push(error);
-    }
-  }
-  return errors;
-};
-
-exports.populateBoardGames = async () => {
-  var uniqueBoardGames = [];
-  for (let name of minimal) {
-    if (!uniqueBoardGames.includes(name)) {
-      uniqueBoardGames.push(name);
-    }
-  }
-  var currentFirstIndex = 0;
-  var currentLastIndex = 10;
-  var errors = [];
-  while (currentFirstIndex < uniqueBoardGames.length) {
-    var currentListOfGames = uniqueBoardGames.slice(currentFirstIndex, currentLastIndex);
-    var e = await exports.populateListOfGames(currentListOfGames)
-    errors = [...errors, ...e];
-    currentFirstIndex += 10;
-    currentLastIndex += 10;
-  }
-  console.log('finished');
-  console.log(errors);
-}
-
-
-
-
-
-const nanErrors = [
-  'Tâb', 'Tri-nim', 'Sho', 'Okey', 'Chapayev', 'Carrom', 'Thayaam'
-]
-
-
-const testOne = [
-  "A Game of War",
-  "Abalone",
-  "18XX",
-  "Asalto",
-  "Backgammon",
-  "BattleLore"
-]
-
-const minimal = [
-  "A Game of War",
-  "Abalone",
-  "Agon",
-  "Android: Netrunner",
-  "Arimaa",
-  "Asalto",
-  "Backgammon",
-  "BattleLore",
-  "Battleship"
-]
-
 const boardGames = [
   // Strategy games
   "A Game of War",
@@ -81,6 +9,7 @@ const boardGames = [
   "Backgammon",
   "BattleLore",
   "Battleship",
+  "Blockade",
   "Blood Bowl",
   "Bul",
   "Camelot",
@@ -162,6 +91,7 @@ const boardGames = [
   "Xiangqi (Chinese chess)",
   "YINSH",
   "ZÈRTZ",
+
   // Multi-player elimination board games
   // Participants are typically eliminated before game end.
   "13 Dead End Drive",
@@ -217,6 +147,7 @@ const boardGames = [
   "Tsuro",
   "Tsuro of the Seas",
   "War on Terror, The Boardgame",
+
   // European race games
   "Cartagena",
   "Chicken Cha Cha Cha",
@@ -225,6 +156,7 @@ const boardGames = [
   "Hare and Tortoise",
   "Mississippi Queen",
   "Transformers",
+
   // Multiplayer games without elimination
   // Everyone can play along to the end. These games are especially suited for mixed play with adults and children.
   "18XX",
@@ -533,6 +465,7 @@ const boardGames = [
 "Yahtzee",
 "Yut",
 "Zombies!!!",
+
 // Economics strategy games
 // Games involving scarce resources and strategy.
 "Acquire",
@@ -553,6 +486,7 @@ const boardGames = [
 "Squatter",
 "Ticket to Ride",
 "Triopoly",
+
 // Games of physical skill
 // Coordination, finesse, or other physical skills are necessary. Also known as dexterity games.
 "Blockhead!",
@@ -573,6 +507,7 @@ const boardGames = [
 "Subbuteo",
 "Twister",
 "Villa Paletti",
+
 // Children's games
 // The rules are easy to learn and the outcome is mostly or entirely due to chance.
 "Candy Land",
@@ -588,6 +523,7 @@ const boardGames = [
 "Mouse Trap",
 "Snakes and Ladders (Chutes and Ladders)",
 "Space Hop",
+
 // Cooperative games
 // Cooperative games in which all players need to work together to win.
 "Arkham Horror",
@@ -608,6 +544,7 @@ const boardGames = [
 "Spirit Island",
 "What Next?",
 "XCOM",
+
 // Word games
 // These games are based on the construction of words to score points.
 "25 Words or Less",
@@ -626,6 +563,7 @@ const boardGames = [
 "Trickster",
 "Upwords",
 "Words with Friends",
+
 // Gaming systems
 // These are sets that can be used to play multiple games.
 "Flibbix",

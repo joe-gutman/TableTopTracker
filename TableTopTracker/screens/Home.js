@@ -13,6 +13,7 @@ export default function Home ({ navigation, route }) {
 
   const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
   const [ listType, setListType ] = useState(collections[0]);
+  const [gameDetails, setGameDetails] = useState({});
 
   let { user, handleLogout } = route.params;
   console.log('route.params', route.params);
@@ -33,17 +34,20 @@ export default function Home ({ navigation, route }) {
           listType={ listType }
           setListType={ setListType }
         />
-        <GamesList
-          games={ allDummyGames }
-          listType={ listType }
-        />
-      </View>
-      <View>
+      {/* <View>
         <Button
           title="Game Details"
           onPress={() => {
-            navigation.navigate('Game Details', {user: user})
+            navigation.navigate('Game Details', {user: user.username})
           }}>Game Detail</Button>
+      </View> */}
+        <GamesList
+          handlePress={() => {
+            navigation.navigate('Game Details', {user: user})
+          }}
+          games={ allDummyGames }
+          listType={ listType }
+        />
       </View>
 
       <NavBar navigation={navigation} user={user}/>
