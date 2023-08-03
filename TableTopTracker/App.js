@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AppRegistry } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { name as appName } from './app.json';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import theme from './theme';
 import { StatusBar } from 'expo-status-bar';
@@ -30,14 +30,14 @@ const Stack = createNativeStackNavigator();
 //yarn add firebase, yarn add @react-native-firebase/auth
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import firebaseConfig from './firebaseConfig.js'
+import firebaseConfig from './firebaseConfig.js';
 
+//fonts
+import * as Font from 'expo-font';
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-
-
 
 export default function App() {
   const [ username, setUsername ] = useState('Arnold');

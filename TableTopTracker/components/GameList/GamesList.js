@@ -45,6 +45,7 @@ export default function GamesList({ handlePress, games, listType }) {
             <GameCard handlePress={handlePress} { ...item } />
           ) }
           keyExtractor={ ({ boardgameId }) => boardgameId.toString() }
+          style={ styles.listContainer }
         />
       </Animated.View>
     </View>

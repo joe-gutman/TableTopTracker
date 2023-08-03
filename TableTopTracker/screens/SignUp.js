@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
 
 import NavBar from '../components/NavBar/NavBar.js';
+import styles from './stylesheets/SignUpStyles.js';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -86,7 +87,7 @@ export default function SignUp ({navigation}) {
 
 
             <Button title="Upload Profile Photo" onPress={handleImageUpload} />
-              {imageURL && <Image source={{ uri: imageURL }} />}
+              {/* {imageURL && <Image source={{ uri: imageURL }} />} */}
             <Button
               title="Next"
               onPress={ async () => {
