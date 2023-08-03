@@ -11,7 +11,10 @@ export default function GameCard({
 
   return (
     <View style={ styles.card }>
-      <TouchableOpacity onPress={() => handlePress()}>
+      <TouchableOpacity onPress={() => {
+        // MISSING: category, image, age, gameId
+        handlePress();
+        }}>
         <Card>
           <Card.Content>
             {/* layout based on wireframe + site */}

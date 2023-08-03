@@ -13,6 +13,7 @@ export default function Home ({ navigation, route }) {
 
   const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
   const [ listType, setListType ] = useState(collections[0]);
+  const [gameDetails, setGameDetails] = useState({});
 
   let { user, handleLogout } = route.params;
   console.log('route.params', route.params);
