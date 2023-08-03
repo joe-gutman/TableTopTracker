@@ -14,10 +14,10 @@ export default function GameCard({
         <Card.Content style={styles.cardGrid}>
           {/* layout based on wireframe + site */}
           <View>
-          <Image
-            style={ styles.thumbnail } // needs to appear left of details
-            source={{ uri: thumbnail }}
-          />
+            <Image
+              style={ styles.thumbnail } // needs to appear left of details
+              source={{ uri: thumbnail }}
+            />
           </View>
           <View>
             <Text>{ minplayers } — { maxplayers } Players</Text>
