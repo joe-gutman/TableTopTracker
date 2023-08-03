@@ -4,8 +4,10 @@ import { FAB } from 'react-native-paper';
 import styles from './styles';
 
 export default function ButtonList({ collections, listType, setListType }) {
+
+  console.log('collections', collections);
   return (
-    <View style={ styles.container }>
+    <View style={styles.container}>
       <ScrollView horizontal>
         { collections.map((collection, i) => (
           <View style={ styles.buttonMargin } key = { i }>

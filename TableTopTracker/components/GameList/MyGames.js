@@ -11,7 +11,7 @@ export default function MyGames({ games }) {
         My Games
       </Text>
 
-      <GamesList games={ games } />
+      <GamesList games={ games } style={styles.listContainer}/>
     </View>
   );
 }
