@@ -4,8 +4,10 @@ import styles from '../../screens/stylesheets/collectionsStyles.js'
 
 export default function CollectionButton({ collection }) {
   return (
-    <View style={styles.cardButton}>
-      <Text>{collection}</Text>
+    <View style={styles.cardBorder}>
+      <View style={styles.cardMain}>
+      </View>
+      <Text style={styles.cardText}>{collection}</Text>
     </View>
   );
 }
