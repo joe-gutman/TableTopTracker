@@ -100,7 +100,7 @@ const SwipeableDetails = () => {
           <Pressable onPress={() =>
             dispatch(handleOpenModal('ADD_TO_COLLECTION', {game: dummyGame}))}
           >
-            <Text>Create Collection</Text>
+            <Text>Add To Collection</Text>
           </Pressable>
       </Animated.View>
     </View>

@@ -22,9 +22,9 @@ export default function Home ({ navigation, route }) {
   // console.dir(personalDummyGames);
 
   return (
-    <View style={{paddingBottom: '40px'}}>
-      {/* <Text>(Alex): Display Slider for Patrick</Text> */}
-      {/* <SickSlider /> */}
+    <View style={{paddingBottom: '150px'}}>
+      <Text>(Alex): Display Slider for Patrick</Text>
+      <SickSlider />
 
       <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
