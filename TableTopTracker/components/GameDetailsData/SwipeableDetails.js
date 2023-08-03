@@ -9,10 +9,10 @@ const SwipeableDetails = () => {
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onMoveShouldSetPanResponderCapture: () => true,
-    onPanResponderGrant: (e, gestureState) => {
-      pan.setOffset({y: pan.y._value});
-      // pan.setValue({y: pan.y._value});
-    },
+    // onPanResponderGrant: (e, gestureState) => {
+    //   pan.setOffset({x: 0, y: -400});
+    //   pan.setValue({x: 0, y: 0});
+    // },
     onPanResponderMove: Animated.event([
       null,
       {
@@ -26,8 +26,8 @@ const SwipeableDetails = () => {
           pan,
           {toValue:{x: pan.x._value, y: -400}}
         ).start(() => {
-            pan.setValue({x: 0, y: -400})
-            pan.setOffset({x: 0, y: 0})
+            pan.setValue({x: 0, y: 0})
+            pan.setOffset({x: 0, y: -400})
         });
       }
       else {
