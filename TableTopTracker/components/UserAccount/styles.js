@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1, 
     borderColor: 'black', 
     borderStyle: 'solid',
+    marginBottom: 5
   },
   InputContainer: {
     flexDirection: 'row',
@@ -71,12 +72,20 @@ const styles = StyleSheet.create({
     borderColor: 'black', // Set border color
     borderStyle: 'solid',
   },
-  text: {
+  InputText: {
     alignItems: 'center',
     // borderWidth: 1, // Add border width
     borderColor: 'black', // Set border color
     borderStyle: 'solid',
     fontSize: 18, // Set the font size in pixels
+    color: '02020B', // Set the text color
+  },
+  NameText: {
+    alignItems: 'center',
+    // borderWidth: 1, // Add border width
+    borderColor: 'black', // Set border color
+    borderStyle: 'solid',
+    fontSize: 36, // Set the font size in pixels
     color: '02020B', // Set the text color
   },
   eachCategory: {
@@ -86,7 +95,20 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     marginBottom: 10,
     padding: 2,
+  },
+  EditInput: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 4,
+    width: '90%',
+    height: 50,
+    marginTop: 15,
+    backgroundColor: '#FFF5DD',
+    borderBottomWidth: 2, // Add border width
+    borderColor: 'bla ck', // Set border color
+    borderStyle: 'solid',
+    borderRadius: 8
   }
 });
-
 export default styles;

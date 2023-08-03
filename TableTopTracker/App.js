@@ -31,6 +31,7 @@ const Stack = createNativeStackNavigator();
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import firebaseConfig from './firebaseConfig.js'
+import EditAccount from './screens/EditAccount';
 
 
 if (!firebase.apps.length) {
@@ -57,6 +58,7 @@ export default function App() {
             <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
             <Stack.Screen name="User Account" component={UserAccount} />
+            <Stack.Screen name="Edit Account" component={EditAccount} />
             <Stack.Screen name="Home" component={Home}/>
             <Stack.Screen name="Game Details" component={GameDetails}/>
             <Stack.Screen name="Game Warden" component={GameWarden}/>

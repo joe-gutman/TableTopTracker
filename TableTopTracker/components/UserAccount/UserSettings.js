@@ -84,44 +84,44 @@ export default function UserSettings ({navigation, route}) {
 
                 </View>
                 <View style = {styles.NameContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.NameText}>
                         {name}
                     </Text>
                 </View>
                 <View style = {styles.NameContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         {username}
                     </Text>
                 </View>
                 <View style = {styles.InputContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         Age:
                     </Text>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         {age}
                     </Text>
                 </View>
                 <View style = {styles.InputContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         Preferred Play Style:
                     </Text>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         {playStyle}
                     </Text>
                 </View>
                 <View style = {styles.InputContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         Mythical Creature:
                     </Text>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         Fairy
                     </Text>
                 </View>
                 <View style = {styles.InputContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         Favorite Game:
                     </Text>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         {favorite}
                     </Text>
                 </View>
