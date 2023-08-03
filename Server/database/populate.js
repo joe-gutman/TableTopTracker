@@ -40,6 +40,10 @@ exports.populateBoardGames = async () => {
   console.log(errors);
 }
 
+
+
+
+
 const nanErrors = [
   'Tâb', 'Tri-nim', 'Sho', 'Okey', 'Chapayev', 'Carrom', 'Thayaam'
 ]
