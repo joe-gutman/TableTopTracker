@@ -73,14 +73,7 @@ export default function Slider ({name, max, values}) {
         {leftDisplay}
       </View>
       <View style={outerContainer}>
-<<<<<<< HEAD
-        <House leftPosition={leftPosition} setLeftPosition={setLeftPosition} rightPosition={rightPosition} setRightPosition={setRightPosition} active={active} leftPositionTracker={leftPositionTracker} rightPositionTracker={rightPositionTracker} setLeftPositionTracker={setLeftPositionTracker} setRightPositionTracker={setRightPositionTracker} />
-      </View>
-      <View style={numberDisplays}>
-        {rightDisplay}
-=======
         <House leftPosition={leftPosition} setLeftPosition={setLeftPosition} active={active} />
->>>>>>> 7e0e1d31b7521dae1a14b46acb75dc14c09f1283
       </View>
     </View>
   )
