@@ -35,7 +35,9 @@ app.get('/game', function(req, res) {
 });
 
 app.post('/users', function(req, res) {
-  usersController.createUser(req, res);
+  console.log(req.body)
+  res.status(200).send(req.body)
+  // usersController.createUser(req, res);
 })
 
 app.get('/users', function(req, res) {

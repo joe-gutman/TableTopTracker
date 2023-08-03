@@ -20,7 +20,7 @@ export default function Home ({ navigation, route }) {
 
   return (
     <View>
-        <Text>This is {user.email}'s HomePage</Text>
+        {/* <Text>`This is ${user.data.username}'s HomePage`</Text> */}
         <View style={ styles.gameListContent }>
           <ButtonList
             collections={ collections }
@@ -37,7 +37,7 @@ export default function Home ({ navigation, route }) {
             listType={ listType }
           />
         </View>
-        <NavBar navigation={navigation} user={user}/>
+        <NavBar navigation={navigation} user={user.username}/>
     </View>
   )
 }
