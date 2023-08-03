@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors())
 
 // initializer.populateBoardGames();
-// adminInit.populateAdmin();
+adminInit.populateAdmin();
 
 app.get('/game', function(req, res) {
   getGameController.getGame(req, res);

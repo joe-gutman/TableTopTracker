@@ -1,19 +1,15 @@
 const db = require("../database/db");
-
 async function getUserCollections(userEmail) {
  /* const user = await db.query(
     `SELECT * FROM users WHERE email=$1`,
     [userEmail]
   ).then((rows) => rows[0])
-
   console.log(user)*/
-
   return db.query(
     `SELECT * FROM collections`,
     []
   ).then(({rows}) => rows);
 }
-
 function getCollectionGames(collectionId) {
   return db.query(
     `SELECT g.*
@@ -24,18 +20,28 @@ function getCollectionGames(collectionId) {
     [collectionId]
   ).then(({rows}) => rows);
 }
-
+function postToCollection(userId, collectionName, gameId) {
+  var queryStr = "select * from collections where user_id = ($1) and collection_name = ($2)"
+  return db.query(queryStr, [userId, collectionName])
+    .then((data) => {
+      // no we want to insert into collections_games_join
+      var collectionId = data.rows[0].id;
+      console.log(gameId, collectionId)
+      var queryStr = "insert into collections_games_join (game_id, collection_id) values ($1, $2)"
+      return db.query(queryStr, [gameId, collectionId])
+    })
+}
 function createCollection(collection) {
   return db.query(
-    `INSERT INTO 
-        collections(user_id,collection_name, public boolean) 
+    `INSERT INTO
+        collections(user_id,collection_name, public boolean)
         VALUES($1, $2, $3) RETURNING *`,
     [collection.user_id, collection.name, collection.public]
   ).then(({rows}) => rows);
 }
-
 module.exports = {
   createCollection,
   getCollectionGames,
-  getUserCollections
+  getUserCollections,
+  postToCollection
 };
