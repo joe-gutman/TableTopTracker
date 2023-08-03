@@ -17,10 +17,10 @@ export default function SickSlider() {
         style={{ width: '50%' }} // <— adjust width **
         value={ count }
         onValueChange={ setCount }
-        // step={ 10 }
-        // probably don't need to step for mobile interface (but who knows?)
-        minimumValue={ 10 } // arbitrary values
-        maximumValue={ 50 } // do yo thang
+        step={ 1 } // may not need to step for mobile interface (but who knows?)
+        // arbitrary values
+        minimumValue={ 10 }
+        maximumValue={ 50 }
       />
     </View>
   );
