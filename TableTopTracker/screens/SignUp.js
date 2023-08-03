@@ -149,7 +149,7 @@ export default function SignUp ({navigation}) {
             <Button
               title="Log in"
               onPress={() => {
-                  navigation.navigate('Login', {name: username});
+                navigation.navigate('Login', {name: username});
               }}
             />
         </View>
