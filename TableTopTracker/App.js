@@ -25,7 +25,6 @@ import Search from './screens/Search';
 import SearchResults from './screens/SearchResults.js';
 
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
-
 const Stack = createNativeStackNavigator();
 
 //yarn add firebase, yarn add @react-native-firebase/auth
@@ -47,6 +46,7 @@ export default function App() {
     <PaperProvider theme={ theme }>
       <NavigationContainer>
         <Stack.Navigator>
+            
             <Stack.Screen
               name="Landing"
               component={Landing}
@@ -66,6 +66,6 @@ export default function App() {
       </NavigationContainer>
     </PaperProvider>
   );
-}
+}        
 
 // AppRegistry.registerComponent(appName, () => App);
