@@ -13,6 +13,7 @@ exports.populateAdmin = () => {
     "preferred_playstyle": "Strategic and Competitive",
     "favorite_mythical_creature": "Dragon",
     "favorite_board_game": "Catan (Settlers of Catan)",
+    "favoriteCategories": "action"
   };
   usersModel.createUser(adminData)
     .then((data) => {
