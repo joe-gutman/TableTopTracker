@@ -21,25 +21,22 @@ const SwipeableDetails = () => {
       },
     ]),
     onPanResponderRelease: (evt, gestureState) => {
-      console.log(gestureState.moveY);
-      if ((gestureState.vy < 0) || (gestureState.moveY <300)) {
-        console.log(pan);
+      console.log(`gestureState: ${gestureState.moveY}`);
+      console.log(`pan: ${pan.y._value}`);
+      if ((gestureState.vy < 0) ||  (pan.y._value <-300)){
         Animated.spring(
-          pan,
-          {toValue:{x: pan.x._value, y: -400}}
-        ).start(() => {
-            pan.setValue({x: 0, y: 0})
-            pan.setOffset({x: 0, y: -400})
-        });
-      }
-      else {
+          pan, // Auto-multiplexed
+          {toValue: {x: 0, y: 0}, useNativeDriver: true}, // Back to zero
+        ).start();
+        pan.setValue({x: 0, y: 0});
+      } else {
         Animated.spring(
-          pan,
-          {toValue:{x: pan.x._value, y: 0- pan.y._offset}}
-        ).start(() => {
-            pan.setValue({x: 0, y: 0})
-            pan.setOffset({x: 0, y: 0})
-        });
+          pan, // Auto-multiplexed
+          {toValue: {x: 0, y: 0}, useNativeDriver: true},
+        ).start();
+        pan.setValue({x: 0, y: 0});
+        // pan.extractOffset();
+
       }
     }
     // {
@@ -114,7 +111,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     backgroundColor: '#FBF5E7',
     borderColor: '#FBF5E7',
-    padding: 25,
+    padding: 20,
     overflowY: 'hidden',
   },
   table: {
