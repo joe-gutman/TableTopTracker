@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors())
 
-//initializer.populateBoardGames();
+// initializer.populateBoardGames();
 adminInit.populateAdmin();
 
 // this is still needed for line 47 app.get('/users', ...)
