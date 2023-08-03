@@ -8,7 +8,6 @@ import { postNewUser } from '../util/api.js';
 
 import {SelectList, MultipleSelectList} from 'react-native-dropdown-select-list'
 
-
 export default function NewUserPreferences ({navigation, route}) {
   const {uid, email, fullname, username, profilePhoto } = route.params;
   const [age, onChangeAge] = React.useState('');
@@ -17,7 +16,6 @@ export default function NewUserPreferences ({navigation, route}) {
   const [favoriteBoardGame, onChangeFavoriteBoardGame] = React.useState('');
   const [selectedCategories, setSelectedCategories] = React.useState([]);
   const [selected, setSelected] = React.useState("");
-
 
   const playstyles = ["Solo", "1v1", "2-4", "4-8", '8+']
   const creatures = ['Griffin', 'Chimera', 'Phenoix', 'Dragon', 'Pikachu']
@@ -72,7 +70,6 @@ export default function NewUserPreferences ({navigation, route}) {
       console.error('Error while posting new user:', error);
     }
   };
-
 
     return (
         <View>

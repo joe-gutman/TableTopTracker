@@ -104,12 +104,10 @@ export default function SignUp ({navigation}) {
     try {
       await handleSignUp();
       await navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
-
     } catch (error) {
       console.error('Error passing new user info into new user preferences', error);
     }
   };
-
 
     return (
         <View>
@@ -140,8 +138,6 @@ export default function SignUp ({navigation}) {
               placeholder="Re-enter your password"
               secureTextEntry
             />
-
-
             <Button title="Upload Profile Photo" onPress={handleImageUpload} />
               {imageURL && <Image source={{ uri: imageURL }} />}
             <Button
@@ -149,7 +145,6 @@ export default function SignUp ({navigation}) {
               onPress={ checkUserInput
               }
             />
-
             <Text> Have an Account? </Text>
             <Button
               title="Log in"
@@ -157,7 +152,6 @@ export default function SignUp ({navigation}) {
                   navigation.navigate('Login', {name: username});
               }}
             />
-
         </View>
     )
 }
