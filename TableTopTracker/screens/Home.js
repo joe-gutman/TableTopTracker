@@ -23,6 +23,7 @@ export default function Home ({ navigation, route }) {
 
   return (
     <View>
+      <Text>(Alex): Display Slider for Patrick</Text>
       <SickSlider />
 
       <Text>This is {user.email}'s HomePage</Text>
