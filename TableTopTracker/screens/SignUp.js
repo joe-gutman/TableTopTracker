@@ -54,7 +54,6 @@ export default function SignUp ({navigation}) {
       aspect: [1, 1],
       quality: 1,
     });
-
     if (!result.cancelled) {
       setImageURL(result.uri);
       console.log(imageURL);

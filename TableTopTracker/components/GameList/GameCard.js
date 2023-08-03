@@ -17,14 +17,14 @@ export default function GameCard({
             style={ styles.thumbnail } // needs to appear left of details
             source={{ uri: thumbnail }}
           />
-          <Text>{ minplayers } — { maxplayers } Players</Text>
-          <Text>Play-Time: { minplaytime } — { maxplaytime } Min</Text>
+          <Text>{ minplayers } - { maxplayers } Players</Text>
+          <Text>Playtime: { minplaytime } - { maxplaytime } Min</Text>
           <Text>Complexity: { complexity }</Text>
           <Text>{ year_published }</Text>
           {/* <Text>{ description }</Text> */}
         </Card.Content>
 
-        {/* not rendering title for some reason (suspect naming convention) */}
+        {/* not rendering title for some reason (suspect naming convention issue?) */}
         <Card.Title>{ title }</Card.Title>
       </Card>
     </View>

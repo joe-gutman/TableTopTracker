@@ -6,6 +6,9 @@ import allDummyGames from '../components/GameList/dummy/allDummyGames';
 import personalDummyGames from '../components/GameList/dummy/personalDummyGames';
 import NavBar from '../components/NavBar/NavBar.js';
 
+// testing Slider for Patrick
+import SickSlider from '../components/Sliders/SickSlider';
+
 export default function Home ({ navigation, route }) {
 
   const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
@@ -20,24 +23,30 @@ export default function Home ({ navigation, route }) {
 
   return (
     <View>
-        {/* <Text>`This is ${user.data.username}'s HomePage`</Text> */}
-        <View style={ styles.gameListContent }>
-          <ButtonList
-            collections={ collections }
-            listType={ listType }
-            setListType={ setListType }
-          />
-            <Button
-              title="Game Details"
-              onPress={() => {
-                navigation.navigate('Game Details', {user: user.username})
-              }}>Game Detail</Button>
-          <GamesList
-            games={ allDummyGames }
-            listType={ listType }
-          />
-        </View>
-        <NavBar navigation={navigation} user={user.username}/>
+      <Text>(Alex): Display Slider for Patrick</Text>
+      <SickSlider />
+
+      <Text>This is {user.email}'s HomePage</Text>
+      <View style={ styles.gameListContent }>
+        <ButtonList
+          collections={ collections }
+          listType={ listType }
+          setListType={ setListType }
+        />
+        <GamesList
+          games={ allDummyGames }
+          listType={ listType }
+        />
+      </View>
+      <View>
+        <Button
+          title="Game Details"
+          onPress={() => {
+            navigation.navigate('Game Details', {user: user.username})
+          }}>Game Detail</Button>
+      </View>
+
+      <NavBar navigation={navigation} user={user}/>
     </View>
   )
 }

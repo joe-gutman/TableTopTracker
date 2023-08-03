@@ -26,7 +26,7 @@ export default function NewUserPreferences ({navigation, route}) {
   const [creatureError, setCreatureError] = React.useState('');
   const [boardGameError, setBoardGameError] = React.useState('');
 
-  const newUser = { uid:uid, username: username, email: email, fullname:fullname, profilePhoto: profilePhoto, age:age, preferred_playstyle: preferred_playstyle, favoriteMythicalCreature:favoriteMythicalCreature, favoriteBoardGame:favoriteBoardGame, selectedCategories:selectedCategories.join(",")}
+  const newUser = { username: username, email: email, fullname:fullname, profilePhoto: profilePhoto, age:age, preferred_playstyle: preferred_playstyle, favoriteMythicalCreature:favoriteMythicalCreature, favoriteBoardGame:favoriteBoardGame, selectedCategories:selectedCategories.join(",")}
 
   const handleSearchChange = (text) => {
     const filteredData = category.filter((item) =>
@@ -123,7 +123,6 @@ export default function NewUserPreferences ({navigation, route}) {
               onPress={ checkTextInput
               }
             />
-
             </Text>
         </View>
     )
