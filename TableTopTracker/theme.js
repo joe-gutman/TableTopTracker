@@ -88,7 +88,7 @@ const theme = {
 
     },
     bigGreenButton: {
-      backgroundColor: theme.colors.primary,
+      backgroundColor: '#7FB069',
       paddingVertical: 10,
       paddingHorizontal: 30,
       borderRadius: 50,
