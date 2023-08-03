@@ -103,6 +103,7 @@ create table collections_games_join (
   game_id int,
   collection_id int,
 
-  foreign key (game_id) references games(id),
-  foreign key (collection_id) references collections(id)
+
+  foreign key (collection_id) references collections(id),
+  foreign key (game_id) references games(id)
 );

@@ -1,10 +1,14 @@
-import React, {useRef} from 'react';
-import {Animated, PanResponder, StyleSheet, View} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {Animated, PanResponder, Pressable, StyleSheet, View} from 'react-native';
 import { Card, Text, BottomNavigation } from 'react-native-paper';
+import {handleOpenModal} from "../../state/modal/actions";
+import {useDispatch} from "react-redux";
 
 
 const SwipeableDetails = () => {
+  const dispatch = useDispatch();
   const pan = useRef(new Animated.ValueXY()).current;
+  const [modal, setModal] = useState(false);
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -92,6 +96,12 @@ const SwipeableDetails = () => {
             </View>
           </View>
           <Text>{dummyGame.description}</Text>
+
+          <Pressable onPress={() =>
+            dispatch(handleOpenModal('ADD_TO_COLLECTION', {game: dummyGame}))}
+          >
+            <Text>Create Collection</Text>
+          </Pressable>
       </Animated.View>
     </View>
   );
