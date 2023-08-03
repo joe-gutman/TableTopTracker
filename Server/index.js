@@ -32,7 +32,7 @@ app.post('/users', function(req, res) {
 
 app.get('/users', function(req, res) {
   console.log(req.query.uid)
-  res.status(200).send(dummydata)
+  res.sendStatus(200);
   // usersController.getUser(req, res);
 })
 

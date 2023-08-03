@@ -1,24 +1,43 @@
 import { StyleSheet } from 'react-native';
-import theme from '../../theme';
+import theme from '../../theme.js';
 
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    backgroundColor: theme.colors.background, // consistent bg,
+    backgroundColor: theme.colors.onBackground, // consistent bg,
     // paddingVertical: 10,
     // paddingHorizontal: 15
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+
   },
   header: {
     fontSize: 20,
     fontWeight: 'bold',
   },
+  listContainer: {
+    flexGrow: 1,
+    padding: 10,
+    backgroundColor: theme.colors.onBackground,
+    display: 'flex',
+    flexDirection: 'column',
+  },
   list: {
     flexGrow: 1,
-    padding: 10
+    padding: 10,
+    backgroundColor: theme.colors.onBackground,
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%'
   },
   card: {
     flex: 1,
-    marginBottom: 10
+    marginBottom: 10,
+    backgroundColor: theme.colors.onTertiary,
+    borderRadius: 5,
+    width: 300,
+    margin: 'auto',
   },
   focusButton: {
     color: 'blue',
@@ -29,14 +48,37 @@ const styles = StyleSheet.create({
   selectedButton: {
     backgroundColor: 'blue'
   }, */
-  buttonMargin: {
-    marginRight: 8
+  buttonListContainer: {
+    height: 80,
+    backgroundColor: theme.colors.onBackground,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  buttonContainer: {
+    margin: 8,
+    width: 60,
+    borderColor: theme.colors.onSecondary,
+    padding: 'auto',
   },
   thumbnail: {
     width: 50,
     height: 50,
     resizeMode: 'cover', // others available
     marginRight: 10 // adjust margin as needed
+  },
+  cardGrid: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  title: {
+    fontFamily: theme.fonts.Bold
+  },
+  button: {
+    borderRadius: 10,
+    borderColor: '#FFFFFF',
+    border: 5,
   }
 });
 

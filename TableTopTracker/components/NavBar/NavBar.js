@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Button, View, TextInput, SafeAreaView, TouchableHighlight } from 'react-native';
 
+import styles from './styles.js';
 
 export default function NavBar({navigation, user, gameWarden}) {
     if(!user) {
@@ -9,54 +10,58 @@ export default function NavBar({navigation, user, gameWarden}) {
     }
 
     return (
-      <>
+      <View>
         <TouchableHighlight>
             <View style = {styles.navBarContainer}>
-                <Button title="Home"
+              <View style={styles.leftColumn}>
+                <View style={styles.littleButton}>
+                  <Button
+                    title="Home"
                     onPress={() =>
                         navigation.navigate('Home', user={user})
                     }>
-
-                </Button>
-                {gameWarden ?
-                (<Button title="Game Warden"
-                onPress={() =>
-                    navigation.navigate('Game Warden', user={user})
-                }>
-                </Button>):
-                (<Button title="Search"
+                  </Button>
+                </View>
+              </View>
+              <View style={styles.centerColumn}>
+                <View styles={styles.centerTop}>
+                  {gameWarden ?
+                  (<Button
+                    title="Game Warden"
+                    style={styles.bigButton}
+                    onPress={() =>
+                      navigation.navigate('Game Warden', user={user})
+                    }>
+                  </Button>):
+                  (<Button
+                    title="Search"
+                    style={styles.bigButton}
                     onPress={() =>
                         navigation.navigate('Search', user={user})
                     }>
-                </Button>)}
-                <Button title="User Account"
+                  </Button>)}
+                </View>
+
+                <View style={styles.centerMiddle}>
+                  {/* notch image */}
+                </View>
+                <View style={styles.centerBottom}>
+
+                </View>
+              </View>
+              <View style={styles.rightColumn}>
+                <View style={styles.littleButton}>
+                  <Button
+                    title="User Account"
+                    style={styles.littleButton}
                     onPress={() =>
                         navigation.navigate('User Account', user={user})
                     }>
-                </Button>
+                  </Button>
+                </View>
+              </View>
             </View>
         </TouchableHighlight>
-      </>
+      </View>
     )
 }
-
-const styles = StyleSheet.create({
-  navBarContainer: {
-    position: 'fixed',
-    bottom: '0',
-    display: 'flex',
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    zIndex: "999",
-    width: "100%"
-  },
-  button: {
-    backgroundColor: '#ECE4B7',
-    padding: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: 'black',
-    fontWeight: 'bold',
-  }
-})
