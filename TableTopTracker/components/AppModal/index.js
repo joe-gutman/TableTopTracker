@@ -2,8 +2,9 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import AddGameToCollection from "../Collections/AddGameToCollection";
 import {handleCloseModal} from "../../state/modal/actions";
-import { Portal, Text} from "react-native-paper";
-import {Pressable, StyleSheet, View, Modal} from "react-native";
+import { Portal, Text/*, Modal*/ } from "react-native-paper";
+import {View, StyleSheet, Modal} from "react-native";
+import CreateCollection from "../Collections/CreateCollection";
 
 
 export default function AppModal() {
@@ -18,7 +19,9 @@ export default function AppModal() {
   function getContent() {
     if(open) {
       if(template === 'ADD_TO_COLLECTION') {
-        return <AddGameToCollection open={open} {...data} onClose={closeModal}/>
+        return <AddGameToCollection open={open} {...data} onClose={closeModal} />
+      }if(template === 'CREATE_COLLECTION') {
+        return <CreateCollection {...data} onClose={closeModal} />
       }
     }
     return <Text>SOMETHINGS GONE TERRIBLY WRONG</Text>
@@ -26,24 +29,26 @@ export default function AppModal() {
 
 
 
-  return (
+  /*return (
     <Modal
       animationType="slide"
       transparent={true}
       visible={open}
-      onRequestClose={() => handleCloseModal()}>
+      onRequestClose={() => handleCloseModal()}
+      onDismiss={handleCloseModal}
+    >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           {getContent()}
-          {/*<Pressable
+          {/!*<Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => handleCloseModal()}>
               <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>*/}
+            </Pressable>*!/}
         </View>
       </View>
     </Modal>
-  )
+  )*/
 
   return (
     <Portal>

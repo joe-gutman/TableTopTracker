@@ -1,89 +1,93 @@
-import React, {useEffect, useState} from "react";
-import {Alert, View, Pressable, StyleSheet} from 'react-native';
-import {Portal, Modal, Text} from 'react-native-paper';
-import {fetchUserCollections} from "../../util/api";
+import React, { useState } from 'react';
+import { View, TextInput, Pressable, Text, StyleSheet } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { Portal, Modal } from 'react-native-paper';
+import { handleOpenModal } from '../../state/modal/actions';
 
-export default function CreateCollection({user, visible, onClose}) {
-  const [collections, setCollections] = useState([1]);
+export default function CreateCollection({ gameToAdd, onClose }) {
+  // const [ collections, setCollections ] = useState();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.app.user);
 
+  const [ collectionName, setCollectionName ] = useState('');
+  const [ isLoading, setIsLoading ] = useState(false);
+  const [ error, setError ] = useState(null);
 
-  /*useEffect(() => {
-    fetchUserCollections()
-      .then((x) => {
+  // function for simulating addition
+  const addCollectionToDB = async(collectionName, gameToAdd) => {
+    // simulate async API call via timeout
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({ id: 123, collection_name: collectionName });
+      }, 1000);
+    });
+  };
 
-      })
-  }, [])*/
+  const handleCreateCollection = async() => {
+    if (collectionName.trim() === '') {
+      setError('Collection name cannot be empty');
+      return;
+    }
 
-  console.log(user)
+    // assumes no error (since passed return)
+    setError(null);
+    setIsLoading(true); // display load text/animation
 
-  return <Text>ADD GAME TO COLLECTION</Text>;
+    try {
+      // call API function to add collection to DB
+      const newCollection = await addCollectionToDB(
+        collectionName, gameToAdd
+      );
 
-  /*return (
-    <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={visible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          onClose(false);
-        }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => onClose(false)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
+      // redux magic to dispatch action to update state w/ new collection data
+      /*
+      dispatch(
+        handleCreateCollection('CREATE_COLLECTION')
+      );
+      */
+
+      // log added collection for now
+      console.log(`Added collection: ${ newCollection }`);
+
+      // close modal
+      onClose();
+
+    } catch(err) {
+      setError(`Failed to add collection to DB: ${ err.message }`);
+
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  return (
+    <View>
+      <TextInput
+        style={ styles.textInput }
+        placeholder='Collection Name'
+        value={ collectionName }
+        onChangeText={ setCollectionName }
+      />
+      { error && (
+        <Text style={ styles.errorText }>{ error }</Text>
+      ) }
+      <Pressable
+        title='Create Collection'
+        onPress={ handleCreateCollection }
+        disabled={ isLoading }
+      />
+      { isLoading && <Text>Loading...</Text> }
     </View>
-  )*/
+  );
 }
 
-
 const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
+  textInput: {
+    borderBottomWidth: 1,
+    marginBottom: 10
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10
+  }
 });
