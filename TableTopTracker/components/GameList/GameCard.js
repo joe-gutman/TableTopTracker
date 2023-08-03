@@ -11,7 +11,7 @@ export default function GameCard({
   return (
     <View style={ styles.card }>
       <Card>
-        <Card.Content style={styles.cardGrid}>    
+        <Card.Content style={styles.cardGrid}>
           <View>
             <Image
               style={ styles.thumbnail } // needs to appear left of details
