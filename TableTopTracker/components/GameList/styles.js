@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.onBackground,
     display: 'flex',
     flexDirection: 'column',
-    margin: 'auto',
     width: '100%'
   },
   card: {
@@ -38,6 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.onTertiary,
     borderRadius: 5,
     width: 300,
+    margin: 'auto',
   },
   focusButton: {
     color: 'blue',
@@ -48,8 +48,18 @@ const styles = StyleSheet.create({
   selectedButton: {
     backgroundColor: 'blue'
   }, */
-  buttonMargin: {
-    marginRight: 8
+  buttonListContainer: {
+    height: 80,
+    backgroundColor: theme.colors.onBackground,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  buttonContainer: {
+    margin: 8,
+    width: 60,
+    borderColor: theme.colors.onSecondary,
+    padding: 'auto',
   },
   thumbnail: {
     width: 50,
@@ -60,9 +70,15 @@ const styles = StyleSheet.create({
   cardGrid: {
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'center'
   },
   title: {
     fontFamily: theme.fonts.Bold
+  },
+  button: {
+    borderRadius: 10,
+    borderColor: '#FFFFFF',
+    border: 5,
   }
 });
 

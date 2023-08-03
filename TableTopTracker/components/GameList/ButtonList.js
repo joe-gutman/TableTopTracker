@@ -5,10 +5,10 @@ import styles from './styles';
 
 export default function ButtonList({ collections, listType, setListType }) {
   return (
-    <View style={ styles.container }>
-      <ScrollView horizontal>
+    <View style={styles.container}>
+      <ScrollView horizontal styles={ styles.buttonListContainer }>
         { collections.map((collection, i) => (
-          <View style={ styles.buttonMargin } key = { i }>
+          <View style={ styles.buttonContainer } key = { i }>
               <Button
                 key={ collection }
                 title={ collection }
