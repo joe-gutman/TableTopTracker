@@ -31,6 +31,10 @@ const Stack = createNativeStackNavigator();
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import firebaseConfig from './firebaseConfig.js'
+import {Provider, useSelector} from "react-redux";
+import { store } from './state/index.js';
+import AppModal from "./components/AppModal";
+
 
 
 if (!firebase.apps.length) {
@@ -38,32 +42,46 @@ if (!firebase.apps.length) {
 }
 
 
+export default function AppWrapper() {
+ return (
+   <Provider store={store}>
+     <App />
+   </Provider>
+ )
+};
 
-export default function App() {
+
+
+function App() {
+  const state = useSelector((state) => state);
+  const modalState = useSelector((state) => state.modal);
   const [ username, setUsername ] = useState('Arnold');
+
+  console.log(state);
 
   return (
     <PaperProvider theme={ theme }>
       <NavigationContainer>
         <Stack.Navigator>
-            
-            <Stack.Screen
-              name="Landing"
-              component={Landing}
-              options={{title: 'TableTop Tracker'}}
-              username={username}
-              />
-            <Stack.Screen name="Sign Up" component={SignUp}/>
-            <Stack.Screen name="Login" component={Login}/>
-            <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
-            <Stack.Screen name="User Account" component={UserAccount} />
-            <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Game Details" component={GameDetails}/>
-            <Stack.Screen name="Game Warden" component={GameWarden}/>
-            <Stack.Screen name="Search Results" component={SearchResults}/>
-            <Stack.Screen name="Search" component={Search}/>
-          </Stack.Navigator>
+
+          <Stack.Screen
+            name="Landing"
+            component={Landing}
+            options={{title: 'TableTop Tracker'}}
+            username={username}
+          />
+          <Stack.Screen name="Sign Up" component={SignUp}/>
+          <Stack.Screen name="Login" component={Login}/>
+          <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
+          <Stack.Screen name="User Account" component={UserAccount} />
+          <Stack.Screen name="Home" component={Home}/>
+          <Stack.Screen name="Game Details" component={GameDetails}/>
+          <Stack.Screen name="Game Warden" component={GameWarden}/>
+          <Stack.Screen name="Search Results" component={SearchResults}/>
+          <Stack.Screen name="Search" component={Search}/>
+        </Stack.Navigator>
       </NavigationContainer>
+      <AppModal />
     </PaperProvider>
   );
 }        

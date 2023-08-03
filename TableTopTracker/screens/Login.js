@@ -6,6 +6,8 @@ import 'firebase/compat/auth'; // Import the authentication module with 'compat'
 import NavBar from '../components/NavBar/NavBar.js';
 
 import { fetchUser } from '../util/api.js';
+import {useDispatch} from "react-redux";
+import {handleSetUser} from "../state/app/actions";
 
 const dummydata = {
     "uid":"yElHRF2wa2NDBQ9myvTXVEd60Tt2",
@@ -20,8 +22,9 @@ const dummydata = {
 };
 
 export default function Login ({navigation, route}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState('admin@tabletop.com');
+    const [password, setPassword] = useState('tabletop123');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleLogin = () => {
@@ -39,6 +42,7 @@ export default function Login ({navigation, route}) {
         const user = response.data;
          // Navigate to the desired screen after successful login
          // LOGIN IS USING DUMMY DATA
+        dispatch(handleSetUser(dummydata));
         navigation.navigate('Home', { user: dummydata, handleLogout: handleLogout });
     })
     .catch((error) => {

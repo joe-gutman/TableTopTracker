@@ -1,16 +1,16 @@
 const db = require("../database/db");
 
 async function getUserCollections(userEmail) {
-  const user = await db.query(
+ /* const user = await db.query(
     `SELECT * FROM users WHERE email=$1`,
     [userEmail]
   ).then((rows) => rows[0])
 
-  console.log(user)
+  console.log(user)*/
 
   return db.query(
-    `SELECT * FROM collections WHERE user_id = $1`,
-    [user.id]
+    `SELECT * FROM collections`,
+    []
   ).then(({rows}) => rows);
 }
 

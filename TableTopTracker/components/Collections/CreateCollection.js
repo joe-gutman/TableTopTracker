@@ -16,15 +16,7 @@ export default function CreateCollection({user, visible, onClose}) {
 
   console.log(user)
 
-  return collections
-    ? (
-      <Portal>
-        <Modal visible={visible} onDismiss={onClose} contentContainerStyle={styles.modalView}>
-          <Text>Example Modal.  Click outside this area to dismiss.</Text>
-          <Text>{JSON.stringify(user)}</Text>
-        </Modal>
-      </Portal>
-    ): null;
+  return <Text>ADD GAME TO COLLECTION</Text>;
 
   /*return (
     <View style={styles.centeredView}>
