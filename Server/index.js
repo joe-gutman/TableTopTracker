@@ -18,12 +18,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors())
 
-// initializer.populateBoardGames();
-<<<<<<< HEAD
+//initializer.populateBoardGames();
 //adminInit.populateAdmin();
-=======
-// adminInit.populateAdmin();
->>>>>>> d548a75c985e7d4d8b80ca9a9a4a7ab73ed6c3aa
 
 app.get('/game', function(req, res) {
   getGameController.getGame(req, res);

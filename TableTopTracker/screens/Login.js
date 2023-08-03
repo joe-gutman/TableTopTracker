@@ -8,6 +8,7 @@ import NavBar from '../components/NavBar/NavBar.js';
 import { fetchUser } from '../util/api.js';
 import {useDispatch} from "react-redux";
 import {handleSetUser} from "../state/app/actions";
+import {handleReceiveCollections} from "../state/collections/actions"
 
 const dummydata = {
     "uid":"yElHRF2wa2NDBQ9myvTXVEd60Tt2",
@@ -41,10 +42,19 @@ export default function Login ({navigation, route}) {
     .then(function (response) {
         const user = response.data;
         console.log('fetch user response', user);
-         // Navigate to the desired screen after successful login
-         // LOGIN IS USING DUMMY DATA
-        dispatch(handleSetUser(dummydata));
-        navigation.navigate('Home', { user: dummydata, handleLogout: handleLogout });
+        var liveData = user.userData
+        var dataKeys = Object.keys(user);
+        var collections = {};
+        for (let k of dataKeys) {
+          if (k !== 'userData') {
+            collections[k] = user[k]
+          }
+        }
+        console.log(collections);
+        console.log(liveData);
+        dispatch(handleReceiveCollections(collections))
+        dispatch(handleSetUser(liveData));
+        navigation.navigate('Home', { user: liveData, handleLogout: handleLogout });
     })
     .catch((error) => {
         // Handle login errors

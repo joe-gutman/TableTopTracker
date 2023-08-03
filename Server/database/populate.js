@@ -21,7 +21,7 @@ exports.populateListOfGames = async (listOfGames) => {
 
 exports.populateBoardGames = async () => {
   var uniqueBoardGames = [];
-  for (let name of boardGames) {
+  for (let name of minimal) {
     if (!uniqueBoardGames.includes(name)) {
       uniqueBoardGames.push(name);
     }
@@ -58,7 +58,7 @@ const testOne = [
   "BattleLore"
 ]
 
-const testTwo = [
+const minimal = [
   "A Game of War",
   "Abalone",
   "Agon",
