@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AppRegistry } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { name as appName } from './app.json';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import theme from './theme';
 import { StatusBar } from 'expo-status-bar';
@@ -36,6 +36,8 @@ import { store } from './state/index.js';
 import AppModal from "./components/AppModal";
 
 
+//fonts
+import * as Font from 'expo-font';
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -84,6 +86,6 @@ function App() {
       <AppModal />
     </PaperProvider>
   );
-}        
+}
 
 // AppRegistry.registerComponent(appName, () => App);
