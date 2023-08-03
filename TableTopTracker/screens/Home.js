@@ -33,14 +33,17 @@ export default function Home ({ navigation, route }) {
           listType={ listType }
           setListType={ setListType }
         />
-      <View>
+      {/* <View>
         <Button
           title="Game Details"
           onPress={() => {
             navigation.navigate('Game Details', {user: user})
           }}>Game Detail</Button>
-      </View>
+      </View> */}
         <GamesList
+          handlePress={() => {
+            navigation.navigate('Game Details', {user: user})
+          }}
           games={ allDummyGames }
           listType={ listType }
         />
