@@ -6,7 +6,7 @@ exports.createUser = (userData) => {
   for (let k of keys) {
     columns.push(userData[k]);
   }
-  var queryStr = 'insert into users (username, email, fullname, photo, age, preferred_playstyle, favorite_mythical_creature, favorite_board_game)values ($1, $2, $3, $4, $5, $6, $7, $8) returning id'
+  var queryStr = 'insert into users (username, email, fullname, photo, age, preferred_playstyle, favorite_mythical_creature, favorite_board_game, selectedCategories)values ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning id'
   return db.query(queryStr, columns)
 }
 
