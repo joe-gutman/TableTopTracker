@@ -9,10 +9,10 @@ const SwipeableDetails = () => {
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onMoveShouldSetPanResponderCapture: () => true,
-    // onPanResponderGrant: (e, gestureState) => {
-    //   pan.setOffset({x: 0, y: -400});
-    //   pan.setValue({x: 0, y: 0});
-    // },
+    onPanResponderGrant: (e, gestureState) => {
+      pan.setOffset({y: pan.y._value});
+      // pan.setValue({y: pan.y._value});
+    },
     onPanResponderMove: Animated.event([
       null,
       {
@@ -20,24 +20,45 @@ const SwipeableDetails = () => {
         dy: pan.y,
       },
     ]),
-    onPanResponderRelease: (evt, gestureState) => {
-      console.log(`gestureState: ${gestureState.moveY}`);
-      console.log(`pan: ${pan.y._value}`);
-      if ((gestureState.vy < 0) ||  (pan.y._value <-300)){
+    onPanResponderRelease: (e, gestureState) => {
+      if (pan.y._value < -200 || gestureState.vy < 0) {
         Animated.spring(
-          pan, // Auto-multiplexed
-          {toValue: {x: 0, y: 0}, useNativeDriver: true}, // Back to zero
-        ).start();
-        pan.setValue({x: 0, y: 0});
-      } else {
-        Animated.spring(
-          pan, // Auto-multiplexed
-          {toValue: {x: 0, y: 0}, useNativeDriver: true},
-        ).start();
-        pan.setValue({x: 0, y: 0});
-        // pan.extractOffset();
-
+          pan,
+          {toValue:{x: pan.x._value, y: -400}}
+        ).start(() => {
+            pan.setValue({x: 0, y: -400})
+            pan.setOffset({x: 0, y: 0})
+        });
       }
+      else {
+        Animated.spring(
+          pan,
+          {toValue:{x: pan.x._value, y: 0- pan.y._offset}}
+        ).start(() => {
+            pan.setValue({x: 0, y: 0})
+            pan.setOffset({x: 0, y: 0})
+        });
+      }
+    }
+    // {
+    //   if (pan.y._value < -200 || gestureState.vy < 0) {
+    //     console.log(pan);
+    //     Animated.spring(
+    //       pan, // Auto-multiplexed
+    //       {toValue: {x: 0, y: -400}, useNativeDriver: true}, // Back to zero
+    //     ).start(() => {
+    //       pan.setOffset({x: 0, y: -400});
+    //     });
+    //   } else {
+    //     console.log(pan);
+    //     Animated.spring(
+    //       pan, // Auto-multiplexed
+    //       {toValue: {x: 0, y: 0}, useNativeDriver: true},
+    //     ).start(() => {
+    //       pan.setOffset({x: 0, y: 0});
+    //     });
+    //   }
+    // },
     }
     // {
     //   if (pan.y._value < -200 || gestureState.vy < 0) {
@@ -111,7 +132,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     backgroundColor: '#FBF5E7',
     borderColor: '#FBF5E7',
-    padding: 20,
+    padding: 25,
     overflowY: 'hidden',
   },
   table: {
