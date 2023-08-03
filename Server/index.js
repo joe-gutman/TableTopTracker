@@ -29,7 +29,7 @@ const dummydata = {
     "favorite_category": "Eurogames"
   }
 
-//initializer.populateBoardGames();
+// initializer.populateBoardGames();
 
 app.get('/game', function(req, res) {
   getGameController.getGame(req, res);
@@ -37,7 +37,12 @@ app.get('/game', function(req, res) {
 
 app.post('/users', function(req, res) {
   console.log(req.body)
+<<<<<<< HEAD
   usersController.createUser(req, res);
+=======
+  res.status(200).send(req.body)
+  // usersController.createUser(req, res);
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
 })
 
 // {

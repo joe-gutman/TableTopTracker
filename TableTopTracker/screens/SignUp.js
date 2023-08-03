@@ -1,9 +1,21 @@
 import React from 'react';
+<<<<<<< HEAD
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
 import NavBar from '../components/NavBar/NavBar.js';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import * as ImagePicker from 'expo-image-picker';
+=======
+
+import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
+
+import NavBar from '../components/NavBar/NavBar.js';
+
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import * as ImagePicker from 'expo-image-picker';
+
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
 export default function SignUp ({navigation}) {
   const [email, setEmail] = React.useState('');
   const [fullname, setFullname] = React.useState('');
@@ -12,13 +24,24 @@ export default function SignUp ({navigation}) {
   const [errorMessage, setErrorMessage] = React.useState('');
   const [uid, setUid] = React.useState('');
   const [imageURL, setImageURL] = React.useState('');
+<<<<<<< HEAD
   const handleSignUp = () => {
+=======
+
+
+  const handleSignUp = async () => {
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Handle successful registration
         let user = userCredential.user;
+<<<<<<< HEAD
+=======
+        console.log(user);
+        console.log(user.uid)
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
         setUid(user.uid);
         console.log('Newly registered user:', user.email);
         return firebase.auth().signInWithEmailAndPassword(email, password);
@@ -36,6 +59,11 @@ export default function SignUp ({navigation}) {
         }
       });
   };
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
   const handleImageUpload = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -43,6 +71,10 @@ export default function SignUp ({navigation}) {
       aspect: [1, 1],
       quality: 1,
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
     if (!result.cancelled) {
       setImageURL(result.uri);
       console.log(imageURL);
@@ -50,6 +82,10 @@ export default function SignUp ({navigation}) {
       console.log('Image picker canceled.');
     }
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
     return (
         <View>
             <TextInput
@@ -73,13 +109,24 @@ export default function SignUp ({navigation}) {
               placeholder="Password"
               secureTextEntry
             />
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
             <Button title="Upload Profile Photo" onPress={handleImageUpload} />
               {imageURL && <Image source={{ uri: imageURL }} />}
             <Button
               title="Next"
+<<<<<<< HEAD
               onPress={() => {
                 handleSignUp();
                 navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
+=======
+              onPress={ async () => {
+                await handleSignUp();
+                await navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
               }
               }
             />
