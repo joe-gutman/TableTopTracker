@@ -2,16 +2,10 @@ import { StyleSheet } from 'react-native';
 import theme from '../../theme.js';
 
 const styles = StyleSheet.create({
-  parentContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: theme.colors.onBackground,
-    height: '100%',
-  },
   branding: {
     display: 'flex',
     flexDirection: 'column',
-    flexGrow: 1,
+    flexGrow: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -21,17 +15,13 @@ const styles = StyleSheet.create({
   bgg: {
     margin: 'auto',
   },
-  buttonsContainer: {
+  userInput: {
     display: 'flex',
-    flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  loginContainer:{
-    display: 'flex',
-    flexDirection: 'row',
-    marginTop: 10,
-  },
+  textInputBox: theme.components.textInput.box,
+  textInputText: theme.components.textInput.text,
+  bigGreenButton: theme.components.bigGreenButton,
+  bigGreenButtonText: theme.components.bigGreenButtonText,
   buttonsContainer: {
     display: 'flex',
     flexGrow: 1,
@@ -44,17 +34,7 @@ const styles = StyleSheet.create({
   orangeWords: {
     color: theme.colors.secondary,
   },
-  bigGreenButton: {
-    backgroundColor: theme.colors.primary,
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 50,
-  },
-  bigGreenButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  }
+
 });
 
 export default styles;

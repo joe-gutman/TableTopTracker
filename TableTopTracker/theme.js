@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
-// git
 
+//theme.colors.property
 const theme = {
   ...DefaultTheme,
   dark: false,
@@ -58,9 +58,48 @@ const theme = {
   //     fontFamily: 'Metamorphous',
   //     fontWeight: 'normal'
   //   }
-  // }
-}
+  // },
+  components: {
+    textInput: {
+      box: {
+        height: 61,
+        width: 344,
+        borderRadius: 8,
+        backgroundColor: '#FFF5DD',
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 0,
+      },
+      text: {
+        color: "#4A3018",
+        fontSize: 16,
+      }
+    },
+    gameWardenCarCard: {
 
+    },
+    gameWardenSpeech: {
+
+    },
+    select: {
+
+    },
+    bigGreenButton: {
+      backgroundColor: theme.colors.primary,
+      paddingVertical: 10,
+      paddingHorizontal: 30,
+      borderRadius: 50,
+    },
+    bigGreenButtonText: {
+      color: 'white',
+      fontSize: 16,
+      fontWeight: 'bold',
+    }
+  }
+}
 
 // const theme = {
 //   ...DefaultTheme,

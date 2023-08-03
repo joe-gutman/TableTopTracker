@@ -17,12 +17,13 @@ export default function Landing ({navigation}) {
             </View>
 
             <View style={styles.buttonsContainer}>
-              <Button style={styles.bigGreenButton}
+              <Pressable style={styles.bigGreenButton}
                 title="Get Started"
                 onPress={() =>
                     navigation.navigate('Sign Up')
-                }
-                />
+                }>
+                  <Text style={styles.bigGreenButtonText}>Get Started</Text>
+              </Pressable>
               <View style={styles.loginContainer}>
                 <Text style={styles.orangeWords}> Have an Account? </Text>
                 <Pressable

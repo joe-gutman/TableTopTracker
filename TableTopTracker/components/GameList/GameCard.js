@@ -11,8 +11,7 @@ export default function GameCard({
   return (
     <View style={ styles.card }>
       <Card>
-        <Card.Content style={styles.cardGrid}>
-          {/* layout based on wireframe + site */}
+        <Card.Content style={styles.cardGrid}>    
           <View>
             <Image
               style={ styles.thumbnail } // needs to appear left of details
@@ -27,7 +26,6 @@ export default function GameCard({
           </View>
         </Card.Content>
 
-        {/* not rendering title for some reason (suspect naming convention) */}
         <Card.Title title={title} />
       </Card>
     </View>
