@@ -23,8 +23,8 @@ export default function Home ({ navigation, route }) {
 
   return (
     <View style={{paddingBottom: '40px'}}>
-      <Text>(Alex): Display Slider for Patrick</Text>
-      <SickSlider />
+      {/* <Text>(Alex): Display Slider for Patrick</Text> */}
+      {/* <SickSlider /> */}
 
       <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
