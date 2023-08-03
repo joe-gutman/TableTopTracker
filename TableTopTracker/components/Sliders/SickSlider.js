@@ -18,7 +18,7 @@ export default function SickSlider() {
         value={ count }
         onValueChange={ setCount }
         // step={ 10 }
-        // Idk, probably don't need to step for a mobile interface
+        // Idk, probably don't need to step for mobile interface
         minimumValue={ 10 }
         maximumValue={ 50 }
       />
@@ -27,7 +27,7 @@ export default function SickSlider() {
 }
 
 /*
-(original MVP layout)
+(original MVP layout for reference)
 
 // MUI components
 <Box sx={{
