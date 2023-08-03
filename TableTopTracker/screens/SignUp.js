@@ -18,7 +18,7 @@ export default function SignUp ({navigation}) {
   const [imageURL, setImageURL] = React.useState('');
 
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -26,6 +26,7 @@ export default function SignUp ({navigation}) {
         // Handle successful registration
         let user = userCredential.user;
         console.log(user);
+        console.log(user.uid)
         setUid(user.uid);
         console.log('Newly registered user:', user.email);
         return firebase.auth().signInWithEmailAndPassword(email, password);
@@ -98,9 +99,9 @@ export default function SignUp ({navigation}) {
               {imageURL && <Image source={{ uri: imageURL }} />}
             <Button
               title="Next"
-              onPress={() => {
-                handleSignUp();
-                navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
+              onPress={ async () => {
+                await handleSignUp();
+                await navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
               }
               }
             />
