@@ -3,10 +3,8 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 import firebase from 'firebase/compat/app'; // Update the import path
 import 'firebase/compat/auth'; // Import the authentication module with 'compat'
-
 import NavBar from '../components/NavBar/NavBar.js';
 
-import axios from 'axios';
 import { fetchUser } from '../util/api.js';
 
 const dummydata = {
@@ -38,8 +36,7 @@ export default function Login ({navigation, route}) {
         return fetchUser(user);
     })
     .then(function (response) {
-        console.log(response)
-        const user = response;
+        const user = response.data;
          // Navigate to the desired screen after successful login
          // LOGIN IS USING DUMMY DATA
         navigation.navigate('Home', { user: dummydata, handleLogout: handleLogout });

@@ -58,7 +58,11 @@
 // from /server run:
 
     > node database/seedMockData.js
-    > update: if you'd like some live data, run database/schemaReset.sql as above, uncomment the initializer.populateBoardGames() in index.js on line 18 and start up the server again.  as of right now it only runs through the first 9 entries of the board games list.  You can modify populate.js to run through 500 games, but do so at your own risk, I'm quite sure there are still a few bugs that need fixing.
+    > update: if you'd like some live data, run database/schemaReset.sql as above, 
+        uncomment the initializer.populateBoardGames() in index.js on line 18 and start 
+        up the server again.  as of right now it only runs through the first 9 entries 
+        of the board games list.  You can modify populate.js to run through 500 games, 
+        but do so at your own risk, I'm quite sure there are still a few bugs that need fixing.
 ```
 
 **API END-POINTS**
@@ -75,3 +79,9 @@ GET /collections?userId=[USER_ID]
 GET /collections/:collectionId
 
 - Req Paramaters = collectionId
+
+**As of 8/2/2023** 
+
+1. To run application properly, yarn and npm install in the server and yarn install in TableTopTracker
+2. Then run both the server and the expo start.
+3. SHOULD WORK!!! 

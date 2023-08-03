@@ -28,7 +28,7 @@ const dummydata = {
     "favorite_category": "Eurogames"
   }
 
-//initializer.populateBoardGames();
+// initializer.populateBoardGames();
 
 app.get('/game', function(req, res) {
   getGameController.getGame(req, res);
