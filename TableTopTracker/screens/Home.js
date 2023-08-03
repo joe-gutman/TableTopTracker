@@ -6,10 +6,14 @@ import allDummyGames from '../components/GameList/dummy/allDummyGames';
 import personalDummyGames from '../components/GameList/dummy/personalDummyGames';
 import NavBar from '../components/NavBar/NavBar.js';
 
+// testing Slider for Patrick
+import SickSlider from '../components/Sliders/SickSlider';
+
 export default function Home ({ navigation, route }) {
 
   const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
   const [ listType, setListType ] = useState(collections[0]);
+  const [gameDetails, setGameDetails] = useState({});
 
   let { user, handleLogout } = route.params;
   console.log('route.params', route.params);
@@ -19,25 +23,34 @@ export default function Home ({ navigation, route }) {
   // console.dir(personalDummyGames);
 
   return (
-    <View>
-        {/* <Text>`This is ${user.data.username}'s HomePage`</Text> */}
-        <View style={ styles.gameListContent }>
-          <ButtonList
-            collections={ collections }
-            listType={ listType }
-            setListType={ setListType }
-          />
-            <Button
-              title="Game Details"
-              onPress={() => {
-                navigation.navigate('Game Details', {user: user})
-              }}>Game Detail</Button>
-          <GamesList
-            games={ allDummyGames }
-            listType={ listType }
-          />
-        </View>
-        <NavBar navigation={navigation} user={user.username}/>
+    <View style={{paddingBottom: '40px'}}>
+      <Text>(Alex): Display Slider for Patrick</Text>
+      <SickSlider />
+
+      <Text>This is {user.email}'s HomePage</Text>
+      <View style={ styles.gameListContent }>
+        <ButtonList
+          collections={ collections }
+          listType={ listType }
+          setListType={ setListType }
+        />
+      {/* <View>
+        <Button
+          title="Game Details"
+          onPress={() => {
+            navigation.navigate('Game Details', {user: user.username})
+          }}>Game Detail</Button>
+      </View> */}
+        <GamesList
+          handlePress={() => {
+            navigation.navigate('Game Details', {user: user})
+          }}
+          games={ allDummyGames }
+          listType={ listType }
+        />
+      </View>
+
+      <NavBar navigation={navigation} user={user}/>
     </View>
   )
 }

@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
 
 import NavBar from '../components/NavBar/NavBar.js';
+import styles from './stylesheets/SignUpStyles.js';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -13,6 +14,7 @@ export default function SignUp ({navigation}) {
   const [fullname, setFullname] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [passwordCheck, setPasswordCheck] = React.useState('');
   const [errorMessage, setErrorMessage] = React.useState('');
   const [uid, setUid] = React.useState('');
   const [imageURL, setImageURL] = React.useState('');
@@ -53,12 +55,57 @@ export default function SignUp ({navigation}) {
       aspect: [1, 1],
       quality: 1,
     });
-
     if (!result.cancelled) {
       setImageURL(result.uri);
       console.log(imageURL);
     } else {
       console.log('Image picker canceled.');
+    }
+  };
+
+
+
+  const checkUserInput = async () => {
+    if (!email.trim()) {
+      alert('Please Enter an email');
+      return;
+    }
+
+    if (!fullname.trim()) {
+      alert('Please enter your full name');
+      return;
+    }
+
+    if (!username.trim()) {
+      alert('Please enter a username');
+      return;
+    }
+
+    if (!password.trim() || password.trim().length < 6) {
+      alert('Please enter a password of at least 6 characters');
+      return;
+    }
+
+    if (!password.trim()) {
+      alert('Please enter a password');
+      return;
+    }
+
+    if(!passwordCheck.trim()) {
+      alert('Please re-enter password for confirmation');
+      return;
+    }
+
+    if (passwordCheck !== password) {
+      alert('Please re-enter both passwords to make sure they match')
+      return;
+    }
+
+    try {
+      await handleSignUp();
+      await navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
+    } catch (error) {
+      console.error('Error passing new user info into new user preferences', error);
     }
   };
 
@@ -85,19 +132,19 @@ export default function SignUp ({navigation}) {
               placeholder="Password"
               secureTextEntry
             />
-
-
+            <TextInput
+              onChangeText={setPasswordCheck}
+              value={passwordCheck}
+              placeholder="Re-enter your password"
+              secureTextEntry
+            />
             <Button title="Upload Profile Photo" onPress={handleImageUpload} />
-              {imageURL && <Image source={{ uri: imageURL }} />}
+              {/* {imageURL && <Image source={{ uri: imageURL }} />} */}
             <Button
               title="Next"
-              onPress={ async () => {
-                await handleSignUp();
-                await navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
-              }
+              onPress={ checkUserInput
               }
             />
-
             <Text> Have an Account? </Text>
             <Button
               title="Log in"
@@ -107,7 +154,6 @@ export default function SignUp ({navigation}) {
                 }
               }}
             />
-
         </View>
     )
 }

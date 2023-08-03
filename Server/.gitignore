@@ -11,4 +11,3 @@ dist/
 *.vscode
 **/.idea
 firebaseConfig.js
-node_modules
