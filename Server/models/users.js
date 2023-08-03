@@ -31,6 +31,30 @@ exports.createDefaultCollections = (userId) => {
 // );
 
 
-exports.getUser = (userData) => {
-
+exports.getUserByEmail = (email) => {
+  var queryStr = "select * from users where email = ($1)"
+  return db.query(queryStr, [email]);
 }
+
+exports.getCollectionsById = (userId) => {
+  var queryStr = "select * from collections where user_id = ($1)"
+  return db.query(queryStr, [userId]);
+}
+
+exports.getGamesByListOfCollections = (list) => {
+  var queries = [];
+  for (let l of list) {
+    var queryStr = "select * from collections_games_join inner join games on game_id = games.id where collection_id = ($1)"
+    queries.push(db.query(queryStr, [l.id]))
+  }
+  return Promise.all(queries);
+}
+
+// create table collections_games_join (
+//   id serial primary key,
+//   game_id int,
+//   collection_id int,
+
+//   foreign key (game_id) references games(id),
+//   foreign key (collection_id) references collections(id)
+// );

@@ -20,8 +20,8 @@ const dummydata = {
 };
 
 export default function Login ({navigation, route}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('admin@tabletop.com');
+    const [password, setPassword] = useState('tabletop123');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleLogin = () => {
@@ -37,6 +37,7 @@ export default function Login ({navigation, route}) {
     })
     .then(function (response) {
         const user = response.data;
+        console.log('fetch user response', user);
          // Navigate to the desired screen after successful login
          // LOGIN IS USING DUMMY DATA
         navigation.navigate('Home', { user: dummydata, handleLogout: handleLogout });
