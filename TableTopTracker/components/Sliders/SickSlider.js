@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 // intuitive community Slider that I found
 import Slider from '@react-native-community/slider';
 
-// feel free to not use, but this'll be the general format **
+// don't need to use, but this'll be the general format **
 export default function SickSlider() {
 
   // arbitrary state
