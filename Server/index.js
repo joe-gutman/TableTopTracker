@@ -11,6 +11,7 @@ const cors = require('cors');
 const initializer = require('./database/populate.js');
 const adminInit = require('./database/populateUsers.js');
 const {getUserCollections, getCollectionGames} = require("./controllers/collections");
+const usersController = require('./controllers/users.js');
 
 const app = express();
 app.use(morgan('dev'));

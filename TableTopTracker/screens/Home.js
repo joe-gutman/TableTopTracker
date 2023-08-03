@@ -42,7 +42,7 @@ export default function Home ({ navigation, route }) {
         <Button
           title="Game Details"
           onPress={() => {
-            navigation.navigate('Game Details', {user: user})
+            navigation.navigate('Game Details', {user: user.username})
           }}>Game Detail</Button>
       </View>
 
