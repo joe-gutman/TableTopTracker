@@ -7,6 +7,7 @@ const path = require("path");
 const PORT = 3000;
 const db = require('./database/db');
 const getGameController = require('./controllers/games');
+const usersController = require('./controllers/users');
 const cors = require('cors');
 const initializer = require('./database/populate.js');
 const {getUserCollections, getCollectionGames} = require("./controllers/collections");
@@ -35,11 +36,25 @@ app.get('/game', function(req, res) {
 });
 
 app.post('/users', function(req, res) {
+  console.log(req.body)
   usersController.createUser(req, res);
 })
 
+// {
+//   username: 'nejim',
+//   email: 'pat@pat.com',
+//   fullname: 'pat',
+//   profilePhoto: '',
+//   age: '30',
+//   preferred_playstyle: 'cool style',
+//   favoriteMythicalCreature: 'cat',
+//   favoriteBoardGame: 'monopoly'
+// }
+
 app.get('/users', function(req, res) {
-  console.log(req.query.uid)
+  console.log(req.query.email)
+  // we need to push this dummy data to the db
+  // instead of sending back dummy data we need to make a query to the database;
   res.status(200).send(dummydata)
   // usersController.getUser(req, res);
 })
