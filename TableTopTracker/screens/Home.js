@@ -22,7 +22,7 @@ export default function Home ({ navigation, route }) {
   // console.dir(personalDummyGames);
 
   return (
-    <View style={{paddingBottom: '40px'}}>
+    <View style={{paddingBottom: '150px'}}>
       <Text>(Alex): Display Slider for Patrick</Text>
       <SickSlider />
 
