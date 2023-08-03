@@ -108,44 +108,6 @@ export default function GameDetails ({navigation, route}) {
       </View>
 
       <SwipeableDetails/>
-      {/* game description card */}
-      {/* <Animated.View
-        style={{
-          transform: [{translateX: pan.x}, {translateY: pan.y}],
-        }}
-        {...panResponder.panHandlers}
-      >
-
-      <Card style={styles.descriptionCard}>
-        <Card.Title title={dummyGame.name} subtitle={dummyGame.secondaryName} />
-          <Card.Content>
-            <View style={styles.table}>
-              <View style={styles.column}>
-                <Text>{dummyGame.category.join(', ')}</Text>
-                <Text>{(dummyGame.minPlayTime===dummyGame.maxPlayTime) ?
-                (dummyGame.minPlayTime) :
-                `${dummyGame.minPlayTime} - ${dummyGame.maxPlayTime}`} minutes
-                </Text>
-                <Text>Released: {dummyGame.year}</Text>
-              </View>
-              <View style={styles.column}>
-                <Text>{
-                  // render player number or number range
-                  (dummyGame.minPlayers===dummyGame.maxPlayers)
-                  ? dummyGame.minPlayers
-                  : `${dummyGame.minPlayers} - ${dummyGame.maxPlayers}`}
-                  {((dummyGame.minPlayers===dummyGame.maxPlayers) && (dummyGame.minPlayers===1))
-                    ? ` player`
-                    : ` players`
-                  } </Text>
-                <Text>Recommended Age: {dummyGame.age}</Text>
-                <Text>Complexity: </Text>
-              </View>
-            </View>
-          <Text>{dummyGame.description}</Text>
-        </Card.Content>
-      </Card>
-      </Animated.View> */}
 
       <NavBar navigation={navigation} user={user}/>
 
