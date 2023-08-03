@@ -14,7 +14,7 @@ export default function SickSlider() {
     <View style={{ alignItems: 'center' }}>
       <Text>Count: { count }</Text>
       <Slider
-        style={{ width: '90%' }} // <— adjust width **
+        style={{ width: '50%' }} // <— adjust width **
         value={ count }
         onValueChange={ setCount }
         // step={ 10 }
