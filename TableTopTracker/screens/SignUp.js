@@ -139,7 +139,7 @@ export default function SignUp ({navigation}) {
               secureTextEntry
             />
             <Button title="Upload Profile Photo" onPress={handleImageUpload} />
-              {imageURL && <Image source={{ uri: imageURL }} />}
+              {/* {imageURL && <Image source={{ uri: imageURL }} />} */}
             <Button
               title="Next"
               onPress={ checkUserInput
