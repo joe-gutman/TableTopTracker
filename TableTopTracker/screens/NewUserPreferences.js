@@ -91,7 +91,6 @@ export default function NewUserPreferences ({navigation, route}) {
               }
               }
             />
-
             </Text>
         </View>
     )
