@@ -23,7 +23,7 @@ export default function Home ({ navigation, route }) {
   // console.dir(personalDummyGames);
 
   return (
-    <View>
+    <View style={{paddingBottom: '40px'}}>
       <Text>(Alex): Display Slider for Patrick</Text>
       <SickSlider />
 
@@ -38,7 +38,7 @@ export default function Home ({ navigation, route }) {
         <Button
           title="Game Details"
           onPress={() => {
-            navigation.navigate('Game Details', {user: user})
+            navigation.navigate('Game Details', {user: user.username})
           }}>Game Detail</Button>
       </View> */}
         <GamesList

@@ -20,7 +20,8 @@ CREATE TABLE users (
   age int,
   preferred_playstyle varchar(64),
   favorite_mythical_creature varchar(64),
-  favorite_board_game varchar(64)
+  favorite_board_game varchar(64),
+  selectedCategories varchar (200)
 );
 
 create table friends (
@@ -106,86 +107,4 @@ create table collections_games_join (
 
   foreign key (collection_id) references collections(id),
   foreign key (game_id) references games(id)
-  foreign key (game_id) references games(id),
-  foreign key (collection_id) references collections(id)
-
-  foreign key (game_id) references games(id),
-  foreign key (collection_id) references collections(id)
-<<<<<<< HEAD
 );
-=======
-);
-
---create table owned_games_join (
---  id serial primary key,
---  game_id int,
---  user_id int,
---
---  CONSTRAINT fk_game_id
---        FOREIGN KEY(game_id)
---        REFERENCES games(id),
---  foreign key (user_id) references users(id)
---);
-
-
---create table wishlists (
---  id serial primary key,
---  user_id int unique,
---  public boolean,
---
---  foreign key (user_id) references users(id)
---);
---
---create table wishlists_games_join (
---  id serial primary key,
---  wishlist_id int,
---  game_id int,
---
---  foreign key (wishlist_id) references wishlists(id),
---  foreign key (game_id) references games(id)
---);
-
---create table owned (
---  id serial primary key,
---  user_id int unique,
---  public boolean,
---
---  foreign key (user_id) references users(id)
---);
-
---   game_id int,
---   user_id int,
-
---   CONSTRAINT fk_game_id (
---         FOREIGN KEY(game_id)
---         REFERENCES games(id),
---         foreign key (user_id) references users(id)
--- );
-
---create table wishlists (
---  id serial primary key,
---  user_id int unique,
---  public boolean,
---
---  foreign key (user_id) references users(id)
---);
---
---create table wishlists_games_join (
---  id serial primary key,
---  wishlist_id int,
---  game_id int,
---
---  foreign key (wishlist_id) references wishlists(id),
---  foreign key (game_id) references games(id)
---);
-
---create table owned (
---  id serial primary key,
---  user_id int unique,
---  public boolean,
---
---  foreign key (user_id) references users(id)
---);
-
-
->>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc

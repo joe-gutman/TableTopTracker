@@ -11,6 +11,7 @@ const cors = require('cors');
 const initializer = require('./database/populate.js');
 const adminInit = require('./database/populateUsers.js');
 const {getUserCollections, getCollectionGames} = require("./controllers/collections");
+const usersController = require('./controllers/users.js');
 
 const app = express();
 app.use(morgan('dev'));
@@ -18,7 +19,7 @@ app.use(express.json());
 app.use(cors())
 
 // initializer.populateBoardGames();
-adminInit.populateAdmin();
+// adminInit.populateAdmin();
 
 // this is still needed for line 47 app.get('/users', ...)
 const dummydata = {
@@ -44,7 +45,7 @@ app.post('/users', function(req, res) {
 
 app.get('/users', function(req, res) {
   console.log(req.query.uid)
-  res.status(200).send(dummydata)
+  res.sendStatus(200);
   // usersController.getUser(req, res);
 })
 
