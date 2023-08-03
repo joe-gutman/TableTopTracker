@@ -5,6 +5,7 @@ import GamesList from '../components/GameList/GamesList.js';
 import allDummyGames from '../components/GameList/dummy/allDummyGames';
 import personalDummyGames from '../components/GameList/dummy/personalDummyGames';
 import NavBar from '../components/NavBar/NavBar.js';
+import CollectionButton from '../components/Collections/CollectionButton.js'
 
 // testing Slider for Patrick
 import SickSlider from '../components/Sliders/SickSlider';
@@ -29,11 +30,17 @@ export default function Home ({ navigation, route }) {
 
       <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
-        <ButtonList
+        {/* <ButtonList
           collections={ collections }
           listType={ listType }
           setListType={ setListType }
-        />
+        /> */}
+        <View style={{display: 'inline-block'}}>
+          {collections.map((collection) => <CollectionButton
+            collection={collection}
+            key={collection}
+            />)}
+        </View>
       {/* <View>
         <Button
           title="Game Details"
