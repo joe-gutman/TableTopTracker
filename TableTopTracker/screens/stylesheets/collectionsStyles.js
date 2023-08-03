@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.onPrimary,
     backgroundColor: theme.colors.onPrimary,
     borderWidth: 5,
-    borderRadius: 5,
+    borderRadius: 8,
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
   cardMain: {
     backgroundColor: theme.colors.secondary,
     borderColor: theme.colors.secondary,
-    width: 90,
-    height: 100,
+    width: 80,
+    height: 95,
     borderWidth: 5,
     margin: 0,
     borderRadius: 5,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     color: theme.colors.tertiary,
     fontSize: '0.75em',
     textAlign: 'center',
-    padding: '2',
+    marginTop: 2,
   },
   cardBottom: {
     borderColor: 'red',
