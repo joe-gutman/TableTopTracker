@@ -53,7 +53,6 @@ export default function SignUp ({navigation}) {
       aspect: [1, 1],
       quality: 1,
     });
-
     if (!result.cancelled) {
       setImageURL(result.uri);
       console.log(imageURL);
@@ -61,7 +60,6 @@ export default function SignUp ({navigation}) {
       console.log('Image picker canceled.');
     }
   };
-
     return (
         <View>
             <TextInput
@@ -97,7 +95,6 @@ export default function SignUp ({navigation}) {
               }
               }
             />
-
             <Text> Have an Account? </Text>
             <Button
               title="Log in"
@@ -105,7 +102,6 @@ export default function SignUp ({navigation}) {
                   navigation.navigate('Login', {name: username});
               }}
             />
-
         </View>
     )
 }

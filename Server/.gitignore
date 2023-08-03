@@ -1,0 +1,13 @@
+.env
+*.DS_Store
+*.map
+*main.js
+*bundle.js
+config.js
+node_modules/
+coverage/
+dist/
+.expo/
+*.vscode
+**/.idea
+firebaseConfig.js
