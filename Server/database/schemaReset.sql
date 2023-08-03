@@ -13,13 +13,14 @@ DROP TABLE IF EXISTS owned_games_join CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(64),
-  user_id varchar(64) unique,
-  email varchar(32),
+  username VARCHAR(64) unique,
+  email varchar(64) unique,
+  fullname VARCHAR(64) unique,
   photo varchar(64),
-  games_owned int,
-  games_wishlisted int,
-  collections int
+  age int,
+  preferred_playstyle varchar(64),
+  favorite_mythical_creature varchar(64),
+  favorite_board_game varchar(64)
 );
 
 create table friends (
@@ -110,6 +111,9 @@ create table collections_games_join (
 
   foreign key (game_id) references games(id),
   foreign key (collection_id) references collections(id)
+<<<<<<< HEAD
+);
+=======
 );
 
 --create table owned_games_join (
@@ -184,3 +188,4 @@ create table collections_games_join (
 --);
 
 
+>>>>>>> 134fa6e77cf742a37185c96b1e091947dadbf8fc
