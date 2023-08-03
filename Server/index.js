@@ -18,8 +18,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors())
 
-// initializer.populateBoardGames();
-// adminInit.populateAdmin();
+//initializer.populateBoardGames();
+adminInit.populateAdmin();
 
 app.get('/game', function(req, res) {
   getGameController.getGame(req, res);
@@ -31,9 +31,8 @@ app.post('/users', function(req, res) {
 })
 
 app.get('/users', function(req, res) {
-  console.log(req.query.uid)
-  res.sendStatus(200);
-  // usersController.getUser(req, res);
+  // we make a request to the database for the user data by email
+  usersController.getUser(req, res);
 })
 
 app.get('/collections', async (req, res, next) => {
