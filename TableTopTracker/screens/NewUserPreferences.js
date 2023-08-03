@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 import NavBar from '../components/NavBar/NavBar.js';
 
@@ -13,7 +12,6 @@ import {SelectList, MultipleSelectList} from 'react-native-dropdown-select-list'
 export default function NewUserPreferences ({navigation, route}) {
   const {uid, email, fullname, username, profilePhoto } = route.params;
   const [age, onChangeAge] = React.useState('');
-  const [preferred_playstyle, onChangeFavoritePlaystyle] = React.useState('');
   const [preferred_playstyle, onChangeFavoritePlaystyle] = React.useState('');
   const [favoriteMythicalCreature, onChangeFavoriteMythicalCreature] = React.useState('');
   const [favoriteBoardGame, onChangeFavoriteBoardGame] = React.useState('');
@@ -35,13 +33,6 @@ export default function NewUserPreferences ({navigation, route}) {
     setFilteredData(filteredData);
     setSearchText(text);
   };
-  const handleSearchChange = (text) => {
-    const filteredData = category.filter((item) =>
-      item.toLowerCase().includes(text.toLowerCase())
-    );
-    setFilteredData(filteredData);
-    setSearchText(text);
-  };
     return (
         <View>
             <Text> Hi {username}, tell me about yourself! </Text>
@@ -49,7 +40,6 @@ export default function NewUserPreferences ({navigation, route}) {
               onChangeText={onChangeAge}
               value={age}
               placeholder="How old are you?"
-              required
               required
             />
             'Select your preferred playstyle'
@@ -75,7 +65,6 @@ export default function NewUserPreferences ({navigation, route}) {
               onChangeText={onChangeFavoriteBoardGame}
               value={favoriteBoardGame}
               placeholder="Favorite board game?"
-              required
               required
             />
             <Text>

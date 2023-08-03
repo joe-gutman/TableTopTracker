@@ -66,13 +66,10 @@ export default function SignUp ({navigation}) {
         <View>
             <TextInput
               onChangeText={setEmail}
-              onChangeText={setEmail}
               value={email}
               placeholder="Email"
             />
             <TextInput
-              onChangeText={setFullname}
-              value={fullname}
               onChangeText={setFullname}
               value={fullname}
               placeholder="Full Name"
@@ -80,17 +77,12 @@ export default function SignUp ({navigation}) {
             <TextInput
               onChangeText={setUsername}
               value={username}
-              onChangeText={setUsername}
-              value={username}
               placeholder="Username"
             />
             <TextInput
               onChangeText={setPassword}
               value={password}
-              onChangeText={setPassword}
-              value={password}
               placeholder="Password"
-              secureTextEntry
               secureTextEntry
             />
 
@@ -109,9 +101,6 @@ export default function SignUp ({navigation}) {
             <Text> Have an Account? </Text>
             <Button
               title="Log in"
-              onPress={() => {
-                  navigation.navigate('Login', {name: username});
-              }}
               onPress={() => {
                   navigation.navigate('Login', {name: username});
               }}

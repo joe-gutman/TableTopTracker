@@ -59,26 +59,6 @@ const SwipeableDetails = () => {
     //     });
     //   }
     // },
-    }
-    // {
-    //   if (pan.y._value < -200 || gestureState.vy < 0) {
-    //     console.log(pan);
-    //     Animated.spring(
-    //       pan, // Auto-multiplexed
-    //       {toValue: {x: 0, y: -400}, useNativeDriver: true}, // Back to zero
-    //     ).start(() => {
-    //       pan.setOffset({x: 0, y: -400});
-    //     });
-    //   } else {
-    //     console.log(pan);
-    //     Animated.spring(
-    //       pan, // Auto-multiplexed
-    //       {toValue: {x: 0, y: 0}, useNativeDriver: true},
-    //     ).start(() => {
-    //       pan.setOffset({x: 0, y: 0});
-    //     });
-    //   }
-    // },
   });
 
   return (
