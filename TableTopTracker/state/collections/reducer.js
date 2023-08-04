@@ -7,6 +7,8 @@ export default function CollectionsReducer(state = {collections: null}, action) 
         collections: action.payload.collections
       }
 
+      break;
+
     default:
       return state;
   }

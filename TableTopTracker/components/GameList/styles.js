@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.onTertiary,
     borderRadius: 8,
     width: 300,
-    margin: 'auto',
+    margin: 5, //'auto',
+    boxShadow: '0 0.4em rgba(0, 0, 0, 0.2)',
   },
   focusButton: {
     color: 'blue',
@@ -62,15 +63,18 @@ const styles = StyleSheet.create({
     padding: 'auto',
   },
   thumbnail: {
-    width: 50,
-    height: 50,
+    width: 75,
+    height: 75,
     resizeMode: 'cover', // others available
     marginRight: 10 // adjust margin as needed
+  },
+  thumbnailContainer: {
+    padding: 'auto'
   },
   cardGrid: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     fontFamily: theme.fonts.Bold

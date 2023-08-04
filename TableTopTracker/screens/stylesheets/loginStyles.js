@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: theme.colors.onBackground,
     height: '100%',
-    margin: '0 auto',
+    margin: '0',
   },
   wood: {
     width: '100%',

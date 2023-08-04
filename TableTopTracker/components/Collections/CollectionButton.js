@@ -10,11 +10,16 @@ const icons = {
   'Misc': require('../../assets/Asset-NavBar-LifePerson-White.png'),
 };
 
-export default function CollectionButton({ collection, onSelect }) {
-  console.log(collection);
+export default function CollectionButton({ collection, onSelect, listType }) {
+
   return (
-    <Pressable style={styles.cardBorder} onPress={() => onSelect(collection)}>
-      <View style={styles.cardMain}>
+    <Pressable
+      style={(collection === listType) ? styles.selectedBorder : styles.cardBorder}
+      onPress={() => onSelect(collection)}
+    >
+      <View
+        style={(collection === listType) ? styles.selectedMain : styles.cardMain}
+      >
         <Image
           // default image for user-created collections is life person icon
           source={icons[collection] || icons['Misc']}
@@ -23,7 +28,11 @@ export default function CollectionButton({ collection, onSelect }) {
           width: 50,
         }}/>
       </View>
-      <Text style={styles.cardText}>{collection}</Text>
+      <Text
+        style={styles.cardText}
+      >
+        {collection}
+      </Text>
     </Pressable>
   );
 }
