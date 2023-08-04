@@ -4,7 +4,11 @@ import { StyleSheet, Button, View, TextInput, SafeAreaView, TouchableHighlight, 
 
 import styles from './navBarStyles.js';
 
-// import home from '../assets/Asset-Collection/House.png';
+import home from '../assets/Asset-Collection/House.png';
+
+const icons = {
+  Home: require('../../assets/Asset-Collection/House.png'),
+}
 
 export default function NavBar({navigation, user}) {
 // export default function NavBar({navigation, user, gameWarden}) {
@@ -23,7 +27,7 @@ export default function NavBar({navigation, user}) {
                     onPress={() =>
                         navigation.navigate('Home', user={user})
                     }>home
-                    {/* <Image source={require('../assets/Asset-Collection/House.png')} /> */}
+                    <Image source={icons[Home]} />
                   </Pressable>
                 </View>
               </View>
