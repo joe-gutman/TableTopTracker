@@ -13,7 +13,7 @@ export default function GameCard({
     <View style={ styles.card }>
       <TouchableOpacity onPress={() => {
         // MISSING: category, image, age, gameId
-        handlePress();
+        handlePress(title);
         }}>
         <Card>
           <Card.Content>
@@ -30,7 +30,7 @@ export default function GameCard({
           </Card.Content>
 
           {/* not rendering title for some reason (suspect naming convention issue?) */}
-          <Card.Title>{ title }</Card.Title>
+          <Card.Title title={title}/>
         </Card>
       </TouchableOpacity>
     </View>
