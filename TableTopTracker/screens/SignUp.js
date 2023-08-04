@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, TextInput, Button, Image, Pressable } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image, ImageBackground, Pressable } from 'react-native';
 
 import NavBar from '../components/NavBar/NavBar.js';
 import styles from './stylesheets/SignUpStyles.js';
@@ -116,9 +116,16 @@ export default function SignUp ({navigation}) {
 
     return (
       <View style={styles.parentContainer}>
+        <ImageBackground
+            source={require('../assets/Asset-Texture-Paper-Large.png')}
+            style={styles.scroll}
+        >
         <View style={styles.branding}>
-          <Text style={styles.logo}>pretend i'm a logo</Text>
-          <Text style={styles.greenWords}>Powered by Board Game Geek</Text>
+            <Image
+                source={require('../assets/Asset-Logo-Vertical.png')}
+                style={styles.logoImage}
+            />
+            <Text style={styles.boardGameGeek}>Powered by Board Game Geek</Text>
         </View>
         <View style={styles.userInput}>
             <TextInput
@@ -175,6 +182,7 @@ export default function SignUp ({navigation}) {
             }}>Log In</Pressable>
           </View>
         </View>
+          </ImageBackground>
       </View>
     )
 }

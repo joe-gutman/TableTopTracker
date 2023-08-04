@@ -74,11 +74,11 @@ const SwipeableDetails = ({game}) => {
         {...panResponder.panHandlers}
         style={[pan.getLayout(), styles.tile]}
       >
-      <Pressable
+      {/* <Pressable
         onPress={() =>
           dispatch(handleOpenModal('ADD_TO_COLLECTION', {game}))
         }
-      > <Text>Add To Collection</Text> </Pressable>
+      > <Text>Add To Collection</Text> </Pressable> */}
 
         <Text style={styles.titleText}>{game.title}</Text>
 

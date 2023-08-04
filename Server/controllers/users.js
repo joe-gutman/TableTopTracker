@@ -64,7 +64,9 @@ exports.createUser = (req, res) => {
       console.log(userId);
       usersModel.createDefaultCollections(userId)
         .then((userData) => {
-          res.status(200).send(userData);
+          const collection = {'My Games': [], 'Liked': [], 'WishList': []}
+          console.log('USER DATA IS', userData)
+          res.status(200).send(collection);
         })
     })
     .catch((error) => {

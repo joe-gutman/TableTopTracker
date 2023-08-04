@@ -10,7 +10,7 @@ const theme = {
   colors: {
     // ...DefaultTheme.colors,
     //PRIMARY(Green)---------
-    primary: '#7FB069', //green - logo, some buttons
+    primary: '#74a461', //green - logo, some buttons
     onPrimary: '#FFFFFF', //white
     // primaryContainer: ,
     // onPrimaryContainer: ,

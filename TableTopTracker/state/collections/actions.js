@@ -5,3 +5,9 @@ export function handleReceiveCollections(collections) {
     payload: {collections}
   }
 }
+export function handleAddCollection(collectionName) {
+  return {
+    type: 'ADD_COLLECTION',
+    payload: {collectionName: []}
+  }
+}
