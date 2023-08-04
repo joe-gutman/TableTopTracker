@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
 // ).current;
 
 export default function GameDetails ({navigation, route}) {
-  const { user } = route.params;
+  const { game, user } = route.params;
 
   return (
     <View style={styles.parentContainer}>
@@ -101,13 +101,13 @@ export default function GameDetails ({navigation, route}) {
         <ImageBackground
           style={styles.image}
           source={{
-            uri: dummyGame.image,
+            uri: game.thumbnail,
           }}
           >
         </ImageBackground>
       </View>
 
-      <SwipeableDetails/>
+      <SwipeableDetails game={game}/>
 
       <NavBar navigation={navigation} user={user}/>
 
