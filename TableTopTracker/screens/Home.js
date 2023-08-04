@@ -25,8 +25,12 @@ export default function Home ({ navigation, route }) {
 
   return (
     <View style={{paddingBottom: '40px'}}>
-      <Text>(Alex): Display Slider for Patrick</Text>
-      <SickSlider />
+
+      <ImageBackground
+          style={styles.image}
+          resizeMode='cover'
+          source={require('../assets/Asset-_Background-Wood.png')}
+      >
 
       <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
@@ -53,10 +57,7 @@ export default function Home ({ navigation, route }) {
 
       <NavBar navigation={navigation} user={user}/>
 
-        {/* <ImageBackground
-            style={styles.image}
-            source={require('../assets/Asset-_Background-Wood.png')}
-        ></ImageBackground> */}
+      </ImageBackground>
 
     </View>
   )
@@ -74,8 +75,9 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   image: {
-    height: '100%',
-    width: '100%',
-    resizeMode: 'contain',
+    // height: '100%',
+    // width: '100%',
+    flex: 1,
+    justifyContent: 'center',
   },
 });

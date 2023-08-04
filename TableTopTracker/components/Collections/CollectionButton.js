@@ -15,6 +15,7 @@ export default function CollectionButton({ collection }) {
     <View style={styles.cardBorder}>
       <View style={styles.cardMain}>
         <Image
+          // default image for user-created collections is life person icon
           source={icons[collection] || icons['Misc']}
           style={{
           height: 50,
