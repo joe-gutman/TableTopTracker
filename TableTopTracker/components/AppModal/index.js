@@ -2,8 +2,8 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import AddGameToCollection from "../Collections/AddGameToCollection";
 import {handleCloseModal} from "../../state/modal/actions";
-import { Portal, Text/*, Modal*/ } from "react-native-paper";
-import {View, StyleSheet, Modal} from "react-native";
+import { Portal, Text, Modal } from "react-native-paper";
+import {View, StyleSheet, /* Modal */} from "react-native";
 import CreateCollection from "../Collections/CreateCollection";
 
 
