@@ -28,7 +28,7 @@ const theme = {
     // onTertiaryContainer: ,
 
     //NEUTRAL---------
-    background: '#DAAF88', //orangebeige  
+    background: '#DAAF88', //orangebeige
     onBackground: "#4A3018", //dark brown - placeholder for wood texture image
     // surface: ,
     // onSurface: ,
@@ -61,19 +61,22 @@ const theme = {
   // },
   components: {
     textInput: {
-        color: "#4A3018",
-        fontSize: 16,
-        height: 40,
-        width: 344,
-        borderRadius: 8,
-        backgroundColor: '#FFF5DD',
-        shadowOffset: {
-          width: 0,
-          height: 5,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 0,
-        marginBottom: 10,
+      color: "#4A3018",
+      fontSize: 16,
+      height: 40,
+      width: '70%',
+      borderRadius: 8,
+      backgroundColor: '#FFF5DD',
+      shadowOffset: {
+        width: 0,
+        height: 5,
+      },
+      shadowOpacity: 0.1,
+      shadowRadius: 0,
+      marginBottom: 10,
+      marginLeft:'auto',
+      marginRight:'auto',
+      padding: '15px',
     },
     gameWardenCarCard: {
 

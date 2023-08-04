@@ -73,16 +73,16 @@ const SwipeableDetails = ({game}) => {
         {...panResponder.panHandlers}
         style={[pan.getLayout(), styles.tile]}
       >
+      <Pressable
+        onPress={() =>
+          dispatch(handleOpenModal('ADD_TO_COLLECTION', {game}))
+        }
+      > <Text>Add To Collection</Text> </Pressable>
 
           <Text style={styles.titleText}>{game.title}</Text>
           <View style={styles.table}>
             <View style={styles.column}>
 
-              <Pressable
-                onPress={() =>
-                  dispatch(handleOpenModal('ADD_TO_COLLECTION', {game}))
-                }
-              > <Text>Add To Collection</Text> </Pressable>
 
               {/* <Text>{game.category.join(', ')}</Text> */}
               <Text>{(game.minplaytime===game.maxplaytime) ?

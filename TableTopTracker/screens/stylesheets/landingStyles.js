@@ -7,52 +7,66 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: theme.colors.onBackground,
     height: '100%',
+    margin: '0 auto',
   },
-  branding: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexGrow: 1,
+  wood: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
     justifyContent: 'center',
-    alignItems: 'center',
   },
-  logo: {
-    margin: 'auto',
+  scroll: {
+    width: '100%',
+    height: '600px',
+    marginTop: 50,
+    marginLeft:'auto',
+    marginRight:'auto',
   },
-  bgg: {
-    margin: 'auto',
+  logoImage: {
+    width: '80%',
+    aspectRatio: 400/300,
+    resizeMode: 'contain',
+    padding: 0,
+    marginTop: 65,
+    marginLeft:'auto',
+    marginRight:'auto',
   },
-  buttonsContainer: {
-    display: 'flex',
-    flexGrow: 1,
+  boardGameGeek: {
+    color: theme.colors.primary,
+    textAlign: 'center',
+    marginTop: -25,
+  },
+  registerButton: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: 19,
+    height: 51,
+    width: 259,
+    marginLeft:'auto',
+    marginRight:'auto',
     justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: 85,
+    color: 'white',
   },
   loginContainer:{
     display: 'flex',
     flexDirection: 'row',
-    marginTop: 10,
-  },
-  buttonsContainer: {
-    display: 'flex',
-    flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: 15,
+    marginLeft:'auto',
+    marginRight:'auto',
   },
   greenWords: {
     color: theme.colors.primary,
+    fontWeight: 'bold',
   },
   orangeWords: {
     color: theme.colors.secondary,
+    // fontWeight: 'bold',
   },
-  bigGreenButton: {
-    backgroundColor: theme.colors.primary,
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 50,
-  },
-  bigGreenButtonText: {
+  registerButtonText: {
+    marginLeft:'auto',
+    marginRight:'auto',
     color: 'white',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
   }
 });

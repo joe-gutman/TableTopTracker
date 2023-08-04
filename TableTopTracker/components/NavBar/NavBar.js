@@ -4,7 +4,8 @@ import { StyleSheet, Button, View, TextInput, SafeAreaView, TouchableHighlight }
 
 import styles from './styles.js';
 
-export default function NavBar({navigation, user, gameWarden}) {
+export default function NavBar({navigation, user}) {
+// export default function NavBar({navigation, user, gameWarden}) {
     if(!user) {
         throw new Error('User not defined in NavBar');
     }
@@ -25,7 +26,14 @@ export default function NavBar({navigation, user, gameWarden}) {
               </View>
               <View style={styles.centerColumn}>
                 <View styles={styles.centerTop}>
-                  {gameWarden ?
+                <Button
+                    title="Game Warden"
+                    style={styles.bigButton}
+                    onPress={() =>
+                      navigation.navigate('Game Warden', user={user})
+                    }>
+                  </Button>
+                  {/* {gameWarden ?
                   (<Button
                     title="Game Warden"
                     style={styles.bigButton}
@@ -39,7 +47,7 @@ export default function NavBar({navigation, user, gameWarden}) {
                     onPress={() =>
                         navigation.navigate('Search', user={user})
                     }>
-                  </Button>)}
+                  </Button>)} */}
                 </View>
 
                 <View style={styles.centerMiddle}>
