@@ -12,6 +12,10 @@ import SickSlider from '../components/Sliders/SickSlider';
 import {useSelector} from "react-redux";
 
 export default function Home ({ navigation, route }) {
+  //hides top bar navigator
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
 
   // const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
   const {collections} = useSelector(state => state.collections)
@@ -28,10 +32,10 @@ export default function Home ({ navigation, route }) {
 
   return (
     <View style={{paddingBottom: '100px'}}>
-      <Text>(Alex): Display Slider for Patrick</Text>
-      <SickSlider />
+      {/* <Text>(Alex): Display Slider for Patrick</Text>
+      <SickSlider /> */}
 
-      <Text>This is {user.email}'s HomePage</Text>
+      {/* <Text>This is {user.email}'s HomePage</Text> */}
       <View style={ styles.gameListContent }>
 
         <ScrollView horizontal={true}>
