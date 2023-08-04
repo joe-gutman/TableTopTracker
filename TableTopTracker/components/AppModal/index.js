@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import AddGameToCollection from "../Collections/AddGameToCollection";
 import {handleCloseModal, handleOpenModal} from "../../state/modal/actions";
 import { Portal, Text, Modal } from "react-native-paper";
-import {View, StyleSheet/*, Modal*/} from "react-native";
+import {View, StyleSheet, ImageBackground/*, Modal*/} from "react-native";
 import CreateCollection from "../Collections/CreateCollection";
 
 
@@ -38,28 +38,6 @@ export default function AppModal() {
   }
 
 
-
-  /*return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={open}
-      onRequestClose={() => handleCloseModal()}
-      onDismiss={handleCloseModal}
-    >
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
-          {getContent()}
-          {/!*<Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => handleCloseModal()}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>*!/}
-        </View>
-      </View>
-    </Modal>
-  )*/
-
   return (
     <Portal>
       <Modal
@@ -74,6 +52,10 @@ export default function AppModal() {
 }
 
 const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+  },
   centeredView: {
     flex: 1,
     justifyContent: 'center',

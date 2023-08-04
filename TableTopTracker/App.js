@@ -85,19 +85,22 @@ function App() {
           <Stack.Screen name="Search" component={Search}/>
         </Stack.Navigator>
       </NavigationContainer>
-      <AppModal />
+      {
+        state.modal.open &&
+        <AppModal />
+      }
       {state.app.notification && (
         <Snackbar
           visible={!!state.app.notification}
           duration={3000}
           style={{backgroundColor: 'gray'}}
           onDismiss={() => dispatch(handleRemoveNotification())}
-          action={{
-            label: 'Undo',
-            onPress: () => {
-              // Do something
-            },
-          }}
+          // action={{
+          //   label: 'Undo',
+          //   onPress: () => {
+          //     // Do something
+          //   },
+          // }}
         >
           {state.app.notification}
         </Snackbar>
