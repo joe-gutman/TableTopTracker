@@ -19,6 +19,23 @@ const styles = StyleSheet.create({
   bgg: {
     margin: 'auto',
   },
+  logoImage: {
+    width: '80%',
+    aspectRatio: 400/300,
+    resizeMode: 'contain',
+    padding: 0,
+    marginTop: 65,
+    marginLeft:'auto',
+    marginRight:'auto',
+  },
+  scroll: {
+    width: '100%',
+    height: '825px',
+    marginTop: 10,
+    marginLeft:'auto',
+    marginRight:'auto',
+    resizeMode: 'contain'
+  },
   userInput: {
     display: 'flex',
     flexDirection: 'column',

@@ -1,14 +1,22 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, TextInput, Button, ImageBackground, Pressable } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button,Image, ImageBackground, Pressable } from 'react-native';
 import styles from './stylesheets/newUserPreferencesStyles.js';
 import NavBar from '../components/NavBar/NavBar.js';
 
 import { postNewUser } from '../util/api.js';
 
 import {SelectList, MultipleSelectList} from 'react-native-dropdown-select-list'
+import {useDispatch, useSelector} from 'react-redux'
+import {handleSetUser} from "../state/app/actions";
+import {handleReceiveCollections} from "../state/collections/actions"
 
 export default function NewUserPreferences ({navigation, route}) {
+  const dispatch = useDispatch();
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
+
   const {uid, email, fullname, username, profilePhoto } = route.params;
   const [age, onChangeAge] = React.useState('');
   const [preferred_playstyle, onChangeFavoritePlaystyle] = React.useState('');
@@ -65,6 +73,9 @@ export default function NewUserPreferences ({navigation, route}) {
     try {
       console.log('newUser', newUser);
       const response = await postNewUser(newUser);
+      console.log(response, 'RESPONSE IS <<')
+      dispatch(handleReceiveCollections(response.data))
+      dispatch(handleSetUser(newUser));
       navigation.navigate('Home', { user: response.data });
     } catch (error) {
       console.error('Error while posting new user:', error);
@@ -72,12 +83,17 @@ export default function NewUserPreferences ({navigation, route}) {
   };
 
     return (
+
         <View style={styles.parentContainer}>
-          <Text> Hi {username}, tell me about yourself! </Text> <br></br>
-            <ImageBackground
-              source={require('../assets/Asset-Background-Wood.png')}
-              style={styles.wood}
-          >
+          <ImageBackground
+            source={require('../assets/Asset-Background-Wood.png')}
+            style={styles.wood} >
+
+          <Image
+                source={require('../assets/WardenAsk.png')}
+                style={styles.logoImage}
+            />
+          {/* <Text> Hi {username}, tell me about yourself! </Text> <br></br> */}
           <View style={styles.centeredContent}>
 
             <TextInput style={styles.textInputBox}
@@ -147,4 +163,4 @@ export default function NewUserPreferences ({navigation, route}) {
             </ImageBackground>
         </View>
     )
-}
+  }
