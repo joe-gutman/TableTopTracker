@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { AppRegistry } from 'react-native';
-import { PaperProvider } from 'react-native-paper';
+import {PaperProvider, Snackbar} from 'react-native-paper';
 import { name as appName } from './app.json';
 import { useState, useEffect } from 'react';
 
@@ -31,12 +31,13 @@ const Stack = createNativeStackNavigator();
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import firebaseConfig from './firebaseConfig.js'
-import {Provider, useSelector} from "react-redux";
+import {Provider, useDispatch, useSelector} from "react-redux";
 import { store } from './state/index.js';
 import AppModal from "./components/AppModal";
 
 //fonts
 import * as Font from 'expo-font';
+import {handleRemoveNotification} from "./state/app/actions";
 
 
 if (!firebase.apps.length) {
@@ -55,6 +56,7 @@ export default function AppWrapper() {
 
 
 function App() {
+  const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const modalState = useSelector((state) => state.modal);
   const [ username, setUsername ] = useState('Arnold');
@@ -84,6 +86,22 @@ function App() {
         </Stack.Navigator>
       </NavigationContainer>
       <AppModal />
+      {state.app.notification && (
+        <Snackbar
+          visible={!!state.app.notification}
+          duration={3000}
+          style={{backgroundColor: 'gray'}}
+          onDismiss={() => dispatch(handleRemoveNotification())}
+          action={{
+            label: 'Undo',
+            onPress: () => {
+              // Do something
+            },
+          }}
+        >
+          {state.app.notification}
+        </Snackbar>
+      )}
     </PaperProvider>
   );
 }
