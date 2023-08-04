@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-
+import { StyleSheet, Text, View, TextInput, Button, ImageBackground, Pressable } from 'react-native';
+import styles from './stylesheets/newUserPreferencesStyles.js';
 import NavBar from '../components/NavBar/NavBar.js';
 
 import { postNewUser } from '../util/api.js';
@@ -72,58 +72,79 @@ export default function NewUserPreferences ({navigation, route}) {
   };
 
     return (
-        <View>
-            <Text> Hi {username}, tell me about yourself! </Text>
-            <TextInput style={{backgroundColor: '#FFF5DD', marginBottom: 10, width:800, }}
+        <View style={styles.parentContainer}>
+          <Text> Hi {username}, tell me about yourself! </Text> <br></br>
+            <ImageBackground
+              source={require('../assets/Asset-Background-Wood.png')}
+              style={styles.wood}
+          >
+          <View style={styles.centeredContent}>
+
+            <TextInput style={styles.textInputBox}
               onChangeText={onChangeAge}
               value={age}
-              placeholder="How old are you?"
+              placeholder="Enter your age"
             />
-            Select your preferred playstyle
+
             <SelectList
+              style={[styles.textInputBox, styles.centeredContent]}
               data={playstyles}
               setSelected={(selectedItem) => onChangeFavoritePlaystyle(selectedItem)}
-              defaultButtonText='Select your preferred playstyle'
+              placeholder='Select your preferred playstyle'
               search = {false}
-              boxStyles={{ backgroundColor: '#FFF5DD', marginBottom: 10, width:800 }}
-              dropdownStyles = {{backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width:800 }}
+              boxStyles={{ backgroundColor: '#FFF5DD', marginBottom: 10, width: 275 }}
+              dropdownTextStyles = {{color: "#4A3018",fontSize: 16}}
+              inputStyles={{color: "#4A3018",fontSize: 16}}
+              dropdownStyles = {{backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width:275 }}
             />
-          Select your favorite mythical creature
+
           <SelectList
-              data={creatures}
+            style={[styles.textInputBox, styles.centeredContent]}
+                    data={creatures}
               setSelected={(selectedItem) => onChangeFavoriteMythicalCreature(selectedItem)}
-              defaultButtonText="Select your favorite mythical creature"
+              placeholder="Select your favorite mythical creature"
               search = {false}
-              boxStyles={{ backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width:800 }}
-              dropdownStyles = {{backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width:800 }}
+              inputStyles={{color: "#4A3018",fontSize: 16}}
+              dropdownTextStyles = {{color: "#4A3018", fontSize: 16}}
+              boxStyles={{ backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width: 275 }}
+              dropdownStyles = {{backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width: 275 }}
           />
 
-            <TextInput style={{backgroundColor: '#FFF5DD', marginBottom: 10, width:800 }}
+            <TextInput style={styles.textInputBox }
               onChangeText={onChangeFavoriteBoardGame}
               value={favoriteBoardGame}
-              placeholder="Favorite board game?"
+              placeholder="Enter your favorite board game?"
             />
             <Text>
 
-            Select your favorite categories<br></br>
+
             <MultipleSelectList
+            style={[styles.textInputBox, styles.centeredContent]}
               setSelected={(val) => setSelectedCategories(val)}
               data={category}
               save="value"
               label="Categories"
               search = {false}
-              boxStyles={{ backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width:800 }}
-              dropdownStyles = {{backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width:800 }}
+              placeholder = "Select your favorite categories"
+              boxStyles={{ backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width: 275}}
+              inputStyles={{color: "#4A3018",fontSize: 16}}
+              dropdownTextStyles = {{color: "#4A3018",fontSize: 16}}
+              dropdownStyles = {{backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10, width: 275}}
               maxHeight = "300"
             />
 
-<br></br>
-            <Button
-              title="Next"
-              onPress={ checkTextInput
-              }
-            />
+            <br></br>
+            <View style={styles.buttonsContainer}>
+            <Pressable
+            style={styles.bigGreenButton}
+            title="Register"
+            onPress={ checkTextInput}>Register</Pressable>
+            </View>
+
             </Text>
+
+            </View>
+            </ImageBackground>
         </View>
     )
 }
