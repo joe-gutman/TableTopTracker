@@ -9,40 +9,49 @@ import CollectionButton from '../components/Collections/CollectionButton.js'
 
 // testing Slider for Patrick
 import SickSlider from '../components/Sliders/SickSlider';
+import {useSelector} from "react-redux";
 
 export default function Home ({ navigation, route }) {
+  //hides top bar navigator
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
 
-  const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
-  const [ listType, setListType ] = useState(collections[0]);
+  // const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
+  const {collections} = useSelector(state => state.collections)
+  const [ listType, setListType ] = useState('My Games');
   const [gameDetails, setGameDetails] = useState({});
 
   let { user, handleLogout } = route.params;
   console.log('route.params', route.params);
   console.log('user in home page: ', user);
+  console.log(collections);
 
   // console.dir(allDummyGames);
   // console.dir(personalDummyGames);
 
   return (
-    <View style={{paddingBottom: '150px'}}>
-      <Text>(Alex): Display Slider for Patrick</Text>
-      <SickSlider />
+    <View style={{paddingBottom: '100px'}}>
+      {/* <Text>(Alex): Display Slider for Patrick</Text>
+      <SickSlider /> */}
 
-      <Text>This is {user.email}'s HomePage</Text>
+      {/* <Text>This is {user.email}'s HomePage</Text> */}
       <View style={ styles.gameListContent }>
 
         <ScrollView horizontal={true}>
-          {collections.map((collection) => <CollectionButton
-            collection={collection}
-            key={collection}
-            />)}
+          {Object.keys(collections).map((key) =>
+            <CollectionButton
+              collection={key}
+              onSelect={(key) => setListType(key)}
+            />
+          )}
         </ScrollView>
 
         <GamesList
-          handlePress={() => {
-            navigation.navigate('Game Details', {user: user})
+          handlePress={(game) => {
+            navigation.navigate('Game Details', {user: user, game})
           }}
-          games={ allDummyGames }
+          games={ collections[listType] }
           listType={ listType }
         />
       </View>

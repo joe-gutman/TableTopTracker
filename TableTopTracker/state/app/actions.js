@@ -12,3 +12,16 @@ export function handleSetUser(user) {
     payload: {user}
   }
 }
+
+export function handleSetNotification(notification) {
+  return {
+    type: 'SET_NOTIFICATION',
+    payload: {notification}
+  }
+}
+
+export function handleRemoveNotification() {
+  return {
+    type: 'REMOVE_NOTIFICATION'
+  }
+}
