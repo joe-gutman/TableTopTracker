@@ -7,9 +7,6 @@ import personalDummyGames from '../components/GameList/dummy/personalDummyGames'
 import NavBar from '../components/NavBar/NavBar.js';
 import CollectionButton from '../components/Collections/CollectionButton.js'
 
-// testing Slider for Patrick
-import SickSlider from '../components/Sliders/SickSlider';
-
 export default function Home ({ navigation, route }) {
 
   const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
@@ -66,7 +63,6 @@ export default function Home ({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -75,8 +71,6 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   image: {
-    // height: '100%',
-    // width: '100%',
     flex: 1,
     justifyContent: 'center',
   },

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Button, Pressable} from 'react-native';
+import { StyleSheet, Text, View, Button, Pressable, Image } from 'react-native';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import styles from './stylesheets/landingStyles.js';
 
@@ -11,7 +11,13 @@ export default function Landing ({navigation}) {
 
             <View style={styles.branding}>
               <View style={styles.logo}>
-                <Text>[pretend i'm a logo]</Text>
+                <Image
+                  // default image for user-created collections is life person icon
+                  source={require('../assets/Asset-_Logo-Horizontal.png')}
+                  style={{
+                  height: 120,
+                  width: 290,
+                }}/>
               </View>
               <Text style={styles.greenWords}>Powered by Board Game Geek</Text>
             </View>
