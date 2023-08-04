@@ -66,10 +66,10 @@ export default function Landing ({navigation}) {
           />
           <Text style={styles.boardGameGeek}>Powered by Board Game Geek</Text>
           <Pressable style={styles.registerButton}
-                     title="Get Started"
-                     onPress={() =>
-                       navigation.navigate('Sign Up')
-                     }>
+            title="Get Started"
+            onPress={() =>
+              navigation.navigate('Sign Up')
+            }>
             <Text style={styles.registerButtonText}>Get Started</Text>
           </Pressable>
           <View style={styles.loginContainer}>
