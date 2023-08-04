@@ -4,7 +4,7 @@ import theme from '../../theme.js';
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    backgroundColor: theme.colors.onBackground, // consistent bg,
+    // backgroundColor: theme.colors.onBackground, // consistent bg,
     // paddingVertical: 10,
     // paddingHorizontal: 15
     display: 'flex',
@@ -19,14 +19,14 @@ const styles = StyleSheet.create({
   listContainer: {
     flexGrow: 1,
     padding: 10,
-    backgroundColor: theme.colors.onBackground,
+    // backgroundColor: theme.colors.onBackground,
     display: 'flex',
     flexDirection: 'column',
   },
   list: {
     flexGrow: 1,
     padding: 10,
-    backgroundColor: theme.colors.onBackground,
+    // backgroundColor: theme.colors.onBackground,
     display: 'flex',
     flexDirection: 'column',
     width: '100%'
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 10,
     backgroundColor: theme.colors.onTertiary,
-    borderRadius: 5,
+    borderRadius: 8,
     width: 300,
     margin: 'auto',
   },
@@ -62,15 +62,18 @@ const styles = StyleSheet.create({
     padding: 'auto',
   },
   thumbnail: {
-    width: 50,
-    height: 50,
+    width: 75,
+    height: 75,
     resizeMode: 'cover', // others available
     marginRight: 10 // adjust margin as needed
+  },
+  thumbnailContainer: {
+    padding: 'auto'
   },
   cardGrid: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     fontFamily: theme.fonts.Bold
