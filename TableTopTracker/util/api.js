@@ -12,7 +12,7 @@ export const fetchUserCollections = (userId) =>
 export const fetchCollectionGames = (collectionId) =>
   makeRequest(`/collections/${collectionId}`, 'GET');
 export const fetchUser = (data) =>
-  makeRequest(`/users?uid=${data.uid}`, 'GET');
+  makeRequest(`/users?email=${data.email}`, 'GET');
 
 export const postNewUser = (data) =>
   makeRequest(`/users`, 'POST', data)

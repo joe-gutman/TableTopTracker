@@ -1,8 +1,8 @@
 
-export function handleOpenModal(template) {
+export function handleOpenModal(template, data) {
   return {
     type: 'MODAL_OPEN',
-    payload: {template}
+    payload: {template, data}
   }
 }
 

@@ -139,7 +139,7 @@ export default function SignUp ({navigation}) {
               secureTextEntry
             />
             <Button title="Upload Profile Photo" onPress={handleImageUpload} />
-              {imageURL && <Image source={{ uri: imageURL }} />}
+              {/* {imageURL && <Image source={{ uri: imageURL }} />} */}
             <Button
               title="Next"
               onPress={ checkUserInput
@@ -149,7 +149,7 @@ export default function SignUp ({navigation}) {
             <Button
               title="Log in"
               onPress={() => {
-                  navigation.navigate('Login', {name: username});
+                navigation.navigate('Login', {name: username});
               }}
             />
         </View>

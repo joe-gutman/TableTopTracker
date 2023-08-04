@@ -35,9 +35,9 @@ import {Provider, useSelector} from "react-redux";
 import { store } from './state/index.js';
 import AppModal from "./components/AppModal";
 
-
 //fonts
 import * as Font from 'expo-font';
+
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -45,11 +45,11 @@ if (!firebase.apps.length) {
 
 
 export default function AppWrapper() {
- return (
-   <Provider store={store}>
-     <App />
-   </Provider>
- )
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
 };
 
 

@@ -1,5 +1,6 @@
 const usersModel = require('../models/users.js');
 const collectionsController = require('../controllers/collections.js');
+const collectionsController = require('../controllers/collections.js');
 const db = require('./db.js');
 exports.populateAdmin = () => {
   const adminData = {
@@ -11,6 +12,7 @@ exports.populateAdmin = () => {
     "preferred_playstyle": "Strategic and Competitive",
     "favorite_mythical_creature": "Dragon",
     "favorite_board_game": "Catan (Settlers of Catan)",
+    "favoriteCategories": "action"
     "favoriteCategories": "action"
   };
   usersModel.createUser(adminData)
