@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Button, View, TextInput, SafeAreaView, TouchableOpacity, Pressable, Image } from 'react-native';
+import { StyleSheet, Button, View, TextInput, SafeAreaView, TouchableOpacity, Pressable, Image, ImageBackground } from 'react-native';
 
 import styles from './navBarStyles.js';
 
@@ -27,38 +27,26 @@ export default function NavBar({navigation, user, gameWarden}) {
             onPress={() =>
                 navigation.navigate('Home', user={user})
             }>
-              <Image
-              source={icons['MonopolyHouse']}
-              style={styles.navButton}/>
+              <Image source={icons['MonopolyHouse']} style={styles.navButtons}/>
           </Pressable>
         </View>
         <View style={styles.centerBox}>
-          {/* <View style={styles.centerTop}>
-            <View>
-              {gameWarden ?
-              (<Pressable
-                title="Game Warden"
-                style={styles.searchButton}
-                onPress={() =>
-                  navigation.navigate('Game Warden', user={user})
-                }>
-                  <Image source={icons['GameWarden']} style={{
-                    height: 50,
-                    width: 50,
-                  }}/>
-              </Pressable>):
-              (<Pressable
+          <View style={styles.centerTop}>
+              <Pressable
                 title="Search"
                 style={styles.searchButtonContainer}
                 onPress={() =>
                     navigation.navigate('Search', user={user})
                 }><Image source={icons['Search']} style={styles.searchButton
                 }/>
-              </Pressable>)}
-            </View>
-            <Image source={icons['Notch']} style={styles.notch}/>
+              </Pressable>
+              <ImageBackground
+                source={icons['Notch']}
+                style={styles.notch}
+              ></ImageBackground>
+
           </View>
-          <View style={styles.centerBottom}></View> */}
+          <View style={styles.centerBottom}></View>
         </View>
         <View style={styles.rightBox}>
           <Pressable

@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   },
   leftBox: {
     borderTopLeftRadius: 25,
+    borderTopRightRadius: 5,
     backgroundColor: theme.colors.primary,
     flex: 3,
     height: 75,
@@ -25,24 +26,29 @@ const styles = StyleSheet.create({
   centerBox: {
     display: 'flex',
     flexDirection: 'column',
-    width: 200,
+    width: 95,
     marginLeft:'auto',
     marginRight:'auto',
-
   },
   rightBox: {
     borderTopRightRadius: 25,
+    borderTopLeftRadius: 5,
     backgroundColor: theme.colors.primary,
     flex: 3,
     height: 75,
     flexGrow: 1
   },
   centerTop: {
+    display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    height: 50,
+    width: '100%',
   },
   centerBottom: {
     backgroundColor: theme.colors.primary,
+    width: '100%',
+    height: 50,
   },
   navButtons: {
     backgroundColor: theme.colors.primary,
@@ -52,6 +58,21 @@ const styles = StyleSheet.create({
     marginRight:'auto',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  notch: {
+    height: 50,
+    width: 110,
+    marginLeft: -7,
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+    marginTop: -20,
+  },
+  searchButton: {
+    width: 50,
+    height: 50,
+    marginLeft:'auto',
+    marginRight:'auto',
+    marginTop: -20,
   }
 });
 
