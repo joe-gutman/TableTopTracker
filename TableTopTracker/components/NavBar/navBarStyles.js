@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   searchButtonContainer: {
-    backgroundColor: '73A260',
+    backgroundColor: 'white',
     width: 80,
     height: 80,
     marginLeft:'auto',
