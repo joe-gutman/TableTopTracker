@@ -1,130 +1,116 @@
 import React, {useState, useEffect} from 'react';
 import styles from './styles'
-import {Text, View, CheckBox, ScrollView, TextInput} from 'react-native';
+import {Text, View, Image, ImageBackground, ScrollView, TextInput} from 'react-native';
+import {SelectList, MultipleSelectList} from 'react-native-dropdown-select-list'
 
 export default function EditAccount ({navigation, route}) {
     const [image, setImage] = useState();
     const [name, setName] = useState('Bob Peterson');
     const [username, setUsername] = useState('legend27');
-    const [age, setAge] = useState('18');
-    const [playStyle, setPlayStyle] = useState('alone')
-    const [favorite, setFavorite] = useState('Civilization');
-    const [categories, setCategories] = useState([
-        'category 1',
-        'category 2',
-        'category 3',
-        'category 4',
-        'category 5',
-        'category 6',
-        'category 7',
-        'category 8',
-        'category 9',
-        'category 10',
-    ]);
+    const [currentPassword, setCurrentPassword] = useState("")
+    const [newPassword, setNewPassword] = useState("")
+    const [newAge, setNewAge] = useState();
+    const [playStyle, setPlaystyle] = useState()
+    const [favorite, setFavorite] = useState();
+    const [selectedCategories, setSelectedCategories] = useState([])
 
-    const [leftCol, setLeftCol] = useState([])
-    const [rightCol, setRightCol] = useState([])
+    const playstyles = ["Solo", "1v1", "2-4", "4-8", '8+']
+    const creatures = ['Griffin', 'Chimera', 'Phenoix', 'Dragon', 'Pikachu']
+    const category = ['Fantasy', 'Action', 'Strategy', 'RPG']
 
-    function labelCategories() {
-        console.log('categories: ', categories);
-      
-        categories.forEach((category, index) => {
-          if (index % 2 === 0) {
-            setLeftCol((prevLeftCol) => [...prevLeftCol, category]);
-            console.log('current leftCol: ', leftCol);
-            console.log('setLeft: ' + index, leftCol);
-          } else {
-            setRightCol((prevRightCol) => [...prevRightCol, category]);
-            console.log('current leftCol: ', rightCol);
-            console.log('setRight: ' + index, rightCol);
-          }
-        });
-    }
-
-    useEffect(() => {
-
-        labelCategories()
-
-    }, [])
-
-    const HandleLogOut = (e) => {
-
-    }
-
-    const UpdateUsername = (e) => {
-
-    }
-
-    const UpdateName = (e) => {
-
-    }
-
-    const UpdateAge = (e) => {
-
-    }
-
-    const UpdateStyle = (e) => {
-
-    }
-
-    const UpdateFavorite = (e) => {
-
-    }
-
-    const UpdateCategories = (e) => {
-
-    }
+    // useEffect(() => {
+    // }, [])
+    
 
     return (
         <ScrollView contentContainerStyle = {styles.MainContainer}>
             <View style={styles.InnerContainer}>
-            <View style = {styles.circleContainer}>
-            </View>
-                <View style = {styles.NameContainer}>
-                    <Text style = {styles.NameText}>
-                        {name}
-                    </Text>
+                <View style = {styles.circleContainer}>
+                <TouchableOpacity onPress={handlePhotoUpload}>
+                    {photo ? (
+                    <Image source={photo} style={styles.photo} />
+                    ) : (
+                    <Text style={styles.placeholderText}>Click to add photo</Text>
+                    )}
+                </TouchableOpacity>
                 </View>
-                <View style = {styles.NameContainer}>
-                    <Text style = {styles.InputText}>
-                        {username}
-                    </Text>
-                </View>
-            
-                <TextInput style = {styles.EditInput}>
-                </TextInput>
-            
-            
-                <TextInput style = {styles.EditInput}>
-                </TextInput>
-            
-            
-                <TextInput style = {styles.EditInput}>
-                </TextInput>
-            
-            
-                <TextInput style = {styles.EditInput}>
-                </TextInput>
+                    <TextInput 
+                        style = {styles.EditInput}
+                        onChange = {(e) => {setName(e.target.value), console.log("Current Password: ", currentPassword)}}
+                        placeholder = {name}>
+                    </TextInput>
+                    <TextInput 
+                        style = {styles.EditInput}
+                        onChange = {(e) => {setUsername(e.target.value), console.log("Current Password: ", currentPassword)}}
+                        placeholder = {username}>
+                    </TextInput>
                 
-                <View style={styles.MainCategoryContainer}>
-                    <View style={styles.CategoryColumn}>
-                        {leftCol.map((category) => (
-                        <View key={category} style={styles.eachCategory}>
-                            <CheckBox value={true} />
-                            <Text>{category}</Text>
-                        </View>
-                        ))}
-                    </View>
-                    <View style={styles.CategoryColumn}>
-                        {rightCol.map((category) => (
-                            <View key={category} style={styles.eachCategory}>
-                                <CheckBox value={true} />
-                                <Text>{category}</Text>
-                            </View>
-                        ))}
-                    </View>
+                    <TextInput 
+                        style = {styles.EditInput}
+                        onChange = {(e) => {setCurrentPassword(e.target.value), console.log("Current Password: ", currentPassword)}}
+                        placeholder = "Current Password">
+                    </TextInput>
+                
+                
+                    <TextInput 
+                        style = {styles.EditInput}
+                        onChange = {(e) => {setNewPassword(e.target.value), console.log("New Password: ", newPassword)}}
+                        placeholder = "New Password">
+                    </TextInput>
+                
+                
+                    <TextInput
+                        style = {styles.EditInput}
+                        onChange = {(e) => {setNewAge(e.target.value), console.log("new age: ", newAge)}}
+                        placeholder = "Adjust Age">
+                    </TextInput>
+
+                    <TextInput 
+                        style = {styles.EditInput}
+                        onChange = {(e) => setFavorite(e.target.value)}
+                        placeholder = "Change Favorite Board Game">
+                    </TextInput>
+                
+                    {/* <TextInput 
+                        style = {styles.EditInput}
+                        onChange = {(e) => setPlaystyle(e.target.value)}
+                        placeholder = "Adjust Preferred Playstyle">
+                    </TextInput> */}
+                    <SelectList
+                        data={playstyles}
+                        setSelected={(selectedItem) => {setPlaystyle(selectedItem,)}}
+                        placeholder='Select your preferred playstyle'
+                        search = {false}
+                        boxStyles = {styles.DropDown}
+                        dropdownStyles = {styles.DropDown}
+                    />
+
+                    {/* <TextInput 
+                        style = {styles.EditInput}
+                        onChange = {(e) => setCreature(e.target.value)}
+                        placeholder = "Change Your Mythical Creature">
+                    </TextInput> */}
+                    <SelectList
+                        data={creatures}
+                        setSelected={(selectedItem) =>   {setFavorite(selectedItem)}}
+                        placeholder="Select your favorite mythical creature"
+                        search = {false}
+                        boxStyles = {styles.DropDown}
+                        dropdownStyles = {styles.DropDown}
+                    />
+
+                    <MultipleSelectList
+                        setSelected={(val) => {setSelectedCategories(val)}}
+                        data={category} 
+                        save="value"
+                        label="Categories"
+                        search = {false}
+                        boxStyles = {styles.DropDown}
+                        dropdownStyles = {styles.DropDown}
+                        maxHeight = "300"
+                        placeholder = "Select your categories"
+                    />
                 </View>
-            </View>
         </ScrollView>
     )
 }

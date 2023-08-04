@@ -49,34 +49,6 @@ export default function UserSettings ({navigation, route}) {
 
     }, [])
 
-    const HandleLogOut = (e) => {
-
-    }
-
-    const UpdateUsername = (e) => {
-
-    }
-
-    const UpdateName = (e) => {
-
-    }
-
-    const UpdateAge = (e) => {
-
-    }
-
-    const UpdateStyle = (e) => {
-
-    }
-
-    const UpdateFavorite = (e) => {
-
-    }
-
-    const UpdateCategories = (e) => {
-
-    }
-
     return (
         <ScrollView contentContainerStyle = {styles.MainContainer}>
             <View style={styles.InnerContainer}>
