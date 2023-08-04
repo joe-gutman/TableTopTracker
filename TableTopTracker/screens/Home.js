@@ -38,15 +38,17 @@ export default function Home ({ navigation, route }) {
       <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
 
-        <FlatList horizontal={true}>
+        {/* <FlatList horizontal={true}>
           data={collections}
           renderItem={({collection}) => <CollectionButton collection={collection} keyExtractor={collection => collection}/>}
-        </FlatList>
+        </FlatList> */}
         <ScrollView horizontal={true}>
           {Object.keys(collections).map((key) =>
             <CollectionButton
               collection={key}
               onSelect={(key) => setListType(key)}
+              keyExtractor={key}
+              key={key}
             />
           )}
         </ScrollView>

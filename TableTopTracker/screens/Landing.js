@@ -1,7 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Pressable, Image, ImageBackground} from 'react-native';
-import React from 'react';
-import { StyleSheet, Text, View, Button, Pressable, Image, ImageBackground} from 'react-native';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import styles from './stylesheets/landingStyles.js';
 import NavBar from '../components/NavBar/NavBar.js';
@@ -27,10 +25,10 @@ export default function Landing ({navigation}) {
           />
           <Text style={styles.boardGameGeek}>Powered by Board Game Geek</Text>
           <Pressable style={styles.registerButton}
-                     title="Get Started"
-                     onPress={() =>
-                       navigation.navigate('Sign Up')
-                     }>
+            title="Get Started"
+            onPress={() =>
+              navigation.navigate('Sign Up')
+            }>
             <Text style={styles.registerButtonText}>Get Started</Text>
           </Pressable>
           <View style={styles.loginContainer}>
