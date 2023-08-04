@@ -34,7 +34,6 @@ async function getUserCollections(req, res) {
       throw new Error(error)
     })
 }
-
 function getCollectionGames(collectionId) {
   return db.query(
     `SELECT g.*
@@ -68,7 +67,6 @@ function createCollection({userId, name}) {
     [userId, name]
   ).then(({rows}) => rows[0]);
 }
-
 module.exports = {
   createCollection,
   getCollectionGames,
