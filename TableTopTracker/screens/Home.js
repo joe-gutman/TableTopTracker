@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground, FlatList, Image } from 'react-native';
 import ButtonList from '../components/GameList/ButtonList';
 import GamesList from '../components/GameList/GamesList.js';
 import allDummyGames from '../components/GameList/dummy/allDummyGames';
@@ -31,6 +31,10 @@ export default function Home ({ navigation, route }) {
       <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
 
+        <FlatList horizontal={true}>
+          data={collections}
+          renderItem={({collection}) => <CollectionButton collection={collection} keyExtractor={collection => collection}/>}
+        </FlatList>
         <ScrollView horizontal={true}>
           {collections.map((collection) => <CollectionButton
             collection={collection}
@@ -48,6 +52,12 @@ export default function Home ({ navigation, route }) {
       </View>
 
       <NavBar navigation={navigation} user={user}/>
+
+        {/* <ImageBackground
+            style={styles.image}
+            source={require('../assets/Asset-_Background-Wood.png')}
+        ></ImageBackground> */}
+
     </View>
   )
 }
@@ -55,12 +65,17 @@ export default function Home ({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   gameListContent: {
     flex: 1, // takes 70% of available space
     marginTop: 10
+  },
+  image: {
+    height: '100%',
+    width: '100%',
+    resizeMode: 'contain',
   },
 });
