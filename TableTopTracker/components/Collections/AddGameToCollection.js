@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {Alert, View, Pressable, StyleSheet, Picker} from 'react-native';
-import {Portal, Modal, Text} from 'react-native-paper';
+import React, {useState} from "react";
+import {Pressable, StyleSheet} from 'react-native';
+import {Text} from 'react-native-paper';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchUserCollections, postGameToCollection} from "../../util/api";
 import {SelectList} from "react-native-dropdown-select-list";
 import {handleOpenModal} from "../../state/modal/actions";
+import {handleReceiveCollections} from "../../state/collections/actions";
+import {handleSetNotification} from "../../state/app/actions";
 
 export default function AddGameToCollection({game, onClose}) {
   const dispatch = useDispatch();
@@ -12,25 +14,22 @@ export default function AddGameToCollection({game, onClose}) {
   const {collections} = useSelector(state => state.collections);
   const [selectedCollection, setSelectedCollection] = useState(null);
 
-
-  console.log(game);
-
-  /*useEffect(() => {
-    fetchUserCollections(user.id)
+  function handleSubmit() {
+    postGameToCollection(user.id, selectedCollection, game.id)
+      .then(({data}) => fetchUserCollections(user.id))
       .then(({data}) => {
-        setCollections(data);
+        dispatch(handleReceiveCollections(data));
+        dispatch(handleSetNotification(`Game added to ${selectedCollection}`));
+        onClose();
       })
-  }, [])*/
-
-  function submit() {
-    postGameToCollection(selectedCollection, game.id)
+      .catch((err) => {
+        console.error(err);
+      })
   }
 
   function handleCreateCollection() {
     dispatch(handleOpenModal('CREATE_COLLECTION', {gameTOAdd: game}))
   }
-
-  console.log(collections)
 
   return collections ? (
     <>
@@ -47,8 +46,12 @@ export default function AddGameToCollection({game, onClose}) {
         dropdownStyles = {{backgroundColor: '#FFF5DD', padding: 10, marginBottom: 10 }}
       />
 
+      <Pressable onPress={handleSubmit}>
+        <Text>Add Collection</Text>
+      </Pressable>
+
       <Pressable onPress={handleCreateCollection}>
-        Create New Collection
+        <Text>Create New Collection</Text>
       </Pressable>
     </>
   ) : <Text> Loading </Text>

@@ -69,14 +69,7 @@ app.post('/collections', async (req, res, next) => {
   }
 });
 
-app.get('/collections', async (req, res, next) => {
-  try{
-    const collections = await getUserCollections(req.query.userId);
-    res.send(collections)
-  } catch(err) {
-    res.sendStatus(500);
-  }
-});
+app.get('/collections', getUserCollections);
 
 app.get('/collections/:collectionId/games', async (req, res, next) => {
   try {
