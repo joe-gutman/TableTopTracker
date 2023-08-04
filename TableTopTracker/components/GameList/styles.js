@@ -63,15 +63,18 @@ const styles = StyleSheet.create({
     padding: 'auto',
   },
   thumbnail: {
-    width: 50,
-    height: 50,
+    width: 75,
+    height: 75,
     resizeMode: 'cover', // others available
     marginRight: 10 // adjust margin as needed
+  },
+  thumbnailContainer: {
+    padding: 'auto'
   },
   cardGrid: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     fontFamily: theme.fonts.Bold

@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors())
 
 // initializer.populateBoardGames();
-// adminInit.populateAdmin();
+adminInit.populateAdmin();
 
 // this is still needed for line 47 app.get('/users', ...)
 const dummydata = {
@@ -79,6 +79,16 @@ app.get('/collections/:collectionId/games', async (req, res, next) => {
     res.sendStatus(500);
   }
 });
+
+app.post('/gpt', (req, res) => {
+  // we want to make a query based on the exact game data;
+  getGameController.getListOfGames(req, res);
+});
+
+// {
+//   recommendations: [ { gameName: 'Monopoly' }, { gameName: 'The Settlers of Catan' } ]
+// }
+
 
 
 

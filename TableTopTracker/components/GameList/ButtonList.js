@@ -10,17 +10,17 @@ export default function ButtonList({ collections, listType, setListType }) {
     <View style={styles.container}>
       <ScrollView horizontal>
         { collections.map((collection, i) => (
-          <View style={ styles.buttonContainer } key = { i }>
-              <Button
-                key={ collection }
-                title={ collection }
-                onPress={ () => setListType(collection) }
-                style={[
-                  styles.focusButton,
-                  listType === collection && styles.focusButton,
-                  i !== (collections.length - 1) && styles.buttonMargin
-                ]}
-              />
+          <View style={ styles.buttonMargin } key = { i }>
+            <Button
+              key={ collection }
+              title={ collection }
+              onPress={ () => setListType(collection) }
+              style={[
+                styles.focusButton,
+                listType === collection && styles.focusButton,
+                i !== (collections.length - 1) && styles.buttonMargin
+              ]}
+            />
           </View>
         )) }
       </ScrollView>

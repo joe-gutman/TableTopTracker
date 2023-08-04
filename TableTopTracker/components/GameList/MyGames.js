@@ -7,9 +7,9 @@ import styles from './styles';
 export default function MyGames({ games }) {
   return (
     <View style={ styles.container }>
-      <Text style={ styles.header }>
+      {/* <Text style={ styles.header }>
         My Games
-      </Text>
+      </Text> */}
 
       <GamesList games={ games } style={styles.listContainer}/>
     </View>

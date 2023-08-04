@@ -12,6 +12,9 @@ import SickSlider from '../components/Sliders/SickSlider';
 import {useSelector} from "react-redux";
 
 export default function Home ({ navigation, route }) {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
 
   // const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
   const {collections} = useSelector(state => state.collections)
@@ -25,8 +28,6 @@ export default function Home ({ navigation, route }) {
   // console.dir(personalDummyGames);
 
   return (
-    <View style={{paddingBottom: '40px'}}>
-
       <ImageBackground
           style={styles.image}
           resizeMode='cover'
@@ -60,8 +61,6 @@ export default function Home ({ navigation, route }) {
       <NavBar navigation={navigation} user={user}/>
 
       </ImageBackground>
-
-    </View>
   )
 }
 
