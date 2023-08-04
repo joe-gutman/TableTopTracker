@@ -5,7 +5,7 @@ import {handleOpenModal} from "../../state/modal/actions";
 import {useDispatch} from "react-redux";
 
 
-const SwipeableDetails = () => {
+const SwipeableDetails = ({game}) => {
   const dispatch = useDispatch();
   const pan = useRef(new Animated.ValueXY()).current;
   const [modal, setModal] = useState(false);
@@ -78,7 +78,7 @@ const SwipeableDetails = () => {
 
               <Pressable
                 onPress={() =>
-                  dispatch(handleOpenModal('ADD_TO_COLLECTION', {game: dummyGame}))
+                  dispatch(handleOpenModal('ADD_TO_COLLECTION', {game}))
                 }
               > <Text>Add To Collection</Text> </Pressable>
 

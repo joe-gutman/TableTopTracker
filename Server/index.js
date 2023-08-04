@@ -48,9 +48,10 @@ app.get('/users', function(req, res) {
   usersController.getUser(req, res);
 })
 
-app.post('/collections/:collectionId/games', async (req, res, next) => {
+app.post('/collections/games', async (req, res, next) => {
   try{
-    const newJoin = await postToCollection(req.params.collectionId, req.body);
+    const {userId, collectionName, gameId} = req.body
+    const newJoin = await postToCollection(userId, collectionName, gameId);
     res.status(201).send(newJoin);
   } catch(err) {
     console.log(err);
@@ -68,14 +69,7 @@ app.post('/collections', async (req, res, next) => {
   }
 });
 
-app.get('/collections', async (req, res, next) => {
-  try{
-    const collections = await getUserCollections(req.query.userId);
-    res.send(collections)
-  } catch(err) {
-    res.sendStatus(500);
-  }
-});
+app.get('/collections', getUserCollections);
 
 app.get('/collections/:collectionId/games', async (req, res, next) => {
   try {
