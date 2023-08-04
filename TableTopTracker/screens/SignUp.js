@@ -10,6 +10,11 @@ import 'firebase/compat/auth';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function SignUp ({navigation}) {
+  //hides top bar navigator
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
+
   const [email, setEmail] = React.useState('');
   const [fullname, setFullname] = React.useState('');
   const [username, setUsername] = React.useState('');

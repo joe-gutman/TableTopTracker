@@ -22,3 +22,6 @@ export const postNewUser = (data) =>
     console.error('Error while posting new user:', error);
     throw error;
   })
+
+export const createCollection = (name, userId) =>
+  makeRequest('/collections', 'POST', { userId, name });

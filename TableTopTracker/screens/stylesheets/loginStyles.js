@@ -3,38 +3,57 @@ import theme from '../../theme.js';
 
 const styles = StyleSheet.create({
   parentContainer: {
-    backgroundColor: theme.colors.background,
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: theme.colors.onBackground,
     height: '100%',
+    margin: '0 auto',
   },
-  branding: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexGrow: 2,
+  wood: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
     justifyContent: 'center',
-    alignItems: 'center',
   },
-  logo: {
-    margin: 'auto',
+  scroll: {
+    width: '100%',
+    height: '600px',
+    marginTop: 50,
+    marginLeft:'auto',
+    marginRight:'auto',
   },
-  bgg: {
-    margin: 'auto',
+  logoImage: {
+    width: '80%',
+    aspectRatio: 400/300,
+    resizeMode: 'contain',
+    padding: 0,
+    marginTop: 65,
+    marginLeft:'auto',
+    marginRight:'auto',
   },
-  userInput: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexGrow: 2,
+  boardGameGeek: {
+    color: theme.colors.primary,
+    textAlign: 'center',
+    marginTop: -25,
+    marginBottom: 35,
+  },
+  registerButton: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: 19,
+    height: 51,
+    width: 259,
+    marginLeft:'auto',
+    marginRight:'auto',
     justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: 85,
+    color: 'white',
   },
-  textInputBox: theme.components.textInput,
-  bigGreenButton: theme.components.bigGreenButton,
-  bigGreenButtonText: theme.components.bigGreenButtonText,
-  buttonsContainer: {
+  loginContainer:{
     display: 'flex',
-    flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 10,
+    flexDirection: 'row',
+    marginTop: 15,
+    marginLeft:'auto',
+    marginRight:'auto',
   },
   greenWords: {
     color: theme.colors.primary,
@@ -42,21 +61,24 @@ const styles = StyleSheet.create({
   orangeWords: {
     color: theme.colors.secondary,
   },
-  bigCircleButton: {
-    height: 100,
-    width: 100,
-    borderRadius: 50,
-    backgroundColor: theme.colors.onTertiary,
-    display: 'flex',
-    flexDirection: 'column',
+  textInputBox: theme.components.textInput,
+  loginButton: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: 19,
+    height: 51,
+    width: 259,
+    marginLeft:'auto',
+    marginRight:'auto',
     justifyContent: 'center',
-    alignItems: 'center',
-    color: theme.colors.onBackground,
-    marginBottom: 10,
+    marginTop: 10,
+    color: 'white',
   },
-  createAccount: {
-    display: 'flex',
-    flexDirection: 'row',
+  loginButtonText: {
+    marginLeft:'auto',
+    marginRight:'auto',
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
   }
 });
 
