@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 import ButtonList from '../components/GameList/ButtonList';
 import GamesList from '../components/GameList/GamesList.js';
 import allDummyGames from '../components/GameList/dummy/allDummyGames';
 import personalDummyGames from '../components/GameList/dummy/personalDummyGames';
 import NavBar from '../components/NavBar/NavBar.js';
+import CollectionButton from '../components/Collections/CollectionButton.js'
 
 // testing Slider for Patrick
 import SickSlider from '../components/Sliders/SickSlider';
@@ -29,18 +30,14 @@ export default function Home ({ navigation, route }) {
 
       <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
-        <ButtonList
-          collections={ collections }
-          listType={ listType }
-          setListType={ setListType }
-        />
-      {/* <View>
-        <Button
-          title="Game Details"
-          onPress={() => {
-            navigation.navigate('Game Details', {user: user.username})
-          }}>Game Detail</Button>
-      </View> */}
+
+        <ScrollView horizontal={true}>
+          {collections.map((collection) => <CollectionButton
+            collection={collection}
+            key={collection}
+            />)}
+        </ScrollView>
+
         <GamesList
           handlePress={() => {
             navigation.navigate('Game Details', {user: user})

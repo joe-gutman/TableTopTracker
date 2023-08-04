@@ -1,4 +1,4 @@
-\c tableTopGamers
+\c tabletopgamers
 
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS friends CASCADE;
@@ -90,7 +90,7 @@ create table collections (
   id serial primary key,
   user_id int,
   collection_name varchar(32),
-  public boolean,
+  public boolean DEFAULT(false),
 
   foreign key (user_id) references users(id)
 );
