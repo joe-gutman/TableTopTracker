@@ -3,6 +3,7 @@ import { View, TextInput, Pressable, Text, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Portal, Modal } from 'react-native-paper';
 import { handleOpenModal } from '../../state/modal/actions';
+import { createCollection } from '../../util/api.js';
 
 export default function CreateCollection({ gameToAdd, onClose }) {
   // const [ collections, setCollections ] = useState();
@@ -10,55 +11,29 @@ export default function CreateCollection({ gameToAdd, onClose }) {
   const user = useSelector(state => state.app.user);
 
   const [ collectionName, setCollectionName ] = useState('');
-  const [ isLoading, setIsLoading ] = useState(false);
-  const [ error, setError ] = useState(null);
 
-  // function for simulating addition
-  const addCollectionToDB = async(collectionName, gameToAdd) => {
-    // simulate async API call via timeout
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({ id: 123, collection_name: collectionName });
-      }, 1000);
-    });
+  /*
+    {
+      "id": 4,
+      "user_id": 1,
+      "collection_name": null,
+      "public": false
+    }
+  */
+
+  const handleCreateCollection = (collectionName) => {
+    createCollection(collectionName, user.id)
+      .then(({ data }) => postGameToCollection(user.id, data.collection_name, gameToAdd.id))
+      .then(({data}) => fetchUserCollections(user.id))
+      .then(({data}) => {
+        dispatch(handleReceiveCollections(data));
+        dispatch(handleSetNotification(`Game added to ${selectedCollection}`));
+        onClose();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
-
-  const handleCreateCollection = async() => {
-    if (collectionName.trim() === '') {
-      setError('Collection name cannot be empty');
-      return;
-    }
-
-    // assumes no error (since passed return)
-    setError(null);
-    setIsLoading(true); // display load text/animation
-
-    try {
-      // call API function to add collection to DB
-      const newCollection = await addCollectionToDB(
-        collectionName, gameToAdd
-      );
-
-      // redux magic to dispatch action to update state w/ new collection data
-      /*
-      dispatch(
-        handleCreateCollection('CREATE_COLLECTION')
-      );
-      */
-
-      // log added collection for now
-      console.log(`Added collection: ${ newCollection }`);
-
-      // close modal
-      onClose();
-
-    } catch(err) {
-      setError(`Failed to add collection to DB: ${ err.message }`);
-
-    } finally {
-      setIsLoading(false);
-    }
-  }
 
   return (
     <View>
@@ -68,15 +43,17 @@ export default function CreateCollection({ gameToAdd, onClose }) {
         value={ collectionName }
         onChangeText={ setCollectionName }
       />
-      { error && (
+      {/* { error && (
         <Text style={ styles.errorText }>{ error }</Text>
-      ) }
+      ) } */}
       <Pressable
         title='Create Collection'
         onPress={ handleCreateCollection }
-        disabled={ isLoading }
-      />
-      { isLoading && <Text>Loading...</Text> }
+        // disabled={ isLoading }
+      >
+        <Text>Submit</Text>
+      </Pressable>
+      {/* { isLoading && <Text>Loading...</Text> } */}
     </View>
   );
 }
