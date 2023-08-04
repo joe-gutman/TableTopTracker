@@ -42,9 +42,9 @@ export default function GamesList({ handlePress, games, listType }) {
         <FlatList
           data={ games }
           renderItem={ ({ item }) => (
-            <GameCard handlePress={handlePress} { ...item } />
-          ) }
-          keyExtractor={ ({ boardgameId }) => boardgameId.toString() }
+            <GameCard handlePress={() => handlePress(item)} { ...item } />
+          )}
+          keyExtractor={ ({id, bgg_id}) => id.toString()}
           style={ styles.listContainer }
         />
       </Animated.View>

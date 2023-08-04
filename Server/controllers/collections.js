@@ -25,19 +25,18 @@ function getCollectionGames(collectionId) {
   ).then(({rows}) => rows);
 }
 
-function postToCollection(collectionId, {userId, gameId}) {
-  /*var queryStr = "select * from collections where user_id = ($1) and collection_name = ($2)"
+function postToCollection(userId, collectionName, gameId) {
+  var queryStr = "select * from collections where user_id = ($1) and collection_name = ($2)"
   return db.query(queryStr, [userId, collectionName])
     .then((data) => {
       // no we want to insert into collections_games_join
+      console.log(data);
       var collectionId = data.rows[0].id;
       console.log(gameId, collectionId)
       var queryStr = "insert into collections_games_join (game_id, collection_id) values ($1, $2)"
       return db.query(queryStr, [gameId, collectionId])
-    })*/
+    })
 
-  var queryStr = "insert into collections_games_join (game_id, collection_id) values ($1, $2)"
-  return db.query(queryStr, [gameId, collectionId])
 }
 
 function createCollection({userId, name}) {
