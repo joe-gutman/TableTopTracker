@@ -65,14 +65,23 @@ const styles = StyleSheet.create({
     marginLeft: -7,
     backgroundSize: 'contain',
     backgroundPosition: 'center',
-    marginTop: -20,
+    marginTop: -30,
   },
   searchButton: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     marginLeft:'auto',
     marginRight:'auto',
-    marginTop: -20,
+    marginTop: 8,
+  },
+  searchButtonContainer: {
+    backgroundColor: 'white',
+    width: 80,
+    height: 80,
+    marginLeft:'auto',
+    marginRight:'auto',
+    marginTop: -40,
+    borderRadius: '100%',
   }
 });
 

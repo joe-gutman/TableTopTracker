@@ -36,7 +36,7 @@ export default function NavBar({navigation, user, gameWarden}) {
                 title="Search"
                 style={styles.searchButtonContainer}
                 onPress={() =>
-                    navigation.navigate('Search', user={user})
+                    navigation.navigate('Game Warden', user={user})
                 }><Image source={icons['Search']} style={styles.searchButton
                 }/>
               </Pressable>
