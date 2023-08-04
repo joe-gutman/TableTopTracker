@@ -2,80 +2,42 @@
 import React, {useState, useEffect} from 'react';
 import styles from './styles'
 import {Text, View, CheckBox, ScrollView } from 'react-native';
+import axios from 'axios'
 
-
-export default function UserSettings ({navigation, route}) {
+export default function UserSettings ({navigation, route, user}) {
     const [image, setImage] = useState();
-    const [name, setName] = useState('Bob Peterson');
-    const [username, setUsername] = useState('legend27');
-    const [age, setAge] = useState('18');
-    const [playStyle, setPlayStyle] = useState('alone')
-    const [favorite, setFavorite] = useState('Civilization');
-    const [categories, setCategories] = useState([
-        'category 1',
-        'category 2',
-        'category 3',
-        'category 4',
-        'category 5',
-        'category 6',
-        'category 7',
-        'category 8',
-        'category 9',
-        'category 10',
-    ]);
+    const [name, setName] = useState();
+    const [username, setUsername] = useState();
+    const [age, setAge] = useState();
+    const [playStyle, setPlayStyle] = useState()
+    const [favorite, setFavorite] = useState();
+    const [creature, setCreature] = useState()
+    const [categories, setCategories] = useState([]);
 
     const [leftCol, setLeftCol] = useState([])
     const [rightCol, setRightCol] = useState([])
 
-    function labelCategories() {
-        console.log('categories: ', categories);
-      
-        categories.forEach((category, index) => {
-          if (index % 2 === 0) {
-            setLeftCol((prevLeftCol) => [...prevLeftCol, category]);
-            console.log('current leftCol: ', leftCol);
-            console.log('setLeft: ' + index, leftCol);
-          } else {
-            setRightCol((prevRightCol) => [...prevRightCol, category]);
-            console.log('current leftCol: ', rightCol);
-            console.log('setRight: ' + index, rightCol);
-          }
-        });
-    }
 
     useEffect(() => {
-
-        labelCategories()
-
-    }, [])
-
-    const HandleLogOut = (e) => {
-
-    }
-
-    const UpdateUsername = (e) => {
-
-    }
-
-    const UpdateName = (e) => {
-
-    }
-
-    const UpdateAge = (e) => {
-
-    }
-
-    const UpdateStyle = (e) => {
-
-    }
-
-    const UpdateFavorite = (e) => {
-
-    }
-
-    const UpdateCategories = (e) => {
-
-    }
+        const unsubscribe = navigation.addListener('focus', () => {
+            axios.get(`http://localhost:3000/users?email=${user.email}`)
+                .then((res) => {
+                    const userInfo = res.data.userData
+                    console.log("data from get: ", res.data.userData)
+                    setName(userInfo.fullname)
+                    setUsername(userInfo.username)
+                    setAge(userInfo.age)
+                    setPlayStyle(userInfo.preferred_playstyle)
+                    setFavorite(userInfo.favorite_board_game)
+                    setCreature(userInfo.favorite_mythical_creature)
+                    setCategories(userInfo.selectedcategories)
+                })
+                .catch((err) => {
+                    console.error(err)
+                })
+        })
+        return unsubscribe;
+    }, [navigation])
 
     return (
         <ScrollView contentContainerStyle = {styles.MainContainer}>
@@ -84,44 +46,44 @@ export default function UserSettings ({navigation, route}) {
 
                 </View>
                 <View style = {styles.NameContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.NameText}>
                         {name}
                     </Text>
                 </View>
                 <View style = {styles.NameContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         {username}
                     </Text>
                 </View>
                 <View style = {styles.InputContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         Age:
                     </Text>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         {age}
                     </Text>
                 </View>
                 <View style = {styles.InputContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         Preferred Play Style:
                     </Text>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         {playStyle}
                     </Text>
                 </View>
                 <View style = {styles.InputContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         Mythical Creature:
                     </Text>
-                    <Text style = {styles.text}>
-                        Fairy
+                    <Text style = {styles.InputText}>
+                        {creature}
                     </Text>
                 </View>
                 <View style = {styles.InputContainer}>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         Favorite Game:
                     </Text>
-                    <Text style = {styles.text}>
+                    <Text style = {styles.InputText}>
                         {favorite}
                     </Text>
                 </View>

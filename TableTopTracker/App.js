@@ -38,6 +38,7 @@ import AppModal from "./components/AppModal";
 //fonts
 import * as Font from 'expo-font';
 import {handleRemoveNotification} from "./state/app/actions";
+import EditAccount from './screens/EditAccount';
 
 
 if (!firebase.apps.length) {
@@ -75,6 +76,7 @@ function App() {
             username={username}
           />
           <Stack.Screen name="Sign Up" component={SignUp}/>
+          <Stack.Screen name="Edit Account" component={EditAccount} />
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
           <Stack.Screen name="User Account" component={UserAccount} />
