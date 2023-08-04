@@ -2,51 +2,31 @@
 import React, {useState, useEffect} from 'react';
 import styles from './styles'
 import {Text, View, CheckBox, ScrollView } from 'react-native';
+import axios from 'axios'
 
-
-export default function UserSettings ({navigation, route}) {
+export default function UserSettings ({navigation, route, user}) {
     const [image, setImage] = useState();
-    const [name, setName] = useState('Bob Peterson');
-    const [username, setUsername] = useState('legend27');
-    const [age, setAge] = useState('18');
-    const [playStyle, setPlayStyle] = useState('alone')
-    const [favorite, setFavorite] = useState('Civilization');
-    const [categories, setCategories] = useState([
-        'category 1',
-        'category 2',
-        'category 3',
-        'category 4',
-        'category 5',
-        'category 6',
-        'category 7',
-        'category 8',
-        'category 9',
-        'category 10',
-    ]);
+    const [name, setName] = useState();
+    const [username, setUsername] = useState();
+    const [age, setAge] = useState();
+    const [playStyle, setPlayStyle] = useState()
+    const [favorite, setFavorite] = useState();
+    const [creature, setCreature] = useState()
+    const [categories, setCategories] = useState([]);
 
     const [leftCol, setLeftCol] = useState([])
     const [rightCol, setRightCol] = useState([])
 
-    function labelCategories() {
-        console.log('categories: ', categories);
-      
-        categories.forEach((category, index) => {
-          if (index % 2 === 0) {
-            setLeftCol((prevLeftCol) => [...prevLeftCol, category]);
-            console.log('current leftCol: ', leftCol);
-            console.log('setLeft: ' + index, leftCol);
-          } else {
-            setRightCol((prevRightCol) => [...prevRightCol, category]);
-            console.log('current leftCol: ', rightCol);
-            console.log('setRight: ' + index, rightCol);
-          }
-        });
-    }
 
     useEffect(() => {
 
-        labelCategories()
-
+        axios.get('/users', { params: { email: user.email } })
+            .then((data) => {
+                console.log("data from get: ", data)
+            })
+            .catch((err) => {
+                console.error(err)
+            })
     }, [])
 
     return (
@@ -86,7 +66,7 @@ export default function UserSettings ({navigation, route}) {
                         Mythical Creature:
                     </Text>
                     <Text style = {styles.InputText}>
-                        Fairy
+                        {creature}
                     </Text>
                 </View>
                 <View style = {styles.InputContainer}>

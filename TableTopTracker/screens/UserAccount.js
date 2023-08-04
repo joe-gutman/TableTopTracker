@@ -10,7 +10,7 @@ export default function UserAccount ({navigation, route}) {
     return (
         <View>
             <Text>This is {user.email}'s HomePage</Text>
-                <UserSettings />
+                <UserSettings user = {user}/>
             {/* <Button title="Log Out" onPress={handleLogout} /> */}
             <EditNav navigation={navigation} user={user}/>
         </View>

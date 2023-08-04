@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const baseURL = 'http://127.0.0.1:3000';
 const makeRequest = (url, method, data) =>
   axios({
@@ -8,15 +7,14 @@ const makeRequest = (url, method, data) =>
     data,
     headers: {}
   });
-
 export const fetchUserCollections = (userId) =>
   makeRequest(`/collections?userId=${userId}`, 'GET');
-
 export const fetchCollectionGames = (collectionId) =>
   makeRequest(`/collections/${collectionId}`, 'GET');
-
+export const postGameToCollection = (userId, collectionName, gameId) =>
+  makeRequest(`/collections/games`, 'POST', {userId, collectionName, gameId});
 export const fetchUser = (data) =>
-  makeRequest(`/users?uid=${data.uid}`, 'GET');
+  makeRequest(`/users?email=${data.email}`, 'GET');
 
 export const postNewUser = (data) =>
   makeRequest(`/users`, 'POST', data)

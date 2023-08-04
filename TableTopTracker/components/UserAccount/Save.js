@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, Button, View, TouchableHighlight } from 'react-native';
 
 
-export default function Save({navigation, user}) {
+export default function Save({navigation, HandleSave, user}) {
     if(!user) {
         throw new Error('User not defined in TopNav');
     }
@@ -13,8 +13,10 @@ export default function Save({navigation, user}) {
             <View>
                 {console.log("save button is being returned!")}
                 <Button title="Save"
-                    onPress={() =>
+                    onPress={() => {
+                        HandleSave()
                         navigation.navigate('UserAccount', user={user})
+                      }
                     }>
                 </Button>
             </View>

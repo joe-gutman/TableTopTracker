@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image, Pressable } from 'react-native';
 
 import NavBar from '../components/NavBar/NavBar.js';
+import styles from './stylesheets/SignUpStyles.js';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -13,6 +14,7 @@ export default function SignUp ({navigation}) {
   const [fullname, setFullname] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [passwordCheck, setPasswordCheck] = React.useState('');
   const [errorMessage, setErrorMessage] = React.useState('');
   const [uid, setUid] = React.useState('');
   const [imageURL, setImageURL] = React.useState('');
@@ -53,7 +55,6 @@ export default function SignUp ({navigation}) {
       aspect: [1, 1],
       quality: 1,
     });
-
     if (!result.cancelled) {
       setImageURL(result.uri);
       console.log(imageURL);
@@ -62,50 +63,113 @@ export default function SignUp ({navigation}) {
     }
   };
 
+
+
+  const checkUserInput = async () => {
+    if (!email.trim()) {
+      alert('Please Enter an email');
+      return;
+    }
+
+    if (!fullname.trim()) {
+      alert('Please enter your full name');
+      return;
+    }
+
+    if (!username.trim()) {
+      alert('Please enter a username');
+      return;
+    }
+
+    if (!password.trim() || password.trim().length < 6) {
+      alert('Please enter a password of at least 6 characters');
+      return;
+    }
+
+    if (!password.trim()) {
+      alert('Please enter a password');
+      return;
+    }
+
+    if(!passwordCheck.trim()) {
+      alert('Please re-enter password for confirmation');
+      return;
+    }
+
+    if (passwordCheck !== password) {
+      alert('Please re-enter both passwords to make sure they match')
+      return;
+    }
+
+    try {
+      await handleSignUp();
+      await navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
+    } catch (error) {
+      console.error('Error passing new user info into new user preferences', error);
+    }
+  };
+
     return (
-        <View>
+      <View style={styles.parentContainer}>
+        <View style={styles.branding}>
+          <Text style={styles.logo}>pretend i'm a logo</Text>
+          <Text style={styles.greenWords}>Powered by Board Game Geek</Text>
+        </View>
+        <View style={styles.userInput}>
             <TextInput
+              style={styles.textInputBox}
               onChangeText={setEmail}
               value={email}
               placeholder="Email"
             />
             <TextInput
+              style={styles.textInputBox}
               onChangeText={setFullname}
               value={fullname}
               placeholder="Full Name"
             />
             <TextInput
+              style={styles.textInputBox}
               onChangeText={setUsername}
               value={username}
               placeholder="Username"
             />
             <TextInput
+              style={styles.textInputBox}
               onChangeText={setPassword}
               value={password}
               placeholder="Password"
               secureTextEntry
             />
-
-
-            <Button title="Upload Profile Photo" onPress={handleImageUpload} />
-              {imageURL && <Image source={{ uri: imageURL }} />}
-            <Button
-              title="Next"
-              onPress={ async () => {
-                await handleSignUp();
-                await navigation.navigate('New User Preferences', {uid: uid, email: email, fullname: fullname, username: username, profilePhoto: imageURL })
-              }
-              }
+            <TextInput
+              style={styles.textInputBox}
+              onChangeText={setPasswordCheck}
+              value={passwordCheck}
+              placeholder="Re-enter your password"
+              secureTextEntry
             />
-
-            <Text> Have an Account? </Text>
-            <Button
+        </View>
+        <View style={styles.buttonsContainer}>
+          <Pressable
+          style={styles.bigCircleButton}
+            title="Upload Profile Photo"
+            onPress={handleImageUpload}>
+           + </Pressable>
+              {/* {imageURL && <Image source={{ uri: imageURL }} />} */}
+          <Pressable
+            style={styles.bigGreenButton}
+            title="Create Account"
+            onPress={ checkUserInput}>Create Account</Pressable>
+          <View style={styles.createAccount}>
+            <Text style={styles.orangeWords}> Have an Account? </Text>
+            <Pressable
+              style={styles.greenWords}
               title="Log in"
               onPress={() => {
-                  navigation.navigate('Login', {name: username});
-              }}
-            />
-
+                navigation.navigate('Login', {name: username});
+            }}>Log In</Pressable>
+          </View>
         </View>
+      </View>
     )
 }

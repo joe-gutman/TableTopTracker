@@ -50,11 +50,11 @@ const styles = StyleSheet.create({
     borderColor: '#FBF5E7',
   },
   imageCard: {
-    height: 400,
-    width: 400,
+    height: 325,
+    width: 325,
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: 50,
+    marginTop: 20,
     borderColor: 'white',
     borderWidth: 10,
     borderRadius: 8,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
 // ).current;
 
 export default function GameDetails ({navigation, route}) {
-  const { user } = route.params;
+  const { game, user } = route.params;
 
   return (
     <View style={styles.parentContainer}>
@@ -101,13 +101,13 @@ export default function GameDetails ({navigation, route}) {
         <ImageBackground
           style={styles.image}
           source={{
-            uri: dummyGame.image,
+            uri: game.thumbnail,
           }}
           >
         </ImageBackground>
       </View>
 
-      <SwipeableDetails/>
+      <SwipeableDetails game={game}/>
 
       <NavBar navigation={navigation} user={user}/>
 

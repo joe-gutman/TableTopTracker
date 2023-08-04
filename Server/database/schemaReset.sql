@@ -1,4 +1,4 @@
-\c tableTopGamers
+\c tabletopgamers
 
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS friends CASCADE;
@@ -13,13 +13,15 @@ DROP TABLE IF EXISTS owned_games_join CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(64),
-  user_id varchar(64) unique,
-  email varchar(32),
+  username VARCHAR(64) unique,
+  email varchar(64) unique,
+  fullname VARCHAR(64) unique,
   photo varchar(64),
-  games_owned int,
-  games_wishlisted int,
-  collections int
+  age int,
+  preferred_playstyle varchar(64),
+  favorite_mythical_creature varchar(64),
+  favorite_board_game varchar(64),
+  selectedCategories varchar (200)
 );
 
 create table friends (
@@ -88,7 +90,7 @@ create table collections (
   id serial primary key,
   user_id int,
   collection_name varchar(32),
-  public boolean,
+  public boolean DEFAULT(false),
 
   foreign key (user_id) references users(id)
 );
@@ -105,82 +107,8 @@ create table collections_games_join (
 
   foreign key (collection_id) references collections(id),
   foreign key (game_id) references games(id)
-  foreign key (game_id) references games(id),
-  foreign key (collection_id) references collections(id)
-
-  foreign key (game_id) references games(id),
-  foreign key (collection_id) references collections(id)
 );
 
---create table owned_games_join (
---  id serial primary key,
---  game_id int,
---  user_id int,
---
---  CONSTRAINT fk_game_id
---        FOREIGN KEY(game_id)
---        REFERENCES games(id),
---  foreign key (user_id) references users(id)
---);
-
-
---create table wishlists (
---  id serial primary key,
---  user_id int unique,
---  public boolean,
---
---  foreign key (user_id) references users(id)
---);
---
---create table wishlists_games_join (
---  id serial primary key,
---  wishlist_id int,
---  game_id int,
---
---  foreign key (wishlist_id) references wishlists(id),
---  foreign key (game_id) references games(id)
---);
-
---create table owned (
---  id serial primary key,
---  user_id int unique,
---  public boolean,
---
---  foreign key (user_id) references users(id)
---);
-
---   game_id int,
---   user_id int,
-
---   CONSTRAINT fk_game_id (
---         FOREIGN KEY(game_id)
---         REFERENCES games(id),
---         foreign key (user_id) references users(id)
--- );
-
---create table wishlists (
---  id serial primary key,
---  user_id int unique,
---  public boolean,
---
---  foreign key (user_id) references users(id)
---);
---
---create table wishlists_games_join (
---  id serial primary key,
---  wishlist_id int,
---  game_id int,
---
---  foreign key (wishlist_id) references wishlists(id),
---  foreign key (game_id) references games(id)
---);
-
---create table owned (
---  id serial primary key,
---  user_id int unique,
---  public boolean,
---
---  foreign key (user_id) references users(id)
---);
-
-
+alter table collections_games_join
+add constraint collections_games_join_game_id
+unique (collection_id, game_id);

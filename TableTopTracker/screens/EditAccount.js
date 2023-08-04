@@ -9,14 +9,21 @@ import Save from '../components/UserAccount/Save.js';
 
 export default function EditAccount ({navigation, route}) {
     const { user, handleLogout } = route.params;
+    const [isSaved, setIsSaved] = React.useState(false)
+
+    const HandleSave = (e) => {
+        console.log("got saved?")
+        setIsSaved(!isSaved);
+    }
+
     return (
         <View style = {styles.MainView}>
             {/* <Text>This is {user.email}'s HomePage</Text> */}
             <View style = {styles.TopNav}>
-                <Save navigation={navigation} user={user}/>
-                <Logout navigation={navigation} user={user}/>
+                <Save navigation={navigation} HandleSave = {HandleSave} user = {user}/>
+                <Logout navigation={navigation} user = {user}/>
             </View>
-            <ChangeSettings />
+            <ChangeSettings user = {user} isSaved = {isSaved} HandleSave = {HandleSave}/>
             {/* <Button title="Log Out" onPress={handleLogout} /> */}
             <UserNav navigation={navigation} user={user}/>
         </View>
