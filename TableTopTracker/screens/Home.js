@@ -33,6 +33,7 @@ export default function Home ({ navigation, route }) {
           resizeMode='cover'
           source={require('../assets/Asset-Background-Wood.png')}
       >
+
       <View style={ styles.gameListContent }>
 
         <ScrollView horizontal={true}>
