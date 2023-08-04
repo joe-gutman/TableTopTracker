@@ -2,8 +2,9 @@
 import { useRef, useState } from 'react';
 import { StyleSheet, Image, ImageBackground, View, TouchableOpacity, PanResponder, Animated, ScrollView } from 'react-native';
 import NavBar from '../components/NavBar/NavBar.js';
-import { Card, Text, BottomNavigation } from 'react-native-paper';
+import { Card, Text, BottoslythymNavigation } from 'react-native-paper';
 import SwipeableDetails from '../components/GameDetailsData/SwipeableDetails.js';
+import theme from '../theme.js';
 
 // import react native paper
 // Component is currently rendered to bottom of App main page
@@ -91,9 +92,7 @@ export default function GameDetails ({navigation, route}) {
       {/* wood background */}
       <ImageBackground
           style={styles.image}
-          source={{
-              uri: `https://freerangestock.com/sample/140799/wood-background--dark-wooden-background.jpg`,
-            }}
+          source={require('../assets/Asset-Background-Wood.png')}
       >
 
       {/* game image tile */}

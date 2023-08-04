@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground, FlatList, Image } from 'react-native';
 import ButtonList from '../components/GameList/ButtonList';
 import GamesList from '../components/GameList/GamesList.js';
 import allDummyGames from '../components/GameList/dummy/allDummyGames';
@@ -12,10 +12,6 @@ import SickSlider from '../components/Sliders/SickSlider';
 import {useSelector} from "react-redux";
 
 export default function Home ({ navigation, route }) {
-  //hides top bar navigator
-  React.useLayoutEffect(() => {
-    navigation.setOptions({headerShown: false});
-  }, [navigation]);
 
   // const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
   const {collections} = useSelector(state => state.collections)
@@ -31,13 +27,21 @@ export default function Home ({ navigation, route }) {
   // console.dir(personalDummyGames);
 
   return (
-    <View style={{paddingBottom: '100px'}}>
-      {/* <Text>(Alex): Display Slider for Patrick</Text>
-      <SickSlider /> */}
+    <View style={{paddingBottom: '40px'}}>
 
-      {/* <Text>This is {user.email}'s HomePage</Text> */}
+      <ImageBackground
+          style={styles.image}
+          resizeMode='cover'
+          source={require('../assets/Asset-Background-Wood.png')}
+      >
+
+      <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
 
+        <FlatList horizontal={true}>
+          data={collections}
+          renderItem={({collection}) => <CollectionButton collection={collection} keyExtractor={collection => collection}/>}
+        </FlatList>
         <ScrollView horizontal={true}>
           {Object.keys(collections).map((key) =>
             <CollectionButton
@@ -57,6 +61,9 @@ export default function Home ({ navigation, route }) {
       </View>
 
       <NavBar navigation={navigation} user={user}/>
+
+      </ImageBackground>
+
     </View>
   )
 }
@@ -64,12 +71,15 @@ export default function Home ({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   gameListContent: {
     flex: 1, // takes 70% of available space
     marginTop: 10
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
