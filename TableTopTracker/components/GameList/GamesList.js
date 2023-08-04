@@ -31,7 +31,7 @@ export default function GamesList({ handlePress, games, listType }) {
 
   return (
     <View style={ styles.list }>
-      <Text style={ styles.header }>{ listType }</Text>
+      {/* <Text style={ styles.header }>{ listType }</Text> */}
 
       <Animated.View
         style={{

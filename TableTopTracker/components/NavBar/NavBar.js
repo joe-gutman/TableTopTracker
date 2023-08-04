@@ -6,7 +6,8 @@ import styles from './navBarStyles.js';
 
 // import home from '../assets/Asset-Collection/House.png';
 
-export default function NavBar({navigation, user, gameWarden}) {
+export default function NavBar({navigation, user}) {
+// export default function NavBar({navigation, user, gameWarden}) {
     if(!user) {
         throw new Error('User not defined in NavBar');
     }
