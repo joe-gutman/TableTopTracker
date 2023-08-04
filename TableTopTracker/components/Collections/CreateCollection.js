@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { View, TextInput, Pressable, Text, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { Portal, Modal } from 'react-native-paper';
+import {Portal, Modal, Button} from 'react-native-paper';
 import { handleOpenModal } from '../../state/modal/actions';
-import { createCollection } from '../../util/api.js';
+import {createCollection, fetchUserCollections, postGameToCollection} from '../../util/api.js';
+import {handleReceiveCollections} from "../../state/collections/actions";
+import {handleSetNotification} from "../../state/app/actions";
+import theme from "../../theme";
 
 export default function CreateCollection({ gameToAdd, onClose }) {
 
@@ -21,15 +24,13 @@ export default function CreateCollection({ gameToAdd, onClose }) {
     }
   */
 
-  const handleCreateCollection = (collectionName) => {
+  const handleCreateCollection = () => {
     createCollection(collectionName, user.id)
-      .then(({ data }) => {
-        postGameToCollection(user.id, data.collection_name, gameToAdd.id);
-      })
+      .then(({ data }) => postGameToCollection(user.id, data.collection_name, gameToAdd.id))
       .then(({ data }) => fetchUserCollections(user.id))
       .then(({ data }) => {
         dispatch(handleReceiveCollections(data));
-        dispatch(handleSetNotification(`Game added to ${ selectedCollection }`));
+        dispatch(handleSetNotification(`Game added to ${ collectionName }`));
         onClose();
       })
       .catch((err) => {
@@ -40,24 +41,34 @@ export default function CreateCollection({ gameToAdd, onClose }) {
   return (
     <View>
       <TextInput
-        style={ styles.textInput }
+        style={ styles.textInputBox }
         placeholder='Collection Name'
         value={ collectionName }
         onChangeText={ setCollectionName }
       />
-      <Pressable
-        title='Create Collection'
-        onPress={ handleCreateCollection }
-      >
-        <Text>Submit</Text>
-      </Pressable>
+
+      <Button mode={"contained"} onPress={handleCreateCollection} style={styles.btn}>
+        Submit
+      </Button>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  textInput: {
-    borderBottomWidth: 1,
-    marginBottom: 10
+  textInputBox: {
+    ...theme.components.textInput,
+    width: "auto"
+  },
+
+  btn: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: 19,
+    height: 51,
+    width: 259,
+    marginLeft:'auto',
+    marginRight:'auto',
+    justifyContent: 'center',
+    marginTop: 10,
+    color: 'white',
   }
 });

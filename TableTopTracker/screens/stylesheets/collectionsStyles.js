@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.onPrimary,
     backgroundColor: theme.colors.onPrimary,
     borderWidth: 5,
-    borderRadius: 8,
+    borderRadius: 5,
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     margin: 0,
     borderRadius: 5,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   cardText: {
     overflow: 'hidden',

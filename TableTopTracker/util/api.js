@@ -23,6 +23,5 @@ export const postNewUser = (data) =>
     throw error;
   })
 
-export const createCollection = (name, userId) => {
-  return makeRequest('/collections', 'POST', { userId, name });
-}
+export const createCollection = (name, userId) =>
+  makeRequest('/collections', 'POST', { userId, name });

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, ImageBackground, Pressable } from 'react-native';
 
 import firebase from 'firebase/compat/app'; // Update the import path
 import 'firebase/compat/auth'; // Import the authentication module with 'compat'
@@ -9,6 +9,8 @@ import { fetchUser } from '../util/api.js';
 import {useDispatch} from "react-redux";
 import {handleSetUser} from "../state/app/actions";
 import {handleReceiveCollections} from "../state/collections/actions"
+
+import styles from './stylesheets/loginStyles.js';
 
 const dummydata = {
     "uid":"yElHRF2wa2NDBQ9myvTXVEd60Tt2",
@@ -23,6 +25,11 @@ const dummydata = {
 };
 
 export default function Login ({navigation, route}) {
+    //hides top bar navigator
+    React.useLayoutEffect(() => {
+      navigation.setOptions({headerShown: false});
+    }, [navigation]);
+
     const dispatch = useDispatch();
     const [email, setEmail] = useState('admin@tabletop.com');
     const [password, setPassword] = useState('tabletop123');
@@ -88,22 +95,48 @@ export default function Login ({navigation, route}) {
     });
     };
 
-    return (
-        <View>
-        <TextInput
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-        placeholder="Email"
-        />
-        <TextInput
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        placeholder="Password"
-        secureTextEntry
-        />
-        <Button title="Log in" onPress={handleLogin} />
-        {errorMessage ? <Text>{errorMessage}</Text> : null}
+  return (
+    <View style={styles.parentContainer}>
+        {/* <ActivityIndicator animating={true} color={MD2Colors.red800} /> */}
+      <ImageBackground
+          source={require('../assets/Asset-Background-Wood.png')}
+          style={styles.wood}
+      >
 
-        </View>
-)
+        <ImageBackground
+            source={require('../assets/Asset-LandingPage-Scroll.png')}
+            style={styles.scroll}
+        >
+            <Image
+                source={require('../assets/Asset-Logo-Vertical.png')}
+                style={styles.logoImage}
+            />
+            <Text style={styles.boardGameGeek}>Powered by Board Game Geek</Text>
+
+            <View>
+              <TextInput
+                style={styles.textInputBox}
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+                placeholder="Email"
+              />
+              <TextInput
+                style={styles.textInputBox}
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+                placeholder="Password"
+                secureTextEntry
+              />
+              <Pressable
+                style={styles.loginButton}
+                title="Log in"
+                onPress={handleLogin}>
+                  <Text style={styles.loginButtonText}>Log in</Text>
+                </Pressable>
+                {errorMessage ? <Text>{errorMessage}</Text> : null}
+            </View>
+        </ImageBackground>
+      </ImageBackground>
+    </View>
+  )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image, Pressable } from 'react-native';
 
 import NavBar from '../components/NavBar/NavBar.js';
 import styles from './stylesheets/SignUpStyles.js';
@@ -10,6 +10,11 @@ import 'firebase/compat/auth';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function SignUp ({navigation}) {
+  //hides top bar navigator
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
+
   const [email, setEmail] = React.useState('');
   const [fullname, setFullname] = React.useState('');
   const [username, setUsername] = React.useState('');
@@ -110,48 +115,66 @@ export default function SignUp ({navigation}) {
   };
 
     return (
-        <View>
+      <View style={styles.parentContainer}>
+        <View style={styles.branding}>
+          <Text style={styles.logo}>pretend i'm a logo</Text>
+          <Text style={styles.greenWords}>Powered by Board Game Geek</Text>
+        </View>
+        <View style={styles.userInput}>
             <TextInput
+              style={styles.textInputBox}
               onChangeText={setEmail}
               value={email}
               placeholder="Email"
             />
             <TextInput
+              style={styles.textInputBox}
               onChangeText={setFullname}
               value={fullname}
               placeholder="Full Name"
             />
             <TextInput
+              style={styles.textInputBox}
               onChangeText={setUsername}
               value={username}
               placeholder="Username"
             />
             <TextInput
+              style={styles.textInputBox}
               onChangeText={setPassword}
               value={password}
               placeholder="Password"
               secureTextEntry
             />
             <TextInput
+              style={styles.textInputBox}
               onChangeText={setPasswordCheck}
               value={passwordCheck}
               placeholder="Re-enter your password"
               secureTextEntry
             />
-            <Button title="Upload Profile Photo" onPress={handleImageUpload} />
+        </View>
+        <View style={styles.buttonsContainer}>
+          <Pressable
+          style={styles.bigCircleButton}
+            title="Upload Profile Photo"
+            onPress={handleImageUpload}>
+           + </Pressable>
               {/* {imageURL && <Image source={{ uri: imageURL }} />} */}
-            <Button
-              title="Next"
-              onPress={ checkUserInput
-              }
-            />
-            <Text> Have an Account? </Text>
-            <Button
+          <Pressable
+            style={styles.bigGreenButton}
+            title="Create Account"
+            onPress={ checkUserInput}>Create Account</Pressable>
+          <View style={styles.createAccount}>
+            <Text style={styles.orangeWords}> Have an Account? </Text>
+            <Pressable
+              style={styles.greenWords}
               title="Log in"
               onPress={() => {
                 navigation.navigate('Login', {name: username});
-              }}
-            />
+            }}>Log In</Pressable>
+          </View>
         </View>
+      </View>
     )
 }
