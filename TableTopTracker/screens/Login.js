@@ -10,6 +10,8 @@ import {useDispatch} from "react-redux";
 import {handleSetUser} from "../state/app/actions";
 import {handleReceiveCollections} from "../state/collections/actions"
 
+import styles from './stylesheets/loginStyles.js';
+
 const dummydata = {
     "uid":"yElHRF2wa2NDBQ9myvTXVEd60Tt2",
     "email":"admin@tabletop.com",
@@ -88,22 +90,34 @@ export default function Login ({navigation, route}) {
     });
     };
 
-    return (
-        <View>
+  return (
+    <View style={styles.parentContainer}>
+      <View style={styles.branding}>
+        <Text style={styles.logo}>pretend i'm a logo</Text>
+        <Text style={styles.greenWords}>Powered by Board Game Geek</Text>
+      </View>
+      <View>
         <TextInput
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-        placeholder="Email"
+          style={styles.textInputBox}
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+          placeholder="Email"
         />
         <TextInput
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        placeholder="Password"
-        secureTextEntry
+          style={styles.textInputBox}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          placeholder="Password"
+          secureTextEntry
         />
-        <Button title="Log in" onPress={handleLogin} />
-        {errorMessage ? <Text>{errorMessage}</Text> : null}
-
-        </View>
-)
+      </View>
+      <View>
+        <Button
+          style={styles.bigGreenButton}
+          title="Log in"
+          onPress={handleLogin} />
+          {errorMessage ? <Text>{errorMessage}</Text> : null}
+      </View>
+    </View>
+  )
 }
