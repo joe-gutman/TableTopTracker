@@ -11,8 +11,8 @@ export const fetchUserCollections = (userId) =>
   makeRequest(`/collections?userId=${userId}`, 'GET');
 export const fetchCollectionGames = (collectionId) =>
   makeRequest(`/collections/${collectionId}`, 'GET');
-export const postGameToCollection = (collectionId, gameId) =>
-  makeRequest(`/collections/${collectionId}/games`, 'POST', {collectionId, gameId});
+export const postGameToCollection = (userId, collectionName, gameId) =>
+  makeRequest(`/collections/games`, 'POST', {userId, collectionName, gameId});
 export const fetchUser = (data) =>
   makeRequest(`/users?email=${data.email}`, 'GET');
 
