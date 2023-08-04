@@ -16,12 +16,10 @@ export default function Home ({ navigation, route }) {
   // const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
   const {collections} = useSelector(state => state.collections)
   const [ listType, setListType ] = useState('My Games');
-  const [gameDetails, setGameDetails] = useState({});
 
   let { user, handleLogout } = route.params;
   console.log('route.params', route.params);
   console.log('user in home page: ', user);
-  console.log(collections);
 
   // console.dir(allDummyGames);
   // console.dir(personalDummyGames);
@@ -38,13 +36,10 @@ export default function Home ({ navigation, route }) {
       <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
 
-        {/* <FlatList horizontal={true}>
-          data={collections}
-          renderItem={({collection}) => <CollectionButton collection={collection} keyExtractor={collection => collection}/>}
-        </FlatList> */}
         <ScrollView horizontal={true}>
           {Object.keys(collections).map((key) =>
             <CollectionButton
+              listType={listType}
               collection={key}
               onSelect={(key) => setListType(key)}
               keyExtractor={key}
