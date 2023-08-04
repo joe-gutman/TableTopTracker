@@ -6,10 +6,14 @@ import ChangeSettings from '../components/UserAccount/ChangeSettings.js';
 import UserNav from '../components/UserAccount/UserNav.js';
 import Logout from '../components/UserAccount/Logout.js';
 import Save from '../components/UserAccount/Save.js';
+import {useSelector} from 'react-redux'
 
 export default function EditAccount ({navigation, route}) {
-    const { user, handleLogout } = route.params;
+    const { handleLogout } = route.params;
     const [isSaved, setIsSaved] = React.useState(false)
+    const user = useSelector((state) => {
+        return state.app.user
+    })
 
     const HandleSave = (e) => {
         console.log("got saved?")

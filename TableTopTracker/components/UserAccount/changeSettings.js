@@ -3,6 +3,8 @@ import styles from './styles'
 import {Text, View, Image, TouchableOpacity, ScrollView, TextInput} from 'react-native';
 import {SelectList, MultipleSelectList} from 'react-native-dropdown-select-list'
 import axios from 'axios'
+import { handleUpdateUser } from '../../state/app/actions';
+import {useDispatch} from 'react-redux'
 
 export default function EditAccount ({navigation, user, isSaved, HandleSave}) {
 
@@ -17,43 +19,34 @@ export default function EditAccount ({navigation, user, isSaved, HandleSave}) {
     const [boardGame, setBoardgame] = useState();
     const [creature, setCreature] = useState()
     const [selectedCategories, setSelectedCategories] = useState([])
-    const [newInfo, setNewInfo] = useState({})
 
     const playstyles = ["Solo", "1v1", "2-4", "4-8", '8+']
     const creatures = ['Griffin', 'Chimera', 'Phenoix', 'Dragon', 'Pikachu']
     const category = ['Fantasy', 'Action', 'Strategy', 'RPG']
-    console.log("email: ", user)
     console.log("isSaved: ", isSaved)
+    console.log("user: ", user)
+    const dispatch = useDispatch();
 
      useEffect(() => {
-        setImage(user.photo)
-        setEmail(user.email)
-        setName(user.fullname)
-        setUsername(user.username)
-        setAge(user.age)
-        setPlaystyle(user.preferred_playstyle)
-        setBoardgame(user.favorite_board_game)
-        setCreature(user.favorite_mythical_creature)
-        setSelectedCategories(user.selectedCategories)
-
         if(isSaved) {
             console.log("Button is saved")
-            setNewInfo({
-                username: username,
-                fullname: name,
-                age: age,
-                preferred_playstyle: playStyle,
-                selectedCategories: selectedCategories,
-                favorite_board_game: boardGame,
-                favorite_mythical_creature: creature,
-                email: email
-            })
-            axios.put('/users/edit', newInfo)
-            .then((res) => {
-                console.log("success updating! ", res)
-            }).catch((err) => {
-                console.error("failed to update: ", err)
-            })
+            const newInfo = {
+                username: username || user.username,
+                fullname: name || user.fullname,
+                age: age || user.age,
+                preferred_playstyle: playStyle || user.preferred_playstyle,
+                selectedCategories: selectedCategories || user.selectedcategories,
+                favorite_board_game: boardGame || user.favorite_board_game,
+                favorite_mythical_creature: creature || user.favorite_mythical_creature,
+                email: user.email 
+            }
+            // axios.put('http://localhost:3000/users/edit', newInfo)
+            // .then((res) => {
+            //     console.log("success updating! ", res)
+            // }).catch((err) => {
+            //     console.error("failed to update: ", err)
+            // })
+            dispatch(handleUpdateUser(newInfo))
         }
      }, [isSaved])
 
@@ -73,7 +66,7 @@ export default function EditAccount ({navigation, user, isSaved, HandleSave}) {
                         placeholder = "Change Username">
                     </TextInput>
                 
-                    <TextInput 
+                    {/* <TextInput 
                         style = {styles.EditInput}
                         onChange = {(e) => {setCurrentPassword(e.target.value), console.log("Current Password: ", currentPassword)}}
                         placeholder = "Current Password">
@@ -84,7 +77,7 @@ export default function EditAccount ({navigation, user, isSaved, HandleSave}) {
                         style = {styles.EditInput}
                         onChange = {(e) => {setNewPassword(e.target.value), console.log("New Password: ", newPassword)}}
                         placeholder = "New Password">
-                    </TextInput>
+                    </TextInput> */}
                 
                 
                     <TextInput
@@ -128,7 +121,10 @@ export default function EditAccount ({navigation, user, isSaved, HandleSave}) {
                     />
 
                     <MultipleSelectList
-                        setSelected={(val) => {setSelectedCategories(val)}}
+                        setSelected={(val) => {
+                            console.log("category choice: ", val)
+                            setSelectedCategories(val)
+                        }}
                         data={category} 
                         save="value"
                         label="Categories"

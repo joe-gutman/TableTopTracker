@@ -19,15 +19,25 @@ export default function UserSettings ({navigation, route, user}) {
 
 
     useEffect(() => {
-
-        axios.get('/users', { params: { email: user.email } })
-            .then((data) => {
-                console.log("data from get: ", data)
-            })
-            .catch((err) => {
-                console.error(err)
-            })
-    }, [])
+        const unsubscribe = navigation.addListener('focus', () => {
+            axios.get(`http://localhost:3000/users?email=${user.email}`)
+                .then((res) => {
+                    const userInfo = res.data.userData
+                    console.log("data from get: ", res.data.userData)
+                    setName(userInfo.fullname)
+                    setUsername(userInfo.username)
+                    setAge(userInfo.age)
+                    setPlayStyle(userInfo.preferred_playstyle)
+                    setFavorite(userInfo.favorite_board_game)
+                    setCreature(userInfo.favorite_mythical_creature)
+                    setCategories(userInfo.selectedcategories)
+                })
+                .catch((err) => {
+                    console.error(err)
+                })
+        })
+        return unsubscribe;
+    }, [navigation])
 
     return (
         <ScrollView contentContainerStyle = {styles.MainContainer}>

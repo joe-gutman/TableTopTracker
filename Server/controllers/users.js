@@ -53,13 +53,11 @@ exports.updateUser = (req, res) => {
 
   db.query(`UPDATE USERS set username = $1, email = $2, fullname = $3, 
   age = $4, preferred_playstyle = $5, favorite_mythical_creature = $6, 
-  favorite_board_game = $7, selectedCategories = $8 WHERE email = $2`, 
+  favorite_board_game = $7, selectedCategories = $8 WHERE email = $2 RETURNING *`, 
   [username, email, fullname, age, preferred_playstyle, 
     favorite_mythical_creature, favorite_board_game, 
-    selectedCategories])
-
-    .then((rows) => {
-      res.sendStatus(200)
+    selectedCategories]).then(({rows}) => {return rows[0]}).then((rows) => {
+      res.send(rows)
     })
 
 }
