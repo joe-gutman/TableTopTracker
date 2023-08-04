@@ -1,8 +1,10 @@
 
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Button, View, TextInput, SafeAreaView, TouchableHighlight } from 'react-native';
+import { StyleSheet, Button, View, TextInput, SafeAreaView, TouchableHighlight, Pressable, Image } from 'react-native';
 
-import styles from './styles.js';
+import styles from './navBarStyles.js';
+
+// import home from '../assets/Asset-Collection/House.png';
 
 export default function NavBar({navigation, user, gameWarden}) {
     if(!user) {
@@ -15,31 +17,32 @@ export default function NavBar({navigation, user, gameWarden}) {
             <View style = {styles.navBarContainer}>
               <View style={styles.leftColumn}>
                 <View style={styles.littleButton}>
-                  <Button
+                  <Pressable
                     title="Home"
                     onPress={() =>
                         navigation.navigate('Home', user={user})
-                    }>
-                  </Button>
+                    }>home
+                    {/* <Image source={require('../assets/Asset-Collection/House.png')} /> */}
+                  </Pressable>
                 </View>
               </View>
               <View style={styles.centerColumn}>
                 <View styles={styles.centerTop}>
                   {gameWarden ?
-                  (<Button
+                  (<Pressable
                     title="Game Warden"
                     style={styles.bigButton}
                     onPress={() =>
                       navigation.navigate('Game Warden', user={user})
-                    }>
-                  </Button>):
-                  (<Button
+                    }>game warden
+                  </Pressable>):
+                  (<Pressable
                     title="Search"
                     style={styles.bigButton}
                     onPress={() =>
                         navigation.navigate('Search', user={user})
-                    }>
-                  </Button>)}
+                    }>search
+                  </Pressable>)}
                 </View>
 
                 <View style={styles.centerMiddle}>
@@ -51,13 +54,13 @@ export default function NavBar({navigation, user, gameWarden}) {
               </View>
               <View style={styles.rightColumn}>
                 <View style={styles.littleButton}>
-                  <Button
+                  <Pressable
                     title="User Account"
                     style={styles.littleButton}
                     onPress={() =>
                         navigation.navigate('User Account', user={user})
-                    }>
-                  </Button>
+                    }>user account
+                  </Pressable>
                 </View>
               </View>
             </View>
