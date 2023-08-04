@@ -2,7 +2,7 @@ const db = require('../database/db.js');
 const axios = require('axios');
 const parser = require('../parser.js');
 
-exports.getOne = ({title}) => {
+exports.getOne = (title) => {
   var queryStr = `select * from games where title = '${title}'`;
   return db.query(queryStr);
 }

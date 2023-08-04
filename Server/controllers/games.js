@@ -50,6 +50,81 @@ exports.getGame = (req, res) => {
     })
 }
 
+exports.getGameModified = (req, res) => {
+  var title = req.body.gameName
+  addGame.getOne(title)
+    .then((data) => {
+      console.log(data.rows);
+      if (data.rows.length === 0) {
+        addGame.getAllGameDetails(title)
+          .then((data) => {
+            addGame.insertGameImageAndCategories(data)
+              .then(() => {
+                exports.getGameModified(req, res);
+              })
+              .catch((error) => {
+                res.sendStatus(500);
+              })
+          })
+          .catch((error) => {
+            console.log(error.message);
+            res.sendStatus(500);
+          })
+      } else {
+        var gameData = data.rows[0];
+        res.status(200).send(gameData);
+      }
+    })
+}
+
+
+const getGamesFromList = (title) => {
+  return addGame.getOne(title)
+    .then((data) => {
+      console.log(data.rows);
+      if (data.rows.length === 0) {
+        return addGame.getAllGameDetails(title)
+          .then((data) => {
+            console.log(data);
+            return addGame.insertGameImageAndCategories(data)
+              .then(() => {
+                getGamesFromList(title);
+              })
+              .catch((error) => {
+                throw error;
+              })
+          })
+          .catch((error) => {
+            throw error;
+          })
+      } else {
+        var gameData = data.rows[0];
+        return gameData;
+      }
+    })
+}
+
+exports.getListOfGames = (req, res) => {
+  var listOfGames = req.body.recommendations;
+  console.log('listOfGames', listOfGames);
+  var queries = [];
+  for (let game of listOfGames) {
+    console.log(game);
+    queries.push(getGamesFromList(game.gameName));
+  }
+  Promise.all(queries)
+    .then((data) => {
+      console.log(data);
+      res.status(200).send(data);
+    })
+    .catch((error) => {
+      console.log(error.message);
+      res.sendStatus(500)
+    })
+}
+
+
+
 
 const flattenDbResults = (dbData) => {
   var keys = Object.keys(dbData);

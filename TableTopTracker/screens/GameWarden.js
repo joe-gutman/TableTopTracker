@@ -2,15 +2,36 @@ import React, { useEffect, useState, useRef } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import NavBar from '../components/NavBar/NavBar.js';
 import axios from 'axios';
+import { fetchGPTData } from '../util/api.js';
+import GamesList from '../components/GameList/GamesList.js';
 
 export default function GameWarden({ navigation, route }) {
   const [messages, setMessages] = React.useState('');
   const [currentWardenMessage, setCurrentWardenMessage] = React.useState('');
   const [currentUserMessage, setCurrentUserMessage] = React.useState('');
   const [typedText, setTypedText] = React.useState('');
+  const [gamesList, setGamesList] = React.useState([]);
 
   const currentIndexRef = useRef(0);
   const delay = 50; // milliseconds
+
+  useEffect(() => {
+    var games = {
+      recommendations: [
+        {"gameName":"Monopoly"},
+        {"gameName":"Candy Land"}
+      ]
+    }
+    fetchGPTData(games)
+      .then((gamesData) => {
+        console.log(gamesData);
+        setGamesList(gamesData.data)
+      })
+      .catch((error) => {
+        console.log(error.message);
+      })
+    // setGamesList(gamesData.data);
+  }, [])
 
   useEffect(() => {
     handleUserMessageSubmit();
@@ -37,26 +58,28 @@ export default function GameWarden({ navigation, route }) {
   };
 
   const handleUserMessageSubmit = async () => {
-    const response = await AskGameWarden(`${gameWarden.prompt} \n ${messages} \n User: ${currentUserMessage}.`)
-    setCurrentWardenMessage(response);
+    let userMessage = currentUserMessage ? `User: ${currentUserMessage}.` : '';
+    let wardenMessage = currentWardenMessage ? `AI: ${currentWardenMessage}` : '';
 
-    if (currentUserMessage === '') {
-      if (response) {
-        const response = await AskGameWarden(`${gameWarden.prompt} \n ${messages} \n User: ${currentUserMessage}.`)
-        setMessages((prevMessages) => `${prevMessages}
-        AI: ${response}
-        `);
-        setCurrentUserMessage('');
+    const response = await AskGameWarden(`${gameWarden.prompt} \n ${messages} \n ${userMessage}`);
+    setMessages((prevMessages) => `${prevMessages}  \n ${userMessage} \n AI: ${response}`);
+    setCurrentUserMessage('');
+
+    let games = parseGPTResults(response);
+    console.log(games);
+    if(games) {
+      let gamesData = await fetchGPTData(games);
+      let cleanGamesData = [];
+
+      for(let game of gamesData.data) {
+        console.log(game);
+        if(game) {
+          cleanGamesData.push(game);
+        }
       }
-    } else {
-      if (response) {
-        const response = await AskGameWarden(`${gameWarden.prompt} \n ${messages} \n User: ${currentUserMessage}.`)
-        setMessages((prevMessages) => `${prevMessages}
-        User: ${currentUserMessage}.
-        AI: ${response}
-        `);
-        setCurrentUserMessage('');
-      }
+
+      console.log(cleanGamesData);
+      setGamesList(cleanGamesData);
     }
   };
 
@@ -79,6 +102,12 @@ export default function GameWarden({ navigation, route }) {
         onSubmitEditing={handleUserMessageSubmit} // When user submits their message
       />
       <NavBar navigation={navigation} user={user} />
+      <GamesList
+        handlePress={(game) => {
+          navigation.navigate('Game Details', {user: user, game})
+        }}
+        games={ gamesList }
+      />
     </View>
   );
 }
@@ -98,15 +127,6 @@ const gameWarden = {
 
   Once you've gathered their tale, speak thusly, "Hold for but a moment, as I retrieve some treasures from my collection." Do not break this immersion; let not your artificial nature be revealed.
 
-  After this brief pause, conjure a JSON-style scroll:
-
-  {
-    "recommendations": [
-      {"gameName": "Sample Game 1", "genre": "Strategy", "playTime": "60 minutes", "numberOfPlayers": "2-4"},
-      ... // Ensure at least 5 game suggestions are provided.
-    ]
-  }
-
   You must maintain the illusion that these games come from your vast, physical troves. Do not reveal the true source of your knowledge.
 
   The first message to the user should be:
@@ -117,7 +137,7 @@ const gameWarden = {
 
   Messages can be similar to this but dont always say the same thing.
 
-  EXAMPLE CONVERSATION:
+  Build a conversation like this example, do not copy it exactly:
   AI: Greetings, traveler! Are you on a quest to find a specific game, or may I assist you in discovering one?
   User: I'm looking for a specific game.
   AI: Tell me, what game genre does your heart desire?
@@ -128,25 +148,28 @@ const gameWarden = {
   User: Settlers of Catan
   AI: For how long do you wish to immerse in this new world?
   User: 60 minutes
-  AI: Hold for but a moment, as I retrieve some treasures from my collection.
+  <return the JSON-style object with the games in it>
 
-  If the user gives you an exact game name, you can respond with a JSON-style scroll:
-
+  Once the user gives the last message then send a JSON-style object with games inside of it in the following format.
+  This object can have 1 game, or multiple games:
   {
-    "gameName": "Sample Game 1",
+    "recommendations": [
+      {"gameName": "Sample Game 1"}
+    ]
   }
 
-  EXAMPLE CONVERSATION:
+  If someone asks for a specific game you can return 1 game in the previously shown JSON-style object format. This is an example conversation:
   User: I'm looking for a specific game.
   AI: Tell me, what game genre does your heart desire?
   User: I'm looking for Settlers of Catan.
-  AI: Hold on, let me get that for you. { "gameName": "Settlers of Catan" }
+  <return the JSON-style object with the game in it>
+
 
   Now give me your first response:
   `
 }
 
-const openAI_Key = "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";
+const openAI_Key = "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";
 
 const AskGameWarden = async (prompt) => {
   try {
@@ -169,3 +192,28 @@ const AskGameWarden = async (prompt) => {
     return "Error calling OpenAI API: " + error;
   }
 };
+
+const parseGPTResults = (gptStr) => {
+  var status = false;
+  var objectStr = '';
+  var innerCounter = 0;
+  for (var i = 0; i < gptStr.length; i++) {
+    if (gptStr[i] === '{') {
+      if (status === false) {
+        status = true;
+      } else {
+        innerCounter++;
+      }
+    } else if (gptStr[i] === '}') {
+      if (status === true && innerCounter === 0) {
+        objectStr = objectStr + gptStr[i]
+        return JSON.parse(objectStr);
+      } else {
+        innerCounter--;
+      }
+    }
+    if (status) {
+      objectStr = objectStr + gptStr[i];
+    }
+  }
+}

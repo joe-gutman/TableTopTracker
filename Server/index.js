@@ -80,6 +80,16 @@ app.get('/collections/:collectionId/games', async (req, res, next) => {
   }
 });
 
+app.post('/gpt', (req, res) => {
+  // we want to make a query based on the exact game data;
+  getGameController.getListOfGames(req, res);
+});
+
+// {
+//   recommendations: [ { gameName: 'Monopoly' }, { gameName: 'The Settlers of Catan' } ]
+// }
+
+
 
 
 app.listen(PORT, () => {
