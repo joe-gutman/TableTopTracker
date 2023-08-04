@@ -1,8 +1,6 @@
 const usersModel = require('../models/users.js');
 const collectionsController = require('../controllers/collections.js');
 const db = require('./db.js');
-
-
 exports.populateAdmin = () => {
   const adminData = {
     "username": "SamPlayzGames",
@@ -13,7 +11,7 @@ exports.populateAdmin = () => {
     "preferred_playstyle": "Strategic and Competitive",
     "favorite_mythical_creature": "Dragon",
     "favorite_board_game": "Catan (Settlers of Catan)",
-    "favoriteCategories": "action"
+    "favoriteCategories": "action",
   };
   usersModel.createUser(adminData)
     .then((data) => {
@@ -35,14 +33,12 @@ exports.populateAdmin = () => {
             .catch((error) => {
               console.log(error.message);
             })
-
         })
     })
     .catch((error) => {
       console.log(error.message);
     })
 }
-
 exports.addGamesInBulk = (userId, collectionName, ids ) => {
   var queries = [];
   for ( let id of ids ) {
