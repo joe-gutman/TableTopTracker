@@ -3,6 +3,7 @@ import {Animated, PanResponder, Pressable, StyleSheet, View} from 'react-native'
 import { Card, Text, BottomNavigation } from 'react-native-paper';
 import {handleOpenModal} from "../../state/modal/actions";
 import {useDispatch} from "react-redux";
+import styles from './swipeableDetailsStyles.js'
 
 
 const SwipeableDetails = ({game}) => {
@@ -73,17 +74,18 @@ const SwipeableDetails = ({game}) => {
         {...panResponder.panHandlers}
         style={[pan.getLayout(), styles.tile]}
       >
-      <Pressable
+      {/* <Pressable
         onPress={() =>
           dispatch(handleOpenModal('ADD_TO_COLLECTION', {game}))
         }
-      > <Text>Add To Collection</Text> </Pressable>
+      > <Text>Add To Collection</Text> </Pressable> */}
 
-          <Text style={styles.titleText}>{game.title}</Text>
+        <Text style={styles.titleText}>{game.title}</Text>
+
+
+
           <View style={styles.table}>
             <View style={styles.column}>
-
-
               {/* <Text>{game.category.join(', ')}</Text> */}
               <Text>{(game.minplaytime===game.maxplaytime) ?
               (game.minplaytime) :
@@ -102,50 +104,25 @@ const SwipeableDetails = ({game}) => {
                   : ` players`
                 } </Text>
               <Text>Recommended Age: {game.age}</Text>
-              <Text>Complexity:</Text>
+              <Text>Complexity: {game.complexity}</Text>
             </View>
           </View>
+          <View style={styles.addToCollectionButtonContainer}>
+            <Pressable
+              style={styles.addToCollectionButton}
+              onPress={() =>
+                dispatch(handleOpenModal('ADD_TO_COLLECTION', {game}))}
+            >
+              <Text style={styles.addToCollectionText}>Add To Collection</Text>
+            </Pressable>
+          </View>
           <Text>{game.description}</Text>
-
-
       </Animated.View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize:  '1.5em',
-  },
-  tile: {
-    position: 'absolute',
-    width: '100%',
-    bottom: '0',
-    borderWidth: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    backgroundColor: '#FBF5E7',
-    borderColor: '#FBF5E7',
-    padding: 20,
-    overflowY: 'hidden',
-  },
-  table: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: '10px',
-    paddingBottom: 10,
-  },
-  column: {
-    flex: 1,
-  },
-  titleText: {
-    fontSize: '1.5em',
-    paddingBottom: 20,
-  }
-});
+
 
 // const dummyGame = {
 //   complexity: 4.0,

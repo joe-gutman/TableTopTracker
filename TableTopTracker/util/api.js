@@ -15,6 +15,8 @@ export const postGameToCollection = (userId, collectionName, gameId) =>
   makeRequest(`/collections/games`, 'POST', {userId, collectionName, gameId});
 export const fetchUser = (data) =>
   makeRequest(`/users?email=${data.email}`, 'GET');
+export const fetchGPTData = (games) =>
+  makeRequest(`/gpt`, 'POST', games);
 
 export const postNewUser = (data) =>
   makeRequest(`/users`, 'POST', data)

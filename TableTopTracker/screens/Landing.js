@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, Pressable, Image, ImageBackground} from
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import styles from './stylesheets/landingStyles.js';
 import NavBar from '../components/NavBar/NavBar.js';
+
 export default function Landing ({navigation}) {
   //hides top bar navigator
   React.useLayoutEffect(() => {
