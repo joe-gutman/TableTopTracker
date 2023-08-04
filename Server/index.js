@@ -10,7 +10,7 @@ const getGameController = require('./controllers/games');
 const cors = require('cors');
 const initializer = require('./database/populate.js');
 const adminInit = require('./database/populateUsers.js');
-const {getUserCollections, getCollectionGames} = require("./controllers/collections");
+const {getUserCollections, getCollectionGames, createCollection, postToCollection} = require("./controllers/collections");
 const usersController = require('./controllers/users.js');
 
 const app = express();
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors())
 
 // initializer.populateBoardGames();
-adminInit.populateAdmin();
+// adminInit.populateAdmin();
 
 // this is still needed for line 47 app.get('/users', ...)
 const dummydata = {
@@ -48,22 +48,35 @@ app.get('/users', function(req, res) {
   usersController.getUser(req, res);
 })
 
-app.get('/collections', async (req, res, next) => {
+app.post('/collections/games', async (req, res, next) => {
   try{
-    const collections = await getUserCollections(req.query.userId);
-    res.send(collections)
-
+    const {userId, collectionName, gameId} = req.body
+    const newJoin = await postToCollection(userId, collectionName, gameId);
+    res.status(201).send(newJoin);
   } catch(err) {
-    req.sendStatus(500);
+    console.log(err);
+    res.sendStatus(500);
   }
 });
+
+app.post('/collections', async (req, res, next) => {
+  try{
+    const newCollection = await createCollection(req.body);
+    res.status(201).send(newCollection);
+  } catch(err) {
+    console.log(err)
+    res.sendStatus(500);
+  }
+});
+
+app.get('/collections', getUserCollections);
 
 app.get('/collections/:collectionId/games', async (req, res, next) => {
   try {
     const collectionGames = await getCollectionGames(req.params.collectionId);
     res.send(collectionGames);
   } catch(err) {
-    req.sendStatus(500);
+    res.sendStatus(500);
   }
 });
 

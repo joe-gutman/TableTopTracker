@@ -1,18 +1,19 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import {View, Text, Image, TouchableOpacity, StyleSheet, Pressable} from 'react-native';
 import styles from '../../screens/stylesheets/collectionsStyles.js'
 
 const icons = {
-  'My Games': require('../../assets/Asset-_Collection-House-White.png'),
-  'Recommendations': require('../../assets/Asset-_NavBar-MagnifyingGlass-White.png'),
-  'Liked': require('../../assets/Asset-_Collection-Heart-White.png'),
-  'Wishlist': require('../../assets/Asset-_Collection-Star-White.png'),
-  'Misc': require('../../assets/Asset-_NavBar-LifePerson-White.png'),
+  'My Games': require('../../assets/Asset-Collection-House-White.png'),
+  'Recommendations': require('../../assets/Asset-NavBar-MagnifyingGlass-White.png'),
+  'Liked': require('../../assets/Asset-Collection-Heart-White.png'),
+  'Wishlist': require('../../assets/Asset-Collection-Star-White.png'),
+  'Misc': require('../../assets/Asset-NavBar-LifePerson-White.png'),
 };
 
-export default function CollectionButton({ collection }) {
+export default function CollectionButton({ collection, onSelect }) {
+  console.log(collection);
   return (
-    <View style={styles.cardBorder}>
+    <Pressable style={styles.cardBorder} onPress={() => onSelect(collection)}>
       <View style={styles.cardMain}>
         <Image
           // default image for user-created collections is life person icon
@@ -23,6 +24,6 @@ export default function CollectionButton({ collection }) {
         }}/>
       </View>
       <Text style={styles.cardText}>{collection}</Text>
-    </View>
+    </Pressable>
   );
 }

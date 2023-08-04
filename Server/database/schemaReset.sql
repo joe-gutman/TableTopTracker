@@ -90,7 +90,7 @@ create table collections (
   id serial primary key,
   user_id int,
   collection_name varchar(32),
-  public boolean,
+  public boolean DEFAULT(false),
 
   foreign key (user_id) references users(id)
 );
@@ -108,3 +108,7 @@ create table collections_games_join (
   foreign key (collection_id) references collections(id),
   foreign key (game_id) references games(id)
 );
+
+alter table collections_games_join
+add constraint collections_games_join_game_id
+unique (collection_id, game_id);

@@ -13,7 +13,7 @@ export default function Landing ({navigation}) {
               <View style={styles.logo}>
                 <Image
                   // default image for user-created collections is life person icon
-                  source={require('../assets/Asset-_Logo-Horizontal.png')}
+                  source={require('../assets/Asset-Logo-Horizontal.png')}
                   style={{
                   height: 120,
                   width: 290,
