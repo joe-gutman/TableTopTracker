@@ -3,6 +3,8 @@ import { View, Text, TextInput } from 'react-native';
 import NavBar from '../components/NavBar/NavBar.js';
 import axios from 'axios';
 
+// import styles from './stylesheets/gameWarden.js';
+
 export default function GameWarden({ navigation, route }) {
   const [messages, setMessages] = React.useState('');
   const [currentWardenMessage, setCurrentWardenMessage] = React.useState('');

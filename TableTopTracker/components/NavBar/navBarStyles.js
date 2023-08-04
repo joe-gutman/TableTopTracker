@@ -2,81 +2,56 @@ import { StyleSheet } from 'react-native';
 import theme from '../../theme.js';
 
 const styles = StyleSheet.create({
-  floatingButtonContainer: {
-    display: 'flex',
-    height: 50,
-    flexDirection: 'row',
-    width: "100%",
-    justifyContent: 'center',
-    marginBottom: 25,
-  },
-  bottomRowContainer: {
+  navBar: {
     position: 'fixed',
     bottom: '0',
     display: 'flex',
-    flexDirection: "row",
-    zIndex: "999",
-    width: "100%",
+    flexDirection: 'row',
+    zIndex: '999',
+    width: '100%',
     height: 75,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    borderLeftRightRadius: 25,
-    borderTopRightRadius: 25,
+    marginLeft:'auto',
+    marginRight:'auto',
+    // borderLeftRightRadius: 25,
+    // borderTopRightRadius: 25,
   },
-  leftColumn: {
+  leftBox: {
     borderTopLeftRadius: 25,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: theme.colors.primary,
     flex: 3,
     height: 75,
+    flexGrow: 1
   },
-  centerColumn: {
-    flex: 1,
-    height: 75,
-    width: 75
-  },
-  centerTop: {
+  centerBox: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: ' ',
+    width: 200,
+    marginLeft:'auto',
+    marginRight:'auto',
+
+  },
+  rightBox: {
+    borderTopRightRadius: 25,
+    backgroundColor: theme.colors.primary,
+    flex: 3,
+    height: 75,
+    flexGrow: 1
+  },
+  centerTop: {
+    flexDirection: 'column',
     justifyContent: 'center',
   },
   centerBottom: {
     backgroundColor: theme.colors.primary,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    position: 'fixed',
-    bottom: '0',
-    height: 25,
   },
-  rightColumn: {
-    borderTopRightRadius: 25,
-    display: 'flex',
-    flexDirection: 'column',
+  navButtons: {
+    backgroundColor: theme.colors.primary,
+    height: '100%',
+    width: 50,
+    marginLeft:'auto',
+    marginRight:'auto',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.colors.primary,
-    flex: 3,
-    height: 75,
-  },
-  littleButton: {
-    backgroundColor: theme.colors.primary,
-    height: 50,
-    width: 50,
-  },
-  bigButtonContainer: {
-    backgroundColor: theme.colors.onSecondary,
-    borderRadius: 50,
-  },
-  bigButton: {
-    borderRadius: 50,
-  },
-  notch: {
-    width: 75
   }
 });
 

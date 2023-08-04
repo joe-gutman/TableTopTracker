@@ -19,61 +19,57 @@ export default function NavBar({navigation, user, gameWarden}) {
     }
 
     return (
-      <View>
-        <TouchableOpacity>
-          <View style={styles.floatingButtonContainer}>
-            {gameWarden ?
-            (<Pressable
-              title="Game Warden"
-              style={styles.bigButton}
-              onPress={() =>
-                navigation.navigate('Game Warden', user={user})
-              }>
-                <Image source={icons['GameWarden']} style={{
-                  height: 50,
-                  width: 50,
-                }}/>
-            </Pressable>):
-            (<Pressable
-              title="Search"
-              style={styles.bigButtonContainer}
-              onPress={() =>
-                  navigation.navigate('Search', user={user})
-              }><Image source={icons['Search']} style={styles.bigButton
-              }/>
-            </Pressable>)}
-          </View>
-          <View style = {styles.bottomRowContainer}>
-            <View style={styles.leftColumn}>
-              <Pressable
-                title="Home"
+      <View style = {styles.navBar}>
+        <View style={styles.leftBox}>
+          <Pressable
+            title="Home"
+            style={styles.navButtons}
+            onPress={() =>
+                navigation.navigate('Home', user={user})
+            }>
+              <Image
+              source={icons['MonopolyHouse']}
+              style={styles.navButton}/>
+          </Pressable>
+        </View>
+        <View style={styles.centerBox}>
+          {/* <View style={styles.centerTop}>
+            <View>
+              {gameWarden ?
+              (<Pressable
+                title="Game Warden"
+                style={styles.searchButton}
                 onPress={() =>
-                    navigation.navigate('Home', user={user})
+                  navigation.navigate('Game Warden', user={user})
                 }>
-                  <Image source={icons['MonopolyHouse']} style={styles.littleButton}/>
-              </Pressable>
-            </View>
-            <View style={styles.centerColumn}>
-              <View style={styles.centerTop}>
-                <Image source={icons['Notch']} style={styles.notch}/>
-              </View>
-              <View style={styles.centerBottom}></View>
-            </View>
-            <View style={styles.rightColumn}>
-              <Pressable
-                title="User Account"
-                style={styles.littleButton}
-                onPress={() =>
-                    navigation.navigate('User Account', user={user})
-                }>
-                  <Image source={icons['UserAccount']} style={{
+                  <Image source={icons['GameWarden']} style={{
                     height: 50,
                     width: 50,
                   }}/>
-              </Pressable>
+              </Pressable>):
+              (<Pressable
+                title="Search"
+                style={styles.searchButtonContainer}
+                onPress={() =>
+                    navigation.navigate('Search', user={user})
+                }><Image source={icons['Search']} style={styles.searchButton
+                }/>
+              </Pressable>)}
             </View>
+            <Image source={icons['Notch']} style={styles.notch}/>
           </View>
-        </TouchableOpacity>
+          <View style={styles.centerBottom}></View> */}
+        </View>
+        <View style={styles.rightBox}>
+          <Pressable
+            title="User Account"
+            style={styles.navButtons}
+            onPress={() =>
+                navigation.navigate('User Account', user={user})
+            }>
+              <Image source={icons['UserAccount']} style={styles.navButtons}/>
+          </Pressable>
+        </View>
       </View>
     )
 }
