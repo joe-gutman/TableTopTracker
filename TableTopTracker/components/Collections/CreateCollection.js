@@ -6,7 +6,7 @@ import { handleOpenModal } from '../../state/modal/actions';
 import { createCollection } from '../../util/api.js';
 
 export default function CreateCollection({ gameToAdd, onClose }) {
-  // const [ collections, setCollections ] = useState();
+
   const dispatch = useDispatch();
   const user = useSelector(state => state.app.user);
 
@@ -23,11 +23,13 @@ export default function CreateCollection({ gameToAdd, onClose }) {
 
   const handleCreateCollection = (collectionName) => {
     createCollection(collectionName, user.id)
-      .then(({ data }) => postGameToCollection(user.id, data.collection_name, gameToAdd.id))
-      .then(({data}) => fetchUserCollections(user.id))
-      .then(({data}) => {
+      .then(({ data }) => {
+        postGameToCollection(user.id, data.collection_name, gameToAdd.id);
+      })
+      .then(({ data }) => fetchUserCollections(user.id))
+      .then(({ data }) => {
         dispatch(handleReceiveCollections(data));
-        dispatch(handleSetNotification(`Game added to ${selectedCollection}`));
+        dispatch(handleSetNotification(`Game added to ${ selectedCollection }`));
         onClose();
       })
       .catch((err) => {
@@ -43,17 +45,12 @@ export default function CreateCollection({ gameToAdd, onClose }) {
         value={ collectionName }
         onChangeText={ setCollectionName }
       />
-      {/* { error && (
-        <Text style={ styles.errorText }>{ error }</Text>
-      ) } */}
       <Pressable
         title='Create Collection'
         onPress={ handleCreateCollection }
-        // disabled={ isLoading }
       >
         <Text>Submit</Text>
       </Pressable>
-      {/* { isLoading && <Text>Loading...</Text> } */}
     </View>
   );
 }
@@ -61,10 +58,6 @@ export default function CreateCollection({ gameToAdd, onClose }) {
 const styles = StyleSheet.create({
   textInput: {
     borderBottomWidth: 1,
-    marginBottom: 10
-  },
-  errorText: {
-    color: 'red',
     marginBottom: 10
   }
 });
