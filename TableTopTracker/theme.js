@@ -44,13 +44,14 @@ const theme = {
     // errorContainer: ,
     // onErrorContainer: ,
 
+
   },
   // fonts: {
-  //   Regular: {
-  //     fontFamily: 'Inter-Regular',
-  //     fontWeight: 'normal'
-  //   },
-  //   Bold: {
+    //   Regular: {
+      //     fontFamily: 'Inter-Regular',
+      //     fontWeight: 'normal'
+      //   },
+      //   Bold: {
   //     fontFamily: 'Inter-Bold',
   //     fontWeight: 'normal'
   //   },
@@ -60,6 +61,7 @@ const theme = {
   //   }
   // },
   components: {
+    woodBackground: './assets/Asset-_Background-Wood.png',
     textInput: {
       color: "#4A3018",
       fontSize: 16,
