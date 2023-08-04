@@ -10,29 +10,27 @@ export default function GameCard({
 }) {
 
   return (
-    <View style={ styles.card }>
-      <TouchableOpacity onPress={() => {
-        // MISSING: category, image, age, gameId
-        handlePress(title);
-        }}>
-        <Card>
-          <Card.Content>
-            {/* layout based on wireframe + site */}
+    <TouchableOpacity onPress={() => {
+      // MISSING: category, image, age, gameId
+      handlePress(title);
+      }}>
+      <Card style={styles.card}>
+        <Card.Content style={styles.cardGrid}>
+          <View style={styles.thumbnailContainer}>
             <Image
               style={ styles.thumbnail } // needs to appear left of details
               source={{ uri: thumbnail }}
             />
+          </View>
+          <View>
             <Text>{ minplayers } - { maxplayers } Players</Text>
             <Text>Playtime: { minplaytime } - { maxplaytime } Min</Text>
             <Text>Complexity: { complexity }</Text>
             <Text>{ year_published }</Text>
-            {/* <Text>{ description }</Text> */}
-          </Card.Content>
-
-          {/* not rendering title for some reason (suspect naming convention issue?) */}
-          <Card.Title title={title}/>
-        </Card>
-      </TouchableOpacity>
-    </View>
+            <Card.Title title={title}/>
+          </View>
+        </Card.Content>
+      </Card>
+    </TouchableOpacity>
   );
 }
