@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   wood:{
     width: '100%',
-    height: '100%',
+    height: '120%',
     resizeMode: 'cover',
     justifyContent: 'center',
   },
