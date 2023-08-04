@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.onTertiary,
     borderRadius: 8,
     width: 300,
-    margin: 'auto',
+    margin: 5, //'auto',
+    boxShadow: '0 0.4em rgba(0, 0, 0, 0.2)',
   },
   focusButton: {
     color: 'blue',
