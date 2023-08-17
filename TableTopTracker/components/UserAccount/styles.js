@@ -4,11 +4,18 @@ import theme from '../../theme';
 const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
-    padding: 8,
+    padding: 0,
     backgroundColor: '#ECE4B7',
-    borderWidth: 1, // Add border width
-    borderColor: 'red', // Set border color
-    borderStyle: 'solid',
+    marginTop: 45,
+    marginBottom: 0,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+  wood:{
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   InnerContainer: {
     flex: 1,
@@ -27,6 +34,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 15,
   },
+  profileImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    borderRadius: 75,
+},
   NameContainer: {
     flex: 1,
     alignItems: 'center',

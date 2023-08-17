@@ -1,27 +1,28 @@
 
 import React, {useState, useEffect} from 'react';
 import styles from './styles'
-import {Text, View, CheckBox, ScrollView } from 'react-native';
+import {Text, View, CheckBox, ScrollView, ImageBackground, Image } from 'react-native';
 
 
 export default function UserSettings ({navigation, route}) {
+
     const [image, setImage] = useState();
-    const [name, setName] = useState('Bob Peterson');
-    const [username, setUsername] = useState('legend27');
+    const [name, setName] = useState(' Bob Peterson ');
+    const [username, setUsername] = useState(' legend27 ');
     const [age, setAge] = useState('18');
-    const [playStyle, setPlayStyle] = useState('alone')
+    const [playStyle, setPlayStyle] = useState('1vs1')
     const [favorite, setFavorite] = useState('Civilization');
     const [categories, setCategories] = useState([
-        'category 1',
-        'category 2',
-        'category 3',
-        'category 4',
-        'category 5',
-        'category 6',
-        'category 7',
-        'category 8',
-        'category 9',
-        'category 10',
+        'Fantasy',
+        'Action',
+        'Strategy',
+        'War',
+        'Quest',
+        'Mystery',
+        'Dice',
+        'Numbers',
+        'RPG',
+        'Sci-Fi',
     ]);
 
     const [leftCol, setLeftCol] = useState([])
@@ -29,7 +30,7 @@ export default function UserSettings ({navigation, route}) {
 
     function labelCategories() {
         console.log('categories: ', categories);
-      
+
         categories.forEach((category, index) => {
           if (index % 2 === 0) {
             setLeftCol((prevLeftCol) => [...prevLeftCol, category]);
@@ -79,9 +80,17 @@ export default function UserSettings ({navigation, route}) {
 
     return (
         <ScrollView contentContainerStyle = {styles.MainContainer}>
+            <ImageBackground
+            source={require('../../assets/Asset-Background-Wood.png')}
+            style={styles.wood} >
+
+
             <View style={styles.InnerContainer}>
                 <View style = {styles.circleContainer}>
-
+                <Image
+                            source={require('../../assets/profileicon.png')}
+                            style={styles.profileImage}
+                        />
                 </View>
                 <View style = {styles.NameContainer}>
                     <Text style = {styles.text}>
@@ -144,6 +153,7 @@ export default function UserSettings ({navigation, route}) {
                     </View>
                 </View>
             </View>
+            </ImageBackground>
         </ScrollView>
     )
 }
