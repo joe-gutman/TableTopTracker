@@ -7,6 +7,14 @@ exports.getOne = (title) => {
   return db.query(queryStr);
 }
 
+exports.queryBggForInexactResult = (title) => {
+  console.log(title);
+  var parsed = title.split(' ');
+  parsed = parsed.join('%20');
+  var queryUrl = 'https://boardgamegeek.com/xmlapi/search?search=' + parsed;
+  return axios.get(queryUrl);
+}
+
 exports.queryBggForExactResult = (title) => {
   var parsed = title.split(' ');
   parsed = parsed.join('%20')
@@ -129,10 +137,65 @@ exports.insertGameImageAndCategories = async (resultOfGetAllGameDetails) => {
     return Promise.all(promises);
   } catch (error) {
     console.log('in insertGameImageAndCategories')
-    console.log(error.data);
+    console.log(error.message);
     throw error;
   }
 };
+
+
+
+exports.getAllGameDetailsThrownError = (title) => {
+  return exports.queryBggForExactResult(title)
+    .then((data) => {
+      var results = parser.parseSearchExactGameResults(data.data, title);
+      return exports.queryBggForGameDetails(results.boardgameId)
+        .then((data) => {
+          var xml = data.data;
+          //console.log(xml);
+          var dataPoints = ['<minplayers', '<maxplayers','<minplaytime', '<maxplaytime', '<age', '<description', '<thumbnail', '<averageweight', '<yearpublished']
+          var found = dataPoints.forEach(point => {
+            var index = point.slice(1, point.length);
+            if (index === 'averageweight') {
+              index = 'complexity';
+            } else if (index === 'yearpublished') {
+              index = 'year_published';
+            }
+            results[index] = parser.findDataPoint(xml, point)
+          })
+          var images = parser.findAllInstancesOfDataPoint(xml, '<image');
+          var categories = parser.findAllInstancesOfDataPoint(xml, '<boardgamecategory');
+          var bgg_url = 'https://boardgamegeek.com/boardgame/' + results.boardgameId + '/' + title.toLowerCase();
+          bgg_url = bgg_url.split(' ');
+          bgg_url = bgg_url.join('-');
+          results['more_info'] = bgg_url;
+          // todo: push results to the database.
+
+          const order = ['boardgameId', 'title', 'description', 'minplayers', 'maxplayers', 'minplaytime', 'maxplaytime', 'age', 'complexity', 'thumbnail', 'more_info', 'year_published']
+          var ints = ['boardgameId', 'minplayers', 'maxplayers', 'minplaytime', 'maxplaytime', 'age', 'year_published']
+          var toBeEntered = [];
+          for (let o of order) {
+            if (ints.includes(o)) {
+              toBeEntered.push(parseInt(results[o]));
+            } else if (o === 'complexity') {
+              toBeEntered.push(parseFloat(results[o]));
+            } else {
+              toBeEntered.push(results[o]);
+            }
+          }
+          return {
+            categories: categories,
+            images: images,
+            results: toBeEntered
+          }
+        })
+        .catch((error) => {
+          throw error;
+        })
+    })
+    .catch((error) => {
+      throw error;
+    })
+}
 
 
 // [

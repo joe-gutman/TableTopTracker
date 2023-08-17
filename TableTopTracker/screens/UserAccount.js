@@ -6,11 +6,13 @@ import UserSettings from '../components/UserAccount/UserSettings.js';
 import EditNav from '../components/UserAccount/EditNav.js';
 
 export default function UserAccount ({navigation, route}) {
+    React.useLayoutEffect(() => {
+        navigation.setOptions({headerShown: false});
+    }, [navigation]);
     const { user, handleLogout } = route.params;
-    
+
     return (
         <View>
-            <Text>This is {user.email}'s HomePage</Text>
                 <UserSettings user = {user} navigation = {navigation}/>
             {/* <Button title="Log Out" onPress={handleLogout} /> */}
             <EditNav navigation={navigation} user={user}/>
