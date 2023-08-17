@@ -48,6 +48,11 @@ app.get('/users', function(req, res) {
   usersController.getUser(req, res);
 })
 
+app.put('/users/edit', function(req, res) {
+  console.log(req)
+  usersController.updateUser(req, res);
+})
+
 app.post('/collections/games', async (req, res, next) => {
   try{
     const {userId, collectionName, gameId} = req.body

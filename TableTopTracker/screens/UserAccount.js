@@ -3,8 +3,9 @@ import styles from '../components/UserAccount/styles'
 
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground} from 'react-native';
 import UserSettings from '../components/UserAccount/UserSettings.js';
-
 import NavBar from '../components/NavBar/NavBar.js';
+
+import EditNav from '../components/UserAccount/EditNav.js';
 
 export default function UserAccount ({navigation, route}) {
     React.useLayoutEffect(() => {
@@ -12,6 +13,7 @@ export default function UserAccount ({navigation, route}) {
     }, [navigation]);
 
     const { user, handleLogout } = route.params;
+
     return (
         <View>
             <ImageBackground

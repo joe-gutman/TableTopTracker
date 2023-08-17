@@ -35,7 +35,6 @@ export default function Home ({ navigation, route }) {
           source={require('../assets/Asset-Background-Wood.png')}
       >
 
-      <Text>This is {user.email}'s HomePage</Text>
       <View style={ styles.gameListContent }>
 
         <FlatList horizontal={true}>
