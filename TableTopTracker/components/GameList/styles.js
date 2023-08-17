@@ -83,7 +83,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#FFFFFF',
     border: 5,
-  }
+  },
+  scrollContents: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'red',
+  },
+  gameListContent: {
+    flex: 1, // takes 70% of available space
+    marginTop: 10,
+    backgroundColor: 'blue',
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+  },
 });
 
 export default styles;

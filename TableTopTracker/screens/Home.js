@@ -6,10 +6,8 @@ import allDummyGames from '../components/GameList/dummy/allDummyGames';
 import personalDummyGames from '../components/GameList/dummy/personalDummyGames';
 import NavBar from '../components/NavBar/NavBar.js';
 import CollectionButton from '../components/Collections/CollectionButton.js'
-
-// testing Slider for Patrick
-import SickSlider from '../components/Sliders/SickSlider';
 import {useSelector} from "react-redux";
+import styles from '../components/GameList/styles.js';
 
 export default function Home ({ navigation, route }) {
   React.useLayoutEffect(() => {
@@ -34,9 +32,9 @@ export default function Home ({ navigation, route }) {
           source={require('../assets/Asset-Background-Wood.png')}
       >
 
-      <View style={ styles.gameListContent }>
+      <View style={styles.gameListContent}>
 
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} contentContainerStyle={styles.scrollContents}>
           {Object.keys(collections).map((key) =>
             <CollectionButton
               listType={listType}
@@ -49,6 +47,7 @@ export default function Home ({ navigation, route }) {
         </ScrollView>
 
         <GamesList
+          style={styles.scrollContents}
           handlePress={(game) => {
             navigation.navigate('Game Details', {user: user, game})
           }}
@@ -62,19 +61,3 @@ export default function Home ({ navigation, route }) {
       </ImageBackground>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  gameListContent: {
-    flex: 1, // takes 70% of available space
-    marginTop: 10
-  },
-  image: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
