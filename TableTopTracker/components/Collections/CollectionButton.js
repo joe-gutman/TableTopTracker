@@ -15,7 +15,7 @@ export default function CollectionButton({ collection, onSelect, listType }) {
   return (
     <Pressable
       style={(collection === listType) ? styles.selectedBorder : styles.cardBorder}
-      onPress={() => onSelect(collection)}
+      onPress={() =>  onSelect(collection)}
     >
       <View
         style={(collection === listType) ? styles.selectedMain : styles.cardMain}

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground, FlatList, Image, SafeAreaView } from 'react-native';
 import GamesList from '../components/GameList/GamesList.js';
 import allDummyGames from '../components/GameList/dummy/allDummyGames';
 import personalDummyGames from '../components/GameList/dummy/personalDummyGames';
@@ -23,22 +23,21 @@ export default function Home ({ navigation, route }) {
   // console.dir(personalDummyGames);
 
   return (
-    <View style={{paddingBottom: '40px'}}>
+    <ImageBackground
+        style={styles.backgroundImage}
+        source={require('../assets/Asset-Background-Wood.png')}
+    >
 
-      <ImageBackground
-          style={styles.image}
-          resizeMode='cover'
-          source={require('../assets/Asset-Background-Wood.png')}
-      >
 
-      <View style={styles.homePageContainer}>
+      <SafeAreaView style={styles.homePageContainer}>
 
         <ScrollView horizontal={true}>
           {Object.keys(collections).map((key) =>
             <CollectionButton
               key={key}
               collection={key}
-              onSelect={(key) => setListType(key)}
+              onSelect={(key) => {setListType(key)}}
+              listType={listType}
             />
           )}
         </ScrollView>
@@ -50,12 +49,11 @@ export default function Home ({ navigation, route }) {
           games={ collections[listType] }
           listType={ listType }
         />
-      </View>
 
       <NavBar navigation={navigation} user={user}/>
 
-      </ImageBackground>
+    </SafeAreaView>
 
-    </View>
+    </ImageBackground>
   )
 }
