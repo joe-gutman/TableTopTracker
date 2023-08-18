@@ -1,13 +1,19 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Image, ImageBackground } from 'react-native';
 import NavBar from '../components/NavBar/NavBar.js';
 import axios from 'axios';
 import { fetchGPTData } from '../util/api.js';
 import GamesList from '../components/GameList/GamesList.js';
+import styles from './stylesheets/gameWardenStyle.js';
 
 // import styles from './stylesheets/gameWarden.js';
 
 export default function GameWarden({ navigation, route }) {
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
+
   const [messages, setMessages] = React.useState('');
   const [currentWardenMessage, setCurrentWardenMessage] = React.useState('');
   const [currentUserMessage, setCurrentUserMessage] = React.useState('');
@@ -94,7 +100,14 @@ export default function GameWarden({ navigation, route }) {
 
   return (
     <View>
-      <Text>"Game Warden"</Text>
+       <ImageBackground
+            source={require('../assets/Asset-Background-Wood.png')}
+            style={styles.wood} >
+      {/* <Text>"Game Warden"</Text> */}
+      <Image
+                source={require('../assets/WardenAI.png')}
+                style={styles.logoImage}
+            />
 
       <Text>{typedText}</Text>
 
@@ -111,6 +124,7 @@ export default function GameWarden({ navigation, route }) {
         }}
         games={ gamesList }
       />
+      </ImageBackground>
     </View>
   );
 }
