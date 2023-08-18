@@ -13,7 +13,7 @@ const SwipeableDetails = ({game}) => {
   const [tilePosition, setTilePosition] = useState(0);
   const [firstRendered, setFirstRendered] = useState(true);
 
-  console.log('game in swipeable details: ', game)
+  // console.log('game in swipeable details: ', game)
 
   if (firstRendered) {
     setFirstRendered(false);

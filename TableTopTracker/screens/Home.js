@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground, FlatList, Image } from 'react-native';
-import ButtonList from '../components/GameList/ButtonList';
 import GamesList from '../components/GameList/GamesList.js';
 import allDummyGames from '../components/GameList/dummy/allDummyGames';
 import personalDummyGames from '../components/GameList/dummy/personalDummyGames';
@@ -19,8 +18,8 @@ export default function Home ({ navigation, route }) {
   const [ listType, setListType ] = useState('My Games');
 
   let { user, handleLogout } = route.params;
-  console.log('route.params', route.params);
-  console.log('user in home page: ', user);
+  // console.log('route.params', route.params);
+  // console.log('user in home page: ', user);
 
   // console.dir(allDummyGames);
   // console.dir(personalDummyGames);
@@ -32,7 +31,7 @@ export default function Home ({ navigation, route }) {
           source={require('../assets/Asset-Background-Wood.png')}
       >
 
-      <View style={styles.gameListContent}>
+      <View style={styles.homePageContainer}>
 
         <ScrollView horizontal={true} contentContainerStyle={styles.scrollContents}>
           {Object.keys(collections).map((key) =>

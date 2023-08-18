@@ -30,7 +30,7 @@ export default function GamesList({ handlePress, games, listType }) {
     });
 
   return (
-    <View style={ styles.list }>
+    <View style={ styles.gamesListContainer }>
       {/* <Text style={ styles.header }>{ listType }</Text> */}
 
       <Animated.View
@@ -45,7 +45,7 @@ export default function GamesList({ handlePress, games, listType }) {
             <GameCard handlePress={() => handlePress(item)} { ...item } />
           )}
           keyExtractor={ ({id, bgg_id}) => id.toString()}
-          style={ styles.listContainer }
+          style={ styles.gamesList }
         />
       </Animated.View>
     </View>
