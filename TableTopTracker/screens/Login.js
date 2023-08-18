@@ -42,13 +42,13 @@ export default function Login ({navigation, route}) {
     .then((userCredential) => {
         // Handle successful
         let user = userCredential.user;
-        console.log('USER', user)
-        console.log('Logged in user:', user.email);
+        // console.log('USER', user)
+        // console.log('Logged in user:', user.email);
         return fetchUser(user);
     })
     .then(function (response) {
         const user = response.data;
-        console.log('fetch user response', user);
+        // console.log('fetch user response', user);
         var liveData = user.userData
         var dataKeys = Object.keys(user);
         var collections = {};
@@ -57,8 +57,8 @@ export default function Login ({navigation, route}) {
             collections[k] = user[k]
           }
         }
-        console.log(collections);
-        console.log(liveData);
+        // console.log(collections);
+        // console.log(liveData);
         dispatch(handleReceiveCollections(collections))
         dispatch(handleSetUser(liveData));
         navigation.navigate('Home', { user: liveData, handleLogout: handleLogout });

@@ -6,6 +6,7 @@ import personalDummyGames from '../components/GameList/dummy/personalDummyGames'
 import NavBar from '../components/NavBar/NavBar.js';
 import CollectionButton from '../components/Collections/CollectionButton.js'
 import {useSelector} from "react-redux";
+import styles from '../components/GameList/styles.js';
 
 export default function Home ({ navigation, route }) {
 
@@ -15,8 +16,8 @@ export default function Home ({ navigation, route }) {
   const [gameDetails, setGameDetails] = useState({});
 
   let { user, handleLogout } = route.params;
-  console.log('route.params', route.params);
-  console.log('user in home page: ', user);
+  // console.log('route.params', route.params);
+  // console.log('user in home page: ', user);
 
   // console.dir(allDummyGames);
   // console.dir(personalDummyGames);
@@ -35,6 +36,7 @@ export default function Home ({ navigation, route }) {
         <ScrollView horizontal={true}>
           {Object.keys(collections).map((key) =>
             <CollectionButton
+              key={key}
               collection={key}
               onSelect={(key) => setListType(key)}
             />
