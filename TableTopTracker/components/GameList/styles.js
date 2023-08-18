@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     padding: 10,
     // backgroundColor: theme.colors.onBackground,
     display: 'flex',
+    margin: 10,
     flexDirection: 'column',
   },
   list: {
@@ -36,7 +37,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: theme.colors.onTertiary,
     borderRadius: 8,
-    width: 300,
     margin: 5, //'auto',
     boxShadow: '0 0.4em rgba(0, 0, 0, 0.2)',
   },

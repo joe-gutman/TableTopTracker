@@ -47,7 +47,6 @@ export default function Home ({ navigation, route }) {
         </ScrollView>
 
         <GamesList
-          style={styles.scrollContents}
           handlePress={(game) => {
             navigation.navigate('Game Details', {user: user, game})
           }}
