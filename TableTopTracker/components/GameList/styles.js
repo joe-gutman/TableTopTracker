@@ -4,7 +4,6 @@ import theme from '../../theme.js';
 const styles = StyleSheet.create({
   homePageContainer: {
   margin: 'auto',
-  justifyContent: 'center',
   },
   header: {
     fontSize: 20,

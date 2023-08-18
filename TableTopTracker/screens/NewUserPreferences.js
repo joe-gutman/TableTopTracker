@@ -154,7 +154,7 @@ export default function NewUserPreferences ({navigation, route}) {
             <Pressable
             style={styles.bigGreenButton}
             title="Register"
-            onPress={ checkTextInput}>Register</Pressable>
+            onPress={ checkTextInput}><Text>Register</Text></Pressable>
             </View>
 
             </Text>

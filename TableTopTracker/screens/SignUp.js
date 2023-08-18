@@ -166,12 +166,12 @@ export default function SignUp ({navigation}) {
           style={styles.bigCircleButton}
             title="Upload Profile Photo"
             onPress={handleImageUpload}>
-           + </Pressable>
+          </Pressable>
               {/* {imageURL && <Image source={{ uri: imageURL }} />} */}
           <Pressable
             style={styles.bigGreenButton}
             title="Create Account"
-            onPress={ checkUserInput}>Create Account</Pressable>
+            onPress={ checkUserInput}><Text>Create Account</Text></Pressable>
           <View style={styles.createAccount}>
             <Text style={styles.orangeWords}> Have an Account? </Text>
             <Pressable
@@ -179,7 +179,7 @@ export default function SignUp ({navigation}) {
               title="Log in"
               onPress={() => {
                 navigation.navigate('Login', {name: username});
-            }}>Log In</Pressable>
+            }}><Text>Log In</Text></Pressable>
           </View>
         </View>
           </ImageBackground>
