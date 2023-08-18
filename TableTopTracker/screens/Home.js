@@ -6,25 +6,24 @@ import personalDummyGames from '../components/GameList/dummy/personalDummyGames'
 import NavBar from '../components/NavBar/NavBar.js';
 import CollectionButton from '../components/Collections/CollectionButton.js'
 import {useSelector} from "react-redux";
-import styles from '../components/GameList/styles.js';
 
 export default function Home ({ navigation, route }) {
-  React.useLayoutEffect(() => {
-    navigation.setOptions({headerShown: false});
-  }, [navigation]);
 
   // const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
   const {collections} = useSelector(state => state.collections)
   const [ listType, setListType ] = useState('My Games');
+  const [gameDetails, setGameDetails] = useState({});
 
   let { user, handleLogout } = route.params;
-  // console.log('route.params', route.params);
-  // console.log('user in home page: ', user);
+  console.log('route.params', route.params);
+  console.log('user in home page: ', user);
 
   // console.dir(allDummyGames);
   // console.dir(personalDummyGames);
 
   return (
+    <View style={{paddingBottom: '40px'}}>
+
       <ImageBackground
           style={styles.image}
           resizeMode='cover'
@@ -33,14 +32,11 @@ export default function Home ({ navigation, route }) {
 
       <View style={styles.homePageContainer}>
 
-        <ScrollView horizontal={true} contentContainerStyle={styles.scrollContents}>
+        <ScrollView horizontal={true}>
           {Object.keys(collections).map((key) =>
             <CollectionButton
-              listType={listType}
               collection={key}
               onSelect={(key) => setListType(key)}
-              keyExtractor={key}
-              key={key}
             />
           )}
         </ScrollView>
@@ -57,5 +53,7 @@ export default function Home ({ navigation, route }) {
       <NavBar navigation={navigation} user={user}/>
 
       </ImageBackground>
+
+    </View>
   )
 }

@@ -1,12 +1,20 @@
 import { Platform, StyleSheet } from 'react-native';
 import theme from '../../theme';
-
 const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
-    padding: 8,
+    padding: 0,
     backgroundColor: '#ECE4B7',
-
+    marginTop: 45,
+    marginBottom: 0,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+  wood:{
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   InnerContainer: {
     flex: 1,
@@ -14,36 +22,42 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  circleContainer: { 
-    alignItems: 'center',
+  circleContainer: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    backgroundColor: '#FFF5DD',
     justifyContent: 'center',
-    width: 200,
-    height: 200,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 100,
-    overflow: 'hidden',
+    alignItems: 'center',
     marginBottom: 15,
   },
+  profileImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    borderRadius: 75,
+},
   NameContainer: {
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#ECE4B7',
-    // borderWidth: 1, 
-    borderColor: 'black', 
+    // borderWidth: 1,
+    borderColor: 'black',
     borderStyle: 'solid',
-    marginBottom: 15
   },
   InputContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 15,
+    padding: 4,
     width: '90%',
     height: 50,
-    marginBottom: 15,
+    marginTop: 15,
     backgroundColor: '#FFF5DD',
-    borderBottomWidth: 1, 
-    borderColor: 'black', 
+    borderBottomWidth: 2, // Add border width
+    borderColor: 'black', // Set border color
     borderStyle: 'solid',
     borderRadius: 8
   },
@@ -54,8 +68,8 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: 15,
     backgroundColor: '#FFF5DD',
-    borderBottomWidth: 1,
-    borderColor: 'black', 
+    borderBottomWidth: 1, // Add border width
+    borderColor: 'black', // Set border color
     borderStyle: 'solid',
     borderRadius: 8
   },
@@ -65,55 +79,25 @@ const styles = StyleSheet.create({
     width: 150,
     height: 190,
     backgroundColor: '#FFF5DD',
-    // borderWidth: 1, 
-    borderColor: 'black', 
+    // borderWidth: 1, // Add border width
+    borderColor: 'black', // Set border color
     borderStyle: 'solid',
   },
-  InputText: {
+  text: {
     alignItems: 'center',
-    // borderWidth: 1,
-    borderColor: 'black',
+    // borderWidth: 1, // Add border width
+    borderColor: 'black', // Set border color
     borderStyle: 'solid',
-    fontSize: 18, 
-    color: '02020B', 
-  },
-  NameText: {
-    alignItems: 'center',
-    // borderWidth: 1,
-    borderColor: 'black', 
-    borderStyle: 'solid',
-    fontSize: 36, 
-    color: '02020B',
+    fontSize: 18, // Set the font size in pixels
+    color: '02020B', // Set the text color
   },
   eachCategory: {
     flexDirection: 'row',
-    // borderWidth: 1, 
-    borderColor: 'black',
+    // borderWidth: 1, // Add border width
+    borderColor: 'black', // Set border color
     borderStyle: 'solid',
     marginBottom: 10,
     padding: 2,
-  },
-  EditInput: {
-    flexDirection: 'row',
-    fontSize: 18,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 15,
-    width: '90%',
-    height: 50,
-    marginTop: 15,
-    backgroundColor: '#FFF5DD',
-    borderBottomWidth: 2, 
-    borderColor: 'black', 
-    borderStyle: 'solid',
-    borderRadius: 8
-  },
-  DropDown: {
-    backgroundColor: '#FFF5DD', 
-    padding: 10, 
-    marginBottom: 15, 
-    width: 340,
-    
   }
 });
 export default styles;
