@@ -23,16 +23,16 @@ export default function UserSettings ({navigation, route}) {
     const [leftCol, setLeftCol] = useState([])
     const [rightCol, setRightCol] = useState([])
     function labelCategories() {
-        console.log('categories: ', categories);
+        // console.log('categories: ', categories);
         categories.forEach((category, index) => {
           if (index % 2 === 0) {
             setLeftCol((prevLeftCol) => [...prevLeftCol, category]);
-            console.log('current leftCol: ', leftCol);
-            console.log('setLeft: ' + index, leftCol);
+            // console.log('current leftCol: ', leftCol);
+            // console.log('setLeft: ' + index, leftCol);
           } else {
             setRightCol((prevRightCol) => [...prevRightCol, category]);
-            console.log('current leftCol: ', rightCol);
-            console.log('setRight: ' + index, rightCol);
+            // console.log('current leftCol: ', rightCol);
+            // console.log('setRight: ' + index, rightCol);
           }
         });
     }

@@ -1,6 +1,6 @@
 export default function ModalReducer(state = {open: false, template: null}, action) {
 
-  console.log(state, action);
+  // console.log(state, action);
 
   switch(action.type) {
 

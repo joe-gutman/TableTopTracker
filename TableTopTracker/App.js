@@ -62,7 +62,7 @@ function App() {
   const modalState = useSelector((state) => state.modal);
   const [ username, setUsername ] = useState('Arnold');
 
-  console.log(state);
+  // console.log(state);
 
   return (
     <PaperProvider theme={ theme }>
