@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchUserCollections, postGameToCollection} from "../../util/api";
 import {SelectList} from "react-native-dropdown-select-list";
 import {handleOpenModal} from "../../state/modal/actions";
-import {handleReceiveCollections} from "../../state/collections/actions";
+import {handleAddGameToCollection, handleReceiveCollections} from "../../state/collections/actions";
 import {handleSetNotification} from "../../state/app/actions";
 import theme from "../../theme";
 
@@ -18,7 +18,8 @@ export default function AddGameToCollection({game, onClose}) {
   console.log(collections, game)
 
   function handleSubmit() {
-    postGameToCollection(user.id, selectedCollection, game.id)
+    dispatch(handleAddGameToCollection(selectedCollection, game.id, onClose))
+    /*postGameToCollection(user.id, selectedCollection, game.id)
       .then(({data}) => fetchUserCollections(user.id))
       .then(({data}) => {
         dispatch(handleReceiveCollections(data));
@@ -27,7 +28,7 @@ export default function AddGameToCollection({game, onClose}) {
       })
       .catch((err) => {
         console.error(err);
-      })
+      })*/
   }
 
   function handleCreateCollection() {

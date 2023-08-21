@@ -1,13 +1,20 @@
 import React, {useRef, useState} from 'react';
-import {Animated, PanResponder, Pressable, StyleSheet, View} from 'react-native';
+import {Animated, Image, PanResponder, Pressable, StyleSheet, View} from 'react-native';
 import { Card, Text, BottomNavigation } from 'react-native-paper';
 import {handleOpenModal} from "../../state/modal/actions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import styles from './swipeableDetailsStyles.js'
+import {handleAddGameToCollection} from "../../state/collections/actions";
+
+const icons = {
+  'LikeGame': require('../../assets/Asset-Collection-Heart-White.png'),
+  'LikedGame': require('../../assets/Asset-Collection-Heart.png'),
+};
 
 
 const SwipeableDetails = ({game}) => {
   const dispatch = useDispatch();
+  const collectionsState = useSelector(({collections}) => collections);
   const pan = useRef(new Animated.ValueXY()).current;
   const [modal, setModal] = useState(false);
   const [tilePosition, setTilePosition] = useState(0);
@@ -68,6 +75,17 @@ const SwipeableDetails = ({game}) => {
     }
   });
 
+  function isLikedGame() {
+    console.log(collectionsState)
+    for(let i = 0; i < collectionsState.collections['Liked'].length; i++) {
+      console.log(collectionsState.collections['Liked'][i]);
+      if(collectionsState.collections['Liked'][i].id === game.id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   return (
     <View style={styles.container}>
       <Animated.View
@@ -80,11 +98,41 @@ const SwipeableDetails = ({game}) => {
         }
       > <Text>Add To Collection</Text> </Pressable> */}
 
+        <View style={styles.actionsRow}>
+          <Pressable
+            title="AddGameToCollection"
+            onPress={() =>
+              dispatch(handleOpenModal('ADD_TO_COLLECTION', {game}))
+            }>
+
+            <Text style={{fontSize: '50px'}}>+</Text>
+          </Pressable>
+
+          <Pressable
+            title="LikeGame"
+            style={
+              isLikedGame()
+              ? {...styles.actionBtn, ...styles.likedGameIcon}
+              : styles.actionBtn
+            }
+            onPress={() => {
+              if (!isLikedGame()) {
+                dispatch(handleAddGameToCollection('Liked', game.id))
+              }
+            }}>
+            <Image
+              source={
+                isLikedGame()
+                  ? icons['LikedGame']
+                  : icons['LikeGame']
+              }
+              style={styles.actionBtnIcon}/>
+          </Pressable>
+        </View>
+
         <Text style={styles.titleText}>{game.title}</Text>
 
-
-
-          <View style={styles.table}>
+        <View style={styles.table}>
             <View style={styles.column}>
               {/* <Text>{game.category.join(', ')}</Text> */}
               <Text>{(game.minplaytime===game.maxplaytime) ?
