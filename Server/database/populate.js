@@ -21,7 +21,7 @@ exports.populateListOfGames = async (listOfGames) => {
 
 exports.populateBoardGames = async () => {
   var uniqueBoardGames = [];
-  for (let name of testTwo) {
+  for (let name of testOne) {
     if (!uniqueBoardGames.includes(name)) {
       uniqueBoardGames.push(name);
     }
