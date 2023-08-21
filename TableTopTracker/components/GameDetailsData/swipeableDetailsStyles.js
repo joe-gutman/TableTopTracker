@@ -8,6 +8,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontSize:  '1.5em',
   },
+  actionsRow: {
+    height: '50px',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  actionBtn: {
+    height: '50px',
+    width: '50px',
+    backgroundColor: theme.colors.secondary,
+    borderRadius: '50%',
+  },
+  actionBtnIcon: {
+    height: 45,
+    width: 45,
+    margin: 'auto'
+  },
+  likedGameIcon: {
+    backgroundColor: 'none'
+  },
+  btnIcon: {
+
+  },
   tile: {
     position: 'absolute',
     width: '100%',

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import {handleReceiveCollections} from "../state/collections/actions";
+import {handleSetNotification} from "../state/app/actions";
 const baseURL = 'http://127.0.0.1:3000';
 const makeRequest = (url, method, data) =>
   axios({
@@ -27,3 +29,4 @@ export const postNewUser = (data) =>
 
 export const createCollection = (name, userId) =>
   makeRequest('/collections', 'POST', { userId, name });
+
