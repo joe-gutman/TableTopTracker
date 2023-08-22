@@ -22,12 +22,19 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '100%',
   },
+  cardContainer: {
+    elevation: 8,
+    borderRadius: 8,
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: "0.4em" },
+    margin: 8,
+  },
   card: {
+    mode: 'contained',
     flex: 1,
     backgroundColor: theme.colors.onTertiary,
     borderRadius: 8,
-    margin: 5, //'auto',
-    boxShadow: '0 0.4em rgba(0, 0, 0, 0.2)',
   },
   thumbnail: {
     width: 75,
@@ -36,7 +43,9 @@ const styles = StyleSheet.create({
     marginRight: 10 // adjust margin as needed
   },
   thumbnailContainer: {
-    padding: 'auto'
+    padding: 'auto',
+    border: '5x solid white',
+    borderRadius: 5,
   },
   cardGrid: {
     display: 'flex',
