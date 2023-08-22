@@ -11,11 +11,13 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Landing from './screens/Landing.js'
-import SignUp from './screens/SignUp.js'
-import Login from './screens/Login.js'
-import Home from './screens/Home.js'
-import NewUserPreferences from './screens/NewUserPreferences.js'
+import Landing from './screens/Landing.js';
+import SignUp from './screens/SignUp.js';
+import Login from './screens/Login.js';
+import Home from './screens/Home.js';
+import NewUserPreferences from './screens/NewUserPreferences.js';
+import TopNav from './components/TopNav/TopNav.js';
+import TopNavLogoOnly from './components/TopNav/TopNavLogoOnly.js';
 
 
 import UserAccount from './screens/UserAccount';
@@ -67,7 +69,19 @@ function App() {
   return (
     <PaperProvider theme={ theme }>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions = {{
+            headerStyle: {
+              backgroundColor: '#DAAF88',
+
+            },
+            headerTintColor: theme.colors.primary,
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            }
+          }}
+
+        >
 
           <Stack.Screen
             name="Landing"
@@ -80,7 +94,12 @@ function App() {
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="New User Preferences" component={NewUserPreferences} />
           <Stack.Screen name="User Account" component={UserAccount} />
-          <Stack.Screen name="Home" component={Home}/>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+              headerTitle: (props) => <TopNavLogoOnly {...props} />,
+          }}/>
           <Stack.Screen name="Game Details" component={GameDetails}/>
           <Stack.Screen name="Game Warden" component={GameWarden}/>
           <Stack.Screen name="Search Results" component={SearchResults}/>
