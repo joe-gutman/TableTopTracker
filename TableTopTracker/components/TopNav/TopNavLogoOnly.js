@@ -10,7 +10,7 @@ export default function TopNavLogoOnly() {
     <View>
       <Image
         source={icons['LogoVertical']}
-        style={{ width: 100, height: 50 }}
+        style={{ width: 100, height: 50, position: 'absolute', marginLeft: "50%", marginTop: 0, }}
       />
     </View>
   );
