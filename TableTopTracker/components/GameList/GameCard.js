@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, Pressable } from 'react-native';
 import { Card } from 'react-native-paper';
 import styles from './styles';
 
@@ -10,27 +10,30 @@ export default function GameCard({
 }) {
 
   return (
-    <TouchableOpacity onPress={() => {
+    <Pressable
+      onPress={() => {
       // MISSING: category, image, age, gameId
-      handlePress(title);
+        handlePress(title);
       }}>
-      <Card style={styles.card}>
-        <Card.Content style={styles.cardGrid}>
-          <View style={styles.thumbnailContainer}>
-            <Image
-              style={ styles.thumbnail } // needs to appear left of details
-              source={{ uri: thumbnail }}
-            />
-          </View>
-          <View>
-            <Text>{ minplayers } - { maxplayers } Players</Text>
-            <Text>Playtime: { minplaytime } - { maxplaytime } Min</Text>
-            <Text>Complexity: { complexity }</Text>
-            <Text>{ year_published }</Text>
-            <Card.Title title={title}/>
-          </View>
-        </Card.Content>
-      </Card>
-    </TouchableOpacity>
+      <View style = {styles.cardContainer}>
+        <Card style={styles.card}>
+          <Card.Content style={styles.cardGrid}>
+            <View style={styles.thumbnailContainer}>
+              <Image
+                style={ styles.thumbnail } // needs to appear left of details
+                source={{ uri: thumbnail }}
+              />
+            </View>
+            <View>
+              <Text>{ minplayers } - { maxplayers } Players</Text>
+              <Text>Playtime: { minplaytime } - { maxplaytime } Min</Text>
+              <Text>Complexity: { complexity }</Text>
+              <Text>{ year_published }</Text>
+              <Card.Title title={title}/>
+            </View>
+          </Card.Content>
+        </Card>
+      </View>
+    </Pressable>
   );
 }
