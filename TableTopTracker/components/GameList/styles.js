@@ -3,14 +3,11 @@ import theme from '../../theme.js';
 
 const styles = StyleSheet.create({
   homePageContainer: {
-  margin: 'auto',
+    margin: 'auto',
   },
   header: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  collectionsList: {
-
   },
   gamesList: {
     padding: 10,

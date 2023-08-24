@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Button, View, TextInput, SafeAreaView, TouchableOpacity, Pressable, Image, ImageBackground } from 'react-native';
 
