@@ -12,7 +12,7 @@ export default function GamesList({ handlePress, games, setListType, reshuffle }
 
   useEffect(() => {
     // animate rotation when list changes
-    console.log(`animation triggered, list to ${reshuffle}`)
+    // console.log(`animation triggered, list to ${reshuffle}`)
     Animated.timing(rotateAnimValue, {
       toValue: 1,
       duration: 500,
