@@ -7,21 +7,23 @@ import styles from './styles';
   1. handle appropriate filtering logic
   2. pass in list (state in parent component, i.e. screen)
 */
-export default function GamesList({ handlePress, games, listType }) {
+export default function GamesList({ handlePress, games, setListType, reshuffle }) {
   const rotateAnimValue = new Animated.Value(0);
 
   useEffect(() => {
     // animate rotation when list changes
+    // console.log(`animation triggered, list to ${reshuffle}`)
     Animated.timing(rotateAnimValue, {
       toValue: 1,
       duration: 500,
       easing: Easing.ease,
       useNativeDriver: true
 
-    }).start(() => {
+    }).start(({finished}) => {
       rotateAnimValue.setValue(0);
+      setListType(reshuffle);
     });
-  }, [ listType ]);
+  }, [ reshuffle ]);
 
   const rotateInterpolation = rotateAnimValue
     .interpolate({

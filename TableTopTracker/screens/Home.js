@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground, FlatList, Image } from 'react-native';
 import GamesList from '../components/GameList/GamesList.js';
 import allDummyGames from '../components/GameList/dummy/allDummyGames';
@@ -13,14 +13,15 @@ export default function Home ({ navigation, route }) {
   // const collections = [ 'My Games', 'Recommendations', 'Liked', 'Wishlist', 'All' ];
   const {collections} = useSelector(state => state.collections)
   const [ listType, setListType ] = useState('My Games');
+  const [ reshuffle, setReshuffle ] = useState('My Games'); // changes to this state only trigger shuffle animation
   const [gameDetails, setGameDetails] = useState({});
-
   let { user, handleLogout } = route.params;
-  // console.log('route.params', route.params);
-  // console.log('user in home page: ', user);
 
-  // console.dir(allDummyGames);
-  // console.dir(personalDummyGames);
+  // useEffect(() => {
+  //   console.log(`list change triggered to ${reshuffle}`);
+  //   setListType(reshuffle);
+  // }, [reshuffle])
+
 
   return (
     <ImageBackground
@@ -35,7 +36,9 @@ export default function Home ({ navigation, route }) {
             <CollectionButton
               key={key}
               collection={key}
-              onSelect={(key) => {setListType(key)}}
+              onSelect={(key) => {
+                setReshuffle(key);
+              }}
               listType={listType}
             />
           )}
@@ -46,7 +49,8 @@ export default function Home ({ navigation, route }) {
             navigation.navigate('Game Details', {user: user, game})
           }}
           games={ collections[listType] }
-          listType={ listType }
+          setListType={ setListType }
+          reshuffle={reshuffle}
         />
       </View>
 

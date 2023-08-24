@@ -69,19 +69,7 @@ function App() {
   return (
     <PaperProvider theme={ theme }>
       <NavigationContainer>
-        <Stack.Navigator
-          screenOptions = {{
-            headerStyle: {
-              backgroundColor: '#DAAF88',
-
-            },
-            headerTintColor: theme.colors.primary,
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            }
-          }}
-
-        >
+        <Stack.Navigator animationEnabled={true}>
 
           <Stack.Screen
             name="Landing"

@@ -76,9 +76,9 @@ const SwipeableDetails = ({game}) => {
   });
 
   function isLikedGame() {
-    console.log(collectionsState)
+    // console.log(collectionsState)
     for(let i = 0; i < collectionsState.collections['Liked'].length; i++) {
-      console.log(collectionsState.collections['Liked'][i]);
+      // console.log(collectionsState.collections['Liked'][i]);
       if(collectionsState.collections['Liked'][i].id === game.id) {
         return true;
       }
