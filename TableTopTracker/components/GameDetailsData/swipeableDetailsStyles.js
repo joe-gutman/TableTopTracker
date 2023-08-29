@@ -76,6 +76,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  edgeSwipeCue: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    height: 10,
+    width: 50,
+    borderRadius: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  gameDescription: {
+    marginTop: 20,
+    marginBottom: 85,
+  },
 });
 
 export default styles;

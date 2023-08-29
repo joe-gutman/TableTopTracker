@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Animated, Image, PanResponder, Pressable, StyleSheet, View} from 'react-native';
+import {Animated, Image, PanResponder, Pressable, StyleSheet, View, ScrollView} from 'react-native';
 import { Card, Text, BottomNavigation } from 'react-native-paper';
 import {handleOpenModal} from "../../state/modal/actions";
 import {useDispatch, useSelector} from "react-redux";
@@ -16,6 +16,8 @@ const SwipeableDetails = ({game}) => {
   const dispatch = useDispatch();
   const collectionsState = useSelector(({collections}) => collections);
   const pan = useRef(new Animated.ValueXY()).current;
+  const edgeSwipe = 50;
+  const longDescription = (game.description.length > 1300);
   const [modal, setModal] = useState(false);
   const [tilePosition, setTilePosition] = useState(0);
   const [firstRendered, setFirstRendered] = useState(true);
@@ -23,6 +25,7 @@ const SwipeableDetails = ({game}) => {
   // console.log('game in swipeable details: ', game)
 
   if (firstRendered) {
+
     setFirstRendered(false);
     setTilePosition(1);
     setTimeout(
@@ -38,21 +41,26 @@ const SwipeableDetails = ({game}) => {
   }
 
   const panResponder = PanResponder.create({
-    onStartShouldSetPanResponder: () => true,
-    onMoveShouldSetPanResponderCapture: () => true,
-    // onPanResponderGrant: (e, gestureState) => {
-    //   pan.setOffset({x: 0, y: -400});
-    //   pan.setValue({x: 0, y: 0});
-    // },
+    // onStartShouldSetPanResponder: (e, gestureState) => true;
+
+    // allows module swiping depending on location of touch on module
+    onMoveShouldSetPanResponderCapture: (e, gestureState) => {
+      let isEdgeSwipe = (!tilePosition) // swipe up from any point of the module is in its lower position
+        || (tilePosition && !longDescription) // swipe down from any point if short description + upper position
+        || (tilePosition && (gestureState.moveY < 300)); // swipe down from top if scrollable description +  upper position
+      return isEdgeSwipe;
+    },
+
     onPanResponderMove: Animated.event([
       null,
       {
-        // dx: pan.x, // x,y are Animated.Value
         dy: pan.y,
       },
     ]),
+
     onPanResponderRelease: (e, gestureState) => {
       if ((pan.y._value < -200 || gestureState.vy < 0) && (tilePosition === 0)) {
+
         setTilePosition(1);
         Animated.spring(
           pan,
@@ -61,8 +69,8 @@ const SwipeableDetails = ({game}) => {
             pan.setValue({x: 0, y: 0})
             pan.setOffset({x: 0, y: -350})
         });
-      }
-      else {
+      } else {
+
         setTilePosition(0);
         Animated.spring(
           pan,
@@ -72,6 +80,7 @@ const SwipeableDetails = ({game}) => {
             pan.setOffset({x: 0, y: 0})
         });
       }
+
     }
   });
 
@@ -92,12 +101,7 @@ const SwipeableDetails = ({game}) => {
         {...panResponder.panHandlers}
         style={[pan.getLayout(), styles.tile]}
       >
-      {/* <Pressable
-        onPress={() =>
-          dispatch(handleOpenModal('ADD_TO_COLLECTION', {game}))
-        }
-      > <Text>Add To Collection</Text> </Pressable> */}
-
+        <View style={styles.edgeSwipeCue}/>
         <View style={styles.actionsRow}>
           <Pressable
             title="AddGameToCollection"
@@ -164,30 +168,17 @@ const SwipeableDetails = ({game}) => {
               <Text style={styles.addToCollectionText}>Add To Collection</Text>
             </Pressable>
           </View>
-          <Text>{game.description}</Text>
+          {(tilePosition && longDescription)
+            ? (<ScrollView style={styles.gameDescription}>
+              <Text>{game.description}</Text>
+            </ScrollView>)
+            : <View style={styles.gameDescription}>
+                <Text>{game.description}</Text>
+              </View>
+          }
       </Animated.View>
     </View>
   );
 };
-
-
-
-// const dummyGame = {
-//   complexity: 4.0,
-//   gameID: 675,
-//   year: 1977,
-//   minPlayers: 1,
-//   maxPlayers: 1,
-//   playTime: 45,
-//   minPlayTime: 45,
-//   maxPlayTime: 45,
-//   age: 12,
-//   name: "4th Dimension",
-//   secondaryName: "Fourth Dimension",
-//   description: "4th Dimension is a very spacey-looking game with a small circular board divided into sectors each track of which has twice as many spaces as the one closer to the center. Each player get 6 warriors, 3 rangers, 2 guardians, and one time lord. Guardians can capture warriors and rangers; rangers can capture warriors; the time lord can capture rangers and guardians; but the lowly warriors are the only ones who can capture the time lord and win the game. Captures are made by moving next to rather than on top of enemy pieces. Each piece can move only one space at a time but they can also warp by leaving the board and leaving a 4-D marker behind. The piece can then stay in the warp zone for up to three turns or warp back onto the board up to two spaces away from the 4-D marker. This game has an inconveniently small gameboard and plastic pieces that look like little futuristic chairs. \nThe game was first published in Games &amp; Puzzles magazine. The designers produced it as a standalone game later the same year, and it was later licensed by TSR.",
-//   thumbnail: "https://cf.geekdo-images.com/Li9nJ4DOsFs1CuwZjkyg3g__thumb/img/6AUVALlhQ_dtP04JEAJXG1gQKhY=/fit-in/200x150/filters:strip_icc()/pic582574.jpg",
-//   image: "https://cf.geekdo-images.com/Li9nJ4DOsFs1CuwZjkyg3g__original/img/29VmqkcRWoq_WS9uGtftdf6teyU=/0x0/filters:format(jpeg)/pic582574.jpg",
-//   category: ["Abstract Category", "Science Fiction"]
-// }
 
 export default SwipeableDetails;
