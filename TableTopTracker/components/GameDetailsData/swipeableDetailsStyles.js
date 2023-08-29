@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FBF5E7',
     borderColor: '#FBF5E7',
     padding: 20,
+    paddingTop: 10,
     overflowY: 'hidden',
   },
   table: {
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   edgeSwipeCue: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    height: 10,
+    height: 8,
     width: 50,
     borderRadius: 10,
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
