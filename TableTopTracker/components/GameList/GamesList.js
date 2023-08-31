@@ -15,7 +15,7 @@ export default function GamesList({ handlePress, games, setListType, reshuffle }
     // console.log(`animation triggered, list to ${reshuffle}`)
     Animated.timing(rotateAnimValue, {
       toValue: 1,
-      duration: 500,
+      duration: 400,
       easing: Easing.ease,
       useNativeDriver: true
 

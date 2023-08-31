@@ -3,9 +3,8 @@ import theme from '../../theme.js';
 
 const styles = StyleSheet.create({
   homePageContainer: {
-    marginTop: 0,
     marginBottom: 20,
-    borderTop: 0,
+    marginTop: 20,
     marginLeft: 'auto',
     marginRight: 'auto'
   },
@@ -15,10 +14,12 @@ const styles = StyleSheet.create({
   },
   collectionContainer: {
     // backgroundColor: 'red',
+    padding: 5,
+    height: 165,
   },
   gamesListContainer: {
     // backgroundColor: 'green',
-    height: 500,
+    // height: 500,
   },
   gamesList: {
     paddingTop: 10,
