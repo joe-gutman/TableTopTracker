@@ -3,6 +3,9 @@ import theme from '../../theme.js';
 
 const styles = StyleSheet.create({
   homePageContainer: {
+    marginTop: 0,
+    marginBottom: 20,
+    borderTop: 0,
     marginLeft: 'auto',
     marginRight: 'auto'
   },
@@ -11,21 +14,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   collectionContainer: {
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
   },
   gamesListContainer: {
-    backgroundColor: 'green',
+    // backgroundColor: 'green',
     height: 500,
   },
   gamesList: {
-    // padding: 10,
-    // margin: 10,
-  },
-  xxxgamesListContainer: {
-    // flex: 10,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // width: '100%',
+    paddingTop: 10,
+    paddingBottom: 100,
+    height: 600,
   },
   cardContainer: {
     elevation: 8,
