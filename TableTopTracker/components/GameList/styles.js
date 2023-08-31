@@ -3,21 +3,28 @@ import theme from '../../theme.js';
 
 const styles = StyleSheet.create({
   homePageContainer: {
-    margin: 'auto',
+    marginBottom: 20,
+    marginTop: 20,
+    marginLeft: 'auto',
+    marginRight: 'auto'
   },
   header: {
     fontSize: 20,
     fontWeight: 'bold',
   },
-  gamesList: {
-    padding: 10,
-    margin: 10,
+  collectionContainer: {
+    // backgroundColor: 'red',
+    padding: 5,
+    height: 165,
   },
   gamesListContainer: {
-    flex: 10,
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
+    // backgroundColor: 'green',
+    // height: 500,
+  },
+  gamesList: {
+    paddingTop: 10,
+    paddingBottom: 100,
+    height: 600,
   },
   cardContainer: {
     elevation: 8,

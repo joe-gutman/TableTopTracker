@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FBF5E7',
     borderColor: '#FBF5E7',
     padding: 20,
+    paddingTop: 10,
     overflowY: 'hidden',
   },
   table: {
@@ -75,6 +76,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  edgeSwipeCue: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    height: 8,
+    width: 50,
+    borderRadius: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  gameDescription: {
+    marginTop: 20,
+    marginBottom: 85,
   },
 });
 

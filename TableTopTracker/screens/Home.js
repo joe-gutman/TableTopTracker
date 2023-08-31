@@ -29,32 +29,37 @@ export default function Home ({ navigation, route }) {
         source={require('../assets/Asset-Background-Wood.png')}
     >
       <View style={{paddingBottom: '40px'}}>
-      <View style={styles.homePageContainer}>
+        <View style={styles.homePageContainer}>
 
-        <ScrollView horizontal={true}>
-          {Object.keys(collections).map((key) =>
-            <CollectionButton
+        <View style={styles.collectionContainer}>
+          <ScrollView horizontal={true}>
+            {Object.keys(collections).map((key) =>
+              <CollectionButton
               key={key}
               collection={key}
               onSelect={(key) => {
                 setReshuffle(key);
-              }}
-              listType={listType}
-            />
-          )}
-        </ScrollView>
+                }}
+                listType={listType}
+                />
+            )}
+          </ScrollView>
+        </View>
 
-        <GamesList
-          handlePress={(game) => {
-            navigation.navigate('Game Details', {user: user, game})
-          }}
-          games={ collections[listType] }
-          setListType={ setListType }
-          reshuffle={reshuffle}
-        />
-      </View>
+        <View style={styles.gamesListContainer}>
+          <GamesList
+            handlePress={(game) => {
+              navigation.navigate('Game Details', {user: user, game})
+            }}
+            games={ collections[listType] }
+            setListType={ setListType }
+            reshuffle={reshuffle}
+          />
+        </View>
 
-      <NavBar navigation={navigation} user={user}/>
+        </View>
+
+        <NavBar navigation={navigation} user={user}/>
       </View>
     </ImageBackground>
   )
