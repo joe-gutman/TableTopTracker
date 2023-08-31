@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    display: 'flex',
+    // display: 'flex',
     boxShadow: '0 0.75em rgba(0, 0, 0, 0.2)',
   },
   selectedMain: {
