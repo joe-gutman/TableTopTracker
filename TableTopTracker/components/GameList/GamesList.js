@@ -32,7 +32,8 @@ export default function GamesList({ handlePress, games, setListType, reshuffle }
     });
 
   return (
-    <View style={ styles.gamesListContainer }>
+    // <View style={ styles.gamesListContainer }>
+    <View>
       {/* <Text style={ styles.header }>{ listType }</Text> */}
 
       <Animated.View
