@@ -5,13 +5,19 @@ const icons = {
   'LogoVertical': require('../../assets/Asset-Logo-Vertical.png'),
 };
 
-export default function TopNavLogoOnly() {
+export default function TopNavLogoOnly({ navigation }) {
   return (
-    <View>
+    <View style={{flexDirection: 'row', justifyContent: 'center'}}>
       <Image
         source={icons['LogoVertical']}
-        style={{ width: 100, height: 50, position: 'absolute', marginLeft: "50%", marginTop: 0, }}
+        style={{ width: 150, height: 75, resizeMode: 'contain', }}
       />
     </View>
   );
+
 }
+
+
+{/* <View>
+
+</View> */}

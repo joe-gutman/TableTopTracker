@@ -70,7 +70,6 @@ function App() {
     <PaperProvider theme={ theme }>
       <NavigationContainer>
         <Stack.Navigator animationEnabled={true}>
-
           <Stack.Screen
             name="Landing"
             component={Landing}
@@ -85,9 +84,11 @@ function App() {
           <Stack.Screen
             name="Home"
             component={Home}
-            options={{
-              headerTitle: (props) => <TopNavLogoOnly {...props} />,
-          }}/>
+            options={({navigation}) => {
+              return {
+                headerTitle: () => <TopNavLogoOnly navigation={navigation} />
+              }}
+            }/>
           <Stack.Screen name="Game Details" component={GameDetails}/>
           <Stack.Screen name="Game Warden" component={GameWarden}/>
           <Stack.Screen name="Search Results" component={SearchResults}/>
