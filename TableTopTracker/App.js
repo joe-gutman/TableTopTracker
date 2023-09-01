@@ -17,7 +17,7 @@ import Login from './screens/Login.js';
 import Home from './screens/Home.js';
 import NewUserPreferences from './screens/NewUserPreferences.js';
 import TopNav from './components/TopNav/TopNav.js';
-import TopNavLogoOnly from './components/TopNav/TopNavLogoOnly.js';
+import HeaderTitle from './components/TopNav/TopNavLogoOnly.js';
 
 
 import UserAccount from './screens/UserAccount';
@@ -84,11 +84,12 @@ function App() {
           <Stack.Screen
             name="Home"
             component={Home}
-            options={({navigation}) => {
-              return {
-                headerTitle: () => <TopNavLogoOnly navigation={navigation} />
-              }}
-            }/>
+            options={{
+              headerTitle: () => <HeaderTitle />,
+              headerBackTitleVisible: false,
+              headerTitleAlign: 'center',
+            }}
+          />
           <Stack.Screen name="Game Details" component={GameDetails}/>
           <Stack.Screen name="Game Warden" component={GameWarden}/>
           <Stack.Screen name="Search Results" component={SearchResults}/>
