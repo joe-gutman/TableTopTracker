@@ -1,33 +1,32 @@
 import * as React from 'react';
-
-import { AppRegistry } from 'react-native';
-import {PaperProvider, Snackbar} from 'react-native-paper';
-import { name as appName } from './app.json';
 import { useState, useEffect } from 'react';
 
-import theme from './theme';
-import { StatusBar } from 'expo-status-bar';
+import { name as appName } from './app.json';
+
+import { AppRegistry } from 'react-native';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import {PaperProvider, Snackbar} from 'react-native-paper';
+
+import { StatusBar } from 'expo-status-bar';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+//SCREENS
 import Landing from './screens/Landing.js';
 import SignUp from './screens/SignUp.js';
 import Login from './screens/Login.js';
 import Home from './screens/Home.js';
 import NewUserPreferences from './screens/NewUserPreferences.js';
-import TopNav from './components/TopNav/TopNav.js';
-import TopNavLogoOnly from './components/TopNav/TopNavLogoOnly.js';
-
-
+import HeaderTitle from './components/TopNav/TopNavLogoOnly.js';
 import UserAccount from './screens/UserAccount';
 import GameDetails from './screens/GameDetails';
 import GameWarden from './screens/GameWarden';
 import Search from './screens/Search';
+import EditAccount from './screens/EditAccount';
 import SearchResults from './screens/SearchResults.js';
 
 import personalDummyGames from './components/GameList/dummy/personalDummyGames';
-const Stack = createNativeStackNavigator();
 
 //yarn add firebase, yarn add @react-native-firebase/auth
 import firebase from 'firebase/compat/app';
@@ -37,16 +36,21 @@ import {Provider, useDispatch, useSelector} from "react-redux";
 import { store } from './state/index.js';
 import AppModal from "./components/AppModal";
 
-//fonts
+//STYLING
+import theme from './theme';
 import * as Font from 'expo-font';
-import {handleRemoveNotification} from "./state/app/actions";
-import EditAccount from './screens/EditAccount';
+const icons = {
+  'backArrow': require('./assets/Asset-TopNav-BackArrow.png'),
+};
 
+//REDUX
+import {handleRemoveNotification} from "./state/app/actions";
+
+const Stack = createNativeStackNavigator();
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-
 
 export default function AppWrapper() {
   return (
@@ -69,8 +73,9 @@ function App() {
   return (
     <PaperProvider theme={ theme }>
       <NavigationContainer>
-        <Stack.Navigator animationEnabled={true}>
-
+        <Stack.Navigator
+          animationEnabled={true}
+        >
           <Stack.Screen
             name="Landing"
             component={Landing}
@@ -86,9 +91,26 @@ function App() {
             name="Home"
             component={Home}
             options={{
-              headerTitle: (props) => <TopNavLogoOnly {...props} />,
-          }}/>
-          <Stack.Screen name="Game Details" component={GameDetails}/>
+              headerBackImageSource: icons['backArrow'],
+              headerStyle: {
+                backgroundColor: theme.colors.background,
+              },
+              headerTitle: () => <HeaderTitle />,
+              headerTitleAlign: 'center',
+            }}
+          />
+          <Stack.Screen
+            name="Game Details"
+            component={GameDetails}
+            options={{
+              headerBackImageSource: icons['backArrow'],
+              headerStyle: {
+                backgroundColor: theme.colors.background,
+              },
+              headerTitle: () => <HeaderTitle />,
+              headerTitleAlign: 'center',
+            }}
+          />
           <Stack.Screen name="Game Warden" component={GameWarden}/>
           <Stack.Screen name="Search Results" component={SearchResults}/>
           <Stack.Screen name="Search" component={Search}/>

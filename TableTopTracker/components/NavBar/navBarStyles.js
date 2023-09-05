@@ -82,6 +82,8 @@ const styles = StyleSheet.create({
     marginRight:'auto',
     marginTop: -40,
     borderRadius: '100%',
+    borderWidth: '5px',
+    borderColor: theme.colors.secondary
   }
 });
 
