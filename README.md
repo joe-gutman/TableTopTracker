@@ -64,8 +64,8 @@ Want to contribute? Fantastic! Please follow our Git Flow 🌊 for best practice
 ### Git Flow 🌊
 
 1. Create your own branch 🌿.
-2. Regularly pull from the main branch to remain updated, *pull before each push* 🔄.
-3. Commit and push your progress, *at least after every feature completion* ✅.
+2. Regularly pull from the main branch to remain updated, **pull before each push** 🔄.
+3. Commit and push your progress, **at least after every feature completion** ✅.
 4. After submitting a pull request, request a review from at least one other team member before merging into the main branch.
 
 ## Team 👥
