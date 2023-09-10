@@ -1,101 +1,76 @@
 # TableTop Tracker 🎮
-### Your central hub for table-top games 🎲
+
+**Your central hub for table-top games.** 🎲
 
 ## Overview 📝
-TableTop Tracker helps table top gamers keep track of the games they have, the games they want, and games they need but don't know about yet. Users can create collections of games and add games to custom collections. If the user is itching for something new, they can talk to an AI-powered chatbot that will recommend games based on their preferences. 🤖
 
-## For Developers: Basic Information and How to Get Started 🚀
+TableTop Tracker is an interactive platform designed for tabletop gaming enthusiasts. Whether you're a veteran gamer or a newbie exploring the world of tabletop games, this app is crafted for you.
 
-### **Installation 💻**
+- **Manage Your Collection:** Easily log and manage the games you already own. Categorize them into custom collections based on themes, gameplay mechanics, or even mood.
+  
+- **Discover New Games:** Not sure what to play next? Engage with our AI-powered chatbot that understands your preferences and recommends games you'll likely enjoy. 🤖
 
-1. Git clone the project's repository from GitHub to your local device.
-2. In your CLI, cd to the TableTopTracker directory and run "npm run start".
-3. In your CLI, cd to the Server directory and run "npm run server-dev".
+- **Community Interactions:** Connect with other gamers, discuss strategies, exchange reviews, and even set up virtual game nights!
 
-### **Tech Stack 🛠️**
-1. React Router
-2. React Native
-3. Javascript
-4. PostgreSQL
-5. Node / Express
+![App Screenshot Placeholder](./path_to_image.jpg)
+*Above: A glimpse of the TableTop Tracker. More visuals coming soon!*
 
-### **APIs 🌐**
-1. OpenAI — API
-2. BoardGameGeek — API
-3. FireBase/FireStore — Authentication
+## Getting Started 🚀
 
-### **Styling Frameworks 🎨**
-1. React Native Paper
-2. Good ol' vanilla CSS
+### Installation & Set-up 💻
 
-### **Git Flow 🌊**
-1. Make your own branch 🌿
-2. Before committing, make sure to pull from main to get the most up-to-date repository 🔄
-3. Commit and push to the branch every time there is progress without any errors (after every feature is done) ✅
-4. After submitting pull request, ask for approval from one other team member before merging into the main branch 👥
+1. Clone the project's repository from GitHub.
+    ```bash
+    git clone https://github.com/joe-gutman/TableTopTracker
+    ```
 
-### **How to Run React Native 📱**
-1. CD into TableTopTracker Directory
-2. npx install yarn or brew install yarn
-3. yarn install
-4. npx expo start (should see a QR code)
-5. To open on the web, enter 'w' after the expo start runs.
-6. Download the expo go app on your phone and create an account
-7. Scan the QR code that appears after running npx expo start
+2. Navigate to the TableTopTracker directory and initiate the app:
 
-### **How to run the Server and database 🏢🗄️**
+    ```bash
+    cd TableTopTracker
+    npm run start
+    ```
+3. For the server component, move to the Server directory and start the server:
+    ``` bash
+    cd Server
+    npm run server-dev
+    ```
+## Running the App 🖥️📱
 
-```
-// cd into /Server
+**Web Version:** After starting the app, open your browser and visit the displayed local URL.
 
-// run the following to create a postgresql database:
+**Mobile Version:** Install the "expo go" app on your phone, create an account, and scan the provided QR code after starting the app.
 
-    > createdb tableTopGamers
+## Technical Specifications 🛠️
 
-// create .env in /server with the following
+- **Core Technologies:** React Router, React Native, Javascript, PostgreSQL, Node / Express.
+- **Integrated APIs:** OpenAI, BoardGameGeek, FireBase/FireStore for Authentication.
+- **Design & Styling:** Leveraged the beauty of React Native Paper and good ol' vanilla CSS.
 
-    .env---------------------
-    DB_NAME=tableTopGamers
-    -------------------------
+## Contribute
 
-// create tables in db
+Want to contribute? Fantastic! Please follow our Git Flow 🌊 for best practices.
 
-// from /server run:
+### Git Flow 🌊
 
-    > psql -U [YOUR DB USERNAME] -d tableTopGamers -a -f database/schemaReset.sql
+1. Create your own branch 🌿.
+2. Regularly pull from the main branch to remain updated 🔄.
+3. Commit and push your progress (ideally after every feature completion) ✅.
+4. After submitting a pull request, kindly request a review from at least one other team member before merging into the main branch.
 
-// from /server run:
+## Team 👥
 
-    > node database/seedMockData.js
-    > update: if you'd like some live data, run database/schemaReset.sql as above,
-        uncomment the initializer.populateBoardGames() in index.js on line 18 and start
-        up the server again.  as of right now it only runs through the first 9 entries
-        of the board games list.  You can modify populate.js to run through 500 games,
-        but do so at your own risk, I'm quite sure there are still a few bugs that need fixing.
-```
+Meet the magicians behind TableTop Tracker:
 
-**API END-POINTS**
+- [Joe Gutman](https://github.com/joe-gutman) - *Project Manager*
+- [Darien Poon](https://github.com/darien-poon)
+- [Andeliu Liu](https://github.com/andeliuliu) - *Architect*
+- [Aya Magucci](https://github.com/ayamagucci)
+- [L-ren](https://github.com/L-ren)
+- [Warren Lynes](https://github.com/WarrenLynes)
+- [Victoria Quinto](https://github.com/victoriajquinto) - *UI Owner*
+- [Mayeda](https://github.com/mayedap)
 
-PORT=3000
+---
 
-**fetch user collections**
-
-GET /collections?userId=[USER_ID]
-
-- Query Paramaters = userId
-
-**fetch collection games**
-GET /collections/:collectionId
-
-- Req Paramaters = collectionId
-
-## Team Members 👥
-- https://github.com/joe-gutman (Project Manager)
-- https://github.com/darien-poon
-- https://github.com/andeliuliu (Architect)
-- https://github.com/ayamagucci
-- https://github.com/L-ren
-- https://github.com/WarrenLynes
-- https://github.com/victoriajquinto (UI Owner)
-- https://github.com/mayedap
-
+*Happy Gaming!* 🎲👾
