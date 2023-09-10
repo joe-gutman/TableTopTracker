@@ -74,12 +74,12 @@ Meet the magicians behind TableTop Tracker:
 
 - [Joe Gutman](https://github.com/joe-gutman) - *Project Manager*
 - [Darien Poon](https://github.com/darien-poon)
-- [Andeliu Liu](https://github.com/andeliuliu) - *Architect*
-- [Aya Magucci](https://github.com/ayamagucci)
-- [L-ren](https://github.com/L-ren)
-- [Warren Lynes](https://github.com/WarrenLynes)
+- [Andrew Liu](https://github.com/andeliuliu) - *Architect*
+- [Alex Yamagucci](https://github.com/ayamagucci)
+- [Loren Johnson](https://github.com/L-ren)
+- [Shay Lynes](https://github.com/WarrenLynes)
 - [Victoria Quinto](https://github.com/victoriajquinto) - *UI Owner*
-- [Mayeda](https://github.com/mayedap)
+- [Patrick Mayeda](https://github.com/mayedap)
 
 ---
 
