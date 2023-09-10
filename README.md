@@ -12,8 +12,10 @@ TableTop Tracker is an interactive platform designed for tabletop gaming enthusi
 
 - **Community Interactions:** Connect with other gamers, discuss strategies, exchange reviews, and even set up virtual game nights!
 
+<!--- 
 ![App Screenshot Placeholder](./path_to_image.jpg)
 *Above: A glimpse of the TableTop Tracker. More visuals coming soon!*
+-->
 
 ## Getting Started 🚀
 
