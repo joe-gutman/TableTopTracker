@@ -4,13 +4,21 @@
 
 ## Overview 📝
 
-TableTop Tracker is an interactive platform designed for tabletop gaming enthusiasts. Whether you're a veteran gamer or a newbie exploring the world of tabletop games, this app is crafted for you.
+TableTop Tracker, developed by a passionate team of eight, is your comprehensive guide to the world of board games. It offers a rich database for learning about various games, an AI-powered chatbot for tailored recommendations, and robust tools to curate and manage your personal board game collection. Whether you're a seasoned gamer with a vast library or a newbie just starting your collection, our platform is designed to enrich your tabletop journey.
 
-- **Manage Your Collection:** Easily log and manage the games you already own. Categorize them into custom collections based on themes, gameplay mechanics, or even mood.
-  
-- **Discover New Games:** Not sure what to play next? Engage with our AI-powered chatbot that understands your preferences and recommends games you'll likely enjoy. 🤖
+**Features include:**
 
-- **Community Interactions:** Connect with other gamers, discuss strategies, exchange reviews, and even set up virtual game nights!
+- **Sign Up & Login:** Begin your adventure with a seamless registration process. Every inch of the app is crafted to give registered users a tailored experience, ensuring each visit is more exciting than the last.
+
+- **Personalized Dashboard:** Step into your own world of board games. Every login unveils a dashboard, richly populated with your personal game collections, ensuring a quick start.
+
+- **Learn and Discover:** 
+  - *The Game Warden:* Unleash your curiosity with our AI-powered chatbot. Whether you're searching for a game or just exploring, the Game Warden guides you through a series of questions, refining its recommendations every step of the way.
+  - *In-depth Game Insights:* Found a game that piques your interest? Navigate to its page to delve deeper. Learn about gameplay, mechanics, themes, and more.
+
+- **Manage Your Collection:** 
+  - *Flexibility at Your Fingertips:* Design your own game collections. Create, edit, delete, and curate - the power lies with you.
+  - *Intuitive Additions:* Discover a new favorite? Add it to your collection directly from the game's dedicated page.
 
 <!--- 
 ![App Screenshot Placeholder](./path_to_image.jpg)
